@@ -15,8 +15,8 @@
 #define Engine_Direction_B PORTBbits.RB4    // Salida digital que define la dirección del motor
 #define End_Stop_Open PORTBbits.RB6         // Entrada digital fin de carrera
 #define End_Stop_Close PORTBbits.RB7        // Entrada digital fin de carrera
-#define Time 850000
-#define Time_Auto_Close 1000000
+#define Time 850000                         // Constante de tiempo para detención de emergencia
+#define Time_Auto_Close 1000000             // Constante de tiempo para cierre automatico
 
 _Bool Last_Magnet_State = 0;
 _Bool Last_Open_Contact_State = 1;
@@ -26,6 +26,7 @@ _Bool End_Stop_Close_State;
 _Bool End_Stop_Open_State;
 long Count_Time_Close = 0;
 long Count_Auto_Close = 0;
+int Count_Magnet_Active = 0;
 
 void Close_Lock(void);
 void Open_Lock(void);
@@ -50,10 +51,14 @@ void Close_Lock(void) {
     Magnet_State = Magnet_Sensor;
     __delay_ms(50);
     if(Magnet_State == 1 && Last_Magnet_State == 0) {   // Detección de flanco ascendente en el sensor magnetico      
-        __delay_ms(50);                                // Antirebote
+        __delay_ms(50);
         End_Stop_Open_State = End_Stop_Open;
         if(Magnet_State == 1 && Last_Magnet_State == 0 && End_Stop_Open_State == 0) {
-            Closing();
+            Count_Magnet_Active++;
+            if(Count_Magnet_Active == 2) {
+                Closing();
+                Count_Magnet_Active = 0;
+            }
         }
     }
     Last_Magnet_State = Magnet_State;

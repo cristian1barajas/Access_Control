@@ -5086,6 +5086,7 @@ _Bool End_Stop_Close_State;
 _Bool End_Stop_Open_State;
 long Count_Time_Close = 0;
 long Count_Auto_Close = 0;
+int Count_Magnet_Active = 0;
 
 void Close_Lock(void);
 void Open_Lock(void);
@@ -5113,7 +5114,11 @@ void Close_Lock(void) {
         _delay((unsigned long)((50)*(20000000/4000.0)));
         End_Stop_Open_State = PORTBbits.RB6;
         if(Magnet_State == 1 && Last_Magnet_State == 0 && End_Stop_Open_State == 0) {
-            Closing();
+            Count_Magnet_Active++;
+            if(Count_Magnet_Active == 2) {
+                Closing();
+                Count_Magnet_Active = 0;
+            }
         }
     }
     Last_Magnet_State = Magnet_State;
