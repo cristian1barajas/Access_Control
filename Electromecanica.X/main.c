@@ -10,11 +10,11 @@
 
 #define _XTAL_FREQ 20000000                 // Define la frecuencia de oscilación de la CPU para el uso de los Delays
 #define Magnet_Sensor PORTAbits.RA1         // Entrada digital para sensor magnetico
-#define Open_Contact PORTBbits.RB2                  // Entrada digital para Botón de apertura
+#define Open_Contact PORTBbits.RB2          // Entrada digital para Botón de apertura
 #define Engine_Direction_A PORTBbits.RB3    // Salida digital que define la dirección del motor
 #define Engine_Direction_B PORTBbits.RB4    // Salida digital que define la dirección del motor
-#define End_Stop_Open PORTBbits.RB6            // Entrada digital fin de carrera
-#define End_Stop_Close PORTBbits.RB7            // Entrada digital fin de carrera
+#define End_Stop_Open PORTBbits.RB6         // Entrada digital fin de carrera
+#define End_Stop_Close PORTBbits.RB7        // Entrada digital fin de carrera
 #define Time 850000
 #define Time_Auto_Close 1000000
 
@@ -27,12 +27,11 @@ _Bool End_Stop_Open_State;
 long Count_Time_Close = 0;
 long Count_Auto_Close = 0;
 
-
 void Close_Lock(void);
 void Open_Lock(void);
+void Closing(void);
 
 void main(void) {   // Función principal
-    
     ADCON1 = 0X0F;       // Todos los pines analogos como digitales
     TRISAbits.RA1 = 1;   // Configuración como entrada digital
     TRISB = 0xE7;        // Configuración del puerto B
@@ -54,17 +53,7 @@ void Close_Lock(void) {
         __delay_ms(50);                                // Antirebote
         End_Stop_Open_State = End_Stop_Open;
         if(Magnet_State == 1 && Last_Magnet_State == 0 && End_Stop_Open_State == 0) {
-            do {
-                Engine_Direction_A = 1;
-                End_Stop_Close_State = End_Stop_Close;
-                Count_Time_Close++;
-                if(Count_Time_Close == Time) {
-                    Count_Time_Close = 0;
-                    break;
-                }
-            } while(End_Stop_Close_State == 1);
-            Engine_Direction_A = 0;
-            Count_Time_Close = 0;
+            Closing();
         }
     }
     Last_Magnet_State = Magnet_State;
@@ -95,17 +84,7 @@ void Open_Lock(void) {
                 if(Count_Auto_Close == Time_Auto_Close) {
                     End_Stop_Open_State = End_Stop_Open;
                     if(End_Stop_Open_State == 0) {
-                        do {
-                            Engine_Direction_A = 1;
-                            End_Stop_Close_State = End_Stop_Close;
-                            Count_Time_Close++;
-                            if(Count_Time_Close == Time) {
-                                Count_Time_Close = 0;
-                                break;        
-                            }
-                        } while(End_Stop_Close_State == 1);
-                        Engine_Direction_A = 0;
-                        Count_Time_Close = 0;
+                        Closing();
                         Count_Auto_Close = 0;
                     }
                     break;
@@ -115,4 +94,18 @@ void Open_Lock(void) {
         }
     }
     Last_Open_Contact_State = Open_Contact_State;
+}
+
+void Closing(void) {
+    do {
+        Engine_Direction_A = 1;
+        End_Stop_Close_State = End_Stop_Close;
+        Count_Time_Close++;
+        if(Count_Time_Close == Time) {
+            Count_Time_Close = 0;
+            break;
+        }
+    } while(End_Stop_Close_State == 1);
+    Engine_Direction_A = 0;
+    Count_Time_Close = 0;
 }

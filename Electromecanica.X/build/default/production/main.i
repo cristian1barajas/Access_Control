@@ -5087,12 +5087,11 @@ _Bool End_Stop_Open_State;
 long Count_Time_Close = 0;
 long Count_Auto_Close = 0;
 
-
 void Close_Lock(void);
 void Open_Lock(void);
+void Closing(void);
 
 void main(void) {
-
     ADCON1 = 0X0F;
     TRISAbits.RA1 = 1;
     TRISB = 0xE7;
@@ -5114,17 +5113,7 @@ void Close_Lock(void) {
         _delay((unsigned long)((50)*(20000000/4000.0)));
         End_Stop_Open_State = PORTBbits.RB6;
         if(Magnet_State == 1 && Last_Magnet_State == 0 && End_Stop_Open_State == 0) {
-            do {
-                PORTBbits.RB3 = 1;
-                End_Stop_Close_State = PORTBbits.RB7;
-                Count_Time_Close++;
-                if(Count_Time_Close == 850000) {
-                    Count_Time_Close = 0;
-                    break;
-                }
-            } while(End_Stop_Close_State == 1);
-            PORTBbits.RB3 = 0;
-            Count_Time_Close = 0;
+            Closing();
         }
     }
     Last_Magnet_State = Magnet_State;
@@ -5155,17 +5144,7 @@ void Open_Lock(void) {
                 if(Count_Auto_Close == 1000000) {
                     End_Stop_Open_State = PORTBbits.RB6;
                     if(End_Stop_Open_State == 0) {
-                        do {
-                            PORTBbits.RB3 = 1;
-                            End_Stop_Close_State = PORTBbits.RB7;
-                            Count_Time_Close++;
-                            if(Count_Time_Close == 850000) {
-                                Count_Time_Close = 0;
-                                break;
-                            }
-                        } while(End_Stop_Close_State == 1);
-                        PORTBbits.RB3 = 0;
-                        Count_Time_Close = 0;
+                        Closing();
                         Count_Auto_Close = 0;
                     }
                     break;
@@ -5175,4 +5154,18 @@ void Open_Lock(void) {
         }
     }
     Last_Open_Contact_State = Open_Contact_State;
+}
+
+void Closing(void) {
+    do {
+        PORTBbits.RB3 = 1;
+        End_Stop_Close_State = PORTBbits.RB7;
+        Count_Time_Close++;
+        if(Count_Time_Close == 850000) {
+            Count_Time_Close = 0;
+            break;
+        }
+    } while(End_Stop_Close_State == 1);
+    PORTBbits.RB3 = 0;
+    Count_Time_Close = 0;
 }

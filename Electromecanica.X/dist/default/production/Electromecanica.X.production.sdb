@@ -29,10 +29,12 @@
 [v ___omul __omul `(uo  1 e 8 0 ]
 "34 C:\Barajas\Access_Control\Electromecanica.X\main.c
 [v _main main `(v  1 e 1 0 ]
-"50
+"49
 [v _Close_Lock Close_Lock `(v  1 e 1 0 ]
-"73
+"62
 [v _Open_Lock Open_Lock `(v  1 e 1 0 ]
+"99
+[v _Closing Closing `(v  1 e 1 0 ]
 [s S33 . 1 `uc 1 RA0 1 0 :1:0 
 `uc 1 RA1 1 0 :1:1 
 `uc 1 RA2 1 0 :1:2 
@@ -120,15 +122,20 @@
 "34
 [v _main main `(v  1 e 1 0 ]
 {
-"48
+"47
 } 0
-"73
+"62
 [v _Open_Lock Open_Lock `(v  1 e 1 0 ]
 {
-"118
+"97
 } 0
-"50
+"49
 [v _Close_Lock Close_Lock `(v  1 e 1 0 ]
 {
-"71
+"60
+} 0
+"99
+[v _Closing Closing `(v  1 e 1 0 ]
+{
+"111
 } 0
