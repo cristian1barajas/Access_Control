@@ -40,11 +40,11 @@ Version 4.0 HI-TECH Software Intermediate Code
 "2286
 [; ;C:\Program Files (x86)\Microchip\xc8\v2.05\pic\include\pic18f2550.h: 2286: extern volatile PORTBbits_t PORTBbits __attribute__((address(0xF81)));
 [v _PORTBbits `VS95 ~T0 @X0 0 e@3969 ]
-"28 main.c
-[; ;main.c: 28: void Close_Lock(void);
+"31 main.c
+[; ;main.c: 31: void Close_Lock(void);
 [v _Close_Lock `(v ~T0 @X0 0 ef ]
-"29
-[; ;main.c: 29: void Open_Lock(void);
+"32
+[; ;main.c: 32: void Open_Lock(void);
 [v _Open_Lock `(v ~T0 @X0 0 ef ]
 "2123 C:\Program Files (x86)\Microchip\xc8\v2.05\pic\include\pic18f2550.h
 [; ;C:\Program Files (x86)\Microchip\xc8\v2.05\pic\include\pic18f2550.h: 2123:     struct {
@@ -625,236 +625,326 @@ Version 4.0 HI-TECH Software Intermediate Code
 [p x EBTR3 = OFF ]
 "64
 [p x EBTRB = OFF ]
-"20 main.c
-[; ;main.c: 20: _Bool Last_Magnet_State = 0;
+"21 main.c
+[; ;main.c: 21: _Bool Last_Magnet_State = 0;
 [v _Last_Magnet_State `a ~T0 @X0 1 e ]
 [i _Last_Magnet_State
 -> -> 0 `i `a
 ]
-"21
-[; ;main.c: 21: _Bool Last_Open_Contact_State = 1;
+"22
+[; ;main.c: 22: _Bool Last_Open_Contact_State = 1;
 [v _Last_Open_Contact_State `a ~T0 @X0 1 e ]
 [i _Last_Open_Contact_State
 -> -> 1 `i `a
 ]
-"22
-[; ;main.c: 22: _Bool Magnet_State;
-[v _Magnet_State `a ~T0 @X0 1 e ]
 "23
-[; ;main.c: 23: _Bool Open_Contact_State;
-[v _Open_Contact_State `a ~T0 @X0 1 e ]
+[; ;main.c: 23: _Bool Magnet_State;
+[v _Magnet_State `a ~T0 @X0 1 e ]
 "24
-[; ;main.c: 24: _Bool End_Stop_Close_State;
-[v _End_Stop_Close_State `a ~T0 @X0 1 e ]
+[; ;main.c: 24: _Bool Open_Contact_State;
+[v _Open_Contact_State `a ~T0 @X0 1 e ]
 "25
-[; ;main.c: 25: _Bool End_Stop_Open_State;
-[v _End_Stop_Open_State `a ~T0 @X0 1 e ]
+[; ;main.c: 25: _Bool End_Stop_Close_State;
+[v _End_Stop_Close_State `a ~T0 @X0 1 e ]
 "26
-[; ;main.c: 26: long Count = 0;
-[v _Count `l ~T0 @X0 1 e ]
-[i _Count
+[; ;main.c: 26: _Bool End_Stop_Open_State;
+[v _End_Stop_Open_State `a ~T0 @X0 1 e ]
+"27
+[; ;main.c: 27: long Count_Time_Close = 0;
+[v _Count_Time_Close `l ~T0 @X0 1 e ]
+[i _Count_Time_Close
+-> -> 0 `i `l
+]
+"28
+[; ;main.c: 28: long Count_Auto_Close = 0;
+[v _Count_Auto_Close `l ~T0 @X0 1 e ]
+[i _Count_Auto_Close
 -> -> 0 `i `l
 ]
 [v $root$_main `(v ~T0 @X0 0 e ]
-"31
-[; ;main.c: 31: void main(void) {
+"34
+[; ;main.c: 34: void main(void) {
 [v _main `(v ~T0 @X0 1 ef ]
 {
 [e :U _main ]
 [f ]
-"33
-[; ;main.c: 33:     ADCON1 = 0X0F;
+"36
+[; ;main.c: 36:     ADCON1 = 0X0F;
 [e = _ADCON1 -> -> 15 `i `uc ]
-"34
-[; ;main.c: 34:     TRISAbits.RA1 = 1;
-[e = . . _TRISAbits 1 1 -> -> 1 `i `uc ]
-"35
-[; ;main.c: 35:     TRISB = 0xE7;
-[e = _TRISB -> -> 231 `i `uc ]
 "37
-[; ;main.c: 37:     PORTBbits.RB3 = 0;
-[e = . . _PORTBbits 0 3 -> -> 0 `i `uc ]
+[; ;main.c: 37:     TRISAbits.RA1 = 1;
+[e = . . _TRISAbits 1 1 -> -> 1 `i `uc ]
 "38
-[; ;main.c: 38:     PORTBbits.RB4 = 0;
-[e = . . _PORTBbits 0 4 -> -> 0 `i `uc ]
+[; ;main.c: 38:     TRISB = 0xE7;
+[e = _TRISB -> -> 231 `i `uc ]
 "40
-[; ;main.c: 40:     while(1) {
+[; ;main.c: 40:     PORTBbits.RB3 = 0;
+[e = . . _PORTBbits 0 3 -> -> 0 `i `uc ]
+"41
+[; ;main.c: 41:     PORTBbits.RB4 = 0;
+[e = . . _PORTBbits 0 4 -> -> 0 `i `uc ]
+"43
+[; ;main.c: 43:     while(1) {
 [e :U 329 ]
 {
-"41
-[; ;main.c: 41:         Close_Lock();
+"44
+[; ;main.c: 44:         Close_Lock();
 [e ( _Close_Lock ..  ]
-"42
-[; ;main.c: 42:         Open_Lock();
+"45
+[; ;main.c: 45:         Open_Lock();
 [e ( _Open_Lock ..  ]
-"43
-[; ;main.c: 43:     }
+"46
+[; ;main.c: 46:     }
 }
 [e :U 328 ]
 [e $U 329  ]
 [e :U 330 ]
-"44
-[; ;main.c: 44:     return;
+"47
+[; ;main.c: 47:     return;
 [e $UE 327  ]
-"45
-[; ;main.c: 45: }
+"48
+[; ;main.c: 48: }
 [e :UE 327 ]
 }
-"47
-[; ;main.c: 47: void Close_Lock(void) {
+"50
+[; ;main.c: 50: void Close_Lock(void) {
 [v _Close_Lock `(v ~T0 @X0 1 ef ]
 {
 [e :U _Close_Lock ]
 [f ]
-"48
-[; ;main.c: 48:     Magnet_State = PORTAbits.RA1;
+"51
+[; ;main.c: 51:     Magnet_State = PORTAbits.RA1;
 [e = _Magnet_State -> . . _PORTAbits 0 1 `a ]
-"49
-[; ;main.c: 49:     _delay((unsigned long)((50)*(20000000/4000.0)));
+"52
+[; ;main.c: 52:     _delay((unsigned long)((50)*(20000000/4000.0)));
 [e ( __delay (1 -> * -> -> 50 `i `d / -> -> 20000000 `l `d .4000.0 `ul ]
-"50
-[; ;main.c: 50:     if(Magnet_State == 1 && Last_Magnet_State == 0) {
+"53
+[; ;main.c: 53:     if(Magnet_State == 1 && Last_Magnet_State == 0) {
 [e $ ! && == -> _Magnet_State `i -> 1 `i == -> _Last_Magnet_State `i -> 0 `i 332  ]
 {
-"51
-[; ;main.c: 51:         _delay((unsigned long)((50)*(20000000/4000.0)));
+"54
+[; ;main.c: 54:         _delay((unsigned long)((50)*(20000000/4000.0)));
 [e ( __delay (1 -> * -> -> 50 `i `d / -> -> 20000000 `l `d .4000.0 `ul ]
-"52
-[; ;main.c: 52:         End_Stop_Open_State = PORTBbits.RB6;
+"55
+[; ;main.c: 55:         End_Stop_Open_State = PORTBbits.RB6;
 [e = _End_Stop_Open_State -> . . _PORTBbits 0 6 `a ]
-"53
-[; ;main.c: 53:         if(Magnet_State == 1 && Last_Magnet_State == 0 && End_Stop_Open_State == 0) {
+"56
+[; ;main.c: 56:         if(Magnet_State == 1 && Last_Magnet_State == 0 && End_Stop_Open_State == 0) {
 [e $ ! && && == -> _Magnet_State `i -> 1 `i == -> _Last_Magnet_State `i -> 0 `i == -> _End_Stop_Open_State `i -> 0 `i 333  ]
 {
-"54
-[; ;main.c: 54:             do {
+"57
+[; ;main.c: 57:             do {
 [e :U 336 ]
 {
-"55
-[; ;main.c: 55:                 PORTBbits.RB3 = 1;
-[e = . . _PORTBbits 0 3 -> -> 1 `i `uc ]
-"56
-[; ;main.c: 56:                 End_Stop_Close_State = PORTBbits.RB7;
-[e = _End_Stop_Close_State -> . . _PORTBbits 0 7 `a ]
-"57
-[; ;main.c: 57:                 Count++;
-[e ++ _Count -> -> 1 `i `l ]
 "58
-[; ;main.c: 58:                 if(Count == 850000) {
-[e $ ! == _Count -> 850000 `l 337  ]
-{
+[; ;main.c: 58:                 PORTBbits.RB3 = 1;
+[e = . . _PORTBbits 0 3 -> -> 1 `i `uc ]
 "59
-[; ;main.c: 59:                     Count = 0;
-[e = _Count -> -> 0 `i `l ]
+[; ;main.c: 59:                 End_Stop_Close_State = PORTBbits.RB7;
+[e = _End_Stop_Close_State -> . . _PORTBbits 0 7 `a ]
 "60
-[; ;main.c: 60:                     break;
-[e $U 335  ]
+[; ;main.c: 60:                 Count_Time_Close++;
+[e ++ _Count_Time_Close -> -> 1 `i `l ]
 "61
-[; ;main.c: 61:                 }
+[; ;main.c: 61:                 if(Count_Time_Close == 850000) {
+[e $ ! == _Count_Time_Close -> 850000 `l 337  ]
+{
+"62
+[; ;main.c: 62:                     Count_Time_Close = 0;
+[e = _Count_Time_Close -> -> 0 `i `l ]
+"63
+[; ;main.c: 63:                     break;
+[e $U 335  ]
+"64
+[; ;main.c: 64:                 }
 }
 [e :U 337 ]
-"62
-[; ;main.c: 62:             } while(End_Stop_Close_State == 1);
+"65
+[; ;main.c: 65:             } while(End_Stop_Close_State == 1);
 }
 [e $ == -> _End_Stop_Close_State `i -> 1 `i 336  ]
 [e :U 335 ]
-"63
-[; ;main.c: 63:             PORTBbits.RB3 = 0;
+"66
+[; ;main.c: 66:             PORTBbits.RB3 = 0;
 [e = . . _PORTBbits 0 3 -> -> 0 `i `uc ]
-"64
-[; ;main.c: 64:             Count = 0;
-[e = _Count -> -> 0 `i `l ]
-"65
-[; ;main.c: 65:         }
+"67
+[; ;main.c: 67:             Count_Time_Close = 0;
+[e = _Count_Time_Close -> -> 0 `i `l ]
+"68
+[; ;main.c: 68:         }
 }
 [e :U 333 ]
-"66
-[; ;main.c: 66:     }
+"69
+[; ;main.c: 69:     }
 }
 [e :U 332 ]
-"67
-[; ;main.c: 67:     Last_Magnet_State = Magnet_State;
+"70
+[; ;main.c: 70:     Last_Magnet_State = Magnet_State;
 [e = _Last_Magnet_State _Magnet_State ]
-"68
-[; ;main.c: 68: }
+"71
+[; ;main.c: 71: }
 [e :UE 331 ]
 }
-"70
-[; ;main.c: 70: void Open_Lock(void) {
+"73
+[; ;main.c: 73: void Open_Lock(void) {
 [v _Open_Lock `(v ~T0 @X0 1 ef ]
 {
 [e :U _Open_Lock ]
 [f ]
-"71
-[; ;main.c: 71:     Open_Contact_State = PORTBbits.RB2;
+"74
+[; ;main.c: 74:     Open_Contact_State = PORTBbits.RB2;
 [e = _Open_Contact_State -> . . _PORTBbits 0 2 `a ]
-"72
-[; ;main.c: 72:     _delay((unsigned long)((50)*(20000000/4000.0)));
+"75
+[; ;main.c: 75:     _delay((unsigned long)((50)*(20000000/4000.0)));
 [e ( __delay (1 -> * -> -> 50 `i `d / -> -> 20000000 `l `d .4000.0 `ul ]
-"73
-[; ;main.c: 73:     if(Open_Contact_State == 0 && Last_Open_Contact_State == 1) {
+"76
+[; ;main.c: 76:     if(Open_Contact_State == 0 && Last_Open_Contact_State == 1) {
 [e $ ! && == -> _Open_Contact_State `i -> 0 `i == -> _Last_Open_Contact_State `i -> 1 `i 339  ]
 {
-"74
-[; ;main.c: 74:         _delay((unsigned long)((50)*(20000000/4000.0)));
+"77
+[; ;main.c: 77:         _delay((unsigned long)((50)*(20000000/4000.0)));
 [e ( __delay (1 -> * -> -> 50 `i `d / -> -> 20000000 `l `d .4000.0 `ul ]
-"75
-[; ;main.c: 75:         End_Stop_Open_State = PORTBbits.RB6;
+"78
+[; ;main.c: 78:         End_Stop_Open_State = PORTBbits.RB6;
 [e = _End_Stop_Open_State -> . . _PORTBbits 0 6 `a ]
-"76
-[; ;main.c: 76:         if(Open_Contact_State == 0 && Last_Open_Contact_State == 1 && End_Stop_Open_State == 1) {
+"79
+[; ;main.c: 79:         if(Open_Contact_State == 0 && Last_Open_Contact_State == 1 && End_Stop_Open_State == 1) {
 [e $ ! && && == -> _Open_Contact_State `i -> 0 `i == -> _Last_Open_Contact_State `i -> 1 `i == -> _End_Stop_Open_State `i -> 1 `i 340  ]
 {
-"77
-[; ;main.c: 77:             do {
+"80
+[; ;main.c: 80:             do {
 [e :U 343 ]
 {
-"78
-[; ;main.c: 78:                 PORTBbits.RB4 = 1;
-[e = . . _PORTBbits 0 4 -> -> 1 `i `uc ]
-"79
-[; ;main.c: 79:                 End_Stop_Open_State = PORTBbits.RB6;
-[e = _End_Stop_Open_State -> . . _PORTBbits 0 6 `a ]
-"80
-[; ;main.c: 80:                 Count++;
-[e ++ _Count -> -> 1 `i `l ]
 "81
-[; ;main.c: 81:                 if(Count == 850000) {
-[e $ ! == _Count -> 850000 `l 344  ]
-{
+[; ;main.c: 81:                 PORTBbits.RB4 = 1;
+[e = . . _PORTBbits 0 4 -> -> 1 `i `uc ]
 "82
-[; ;main.c: 82:                     Count = 0;
-[e = _Count -> -> 0 `i `l ]
+[; ;main.c: 82:                 End_Stop_Open_State = PORTBbits.RB6;
+[e = _End_Stop_Open_State -> . . _PORTBbits 0 6 `a ]
 "83
-[; ;main.c: 83:                     break;
-[e $U 342  ]
+[; ;main.c: 83:                 Count_Time_Close++;
+[e ++ _Count_Time_Close -> -> 1 `i `l ]
 "84
-[; ;main.c: 84:                 }
+[; ;main.c: 84:                 if(Count_Time_Close == 850000) {
+[e $ ! == _Count_Time_Close -> 850000 `l 344  ]
+{
+"85
+[; ;main.c: 85:                     Count_Time_Close = 0;
+[e = _Count_Time_Close -> -> 0 `i `l ]
+"86
+[; ;main.c: 86:                     break;
+[e $U 342  ]
+"87
+[; ;main.c: 87:                 }
 }
 [e :U 344 ]
-"85
-[; ;main.c: 85:             } while(End_Stop_Open_State == 1);
+"88
+[; ;main.c: 88:             } while(End_Stop_Open_State == 1);
 }
 [e $ == -> _End_Stop_Open_State `i -> 1 `i 343  ]
 [e :U 342 ]
-"86
-[; ;main.c: 86:             PORTBbits.RB4 = 0;
+"89
+[; ;main.c: 89:             PORTBbits.RB4 = 0;
 [e = . . _PORTBbits 0 4 -> -> 0 `i `uc ]
-"87
-[; ;main.c: 87:             Count = 0;
-[e = _Count -> -> 0 `i `l ]
-"88
-[; ;main.c: 88:         }
+"90
+[; ;main.c: 90:             Count_Time_Close = 0;
+[e = _Count_Time_Close -> -> 0 `i `l ]
+"91
+[; ;main.c: 91:             Magnet_State = PORTAbits.RA1;
+[e = _Magnet_State -> . . _PORTAbits 0 1 `a ]
+"92
+[; ;main.c: 92:             do {
+[e :U 347 ]
+{
+"93
+[; ;main.c: 93:                 Count_Auto_Close++;
+[e ++ _Count_Auto_Close -> -> 1 `i `l ]
+"94
+[; ;main.c: 94:                 Magnet_State = PORTAbits.RA1;
+[e = _Magnet_State -> . . _PORTAbits 0 1 `a ]
+"95
+[; ;main.c: 95:                 if(Count_Auto_Close == 1000000) {
+[e $ ! == _Count_Auto_Close -> 1000000 `l 348  ]
+{
+"96
+[; ;main.c: 96:                     End_Stop_Open_State = PORTBbits.RB6;
+[e = _End_Stop_Open_State -> . . _PORTBbits 0 6 `a ]
+"97
+[; ;main.c: 97:                     if(End_Stop_Open_State == 0) {
+[e $ ! == -> _End_Stop_Open_State `i -> 0 `i 349  ]
+{
+"98
+[; ;main.c: 98:                         do {
+[e :U 352 ]
+{
+"99
+[; ;main.c: 99:                             PORTBbits.RB3 = 1;
+[e = . . _PORTBbits 0 3 -> -> 1 `i `uc ]
+"100
+[; ;main.c: 100:                             End_Stop_Close_State = PORTBbits.RB7;
+[e = _End_Stop_Close_State -> . . _PORTBbits 0 7 `a ]
+"101
+[; ;main.c: 101:                             Count_Time_Close++;
+[e ++ _Count_Time_Close -> -> 1 `i `l ]
+"102
+[; ;main.c: 102:                             if(Count_Time_Close == 850000) {
+[e $ ! == _Count_Time_Close -> 850000 `l 353  ]
+{
+"103
+[; ;main.c: 103:                                 Count_Time_Close = 0;
+[e = _Count_Time_Close -> -> 0 `i `l ]
+"104
+[; ;main.c: 104:                                 break;
+[e $U 351  ]
+"105
+[; ;main.c: 105:                             }
+}
+[e :U 353 ]
+"106
+[; ;main.c: 106:                         } while(End_Stop_Close_State == 1);
+}
+[e $ == -> _End_Stop_Close_State `i -> 1 `i 352  ]
+[e :U 351 ]
+"107
+[; ;main.c: 107:                         PORTBbits.RB3 = 0;
+[e = . . _PORTBbits 0 3 -> -> 0 `i `uc ]
+"108
+[; ;main.c: 108:                         Count_Time_Close = 0;
+[e = _Count_Time_Close -> -> 0 `i `l ]
+"109
+[; ;main.c: 109:                         Count_Auto_Close = 0;
+[e = _Count_Auto_Close -> -> 0 `i `l ]
+"110
+[; ;main.c: 110:                     }
+}
+[e :U 349 ]
+"111
+[; ;main.c: 111:                     break;
+[e $U 346  ]
+"112
+[; ;main.c: 112:                 }
+}
+[e :U 348 ]
+"113
+[; ;main.c: 113:             } while(Magnet_State == 1);
+}
+[e $ == -> _Magnet_State `i -> 1 `i 347  ]
+[e :U 346 ]
+"114
+[; ;main.c: 114:             Count_Auto_Close = 0;
+[e = _Count_Auto_Close -> -> 0 `i `l ]
+"115
+[; ;main.c: 115:         }
 }
 [e :U 340 ]
-"89
-[; ;main.c: 89:     }
+"116
+[; ;main.c: 116:     }
 }
 [e :U 339 ]
-"90
-[; ;main.c: 90:     Last_Open_Contact_State = Open_Contact_State;
+"117
+[; ;main.c: 117:     Last_Open_Contact_State = Open_Contact_State;
 [e = _Last_Open_Contact_State _Open_Contact_State ]
-"91
-[; ;main.c: 91: }
+"118
+[; ;main.c: 118: }
 [e :UE 338 ]
 }

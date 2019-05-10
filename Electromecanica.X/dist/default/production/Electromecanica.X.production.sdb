@@ -27,11 +27,11 @@
 [v ___lmul __lmul `(ul  1 e 4 0 ]
 "91 C:\Program Files (x86)\Microchip\xc8\v2.05\pic\sources\c99\common\Umul64.c
 [v ___omul __omul `(uo  1 e 8 0 ]
-"31 C:\Barajas\Access_Control\Electromecanica.X\main.c
+"34 C:\Barajas\Access_Control\Electromecanica.X\main.c
 [v _main main `(v  1 e 1 0 ]
-"47
+"50
 [v _Close_Lock Close_Lock `(v  1 e 1 0 ]
-"70
+"73
 [v _Open_Lock Open_Lock `(v  1 e 1 0 ]
 [s S33 . 1 `uc 1 RA0 1 0 :1:0 
 `uc 1 RA1 1 0 :1:1 
@@ -101,32 +101,34 @@
 [v _TRISB TRISB `VEuc  1 e 1 @3987 ]
 "5400
 [v _ADCON1 ADCON1 `VEuc  1 e 1 @4033 ]
-"20 C:\Barajas\Access_Control\Electromecanica.X\main.c
+"21 C:\Barajas\Access_Control\Electromecanica.X\main.c
 [v _Last_Magnet_State Last_Magnet_State `a  1 e 1 0 ]
-"21
-[v _Last_Open_Contact_State Last_Open_Contact_State `a  1 e 1 0 ]
 "22
-[v _Magnet_State Magnet_State `a  1 e 1 0 ]
+[v _Last_Open_Contact_State Last_Open_Contact_State `a  1 e 1 0 ]
 "23
-[v _Open_Contact_State Open_Contact_State `a  1 e 1 0 ]
+[v _Magnet_State Magnet_State `a  1 e 1 0 ]
 "24
-[v _End_Stop_Close_State End_Stop_Close_State `a  1 e 1 0 ]
+[v _Open_Contact_State Open_Contact_State `a  1 e 1 0 ]
 "25
-[v _End_Stop_Open_State End_Stop_Open_State `a  1 e 1 0 ]
+[v _End_Stop_Close_State End_Stop_Close_State `a  1 e 1 0 ]
 "26
-[v _Count Count `l  1 e 4 0 ]
-"31
+[v _End_Stop_Open_State End_Stop_Open_State `a  1 e 1 0 ]
+"27
+[v _Count_Time_Close Count_Time_Close `l  1 e 4 0 ]
+"28
+[v _Count_Auto_Close Count_Auto_Close `l  1 e 4 0 ]
+"34
 [v _main main `(v  1 e 1 0 ]
 {
-"45
+"48
 } 0
-"70
+"73
 [v _Open_Lock Open_Lock `(v  1 e 1 0 ]
 {
-"91
+"118
 } 0
-"47
+"50
 [v _Close_Lock Close_Lock `(v  1 e 1 0 ]
 {
-"68
+"71
 } 0

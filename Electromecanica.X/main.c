@@ -16,6 +16,7 @@
 #define End_Stop_Open PORTBbits.RB6            // Entrada digital fin de carrera
 #define End_Stop_Close PORTBbits.RB7            // Entrada digital fin de carrera
 #define Time 850000
+#define Time_Auto_Close 1000000
 
 _Bool Last_Magnet_State = 0;
 _Bool Last_Open_Contact_State = 1;
@@ -23,7 +24,9 @@ _Bool Magnet_State;
 _Bool Open_Contact_State;
 _Bool End_Stop_Close_State;
 _Bool End_Stop_Open_State;
-long Count = 0;
+long Count_Time_Close = 0;
+long Count_Auto_Close = 0;
+
 
 void Close_Lock(void);
 void Open_Lock(void);
@@ -54,14 +57,14 @@ void Close_Lock(void) {
             do {
                 Engine_Direction_A = 1;
                 End_Stop_Close_State = End_Stop_Close;
-                Count++;
-                if(Count == Time) {
-                    Count = 0;
+                Count_Time_Close++;
+                if(Count_Time_Close == Time) {
+                    Count_Time_Close = 0;
                     break;
                 }
             } while(End_Stop_Close_State == 1);
             Engine_Direction_A = 0;
-            Count = 0;
+            Count_Time_Close = 0;
         }
     }
     Last_Magnet_State = Magnet_State;
@@ -77,14 +80,38 @@ void Open_Lock(void) {
             do {
                 Engine_Direction_B = 1;
                 End_Stop_Open_State = End_Stop_Open;
-                Count++;
-                if(Count == Time) {
-                    Count = 0;
+                Count_Time_Close++;
+                if(Count_Time_Close == Time) {
+                    Count_Time_Close = 0;
                     break;
                 }
             } while(End_Stop_Open_State == 1);
             Engine_Direction_B = 0;
-            Count = 0;
+            Count_Time_Close = 0;
+            Magnet_State = Magnet_Sensor;
+            do {
+                Count_Auto_Close++;
+                Magnet_State = Magnet_Sensor;
+                if(Count_Auto_Close == Time_Auto_Close) {
+                    End_Stop_Open_State = End_Stop_Open;
+                    if(End_Stop_Open_State == 0) {
+                        do {
+                            Engine_Direction_A = 1;
+                            End_Stop_Close_State = End_Stop_Close;
+                            Count_Time_Close++;
+                            if(Count_Time_Close == Time) {
+                                Count_Time_Close = 0;
+                                break;        
+                            }
+                        } while(End_Stop_Close_State == 1);
+                        Engine_Direction_A = 0;
+                        Count_Time_Close = 0;
+                        Count_Auto_Close = 0;
+                    }
+                    break;
+                }
+            } while(Magnet_State == 1);
+            Count_Auto_Close = 0;
         }
     }
     Last_Open_Contact_State = Open_Contact_State;
