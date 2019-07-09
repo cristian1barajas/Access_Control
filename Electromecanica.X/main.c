@@ -54,11 +54,13 @@ void Close_Lock(void) {
         __delay_ms(50);
         End_Stop_Open_State = End_Stop_Open;
         if(Magnet_State == 1 && Last_Magnet_State == 0 && End_Stop_Open_State == 0) {
-            Count_Magnet_Active++;
+            __delay_ms(1500);
+            Closing();
+            /*Count_Magnet_Active++;
             if(Count_Magnet_Active == 2) {
                 Closing();
                 Count_Magnet_Active = 0;
-            }
+            }*/
         }
     }
     Last_Magnet_State = Magnet_State;
