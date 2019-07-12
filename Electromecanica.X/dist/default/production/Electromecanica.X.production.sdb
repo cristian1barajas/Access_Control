@@ -27,14 +27,18 @@
 [v ___lmul __lmul `(ul  1 e 4 0 ]
 "91 C:\Program Files (x86)\Microchip\xc8\v2.05\pic\sources\c99\common\Umul64.c
 [v ___omul __omul `(uo  1 e 8 0 ]
-"35 D:\Users\BotLAB\Documents\GitHub\Access_Control\Electromecanica.X\main.c
+"56 D:\Users\BotLAB\Documents\GitHub\Access_Control\Electromecanica.X\main.c
 [v _main main `(v  1 e 1 0 ]
-"50
+"93
 [v _Close_Lock Close_Lock `(v  1 e 1 0 ]
-"69
+"115
 [v _Open_Lock Open_Lock `(v  1 e 1 0 ]
-"106
+"160
 [v _Closing Closing `(v  1 e 1 0 ]
+"183
+[v _Analog_Read Analog_Read `(i  1 e 2 0 ]
+"199
+[v _Sense_Current Sense_Current `(v  1 e 1 0 ]
 [s S33 . 1 `uc 1 RA0 1 0 :1:0 
 `uc 1 RA1 1 0 :1:1 
 `uc 1 RA2 1 0 :1:2 
@@ -44,7 +48,7 @@
 `uc 1 RA6 1 0 :1:6 
 ]
 "2156 C:\Program Files (x86)\Microchip\xc8\v2.05\pic\include\pic18f2550.h
-[s S123 . 1 `uc 1 AN0 1 0 :1:0 
+[s S274 . 1 `uc 1 AN0 1 0 :1:0 
 `uc 1 AN1 1 0 :1:1 
 `uc 1 AN2 1 0 :1:2 
 `uc 1 AN3 1 0 :1:3 
@@ -52,42 +56,54 @@
 `uc 1 AN4 1 0 :1:5 
 `uc 1 OSC2 1 0 :1:6 
 ]
-[s S131 . 1 `uc 1 . 1 0 :2:0 
+[s S282 . 1 `uc 1 . 1 0 :2:0 
 `uc 1 VREFM 1 0 :1:2 
 `uc 1 VREFP 1 0 :1:3 
 `uc 1 . 1 0 :1:4 
 `uc 1 LVDIN 1 0 :1:5 
 ]
-[s S137 . 1 `uc 1 . 1 0 :5:0 
+[s S288 . 1 `uc 1 . 1 0 :5:0 
 `uc 1 HLVDIN 1 0 :1:5 
 ]
-[s S140 . 1 `uc 1 ULPWUIN 1 0 :1:0 
+[s S291 . 1 `uc 1 ULPWUIN 1 0 :1:0 
 ]
-[u S142 . 1 `S33 1 . 1 0 `S123 1 . 1 0 `S131 1 . 1 0 `S137 1 . 1 0 `S140 1 . 1 0 ]
-[v _PORTAbits PORTAbits `VES142  1 e 1 @3968 ]
-[s S62 . 1 `uc 1 RB0 1 0 :1:0 
-`uc 1 RB1 1 0 :1:1 
-`uc 1 RB2 1 0 :1:2 
-`uc 1 RB3 1 0 :1:3 
-`uc 1 RB4 1 0 :1:4 
-`uc 1 RB5 1 0 :1:5 
-`uc 1 RB6 1 0 :1:6 
-`uc 1 RB7 1 0 :1:7 
+[u S293 . 1 `S33 1 . 1 0 `S274 1 . 1 0 `S282 1 . 1 0 `S288 1 . 1 0 `S291 1 . 1 0 ]
+[v _PORTAbits PORTAbits `VES293  1 e 1 @3968 ]
+"2256
+[v _PORTB PORTB `VEuc  1 e 1 @3969 ]
+[s S191 . 1 `uc 1 RC0 1 0 :1:0 
+`uc 1 RC1 1 0 :1:1 
+`uc 1 RC2 1 0 :1:2 
+`uc 1 . 1 0 :1:3 
+`uc 1 RC4 1 0 :1:4 
+`uc 1 RC5 1 0 :1:5 
+`uc 1 RC6 1 0 :1:6 
+`uc 1 RC7 1 0 :1:7 
 ]
-"2286
-[s S71 . 1 `uc 1 INT0 1 0 :1:0 
-`uc 1 INT1 1 0 :1:1 
-`uc 1 INT2 1 0 :1:2 
-`uc 1 . 1 0 :2:3 
-`uc 1 PGM 1 0 :1:5 
-`uc 1 PGC 1 0 :1:6 
-`uc 1 PGD 1 0 :1:7 
+"2408
+[s S200 . 1 `uc 1 T1OSO 1 0 :1:0 
+`uc 1 T1OSI 1 0 :1:1 
+`uc 1 CCP1 1 0 :1:2 
+`uc 1 . 1 0 :3:3 
+`uc 1 TX 1 0 :1:6 
+`uc 1 RX 1 0 :1:7 
 ]
-[s S79 . 1 `uc 1 . 1 0 :3:0 
-`uc 1 CCP2_PA2 1 0 :1:3 
+[s S207 . 1 `uc 1 T13CKI 1 0 :1:0 
+`uc 1 . 1 0 :1:1 
+`uc 1 P1A 1 0 :1:2 
+`uc 1 . 1 0 :3:3 
+`uc 1 CK 1 0 :1:6 
+`uc 1 DT 1 0 :1:7 
 ]
-[u S82 . 1 `S62 1 . 1 0 `S71 1 . 1 0 `S79 1 . 1 0 ]
-[v _PORTBbits PORTBbits `VES82  1 e 1 @3969 ]
+[s S214 . 1 `uc 1 . 1 0 :1:0 
+`uc 1 CCP2 1 0 :1:1 
+`uc 1 PA1 1 0 :1:2 
+]
+[s S218 . 1 `uc 1 . 1 0 :1:0 
+`uc 1 PA2 1 0 :1:1 
+]
+[u S221 . 1 `S191 1 . 1 0 `S200 1 . 1 0 `S207 1 . 1 0 `S214 1 . 1 0 `S218 1 . 1 0 ]
+[v _PORTCbits PORTCbits `VES221  1 e 1 @3970 ]
 [s S25 . 1 `uc 1 TRISA0 1 0 :1:0 
 `uc 1 TRISA1 1 0 :1:1 
 `uc 1 TRISA2 1 0 :1:2 
@@ -101,41 +117,125 @@
 [v _TRISAbits TRISAbits `VES41  1 e 1 @3986 ]
 "3035
 [v _TRISB TRISB `VEuc  1 e 1 @3987 ]
+[s S61 . 1 `uc 1 TRISC0 1 0 :1:0 
+`uc 1 TRISC1 1 0 :1:1 
+`uc 1 TRISC2 1 0 :1:2 
+`uc 1 . 1 0 :3:3 
+`uc 1 TRISC6 1 0 :1:6 
+`uc 1 TRISC7 1 0 :1:7 
+]
+"3285
+[s S68 . 1 `uc 1 RC0 1 0 :1:0 
+`uc 1 RC1 1 0 :1:1 
+`uc 1 RC2 1 0 :1:2 
+`uc 1 . 1 0 :3:3 
+`uc 1 RC6 1 0 :1:6 
+`uc 1 RC7 1 0 :1:7 
+]
+[u S75 . 1 `S61 1 . 1 0 `S68 1 . 1 0 ]
+[v _TRISCbits TRISCbits `VES75  1 e 1 @3988 ]
+[s S161 . 1 `uc 1 ADCS 1 0 :3:0 
+`uc 1 ACQT 1 0 :3:3 
+`uc 1 . 1 0 :1:6 
+`uc 1 ADFM 1 0 :1:7 
+]
+"5350
+[s S166 . 1 `uc 1 ADCS0 1 0 :1:0 
+`uc 1 ADCS1 1 0 :1:1 
+`uc 1 ADCS2 1 0 :1:2 
+`uc 1 ACQT0 1 0 :1:3 
+`uc 1 ACQT1 1 0 :1:4 
+`uc 1 ACQT2 1 0 :1:5 
+]
+[u S173 . 1 `S161 1 . 1 0 `S166 1 . 1 0 ]
+[v _ADCON2bits ADCON2bits `VES173  1 e 1 @4032 ]
 "5400
 [v _ADCON1 ADCON1 `VEuc  1 e 1 @4033 ]
-"21 D:\Users\BotLAB\Documents\GitHub\Access_Control\Electromecanica.X\main.c
-[v _Last_Magnet_State Last_Magnet_State `a  1 e 1 0 ]
-"22
-[v _Last_Open_Contact_State Last_Open_Contact_State `a  1 e 1 0 ]
-"23
-[v _Magnet_State Magnet_State `a  1 e 1 0 ]
-"24
-[v _Open_Contact_State Open_Contact_State `a  1 e 1 0 ]
-"25
-[v _End_Stop_Close_State End_Stop_Close_State `a  1 e 1 0 ]
-"26
-[v _End_Stop_Open_State End_Stop_Open_State `a  1 e 1 0 ]
-"27
-[v _Count_Time_Close Count_Time_Close `l  1 e 4 0 ]
-"28
-[v _Count_Auto_Close Count_Auto_Close `l  1 e 4 0 ]
+[s S93 . 1 `uc 1 . 1 0 :1:0 
+`uc 1 GO_NOT_DONE 1 0 :1:1 
+]
+"5529
+[s S96 . 1 `uc 1 ADON 1 0 :1:0 
+`uc 1 GO_nDONE 1 0 :1:1 
+`uc 1 CHS 1 0 :4:2 
+]
+[s S100 . 1 `uc 1 . 1 0 :1:0 
+`uc 1 GO_DONE 1 0 :1:1 
+`uc 1 CHS0 1 0 :1:2 
+`uc 1 CHS1 1 0 :1:3 
+`uc 1 CHS2 1 0 :1:4 
+`uc 1 CHS3 1 0 :1:5 
+]
+[s S107 . 1 `uc 1 . 1 0 :1:0 
+`uc 1 DONE 1 0 :1:1 
+]
+[s S110 . 1 `uc 1 . 1 0 :1:0 
+`uc 1 GO 1 0 :1:1 
+]
+[s S113 . 1 `uc 1 . 1 0 :1:0 
+`uc 1 NOT_DONE 1 0 :1:1 
+]
+[s S116 . 1 `uc 1 . 1 0 :1:0 
+`uc 1 nDONE 1 0 :1:1 
+]
+[s S119 . 1 `uc 1 . 1 0 :1:0 
+`uc 1 GODONE 1 0 :1:1 
+]
+[u S122 . 1 `S93 1 . 1 0 `S96 1 . 1 0 `S100 1 . 1 0 `S107 1 . 1 0 `S110 1 . 1 0 `S113 1 . 1 0 `S116 1 . 1 0 `S119 1 . 1 0 ]
+[v _ADCON0bits ADCON0bits `VES122  1 e 1 @4034 ]
+"5611
+[v _ADRESL ADRESL `VEuc  1 e 1 @4035 ]
+"5618
+[v _ADRESH ADRESH `VEuc  1 e 1 @4036 ]
+"34 D:\Users\BotLAB\Documents\GitHub\Access_Control\Electromecanica.X\main.c
+[v _Count_Peake_Current Count_Peake_Current `i  1 e 2 0 ]
 "35
+[v _Current Current `i  1 e 2 0 ]
+"37
+[v _Last_Inductive_State Last_Inductive_State `a  1 e 1 0 ]
+"38
+[v _Last_Open_Contact_State Last_Open_Contact_State `a  1 e 1 0 ]
+"39
+[v _Inductive_State Inductive_State `a  1 e 1 0 ]
+"40
+[v _Open_Contact_State Open_Contact_State `a  1 e 1 0 ]
+"41
+[v _End_Stop_Close_State End_Stop_Close_State `a  1 e 1 0 ]
+"42
+[v _End_Stop_Open_State End_Stop_Open_State `a  1 e 1 0 ]
+"43
+[v _Count_Time_Close Count_Time_Close `l  1 e 4 0 ]
+"44
+[v _Count_Auto_Close Count_Auto_Close `l  1 e 4 0 ]
+"47
+[v _ADC ADC `i  1 e 2 0 ]
+"56
 [v _main main `(v  1 e 1 0 ]
 {
-"48
+"91
 } 0
-"69
+"115
 [v _Open_Lock Open_Lock `(v  1 e 1 0 ]
 {
-"104
+"158
 } 0
-"50
+"93
 [v _Close_Lock Close_Lock `(v  1 e 1 0 ]
 {
-"67
+"113
 } 0
-"106
+"160
 [v _Closing Closing `(v  1 e 1 0 ]
 {
-"118
+"181
+} 0
+"199
+[v _Sense_Current Sense_Current `(v  1 e 1 0 ]
+{
+"215
+} 0
+"183
+[v _Analog_Read Analog_Read `(i  1 e 2 0 ]
+{
+"191
 } 0

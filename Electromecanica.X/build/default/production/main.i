@@ -7,13 +7,7 @@
 # 1 "C:\\Program Files (x86)\\Microchip\\xc8\\v2.05\\pic\\include\\language_support.h" 1 3
 # 2 "<built-in>" 2
 # 1 "main.c" 2
-
-
-
-
-
-
-
+# 15 "main.c"
 # 1 "C:\\Program Files (x86)\\Microchip\\xc8\\v2.05\\pic\\include\\xc.h" 1 3
 # 18 "C:\\Program Files (x86)\\Microchip\\xc8\\v2.05\\pic\\include\\xc.h" 3
 extern const char __xc8_OPTIM_SPEED;
@@ -5009,7 +5003,7 @@ extern __attribute__((nonreentrant)) void _delaywdt(unsigned long);
 #pragma intrinsic(_delay3)
 extern __attribute__((nonreentrant)) void _delay3(unsigned char);
 # 32 "C:\\Program Files (x86)\\Microchip\\xc8\\v2.05\\pic\\include\\xc.h" 2 3
-# 8 "main.c" 2
+# 15 "main.c" 2
 
 # 1 "./Configuration.h" 1
 
@@ -5076,29 +5070,59 @@ extern __attribute__((nonreentrant)) void _delay3(unsigned char);
 
 
 #pragma config EBTRB = OFF
-# 9 "main.c" 2
-# 21 "main.c"
-_Bool Last_Magnet_State = 0;
+# 16 "main.c" 2
+# 34 "main.c"
+int Count_Peake_Current = 0;
+int Current = 0;
+
+_Bool Last_Inductive_State = 0;
 _Bool Last_Open_Contact_State = 1;
-_Bool Magnet_State;
+_Bool Inductive_State;
 _Bool Open_Contact_State;
 _Bool End_Stop_Close_State;
 _Bool End_Stop_Open_State;
 long Count_Time_Close = 0;
 long Count_Auto_Close = 0;
-int Count_Magnet_Active = 0;
+
+
+int ADC;
+unsigned char Buffer1[16];
 
 void Close_Lock(void);
 void Open_Lock(void);
 void Closing(void);
+int Analog_Read(void);
+void Sense_Current(void);
 
 void main(void) {
-    ADCON1 = 0X0F;
-    TRISAbits.RA1 = 1;
-    TRISB = 0xE7;
+    ADCON1 = 0X0E;
 
-    PORTBbits.RB3 = 0;
-    PORTBbits.RB4 = 0;
+    TRISAbits.RA0 = 1;
+
+    TRISAbits.RA1 = 1;
+    TRISAbits.RA4 = 1;
+    TRISCbits.RC1 = 0;
+    TRISCbits.RC2 = 0;
+    TRISCbits.RC6 = 0;
+    TRISCbits.RC7 = 0;
+    TRISAbits.RA2 = 1;
+    TRISAbits.RA3 = 1;
+
+
+    ADCON0bits.CHS = 0;
+
+
+    ADCON2bits.ADCS = 0b000;
+    ADCON2bits.ADFM = 1;
+    ADCON0bits.ADON = 1;
+
+    TRISB = 0x00;
+    PORTB = 0xFF;
+
+    PORTCbits.RC7 = 0;
+    PORTCbits.RC6 = 0;
+    PORTCbits.RC1 = 0;
+    PORTCbits.RC2 = 0;
 
     while(1) {
         Close_Lock();
@@ -5108,55 +5132,59 @@ void main(void) {
 }
 
 void Close_Lock(void) {
-    Magnet_State = PORTAbits.RA1;
+    Inductive_State = PORTAbits.RA1;
     _delay((unsigned long)((50)*(20000000/4000.0)));
-    if(Magnet_State == 1 && Last_Magnet_State == 0) {
+    if(Inductive_State == 1 && Last_Inductive_State == 0) {
         _delay((unsigned long)((50)*(20000000/4000.0)));
-        End_Stop_Open_State = PORTBbits.RB6;
-        if(Magnet_State == 1 && Last_Magnet_State == 0 && End_Stop_Open_State == 0) {
+        End_Stop_Open_State = PORTAbits.RA2;
+        if(Inductive_State == 1 && Last_Inductive_State == 0 && End_Stop_Open_State == 0) {
             _delay((unsigned long)((1500)*(20000000/4000.0)));
             Closing();
-
-
-
-
-
+# 110 "main.c"
         }
     }
-    Last_Magnet_State = Magnet_State;
+    Last_Inductive_State = Inductive_State;
 }
 
 void Open_Lock(void) {
-    Open_Contact_State = PORTBbits.RB2;
+    Open_Contact_State = PORTAbits.RA4;
     _delay((unsigned long)((50)*(20000000/4000.0)));
     if(Open_Contact_State == 0 && Last_Open_Contact_State == 1) {
         _delay((unsigned long)((50)*(20000000/4000.0)));
-        End_Stop_Open_State = PORTBbits.RB6;
+        End_Stop_Open_State = PORTAbits.RA2;
         if(Open_Contact_State == 0 && Last_Open_Contact_State == 1 && End_Stop_Open_State == 1) {
             do {
-                PORTBbits.RB4 = 1;
-                End_Stop_Open_State = PORTBbits.RB6;
+                PORTCbits.RC2 = 1;
+                End_Stop_Open_State = PORTAbits.RA2;
                 Count_Time_Close++;
-                if(Count_Time_Close == 850000) {
+                Sense_Current();
+                if(Count_Time_Close == 250000) {
                     Count_Time_Close = 0;
                     break;
+                } else if (Current > 544) {
+                    Count_Peake_Current++;
+                    if (Count_Peake_Current > 500) {
+                        Count_Peake_Current = 0;
+                        break;
+                    }
                 }
             } while(End_Stop_Open_State == 1);
-            PORTBbits.RB4 = 0;
+            PORTCbits.RC2 = 0;
             Count_Time_Close = 0;
-            Magnet_State = PORTAbits.RA1;
+            Count_Peake_Current = 0;
+            Inductive_State = PORTAbits.RA1;
             do {
                 Count_Auto_Close++;
-                Magnet_State = PORTAbits.RA1;
+                Inductive_State = PORTAbits.RA1;
                 if(Count_Auto_Close == 1000000) {
-                    End_Stop_Open_State = PORTBbits.RB6;
+                    End_Stop_Open_State = PORTAbits.RA2;
                     if(End_Stop_Open_State == 0) {
                         Closing();
                         Count_Auto_Close = 0;
                     }
                     break;
                 }
-            } while(Magnet_State == 1);
+            } while(Inductive_State == 1);
             Count_Auto_Close = 0;
         }
     }
@@ -5165,14 +5193,57 @@ void Open_Lock(void) {
 
 void Closing(void) {
     do {
-        PORTBbits.RB3 = 1;
-        End_Stop_Close_State = PORTBbits.RB7;
+        PORTCbits.RC1 = 1;
+        End_Stop_Close_State = PORTAbits.RA3;
         Count_Time_Close++;
-        if(Count_Time_Close == 850000) {
+        Current = Analog_Read();
+        Sense_Current();
+        if(Count_Time_Close == 250000) {
             Count_Time_Close = 0;
             break;
+        } else if (Current > 544) {
+            Count_Peake_Current++;
+            if (Count_Peake_Current > 500) {
+                Count_Peake_Current = 0;
+                break;
+            }
         }
     } while(End_Stop_Close_State == 1);
-    PORTBbits.RB3 = 0;
+    PORTCbits.RC1 = 0;
     Count_Time_Close = 0;
+    Count_Peake_Current = 0;
+}
+
+int Analog_Read(void) {
+    ADCON0bits.GO_nDONE = 1;
+        while(ADCON0bits.GO_nDONE);
+            ADC = ADRESH;
+            ADC = ADC << 8;
+            ADC = ADC + ADRESL;
+
+    return ADC;
+}
+
+
+
+
+
+
+
+   void Sense_Current(void) {
+    Current = Analog_Read();
+        if (Current > 544) {
+            PORTB = 0x8D;
+            PORTCbits.RC7 = 1;
+            _delay((unsigned long)((5)*(20000000/4000000.0)));
+            PORTCbits.RC7 = 0;
+            PORTB = 0x8F;
+            PORTCbits.RC6 = 1;
+            _delay((unsigned long)((5)*(20000000/4000000.0)));
+            PORTCbits.RC6 = 0;
+        } else {
+            PORTCbits.RC7 = 0;
+            PORTCbits.RC6 = 0;
+            PORTB = 0x11;
+        }
 }

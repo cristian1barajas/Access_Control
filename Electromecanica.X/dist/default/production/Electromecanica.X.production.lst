@@ -1,7 +1,7 @@
 
 
 Microchip MPLAB XC8 Assembler V2.05 build -831301201 
-                                                                                               Tue Jul 09 16:42:49 2019
+                                                                                               Fri Jul 12 16:52:59 2019
 
 Microchip MPLAB XC8 C Compiler v2.05 (Free license) build 20181220022703 Og1 
      1                           	processor	18F2550
@@ -18,778 +18,1110 @@ Microchip MPLAB XC8 C Compiler v2.05 (Free license) build 20181220022703 Og1
     12                           	psect	text1,global,reloc=2,class=CODE,delta=1
     13                           	psect	text2,global,reloc=2,class=CODE,delta=1
     14                           	psect	text3,global,reloc=2,class=CODE,delta=1
-    15                           	psect	intsave_regs,global,class=BIGRAM,space=1,delta=1,noexec
-    16                           	psect	rparam,global,class=COMRAM,space=1,delta=1,noexec
-    17  0000                     
-    18                           ; Version 2.05
-    19                           ; Generated 20/12/2018 GMT
-    20                           ; 
-    21                           ; Copyright © 2018, Microchip Technology Inc. and its subsidiaries ("Microchip")
-    22                           ; All rights reserved.
-    23                           ; 
-    24                           ; This software is developed by Microchip Technology Inc. and its subsidiaries ("Microch
-      +                          ip").
+    15                           	psect	text4,global,reloc=2,class=CODE,delta=1
+    16                           	psect	text5,global,reloc=2,class=CODE,delta=1
+    17                           	psect	intsave_regs,global,class=BIGRAM,space=1,delta=1,noexec
+    18                           	psect	rparam,global,class=COMRAM,space=1,delta=1,noexec
+    19  0000                     
+    20                           ; Version 2.05
+    21                           ; Generated 20/12/2018 GMT
+    22                           ; 
+    23                           ; Copyright © 2018, Microchip Technology Inc. and its subsidiaries ("Microchip")
+    24                           ; All rights reserved.
     25                           ; 
-    26                           ; Redistribution and use in source and binary forms, with or without modification, are
-    27                           ; permitted provided that the following conditions are met:
-    28                           ; 
-    29                           ;     1. Redistributions of source code must retain the above copyright notice, this lis
+    26                           ; This software is developed by Microchip Technology Inc. and its subsidiaries ("Microch
+      +                          ip").
+    27                           ; 
+    28                           ; Redistribution and use in source and binary forms, with or without modification, are
+    29                           ; permitted provided that the following conditions are met:
+    30                           ; 
+    31                           ;     1. Redistributions of source code must retain the above copyright notice, this lis
       +                          t of
-    30                           ;        conditions and the following disclaimer.
-    31                           ; 
-    32                           ;     2. Redistributions in binary form must reproduce the above copyright notice, this 
+    32                           ;        conditions and the following disclaimer.
+    33                           ; 
+    34                           ;     2. Redistributions in binary form must reproduce the above copyright notice, this 
       +                          list
-    33                           ;        of conditions and the following disclaimer in the documentation and/or other
-    34                           ;        materials provided with the distribution.
-    35                           ; 
-    36                           ;     3. Microchip's name may not be used to endorse or promote products derived from th
+    35                           ;        of conditions and the following disclaimer in the documentation and/or other
+    36                           ;        materials provided with the distribution.
+    37                           ; 
+    38                           ;     3. Microchip's name may not be used to endorse or promote products derived from th
       +                          is
-    37                           ;        software without specific prior written permission.
-    38                           ; 
-    39                           ; THIS SOFTWARE IS PROVIDED BY MICROCHIP "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES,
-    40                           ; INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS F
+    39                           ;        software without specific prior written permission.
+    40                           ; 
+    41                           ; THIS SOFTWARE IS PROVIDED BY MICROCHIP "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES,
+    42                           ; INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS F
       +                          OR
-    41                           ; PURPOSE ARE DISCLAIMED.  IN NO EVENT SHALL MICROCHIP BE LIABLE FOR ANY DIRECT, INDIREC
+    43                           ; PURPOSE ARE DISCLAIMED.  IN NO EVENT SHALL MICROCHIP BE LIABLE FOR ANY DIRECT, INDIREC
       +                          T,
-    42                           ; INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING BUT NOT LIMITED TO
-    43                           ; PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA OR PROFITS; OR BUSINESS
-    44                           ; INTERRUPTION) HOWSOEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, ST
+    44                           ; INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING BUT NOT LIMITED TO
+    45                           ; PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA OR PROFITS; OR BUSINESS
+    46                           ; INTERRUPTION) HOWSOEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, ST
       +                          RICT
-    45                           ; LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE U
+    47                           ; LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE U
       +                          SE OF
-    46                           ; THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
-    47                           ; 
-    48                           ; 
-    49                           ; Code-generator required, PIC18F2550 Definitions
+    48                           ; THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+    49                           ; 
     50                           ; 
-    51                           ; SFR Addresses
-    52  0000                     
-    53                           	psect	idataCOMRAM
-    54  007DA9                     __pidataCOMRAM:
-    55                           	opt callstack 0
-    56                           
-    57                           ;initializer for _Last_Open_Contact_State
-    58  007DA9  01                 	db	1
-    59                           
-    60                           	psect	nvCOMRAM
-    61  000011                     __pnvCOMRAM:
-    62                           	opt callstack 0
-    63  000011                     _Magnet_State:
+    51                           ; Code-generator required, PIC18F2550 Definitions
+    52                           ; 
+    53                           ; SFR Addresses
+    54  0000                     
+    55                           	psect	idataCOMRAM
+    56  007C97                     __pidataCOMRAM:
+    57                           	opt callstack 0
+    58                           
+    59                           ;initializer for _Last_Open_Contact_State
+    60  007C97  01                 	db	1
+    61                           
+    62                           	psect	nvCOMRAM
+    63  000027                     __pnvCOMRAM:
     64                           	opt callstack 0
-    65  000011                     	ds	1
-    66  0000                     _PORTAbits	set	3968
-    67  0000                     _PORTBbits	set	3969
-    68  0000                     _TRISB	set	3987
-    69  0000                     _TRISAbits	set	3986
-    70  0000                     _ADCON1	set	4033
-    71                           
-    72                           ; #config settings
-    73  0000                     
-    74                           	psect	cinit
-    75  007DC2                     __pcinit:
-    76                           	opt callstack 0
-    77  007DC2                     start_initialization:
-    78                           	opt callstack 0
-    79  007DC2                     __initialization:
-    80                           	opt callstack 0
-    81                           
-    82                           ; Initialize objects allocated to COMRAM (1 bytes)
-    83                           ; load TBLPTR registers with __pidataCOMRAM
-    84  007DC2  0EA9               	movlw	low __pidataCOMRAM
-    85  007DC4  6EF6               	movwf	tblptrl,c
-    86  007DC6  0E7D               	movlw	high __pidataCOMRAM
-    87  007DC8  6EF7               	movwf	tblptrh,c
-    88  007DCA  0E00               	movlw	low (__pidataCOMRAM shr (0+16))
-    89  007DCC  6EF8               	movwf	tblptru,c
-    90  007DCE  0009               	tblrd		*+	;fetch initializer
-    91  007DD0  CFF5 F012          	movff	tablat,__pdataCOMRAM
-    92                           
-    93                           ; Clear objects allocated to COMRAM (14 bytes)
-    94  007DD4  EE00  F001         	lfsr	0,__pbssCOMRAM
-    95  007DD8  0E0E               	movlw	14
-    96  007DDA                     clear_0:
-    97  007DDA  6AEE               	clrf	postinc0,c
-    98  007DDC  06E8               	decf	wreg,f,c
-    99  007DDE  E1FD               	bnz	clear_0
-   100  007DE0                     end_of_initialization:
-   101                           	opt callstack 0
-   102  007DE0                     __end_of__initialization:
-   103                           	opt callstack 0
-   104  007DE0  0100               	movlb	0
-   105  007DE2  EFD5  F03E         	goto	_main	;jump to C main() function
-   106                           
-   107                           	psect	bssCOMRAM
-   108  000001                     __pbssCOMRAM:
+    65  000027                     _Inductive_State:
+    66                           	opt callstack 0
+    67  000027                     	ds	1
+    68  0000                     _ADRESL	set	4035
+    69  0000                     _ADRESH	set	4036
+    70  0000                     _PORTAbits	set	3968
+    71  0000                     _PORTCbits	set	3970
+    72  0000                     _PORTB	set	3969
+    73  0000                     _TRISB	set	3987
+    74  0000                     _ADCON2bits	set	4032
+    75  0000                     _ADCON0bits	set	4034
+    76  0000                     _TRISCbits	set	3988
+    77  0000                     _TRISAbits	set	3986
+    78  0000                     _ADCON1	set	4033
+    79                           
+    80                           ; #config settings
+    81  0000                     
+    82                           	psect	cinit
+    83  007C98                     __pcinit:
+    84                           	opt callstack 0
+    85  007C98                     start_initialization:
+    86                           	opt callstack 0
+    87  007C98                     __initialization:
+    88                           	opt callstack 0
+    89                           
+    90                           ; Initialize objects allocated to COMRAM (1 bytes)
+    91                           ; load TBLPTR registers with __pidataCOMRAM
+    92  007C98  0E97               	movlw	low __pidataCOMRAM
+    93  007C9A  6EF6               	movwf	tblptrl,c
+    94  007C9C  0E7C               	movlw	high __pidataCOMRAM
+    95  007C9E  6EF7               	movwf	tblptrh,c
+    96  007CA0  0E00               	movlw	low (__pidataCOMRAM shr (0+16))
+    97  007CA2  6EF8               	movwf	tblptru,c
+    98  007CA4  0009               	tblrd		*+	;fetch initializer
+    99  007CA6  CFF5 F028          	movff	tablat,__pdataCOMRAM
+   100                           
+   101                           ; Clear objects allocated to COMRAM (34 bytes)
+   102  007CAA  EE00  F001         	lfsr	0,__pbssCOMRAM
+   103  007CAE  0E22               	movlw	34
+   104  007CB0                     clear_0:
+   105  007CB0  6AEE               	clrf	postinc0,c
+   106  007CB2  06E8               	decf	wreg,f,c
+   107  007CB4  E1FD               	bnz	clear_0
+   108  007CB6                     end_of_initialization:
    109                           	opt callstack 0
-   110  000001                     _Count_Auto_Close:
+   110  007CB6                     __end_of__initialization:
    111                           	opt callstack 0
-   112  000001                     	ds	4
-   113  000005                     _Count_Time_Close:
-   114                           	opt callstack 0
-   115  000005                     	ds	4
-   116  000009                     _Count_Magnet_Active:
+   112  007CB6  0100               	movlb	0
+   113  007CB8  EF72  F03E         	goto	_main	;jump to C main() function
+   114                           
+   115                           	psect	bssCOMRAM
+   116  000001                     __pbssCOMRAM:
    117                           	opt callstack 0
-   118  000009                     	ds	2
-   119  00000B                     _End_Stop_Open_State:
-   120                           	opt callstack 0
-   121  00000B                     	ds	1
-   122  00000C                     _End_Stop_Close_State:
-   123                           	opt callstack 0
-   124  00000C                     	ds	1
-   125  00000D                     _Open_Contact_State:
-   126                           	opt callstack 0
-   127  00000D                     	ds	1
-   128  00000E                     _Last_Magnet_State:
-   129                           	opt callstack 0
-   130  00000E                     	ds	1
-   131                           
-   132                           	psect	dataCOMRAM
-   133  000012                     __pdataCOMRAM:
+   118  000001                     _Buffer1:
+   119                           	opt callstack 0
+   120  000001                     	ds	16
+   121  000011                     _Count_Auto_Close:
+   122                           	opt callstack 0
+   123  000011                     	ds	4
+   124  000015                     _Count_Time_Close:
+   125                           	opt callstack 0
+   126  000015                     	ds	4
+   127  000019                     _ADC:
+   128                           	opt callstack 0
+   129  000019                     	ds	2
+   130  00001B                     _Current:
+   131                           	opt callstack 0
+   132  00001B                     	ds	2
+   133  00001D                     _Count_Peake_Current:
    134                           	opt callstack 0
-   135  000012                     _Last_Open_Contact_State:
-   136                           	opt callstack 0
-   137  000012                     	ds	1
-   138                           
-   139                           	psect	cstackCOMRAM
-   140  00000F                     __pcstackCOMRAM:
-   141                           	opt callstack 0
-   142  00000F                     ??_Close_Lock:
-   143  00000F                     ??_Open_Lock:
-   144  00000F                     
-   145                           ; 1 bytes @ 0x0
-   146  00000F                     	ds	2
-   147  000011                     
-   148                           ; 1 bytes @ 0x2
-   149 ;;
-   150 ;;Main: autosize = 0, tempsize = 0, incstack = 0, save=0
-   151 ;;
-   152 ;; *************** function _main *****************
-   153 ;; Defined at:
-   154 ;;		line 35 in file "main.c"
-   155 ;; Parameters:    Size  Location     Type
-   156 ;;		None
-   157 ;; Auto vars:     Size  Location     Type
-   158 ;;		None
-   159 ;; Return value:  Size  Location     Type
-   160 ;;                  1    wreg      void 
-   161 ;; Registers used:
-   162 ;;		wreg, status,2, status,0, cstack
-   163 ;; Tracked objects:
-   164 ;;		On entry : 0/0
-   165 ;;		On exit  : 0/0
-   166 ;;		Unchanged: 0/0
-   167 ;; Data sizes:     COMRAM   BANK0   BANK1   BANK2   BANK3   BANK4   BANK5   BANK6   BANK7
-   168 ;;      Params:         0       0       0       0       0       0       0       0       0
-   169 ;;      Locals:         0       0       0       0       0       0       0       0       0
-   170 ;;      Temps:          0       0       0       0       0       0       0       0       0
-   171 ;;      Totals:         0       0       0       0       0       0       0       0       0
-   172 ;;Total ram usage:        0 bytes
-   173 ;; Hardware stack levels required when called:    2
-   174 ;; This function calls:
-   175 ;;		_Close_Lock
-   176 ;;		_Open_Lock
-   177 ;; This function is called by:
-   178 ;;		Startup code after reset
-   179 ;; This function uses a non-reentrant model
-   180 ;;
-   181                           
-   182                           	psect	text0
-   183  007DAA                     __ptext0:
-   184                           	opt callstack 0
-   185  007DAA                     _main:
-   186                           	opt callstack 29
-   187                           
-   188                           ;main.c: 36:     ADCON1 = 0X0F;
-   189                           
-   190                           ;incstack = 0
-   191  007DAA  0E0F               	movlw	15
-   192  007DAC  6EC1               	movwf	4033,c	;volatile
-   193                           
-   194                           ;main.c: 37:     TRISAbits.RA1 = 1;
-   195  007DAE  8292               	bsf	3986,1,c	;volatile
-   196                           
-   197                           ;main.c: 38:     TRISB = 0xE7;
-   198  007DB0  0EE7               	movlw	231
-   199  007DB2  6E93               	movwf	3987,c	;volatile
-   200                           
-   201                           ;main.c: 40:     PORTBbits.RB3 = 0;
-   202  007DB4  9681               	bcf	3969,3,c	;volatile
+   135  00001D                     	ds	2
+   136  00001F                     _End_Stop_Open_State:
+   137                           	opt callstack 0
+   138  00001F                     	ds	1
+   139  000020                     _End_Stop_Close_State:
+   140                           	opt callstack 0
+   141  000020                     	ds	1
+   142  000021                     _Open_Contact_State:
+   143                           	opt callstack 0
+   144  000021                     	ds	1
+   145  000022                     _Last_Inductive_State:
+   146                           	opt callstack 0
+   147  000022                     	ds	1
+   148                           
+   149                           	psect	dataCOMRAM
+   150  000028                     __pdataCOMRAM:
+   151                           	opt callstack 0
+   152  000028                     _Last_Open_Contact_State:
+   153                           	opt callstack 0
+   154  000028                     	ds	1
+   155                           
+   156                           	psect	cstackCOMRAM
+   157  000023                     __pcstackCOMRAM:
+   158                           	opt callstack 0
+   159  000023                     ?_Analog_Read:
+   160                           	opt callstack 0
+   161                           
+   162                           ; 2 bytes @ 0x0
+   163  000023                     	ds	2
+   164  000025                     ??_Close_Lock:
+   165  000025                     ??_Open_Lock:
+   166  000025                     
+   167                           ; 1 bytes @ 0x2
+   168  000025                     	ds	2
+   169  000027                     
+   170                           ; 1 bytes @ 0x4
+   171 ;;
+   172 ;;Main: autosize = 0, tempsize = 0, incstack = 0, save=0
+   173 ;;
+   174 ;; *************** function _main *****************
+   175 ;; Defined at:
+   176 ;;		line 56 in file "main.c"
+   177 ;; Parameters:    Size  Location     Type
+   178 ;;		None
+   179 ;; Auto vars:     Size  Location     Type
+   180 ;;		None
+   181 ;; Return value:  Size  Location     Type
+   182 ;;                  1    wreg      void 
+   183 ;; Registers used:
+   184 ;;		wreg, status,2, status,0, cstack
+   185 ;; Tracked objects:
+   186 ;;		On entry : 0/0
+   187 ;;		On exit  : 0/0
+   188 ;;		Unchanged: 0/0
+   189 ;; Data sizes:     COMRAM   BANK0   BANK1   BANK2   BANK3   BANK4   BANK5   BANK6   BANK7
+   190 ;;      Params:         0       0       0       0       0       0       0       0       0
+   191 ;;      Locals:         0       0       0       0       0       0       0       0       0
+   192 ;;      Temps:          0       0       0       0       0       0       0       0       0
+   193 ;;      Totals:         0       0       0       0       0       0       0       0       0
+   194 ;;Total ram usage:        0 bytes
+   195 ;; Hardware stack levels required when called:    4
+   196 ;; This function calls:
+   197 ;;		_Close_Lock
+   198 ;;		_Open_Lock
+   199 ;; This function is called by:
+   200 ;;		Startup code after reset
+   201 ;; This function uses a non-reentrant model
+   202 ;;
    203                           
-   204                           ;main.c: 41:     PORTBbits.RB4 = 0;
-   205  007DB6  9881               	bcf	3969,4,c	;volatile
-   206  007DB8                     l833:
-   207                           
-   208                           ;main.c: 44:         Close_Lock();
-   209  007DB8  EC21  F03F         	call	_Close_Lock	;wreg free
-   210                           
-   211                           ;main.c: 45:         Open_Lock();
-   212  007DBC  EC63  F03F         	call	_Open_Lock	;wreg free
-   213  007DC0  D7FB               	goto	l833
-   214  007DC2                     __end_of_main:
-   215                           	opt callstack 0
-   216                           
-   217 ;; *************** function _Open_Lock *****************
-   218 ;; Defined at:
-   219 ;;		line 69 in file "main.c"
-   220 ;; Parameters:    Size  Location     Type
-   221 ;;		None
-   222 ;; Auto vars:     Size  Location     Type
-   223 ;;		None
-   224 ;; Return value:  Size  Location     Type
-   225 ;;                  1    wreg      void 
-   226 ;; Registers used:
-   227 ;;		wreg, status,2, status,0, cstack
-   228 ;; Tracked objects:
-   229 ;;		On entry : 0/0
-   230 ;;		On exit  : 0/0
-   231 ;;		Unchanged: 0/0
-   232 ;; Data sizes:     COMRAM   BANK0   BANK1   BANK2   BANK3   BANK4   BANK5   BANK6   BANK7
-   233 ;;      Params:         0       0       0       0       0       0       0       0       0
-   234 ;;      Locals:         0       0       0       0       0       0       0       0       0
-   235 ;;      Temps:          2       0       0       0       0       0       0       0       0
-   236 ;;      Totals:         2       0       0       0       0       0       0       0       0
-   237 ;;Total ram usage:        2 bytes
-   238 ;; Hardware stack levels used:    1
-   239 ;; Hardware stack levels required when called:    1
-   240 ;; This function calls:
-   241 ;;		_Closing
-   242 ;; This function is called by:
-   243 ;;		_main
-   244 ;; This function uses a non-reentrant model
-   245 ;;
+   204                           	psect	text0
+   205  007CE4                     __ptext0:
+   206                           	opt callstack 0
+   207  007CE4                     _main:
+   208                           	opt callstack 27
+   209                           
+   210                           ;main.c: 57:     ADCON1 = 0X0E;
+   211                           
+   212                           ;incstack = 0
+   213  007CE4  0E0E               	movlw	14
+   214  007CE6  6EC1               	movwf	4033,c	;volatile
+   215                           
+   216                           ;main.c: 59:     TRISAbits.RA0 = 1;
+   217  007CE8  8092               	bsf	3986,0,c	;volatile
+   218                           
+   219                           ;main.c: 61:     TRISAbits.RA1 = 1;
+   220  007CEA  8292               	bsf	3986,1,c	;volatile
+   221                           
+   222                           ;main.c: 62:     TRISAbits.RA4 = 1;
+   223  007CEC  8892               	bsf	3986,4,c	;volatile
+   224                           
+   225                           ;main.c: 63:     TRISCbits.RC1 = 0;
+   226  007CEE  9294               	bcf	3988,1,c	;volatile
+   227                           
+   228                           ;main.c: 64:     TRISCbits.RC2 = 0;
+   229  007CF0  9494               	bcf	3988,2,c	;volatile
+   230                           
+   231                           ;main.c: 65:     TRISCbits.RC6 = 0;
+   232  007CF2  9C94               	bcf	3988,6,c	;volatile
+   233                           
+   234                           ;main.c: 66:     TRISCbits.RC7 = 0;
+   235  007CF4  9E94               	bcf	3988,7,c	;volatile
+   236                           
+   237                           ;main.c: 67:     TRISAbits.RA2 = 1;
+   238  007CF6  8492               	bsf	3986,2,c	;volatile
+   239                           
+   240                           ;main.c: 68:     TRISAbits.RA3 = 1;
+   241  007CF8  8692               	bsf	3986,3,c	;volatile
+   242                           
+   243                           ;main.c: 71:     ADCON0bits.CHS = 0;
+   244  007CFA  0EC3               	movlw	-61
+   245  007CFC  16C2               	andwf	4034,f,c	;volatile
    246                           
-   247                           	psect	text1
-   248  007EC6                     __ptext1:
-   249                           	opt callstack 0
-   250  007EC6                     _Open_Lock:
-   251                           	opt callstack 29
-   252                           
-   253                           ;main.c: 70:     Open_Contact_State = PORTBbits.RB2;
-   254                           
-   255                           ;incstack = 0
-   256  007EC6  A481               	btfss	3969,2,c	;volatile
-   257  007EC8  D002               	goto	u110
-   258  007ECA  0E01               	movlw	1
-   259  007ECC  D001               	goto	u116
-   260  007ECE                     u110:
-   261  007ECE  0E00               	movlw	0
-   262  007ED0                     u116:
-   263  007ED0  6E0D               	movwf	_Open_Contact_State,c
-   264                           
-   265                           ;main.c: 71:     _delay((unsigned long)((50)*(20000000/4000.0)));
-   266  007ED2  0E02               	movlw	2
-   267  007ED4  6E10               	movwf	(??_Open_Lock+1)& (0+255),c
-   268  007ED6  0E45               	movlw	69
-   269  007ED8  6E0F               	movwf	??_Open_Lock& (0+255),c
-   270  007EDA  0EAA               	movlw	170
-   271  007EDC                     u277:
-   272  007EDC  2EE8               	decfsz	wreg,f,c
-   273  007EDE  D7FE               	bra	u277
-   274  007EE0  2E0F               	decfsz	??_Open_Lock& (0+255),f,c
-   275  007EE2  D7FC               	bra	u277
-   276  007EE4  2E10               	decfsz	(??_Open_Lock+1)& (0+255),f,c
-   277  007EE6  D7FA               	bra	u277
-   278                           
-   279                           ;main.c: 72:     if(Open_Contact_State == 0 && Last_Open_Contact_State == 1) {
-   280  007EE8  500D               	movf	_Open_Contact_State,w,c
-   281  007EEA  A4D8               	btfss	status,2,c
-   282  007EEC  D086               	goto	l823
-   283  007EEE  0412               	decf	_Last_Open_Contact_State,w,c
-   284  007EF0  A4D8               	btfss	status,2,c
-   285  007EF2  D083               	goto	l823
-   286                           
-   287                           ;main.c: 73:         _delay((unsigned long)((50)*(20000000/4000.0)));
-   288  007EF4  0E02               	movlw	2
-   289  007EF6  6E10               	movwf	(??_Open_Lock+1)& (0+255),c
-   290  007EF8  0E45               	movlw	69
-   291  007EFA  6E0F               	movwf	??_Open_Lock& (0+255),c
-   292  007EFC  0EAA               	movlw	170
-   293  007EFE                     u287:
-   294  007EFE  2EE8               	decfsz	wreg,f,c
-   295  007F00  D7FE               	bra	u287
-   296  007F02  2E0F               	decfsz	??_Open_Lock& (0+255),f,c
-   297  007F04  D7FC               	bra	u287
-   298  007F06  2E10               	decfsz	(??_Open_Lock+1)& (0+255),f,c
-   299  007F08  D7FA               	bra	u287
-   300                           
-   301                           ;main.c: 74:         End_Stop_Open_State = PORTBbits.RB6;
-   302  007F0A  AC81               	btfss	3969,6,c	;volatile
-   303  007F0C  D002               	goto	u140
-   304  007F0E  0E01               	movlw	1
-   305  007F10  D001               	goto	u146
-   306  007F12                     u140:
-   307  007F12  0E00               	movlw	0
-   308  007F14                     u146:
-   309  007F14  6E0B               	movwf	_End_Stop_Open_State,c
-   310                           
-   311                           ;main.c: 75:         if(Open_Contact_State == 0 && Last_Open_Contact_State == 1 && End_S
-      +                          top_Open_State == 1) {
-   312  007F16  500D               	movf	_Open_Contact_State,w,c
-   313  007F18  A4D8               	btfss	status,2,c
-   314  007F1A  D06F               	goto	l823
-   315  007F1C  0412               	decf	_Last_Open_Contact_State,w,c
-   316  007F1E  A4D8               	btfss	status,2,c
-   317  007F20  D06C               	goto	l823
-   318  007F22  040B               	decf	_End_Stop_Open_State,w,c
-   319  007F24  A4D8               	btfss	status,2,c
-   320  007F26  D069               	goto	l823
-   321  007F28                     u170:
+   247                           ;main.c: 74:     ADCON2bits.ADCS = 0b000;
+   248  007CFE  0EF8               	movlw	-8
+   249  007D00  16C0               	andwf	4032,f,c	;volatile
+   250                           
+   251                           ;main.c: 75:     ADCON2bits.ADFM = 1;
+   252  007D02  8EC0               	bsf	4032,7,c	;volatile
+   253                           
+   254                           ;main.c: 76:     ADCON0bits.ADON = 1;
+   255  007D04  80C2               	bsf	4034,0,c	;volatile
+   256                           
+   257                           ;main.c: 78:     TRISB = 0x00;
+   258  007D06  0E00               	movlw	0
+   259  007D08  6E93               	movwf	3987,c	;volatile
+   260                           
+   261                           ;main.c: 79:     PORTB = 0xFF;
+   262  007D0A  6881               	setf	3969,c	;volatile
+   263                           
+   264                           ;main.c: 81:     PORTCbits.RC7 = 0;
+   265  007D0C  9E82               	bcf	3970,7,c	;volatile
+   266                           
+   267                           ;main.c: 82:     PORTCbits.RC6 = 0;
+   268  007D0E  9C82               	bcf	3970,6,c	;volatile
+   269                           
+   270                           ;main.c: 83:     PORTCbits.RC1 = 0;
+   271  007D10  9282               	bcf	3970,1,c	;volatile
+   272                           
+   273                           ;main.c: 84:     PORTCbits.RC2 = 0;
+   274  007D12  9482               	bcf	3970,2,c	;volatile
+   275  007D14                     l1130:
+   276                           
+   277                           ;main.c: 87:         Close_Lock();
+   278  007D14  ECB3  F03E         	call	_Close_Lock	;wreg free
+   279                           
+   280                           ;main.c: 88:         Open_Lock();
+   281  007D18  EC46  F03F         	call	_Open_Lock	;wreg free
+   282  007D1C  D7FB               	goto	l1130
+   283  007D1E                     __end_of_main:
+   284                           	opt callstack 0
+   285                           
+   286 ;; *************** function _Open_Lock *****************
+   287 ;; Defined at:
+   288 ;;		line 115 in file "main.c"
+   289 ;; Parameters:    Size  Location     Type
+   290 ;;		None
+   291 ;; Auto vars:     Size  Location     Type
+   292 ;;		None
+   293 ;; Return value:  Size  Location     Type
+   294 ;;                  1    wreg      void 
+   295 ;; Registers used:
+   296 ;;		wreg, status,2, status,0, cstack
+   297 ;; Tracked objects:
+   298 ;;		On entry : 0/0
+   299 ;;		On exit  : 0/0
+   300 ;;		Unchanged: 0/0
+   301 ;; Data sizes:     COMRAM   BANK0   BANK1   BANK2   BANK3   BANK4   BANK5   BANK6   BANK7
+   302 ;;      Params:         0       0       0       0       0       0       0       0       0
+   303 ;;      Locals:         0       0       0       0       0       0       0       0       0
+   304 ;;      Temps:          2       0       0       0       0       0       0       0       0
+   305 ;;      Totals:         2       0       0       0       0       0       0       0       0
+   306 ;;Total ram usage:        2 bytes
+   307 ;; Hardware stack levels used:    1
+   308 ;; Hardware stack levels required when called:    3
+   309 ;; This function calls:
+   310 ;;		_Closing
+   311 ;;		_Sense_Current
+   312 ;; This function is called by:
+   313 ;;		_main
+   314 ;; This function uses a non-reentrant model
+   315 ;;
+   316                           
+   317                           	psect	text1
+   318  007E8C                     __ptext1:
+   319                           	opt callstack 0
+   320  007E8C                     _Open_Lock:
+   321                           	opt callstack 27
    322                           
-   323                           ;main.c: 77:                 PORTBbits.RB4 = 1;
+   323                           ;main.c: 116:     Open_Contact_State = PORTAbits.RA4;
    324                           
-   325                           ;main.c: 76:             do {
-   326  007F28  8881               	bsf	3969,4,c	;volatile
-   327                           
-   328                           ;main.c: 78:                 End_Stop_Open_State = PORTBbits.RB6;
-   329  007F2A  AC81               	btfss	3969,6,c	;volatile
-   330  007F2C  D002               	goto	u180
-   331  007F2E  0E01               	movlw	1
-   332  007F30  D001               	goto	u186
-   333  007F32                     u180:
-   334  007F32  0E00               	movlw	0
-   335  007F34                     u186:
-   336  007F34  6E0B               	movwf	_End_Stop_Open_State,c
-   337                           
-   338                           ;main.c: 79:                 Count_Time_Close++;
-   339  007F36  0E01               	movlw	1
-   340  007F38  2605               	addwf	_Count_Time_Close,f,c
-   341  007F3A  0E00               	movlw	0
-   342  007F3C  2206               	addwfc	_Count_Time_Close+1,f,c
-   343  007F3E  2207               	addwfc	_Count_Time_Close+2,f,c
-   344  007F40  2208               	addwfc	_Count_Time_Close+3,f,c
-   345                           
-   346                           ;main.c: 80:                 if(Count_Time_Close == 850000) {
-   347  007F42  0E50               	movlw	80
-   348  007F44  1805               	xorwf	_Count_Time_Close,w,c
-   349  007F46  E111               	bnz	l805
-   350  007F48  0EF8               	movlw	248
-   351  007F4A  1806               	xorwf	_Count_Time_Close+1,w,c
-   352  007F4C  E10E               	bnz	l805
-   353  007F4E  0E0C               	movlw	12
-   354  007F50  1807               	xorwf	_Count_Time_Close+2,w,c
-   355  007F52  1008               	iorwf	_Count_Time_Close+3,w,c
-   356  007F54  A4D8               	btfss	status,2,c
-   357  007F56  D009               	goto	l805
-   358                           
-   359                           ;main.c: 81:                     Count_Time_Close = 0;
-   360  007F58  0E00               	movlw	0
-   361  007F5A  6E05               	movwf	_Count_Time_Close,c
-   362  007F5C  0E00               	movlw	0
-   363  007F5E  6E06               	movwf	_Count_Time_Close+1,c
-   364  007F60  0E00               	movlw	0
-   365  007F62  6E07               	movwf	_Count_Time_Close+2,c
-   366  007F64  0E00               	movlw	0
-   367  007F66  6E08               	movwf	_Count_Time_Close+3,c
-   368                           
-   369                           ;main.c: 82:                     break;
-   370  007F68  D003               	goto	u200
-   371  007F6A                     l805:
-   372                           
-   373                           ;main.c: 84:             } while(End_Stop_Open_State == 1);
-   374  007F6A  040B               	decf	_End_Stop_Open_State,w,c
-   375  007F6C  B4D8               	btfsc	status,2,c
-   376  007F6E  D7DC               	goto	u170
-   377  007F70                     u200:
-   378                           
-   379                           ;main.c: 85:             PORTBbits.RB4 = 0;
-   380  007F70  9881               	bcf	3969,4,c	;volatile
-   381                           
-   382                           ;main.c: 86:             Count_Time_Close = 0;
-   383  007F72  0E00               	movlw	0
-   384  007F74  6E05               	movwf	_Count_Time_Close,c
-   385  007F76  0E00               	movlw	0
-   386  007F78  6E06               	movwf	_Count_Time_Close+1,c
-   387  007F7A  0E00               	movlw	0
-   388  007F7C  6E07               	movwf	_Count_Time_Close+2,c
-   389  007F7E  0E00               	movlw	0
-   390  007F80  6E08               	movwf	_Count_Time_Close+3,c
-   391                           
-   392                           ;main.c: 87:             Magnet_State = PORTAbits.RA1;
-   393  007F82  A280               	btfss	3968,1,c	;volatile
-   394  007F84  D002               	goto	u210
-   395  007F86  0E01               	movlw	1
-   396  007F88  D001               	goto	u216
-   397  007F8A                     u210:
-   398  007F8A  0E00               	movlw	0
-   399  007F8C                     u216:
-   400  007F8C  6E11               	movwf	_Magnet_State,c
-   401  007F8E                     l809:
-   402                           
-   403                           ;main.c: 89:                 Count_Auto_Close++;
-   404  007F8E  0E01               	movlw	1
-   405  007F90  2601               	addwf	_Count_Auto_Close,f,c
-   406  007F92  0E00               	movlw	0
-   407  007F94  2202               	addwfc	_Count_Auto_Close+1,f,c
-   408  007F96  2203               	addwfc	_Count_Auto_Close+2,f,c
-   409  007F98  2204               	addwfc	_Count_Auto_Close+3,f,c
-   410                           
-   411                           ;main.c: 90:                 Magnet_State = PORTAbits.RA1;
-   412  007F9A  A280               	btfss	3968,1,c	;volatile
-   413  007F9C  D002               	goto	u220
-   414  007F9E  0E01               	movlw	1
-   415  007FA0  D001               	goto	u226
-   416  007FA2                     u220:
-   417  007FA2  0E00               	movlw	0
-   418  007FA4                     u226:
-   419  007FA4  6E11               	movwf	_Magnet_State,c
-   420                           
-   421                           ;main.c: 91:                 if(Count_Auto_Close == 1000000) {
-   422  007FA6  0E40               	movlw	64
-   423  007FA8  1801               	xorwf	_Count_Auto_Close,w,c
-   424  007FAA  E11C               	bnz	l819
-   425  007FAC  0E42               	movlw	66
-   426  007FAE  1802               	xorwf	_Count_Auto_Close+1,w,c
-   427  007FB0  E119               	bnz	l819
-   428  007FB2  0E0F               	movlw	15
-   429  007FB4  1803               	xorwf	_Count_Auto_Close+2,w,c
-   430  007FB6  1004               	iorwf	_Count_Auto_Close+3,w,c
-   431  007FB8  A4D8               	btfss	status,2,c
-   432  007FBA  D014               	goto	l819
-   433                           
-   434                           ;main.c: 92:                     End_Stop_Open_State = PORTBbits.RB6;
-   435  007FBC  AC81               	btfss	3969,6,c	;volatile
-   436  007FBE  D002               	goto	u240
-   437  007FC0  0E01               	movlw	1
-   438  007FC2  D001               	goto	u246
-   439  007FC4                     u240:
-   440  007FC4  0E00               	movlw	0
-   441  007FC6                     u246:
-   442  007FC6  6E0B               	movwf	_End_Stop_Open_State,c
-   443                           
-   444                           ;main.c: 93:                     if(End_Stop_Open_State == 0) {
-   445  007FC8  500B               	movf	_End_Stop_Open_State,w,c
-   446  007FCA  A4D8               	btfss	status,2,c
-   447  007FCC  D00E               	goto	u260
-   448                           
-   449                           ;main.c: 94:                         Closing();
-   450  007FCE  ECF3  F03E         	call	_Closing	;wreg free
-   451                           
-   452                           ;main.c: 95:                         Count_Auto_Close = 0;
-   453  007FD2  0E00               	movlw	0
-   454  007FD4  6E01               	movwf	_Count_Auto_Close,c
-   455  007FD6  0E00               	movlw	0
-   456  007FD8  6E02               	movwf	_Count_Auto_Close+1,c
-   457  007FDA  0E00               	movlw	0
-   458  007FDC  6E03               	movwf	_Count_Auto_Close+2,c
-   459  007FDE  0E00               	movlw	0
-   460  007FE0  6E04               	movwf	_Count_Auto_Close+3,c
-   461  007FE2  D003               	goto	u260
-   462  007FE4                     l819:
-   463                           
-   464                           ;main.c: 99:             } while(Magnet_State == 1);
-   465  007FE4  0411               	decf	_Magnet_State,w,c
-   466  007FE6  B4D8               	btfsc	status,2,c
-   467  007FE8  D7D2               	goto	l809
-   468  007FEA                     u260:
-   469                           
-   470                           ;main.c: 100:             Count_Auto_Close = 0;
-   471  007FEA  0E00               	movlw	0
-   472  007FEC  6E01               	movwf	_Count_Auto_Close,c
-   473  007FEE  0E00               	movlw	0
-   474  007FF0  6E02               	movwf	_Count_Auto_Close+1,c
-   475  007FF2  0E00               	movlw	0
-   476  007FF4  6E03               	movwf	_Count_Auto_Close+2,c
-   477  007FF6  0E00               	movlw	0
-   478  007FF8  6E04               	movwf	_Count_Auto_Close+3,c
-   479  007FFA                     l823:
-   480                           
-   481                           ;main.c: 103:     Last_Open_Contact_State = Open_Contact_State;
-   482  007FFA  C00D  F012         	movff	_Open_Contact_State,_Last_Open_Contact_State
-   483  007FFE  0012               	return		;funcret
-   484  008000                     __end_of_Open_Lock:
-   485                           	opt callstack 0
+   325                           ;incstack = 0
+   326  007E8C  A880               	btfss	3968,4,c	;volatile
+   327  007E8E  D002               	goto	u470
+   328  007E90  0E01               	movlw	1
+   329  007E92  D001               	goto	u476
+   330  007E94                     u470:
+   331  007E94  0E00               	movlw	0
+   332  007E96                     u476:
+   333  007E96  6E21               	movwf	_Open_Contact_State,c
+   334                           
+   335                           ;main.c: 117:     _delay((unsigned long)((50)*(20000000/4000.0)));
+   336  007E98  0E02               	movlw	2
+   337  007E9A  6E26               	movwf	(??_Open_Lock+1)& (0+255),c
+   338  007E9C  0E45               	movlw	69
+   339  007E9E  6E25               	movwf	??_Open_Lock& (0+255),c
+   340  007EA0  0EAA               	movlw	170
+   341  007EA2                     u657:
+   342  007EA2  2EE8               	decfsz	wreg,f,c
+   343  007EA4  D7FE               	bra	u657
+   344  007EA6  2E25               	decfsz	??_Open_Lock& (0+255),f,c
+   345  007EA8  D7FC               	bra	u657
+   346  007EAA  2E26               	decfsz	(??_Open_Lock+1)& (0+255),f,c
+   347  007EAC  D7FA               	bra	u657
+   348                           
+   349                           ;main.c: 118:     if(Open_Contact_State == 0 && Last_Open_Contact_State == 1) {
+   350  007EAE  5021               	movf	_Open_Contact_State,w,c
+   351  007EB0  A4D8               	btfss	status,2,c
+   352  007EB2  D0A3               	goto	l1094
+   353  007EB4  0428               	decf	_Last_Open_Contact_State,w,c
+   354  007EB6  A4D8               	btfss	status,2,c
+   355  007EB8  D0A0               	goto	l1094
+   356                           
+   357                           ;main.c: 119:         _delay((unsigned long)((50)*(20000000/4000.0)));
+   358  007EBA  0E02               	movlw	2
+   359  007EBC  6E26               	movwf	(??_Open_Lock+1)& (0+255),c
+   360  007EBE  0E45               	movlw	69
+   361  007EC0  6E25               	movwf	??_Open_Lock& (0+255),c
+   362  007EC2  0EAA               	movlw	170
+   363  007EC4                     u667:
+   364  007EC4  2EE8               	decfsz	wreg,f,c
+   365  007EC6  D7FE               	bra	u667
+   366  007EC8  2E25               	decfsz	??_Open_Lock& (0+255),f,c
+   367  007ECA  D7FC               	bra	u667
+   368  007ECC  2E26               	decfsz	(??_Open_Lock+1)& (0+255),f,c
+   369  007ECE  D7FA               	bra	u667
+   370                           
+   371                           ;main.c: 120:         End_Stop_Open_State = PORTAbits.RA2;
+   372  007ED0  A480               	btfss	3968,2,c	;volatile
+   373  007ED2  D002               	goto	u500
+   374  007ED4  0E01               	movlw	1
+   375  007ED6  D001               	goto	u506
+   376  007ED8                     u500:
+   377  007ED8  0E00               	movlw	0
+   378  007EDA                     u506:
+   379  007EDA  6E1F               	movwf	_End_Stop_Open_State,c
+   380                           
+   381                           ;main.c: 121:         if(Open_Contact_State == 0 && Last_Open_Contact_State == 1 && End_
+      +                          Stop_Open_State == 1) {
+   382  007EDC  5021               	movf	_Open_Contact_State,w,c
+   383  007EDE  A4D8               	btfss	status,2,c
+   384  007EE0  D08C               	goto	l1094
+   385  007EE2  0428               	decf	_Last_Open_Contact_State,w,c
+   386  007EE4  A4D8               	btfss	status,2,c
+   387  007EE6  D089               	goto	l1094
+   388  007EE8  041F               	decf	_End_Stop_Open_State,w,c
+   389  007EEA  A4D8               	btfss	status,2,c
+   390  007EEC  D086               	goto	l1094
+   391  007EEE                     u530:
+   392                           
+   393                           ;main.c: 123:                 PORTCbits.RC2 = 1;
+   394                           
+   395                           ;main.c: 122:             do {
+   396  007EEE  8482               	bsf	3970,2,c	;volatile
+   397                           
+   398                           ;main.c: 124:                 End_Stop_Open_State = PORTAbits.RA2;
+   399  007EF0  A480               	btfss	3968,2,c	;volatile
+   400  007EF2  D002               	goto	u540
+   401  007EF4  0E01               	movlw	1
+   402  007EF6  D001               	goto	u546
+   403  007EF8                     u540:
+   404  007EF8  0E00               	movlw	0
+   405  007EFA                     u546:
+   406  007EFA  6E1F               	movwf	_End_Stop_Open_State,c
+   407                           
+   408                           ;main.c: 125:                 Count_Time_Close++;
+   409  007EFC  0E01               	movlw	1
+   410  007EFE  2615               	addwf	_Count_Time_Close,f,c
+   411  007F00  0E00               	movlw	0
+   412  007F02  2216               	addwfc	_Count_Time_Close+1,f,c
+   413  007F04  2217               	addwfc	_Count_Time_Close+2,f,c
+   414  007F06  2218               	addwfc	_Count_Time_Close+3,f,c
+   415                           
+   416                           ;main.c: 126:                 Sense_Current();
+   417  007F08  EC8F  F03E         	call	_Sense_Current	;wreg free
+   418                           
+   419                           ;main.c: 127:                 if(Count_Time_Close == 250000) {
+   420  007F0C  0E90               	movlw	144
+   421  007F0E  1815               	xorwf	_Count_Time_Close,w,c
+   422  007F10  E111               	bnz	l1068
+   423  007F12  0ED0               	movlw	208
+   424  007F14  1816               	xorwf	_Count_Time_Close+1,w,c
+   425  007F16  E10E               	bnz	l1068
+   426  007F18  0E03               	movlw	3
+   427  007F1A  1817               	xorwf	_Count_Time_Close+2,w,c
+   428  007F1C  1018               	iorwf	_Count_Time_Close+3,w,c
+   429  007F1E  A4D8               	btfss	status,2,c
+   430  007F20  D009               	goto	l1068
+   431                           
+   432                           ;main.c: 128:                     Count_Time_Close = 0;
+   433  007F22  0E00               	movlw	0
+   434  007F24  6E15               	movwf	_Count_Time_Close,c
+   435  007F26  0E00               	movlw	0
+   436  007F28  6E16               	movwf	_Count_Time_Close+1,c
+   437  007F2A  0E00               	movlw	0
+   438  007F2C  6E17               	movwf	_Count_Time_Close+2,c
+   439  007F2E  0E00               	movlw	0
+   440  007F30  6E18               	movwf	_Count_Time_Close+3,c
+   441                           
+   442                           ;main.c: 129:                     break;
+   443  007F32  D01A               	goto	u580
+   444  007F34                     l1068:
+   445  007F34  BE1C               	btfsc	_Current+1,7,c
+   446  007F36  D015               	goto	l1076
+   447  007F38  0E21               	movlw	33
+   448  007F3A  5C1B               	subwf	_Current,w,c
+   449  007F3C  0E02               	movlw	2
+   450  007F3E  581C               	subwfb	_Current+1,w,c
+   451  007F40  A0D8               	btfss	status,0,c
+   452  007F42  D00F               	goto	l1076
+   453                           
+   454                           ;main.c: 131:                     Count_Peake_Current++;
+   455  007F44  4A1D               	infsnz	_Count_Peake_Current,f,c
+   456  007F46  2A1E               	incf	_Count_Peake_Current+1,f,c
+   457                           
+   458                           ;main.c: 132:                     if (Count_Peake_Current > 500) {
+   459  007F48  BE1E               	btfsc	_Count_Peake_Current+1,7,c
+   460  007F4A  D00B               	goto	l1076
+   461  007F4C  0EF5               	movlw	245
+   462  007F4E  5C1D               	subwf	_Count_Peake_Current,w,c
+   463  007F50  0E01               	movlw	1
+   464  007F52  581E               	subwfb	_Count_Peake_Current+1,w,c
+   465  007F54  A0D8               	btfss	status,0,c
+   466  007F56  D005               	goto	l1076
+   467                           
+   468                           ;main.c: 133:                         Count_Peake_Current = 0;
+   469  007F58  0E00               	movlw	0
+   470  007F5A  6E1E               	movwf	_Count_Peake_Current+1,c
+   471  007F5C  0E00               	movlw	0
+   472  007F5E  6E1D               	movwf	_Count_Peake_Current,c
+   473                           
+   474                           ;main.c: 134:                         break;
+   475  007F60  D003               	goto	u580
+   476  007F62                     l1076:
+   477                           
+   478                           ;main.c: 137:             } while(End_Stop_Open_State == 1);
+   479  007F62  041F               	decf	_End_Stop_Open_State,w,c
+   480  007F64  B4D8               	btfsc	status,2,c
+   481  007F66  D7C3               	goto	u530
+   482  007F68                     u580:
+   483                           
+   484                           ;main.c: 138:             PORTCbits.RC2 = 0;
+   485  007F68  9482               	bcf	3970,2,c	;volatile
    486                           
-   487 ;; *************** function _Close_Lock *****************
-   488 ;; Defined at:
-   489 ;;		line 50 in file "main.c"
-   490 ;; Parameters:    Size  Location     Type
-   491 ;;		None
-   492 ;; Auto vars:     Size  Location     Type
-   493 ;;		None
-   494 ;; Return value:  Size  Location     Type
-   495 ;;                  1    wreg      void 
-   496 ;; Registers used:
-   497 ;;		wreg, status,2, status,0, cstack
-   498 ;; Tracked objects:
-   499 ;;		On entry : 0/0
-   500 ;;		On exit  : 0/0
-   501 ;;		Unchanged: 0/0
-   502 ;; Data sizes:     COMRAM   BANK0   BANK1   BANK2   BANK3   BANK4   BANK5   BANK6   BANK7
-   503 ;;      Params:         0       0       0       0       0       0       0       0       0
-   504 ;;      Locals:         0       0       0       0       0       0       0       0       0
-   505 ;;      Temps:          2       0       0       0       0       0       0       0       0
-   506 ;;      Totals:         2       0       0       0       0       0       0       0       0
-   507 ;;Total ram usage:        2 bytes
-   508 ;; Hardware stack levels used:    1
-   509 ;; Hardware stack levels required when called:    1
-   510 ;; This function calls:
-   511 ;;		_Closing
-   512 ;; This function is called by:
-   513 ;;		_main
-   514 ;; This function uses a non-reentrant model
-   515 ;;
-   516                           
-   517                           	psect	text2
-   518  007E42                     __ptext2:
-   519                           	opt callstack 0
-   520  007E42                     _Close_Lock:
-   521                           	opt callstack 29
-   522                           
-   523                           ;main.c: 51:     Magnet_State = PORTAbits.RA1;
-   524                           
-   525                           ;incstack = 0
-   526  007E42  A280               	btfss	3968,1,c	;volatile
-   527  007E44  D002               	goto	u40
-   528  007E46  0E01               	movlw	1
-   529  007E48  D001               	goto	u46
-   530  007E4A                     u40:
-   531  007E4A  0E00               	movlw	0
-   532  007E4C                     u46:
-   533  007E4C  6E11               	movwf	_Magnet_State,c
-   534                           
-   535                           ;main.c: 52:     _delay((unsigned long)((50)*(20000000/4000.0)));
-   536  007E4E  0E02               	movlw	2
-   537  007E50  6E10               	movwf	(??_Close_Lock+1)& (0+255),c
-   538  007E52  0E45               	movlw	69
-   539  007E54  6E0F               	movwf	??_Close_Lock& (0+255),c
-   540  007E56  0EAA               	movlw	170
-   541  007E58                     u297:
-   542  007E58  2EE8               	decfsz	wreg,f,c
-   543  007E5A  D7FE               	bra	u297
-   544  007E5C  2E0F               	decfsz	??_Close_Lock& (0+255),f,c
-   545  007E5E  D7FC               	bra	u297
-   546  007E60  2E10               	decfsz	(??_Close_Lock+1)& (0+255),f,c
-   547  007E62  D7FA               	bra	u297
-   548                           
-   549                           ;main.c: 53:     if(Magnet_State == 1 && Last_Magnet_State == 0) {
-   550  007E64  0411               	decf	_Magnet_State,w,c
-   551  007E66  A4D8               	btfss	status,2,c
-   552  007E68  D02B               	goto	l777
-   553  007E6A  500E               	movf	_Last_Magnet_State,w,c
-   554  007E6C  A4D8               	btfss	status,2,c
-   555  007E6E  D028               	goto	l777
-   556                           
-   557                           ;main.c: 54:         _delay((unsigned long)((50)*(20000000/4000.0)));
-   558  007E70  0E02               	movlw	2
-   559  007E72  6E10               	movwf	(??_Close_Lock+1)& (0+255),c
-   560  007E74  0E45               	movlw	69
-   561  007E76  6E0F               	movwf	??_Close_Lock& (0+255),c
-   562  007E78  0EAA               	movlw	170
-   563  007E7A                     u307:
-   564  007E7A  2EE8               	decfsz	wreg,f,c
-   565  007E7C  D7FE               	bra	u307
-   566  007E7E  2E0F               	decfsz	??_Close_Lock& (0+255),f,c
-   567  007E80  D7FC               	bra	u307
-   568  007E82  2E10               	decfsz	(??_Close_Lock+1)& (0+255),f,c
-   569  007E84  D7FA               	bra	u307
-   570                           
-   571                           ;main.c: 55:         End_Stop_Open_State = PORTBbits.RB6;
-   572  007E86  AC81               	btfss	3969,6,c	;volatile
-   573  007E88  D002               	goto	u70
-   574  007E8A  0E01               	movlw	1
-   575  007E8C  D001               	goto	u76
-   576  007E8E                     u70:
-   577  007E8E  0E00               	movlw	0
-   578  007E90                     u76:
-   579  007E90  6E0B               	movwf	_End_Stop_Open_State,c
+   487                           ;main.c: 139:             Count_Time_Close = 0;
+   488  007F6A  0E00               	movlw	0
+   489  007F6C  6E15               	movwf	_Count_Time_Close,c
+   490  007F6E  0E00               	movlw	0
+   491  007F70  6E16               	movwf	_Count_Time_Close+1,c
+   492  007F72  0E00               	movlw	0
+   493  007F74  6E17               	movwf	_Count_Time_Close+2,c
+   494  007F76  0E00               	movlw	0
+   495  007F78  6E18               	movwf	_Count_Time_Close+3,c
+   496                           
+   497                           ;main.c: 140:             Count_Peake_Current = 0;
+   498  007F7A  0E00               	movlw	0
+   499  007F7C  6E1E               	movwf	_Count_Peake_Current+1,c
+   500  007F7E  0E00               	movlw	0
+   501  007F80  6E1D               	movwf	_Count_Peake_Current,c
+   502                           
+   503                           ;main.c: 141:             Inductive_State = PORTAbits.RA1;
+   504  007F82  A280               	btfss	3968,1,c	;volatile
+   505  007F84  D002               	goto	u590
+   506  007F86  0E01               	movlw	1
+   507  007F88  D001               	goto	u596
+   508  007F8A                     u590:
+   509  007F8A  0E00               	movlw	0
+   510  007F8C                     u596:
+   511  007F8C  6E27               	movwf	_Inductive_State,c
+   512  007F8E                     l1080:
+   513                           
+   514                           ;main.c: 143:                 Count_Auto_Close++;
+   515  007F8E  0E01               	movlw	1
+   516  007F90  2611               	addwf	_Count_Auto_Close,f,c
+   517  007F92  0E00               	movlw	0
+   518  007F94  2212               	addwfc	_Count_Auto_Close+1,f,c
+   519  007F96  2213               	addwfc	_Count_Auto_Close+2,f,c
+   520  007F98  2214               	addwfc	_Count_Auto_Close+3,f,c
+   521                           
+   522                           ;main.c: 144:                 Inductive_State = PORTAbits.RA1;
+   523  007F9A  A280               	btfss	3968,1,c	;volatile
+   524  007F9C  D002               	goto	u600
+   525  007F9E  0E01               	movlw	1
+   526  007FA0  D001               	goto	u606
+   527  007FA2                     u600:
+   528  007FA2  0E00               	movlw	0
+   529  007FA4                     u606:
+   530  007FA4  6E27               	movwf	_Inductive_State,c
+   531                           
+   532                           ;main.c: 145:                 if(Count_Auto_Close == 1000000) {
+   533  007FA6  0E40               	movlw	64
+   534  007FA8  1811               	xorwf	_Count_Auto_Close,w,c
+   535  007FAA  E11C               	bnz	l1090
+   536  007FAC  0E42               	movlw	66
+   537  007FAE  1812               	xorwf	_Count_Auto_Close+1,w,c
+   538  007FB0  E119               	bnz	l1090
+   539  007FB2  0E0F               	movlw	15
+   540  007FB4  1813               	xorwf	_Count_Auto_Close+2,w,c
+   541  007FB6  1014               	iorwf	_Count_Auto_Close+3,w,c
+   542  007FB8  A4D8               	btfss	status,2,c
+   543  007FBA  D014               	goto	l1090
+   544                           
+   545                           ;main.c: 146:                     End_Stop_Open_State = PORTAbits.RA2;
+   546  007FBC  A480               	btfss	3968,2,c	;volatile
+   547  007FBE  D002               	goto	u620
+   548  007FC0  0E01               	movlw	1
+   549  007FC2  D001               	goto	u626
+   550  007FC4                     u620:
+   551  007FC4  0E00               	movlw	0
+   552  007FC6                     u626:
+   553  007FC6  6E1F               	movwf	_End_Stop_Open_State,c
+   554                           
+   555                           ;main.c: 147:                     if(End_Stop_Open_State == 0) {
+   556  007FC8  501F               	movf	_End_Stop_Open_State,w,c
+   557  007FCA  A4D8               	btfss	status,2,c
+   558  007FCC  D00E               	goto	u640
+   559                           
+   560                           ;main.c: 148:                         Closing();
+   561  007FCE  ECF5  F03E         	call	_Closing	;wreg free
+   562                           
+   563                           ;main.c: 149:                         Count_Auto_Close = 0;
+   564  007FD2  0E00               	movlw	0
+   565  007FD4  6E11               	movwf	_Count_Auto_Close,c
+   566  007FD6  0E00               	movlw	0
+   567  007FD8  6E12               	movwf	_Count_Auto_Close+1,c
+   568  007FDA  0E00               	movlw	0
+   569  007FDC  6E13               	movwf	_Count_Auto_Close+2,c
+   570  007FDE  0E00               	movlw	0
+   571  007FE0  6E14               	movwf	_Count_Auto_Close+3,c
+   572  007FE2  D003               	goto	u640
+   573  007FE4                     l1090:
+   574                           
+   575                           ;main.c: 153:             } while(Inductive_State == 1);
+   576  007FE4  0427               	decf	_Inductive_State,w,c
+   577  007FE6  B4D8               	btfsc	status,2,c
+   578  007FE8  D7D2               	goto	l1080
+   579  007FEA                     u640:
    580                           
-   581                           ;main.c: 56:         if(Magnet_State == 1 && Last_Magnet_State == 0 && End_Stop_Open_Sta
-      +                          te == 0) {
-   582  007E92  0411               	decf	_Magnet_State,w,c
-   583  007E94  A4D8               	btfss	status,2,c
-   584  007E96  D014               	goto	l777
-   585  007E98  500E               	movf	_Last_Magnet_State,w,c
-   586  007E9A  A4D8               	btfss	status,2,c
-   587  007E9C  D011               	goto	l777
-   588  007E9E  500B               	movf	_End_Stop_Open_State,w,c
-   589  007EA0  A4D8               	btfss	status,2,c
-   590  007EA2  D00E               	goto	l777
+   581                           ;main.c: 154:             Count_Auto_Close = 0;
+   582  007FEA  0E00               	movlw	0
+   583  007FEC  6E11               	movwf	_Count_Auto_Close,c
+   584  007FEE  0E00               	movlw	0
+   585  007FF0  6E12               	movwf	_Count_Auto_Close+1,c
+   586  007FF2  0E00               	movlw	0
+   587  007FF4  6E13               	movwf	_Count_Auto_Close+2,c
+   588  007FF6  0E00               	movlw	0
+   589  007FF8  6E14               	movwf	_Count_Auto_Close+3,c
+   590  007FFA                     l1094:
    591                           
-   592                           ;main.c: 57:             _delay((unsigned long)((1500)*(20000000/4000.0)));
-   593  007EA4  0E27               	movlw	39
-   594  007EA6  6E10               	movwf	(??_Close_Lock+1)& (0+255),c
-   595  007EA8  0E0D               	movlw	13
-   596  007EAA  6E0F               	movwf	??_Close_Lock& (0+255),c
-   597  007EAC  0E26               	movlw	38
-   598  007EAE                     u317:
-   599  007EAE  2EE8               	decfsz	wreg,f,c
-   600  007EB0  D7FE               	bra	u317
-   601  007EB2  2E0F               	decfsz	??_Close_Lock& (0+255),f,c
-   602  007EB4  D7FC               	bra	u317
-   603  007EB6  2E10               	decfsz	(??_Close_Lock+1)& (0+255),f,c
-   604  007EB8  D7FA               	bra	u317
-   605  007EBA  D000               	nop2	
-   606                           
-   607                           ;main.c: 58:             Closing();
-   608  007EBC  ECF3  F03E         	call	_Closing	;wreg free
-   609  007EC0                     l777:
-   610                           
-   611                           ;main.c: 66:     Last_Magnet_State = Magnet_State;
-   612  007EC0  C011  F00E         	movff	_Magnet_State,_Last_Magnet_State
-   613  007EC4  0012               	return		;funcret
-   614  007EC6                     __end_of_Close_Lock:
-   615                           	opt callstack 0
-   616                           
-   617 ;; *************** function _Closing *****************
-   618 ;; Defined at:
-   619 ;;		line 106 in file "main.c"
-   620 ;; Parameters:    Size  Location     Type
-   621 ;;		None
-   622 ;; Auto vars:     Size  Location     Type
-   623 ;;		None
-   624 ;; Return value:  Size  Location     Type
-   625 ;;                  1    wreg      void 
-   626 ;; Registers used:
-   627 ;;		wreg, status,2, status,0
-   628 ;; Tracked objects:
-   629 ;;		On entry : 0/0
-   630 ;;		On exit  : 0/0
-   631 ;;		Unchanged: 0/0
-   632 ;; Data sizes:     COMRAM   BANK0   BANK1   BANK2   BANK3   BANK4   BANK5   BANK6   BANK7
-   633 ;;      Params:         0       0       0       0       0       0       0       0       0
-   634 ;;      Locals:         0       0       0       0       0       0       0       0       0
-   635 ;;      Temps:          0       0       0       0       0       0       0       0       0
-   636 ;;      Totals:         0       0       0       0       0       0       0       0       0
-   637 ;;Total ram usage:        0 bytes
-   638 ;; Hardware stack levels used:    1
-   639 ;; This function calls:
-   640 ;;		Nothing
-   641 ;; This function is called by:
-   642 ;;		_Close_Lock
-   643 ;;		_Open_Lock
-   644 ;; This function uses a non-reentrant model
-   645 ;;
-   646                           
-   647                           	psect	text3
-   648  007DE6                     __ptext3:
-   649                           	opt callstack 0
-   650  007DE6                     _Closing:
-   651                           	opt callstack 29
-   652                           
-   653                           ;main.c: 108:         PORTBbits.RB3 = 1;
-   654                           
-   655                           ;incstack = 0
-   656                           ;main.c: 107:     do {
-   657  007DE6  8681               	bsf	3969,3,c	;volatile
-   658                           
-   659                           ;main.c: 109:         End_Stop_Close_State = PORTBbits.RB7;
-   660  007DE8  AE81               	btfss	3969,7,c	;volatile
-   661  007DEA  D002               	goto	u10
-   662  007DEC  0E01               	movlw	1
-   663  007DEE  D001               	goto	u16
-   664  007DF0                     u10:
-   665  007DF0  0E00               	movlw	0
-   666  007DF2                     u16:
-   667  007DF2  6E0C               	movwf	_End_Stop_Close_State,c
-   668                           
-   669                           ;main.c: 110:         Count_Time_Close++;
-   670  007DF4  0E01               	movlw	1
-   671  007DF6  2605               	addwf	_Count_Time_Close,f,c
-   672  007DF8  0E00               	movlw	0
-   673  007DFA  2206               	addwfc	_Count_Time_Close+1,f,c
-   674  007DFC  2207               	addwfc	_Count_Time_Close+2,f,c
-   675  007DFE  2208               	addwfc	_Count_Time_Close+3,f,c
-   676                           
-   677                           ;main.c: 111:         if(Count_Time_Close == 850000) {
-   678  007E00  0E50               	movlw	80
-   679  007E02  1805               	xorwf	_Count_Time_Close,w,c
-   680  007E04  E111               	bnz	l751
-   681  007E06  0EF8               	movlw	248
-   682  007E08  1806               	xorwf	_Count_Time_Close+1,w,c
-   683  007E0A  E10E               	bnz	l751
-   684  007E0C  0E0C               	movlw	12
-   685  007E0E  1807               	xorwf	_Count_Time_Close+2,w,c
-   686  007E10  1008               	iorwf	_Count_Time_Close+3,w,c
-   687  007E12  A4D8               	btfss	status,2,c
-   688  007E14  D009               	goto	l751
-   689                           
-   690                           ;main.c: 112:             Count_Time_Close = 0;
-   691  007E16  0E00               	movlw	0
-   692  007E18  6E05               	movwf	_Count_Time_Close,c
-   693  007E1A  0E00               	movlw	0
-   694  007E1C  6E06               	movwf	_Count_Time_Close+1,c
-   695  007E1E  0E00               	movlw	0
-   696  007E20  6E07               	movwf	_Count_Time_Close+2,c
-   697  007E22  0E00               	movlw	0
-   698  007E24  6E08               	movwf	_Count_Time_Close+3,c
-   699                           
-   700                           ;main.c: 113:             break;
-   701  007E26  D003               	goto	u30
-   702  007E28                     l751:
-   703                           
-   704                           ;main.c: 115:     } while(End_Stop_Close_State == 1);
-   705  007E28  040C               	decf	_End_Stop_Close_State,w,c
-   706  007E2A  B4D8               	btfsc	status,2,c
-   707  007E2C  D7DC               	goto	_Closing
-   708  007E2E                     u30:
-   709                           
-   710                           ;main.c: 116:     PORTBbits.RB3 = 0;
-   711  007E2E  9681               	bcf	3969,3,c	;volatile
-   712                           
-   713                           ;main.c: 117:     Count_Time_Close = 0;
-   714  007E30  0E00               	movlw	0
-   715  007E32  6E05               	movwf	_Count_Time_Close,c
-   716  007E34  0E00               	movlw	0
-   717  007E36  6E06               	movwf	_Count_Time_Close+1,c
-   718  007E38  0E00               	movlw	0
-   719  007E3A  6E07               	movwf	_Count_Time_Close+2,c
-   720  007E3C  0E00               	movlw	0
-   721  007E3E  6E08               	movwf	_Count_Time_Close+3,c
-   722  007E40  0012               	return		;funcret
-   723  007E42                     __end_of_Closing:
-   724                           	opt callstack 0
-   725  0000                     
-   726                           	psect	rparam
-   727  0000                     tosu	equ	0xFFF
-   728                           tosh	equ	0xFFE
-   729                           tosl	equ	0xFFD
-   730                           stkptr	equ	0xFFC
-   731                           pclatu	equ	0xFFB
-   732                           pclath	equ	0xFFA
-   733                           pcl	equ	0xFF9
-   734                           tblptru	equ	0xFF8
-   735                           tblptrh	equ	0xFF7
-   736                           tblptrl	equ	0xFF6
-   737                           tablat	equ	0xFF5
-   738                           prodh	equ	0xFF4
-   739                           prodl	equ	0xFF3
-   740                           indf0	equ	0xFEF
-   741                           postinc0	equ	0xFEE
-   742                           postdec0	equ	0xFED
-   743                           preinc0	equ	0xFEC
-   744                           plusw0	equ	0xFEB
-   745                           fsr0h	equ	0xFEA
-   746                           fsr0l	equ	0xFE9
-   747                           wreg	equ	0xFE8
-   748                           indf1	equ	0xFE7
-   749                           postinc1	equ	0xFE6
-   750                           postdec1	equ	0xFE5
-   751                           preinc1	equ	0xFE4
-   752                           plusw1	equ	0xFE3
-   753                           fsr1h	equ	0xFE2
-   754                           fsr1l	equ	0xFE1
-   755                           bsr	equ	0xFE0
-   756                           indf2	equ	0xFDF
-   757                           postinc2	equ	0xFDE
-   758                           postdec2	equ	0xFDD
-   759                           preinc2	equ	0xFDC
-   760                           plusw2	equ	0xFDB
-   761                           fsr2h	equ	0xFDA
-   762                           fsr2l	equ	0xFD9
-   763                           status	equ	0xFD8
+   592                           ;main.c: 157:     Last_Open_Contact_State = Open_Contact_State;
+   593  007FFA  C021  F028         	movff	_Open_Contact_State,_Last_Open_Contact_State
+   594  007FFE  0012               	return		;funcret
+   595  008000                     __end_of_Open_Lock:
+   596                           	opt callstack 0
+   597                           
+   598 ;; *************** function _Close_Lock *****************
+   599 ;; Defined at:
+   600 ;;		line 93 in file "main.c"
+   601 ;; Parameters:    Size  Location     Type
+   602 ;;		None
+   603 ;; Auto vars:     Size  Location     Type
+   604 ;;		None
+   605 ;; Return value:  Size  Location     Type
+   606 ;;                  1    wreg      void 
+   607 ;; Registers used:
+   608 ;;		wreg, status,2, status,0, cstack
+   609 ;; Tracked objects:
+   610 ;;		On entry : 0/0
+   611 ;;		On exit  : 0/0
+   612 ;;		Unchanged: 0/0
+   613 ;; Data sizes:     COMRAM   BANK0   BANK1   BANK2   BANK3   BANK4   BANK5   BANK6   BANK7
+   614 ;;      Params:         0       0       0       0       0       0       0       0       0
+   615 ;;      Locals:         0       0       0       0       0       0       0       0       0
+   616 ;;      Temps:          2       0       0       0       0       0       0       0       0
+   617 ;;      Totals:         2       0       0       0       0       0       0       0       0
+   618 ;;Total ram usage:        2 bytes
+   619 ;; Hardware stack levels used:    1
+   620 ;; Hardware stack levels required when called:    3
+   621 ;; This function calls:
+   622 ;;		_Closing
+   623 ;; This function is called by:
+   624 ;;		_main
+   625 ;; This function uses a non-reentrant model
+   626 ;;
+   627                           
+   628                           	psect	text2
+   629  007D66                     __ptext2:
+   630                           	opt callstack 0
+   631  007D66                     _Close_Lock:
+   632                           	opt callstack 27
+   633                           
+   634                           ;main.c: 94:     Inductive_State = PORTAbits.RA1;
+   635                           
+   636                           ;incstack = 0
+   637  007D66  A280               	btfss	3968,1,c	;volatile
+   638  007D68  D002               	goto	u400
+   639  007D6A  0E01               	movlw	1
+   640  007D6C  D001               	goto	u406
+   641  007D6E                     u400:
+   642  007D6E  0E00               	movlw	0
+   643  007D70                     u406:
+   644  007D70  6E27               	movwf	_Inductive_State,c
+   645                           
+   646                           ;main.c: 95:     _delay((unsigned long)((50)*(20000000/4000.0)));
+   647  007D72  0E02               	movlw	2
+   648  007D74  6E26               	movwf	(??_Close_Lock+1)& (0+255),c
+   649  007D76  0E45               	movlw	69
+   650  007D78  6E25               	movwf	??_Close_Lock& (0+255),c
+   651  007D7A  0EAA               	movlw	170
+   652  007D7C                     u677:
+   653  007D7C  2EE8               	decfsz	wreg,f,c
+   654  007D7E  D7FE               	bra	u677
+   655  007D80  2E25               	decfsz	??_Close_Lock& (0+255),f,c
+   656  007D82  D7FC               	bra	u677
+   657  007D84  2E26               	decfsz	(??_Close_Lock+1)& (0+255),f,c
+   658  007D86  D7FA               	bra	u677
+   659                           
+   660                           ;main.c: 96:     if(Inductive_State == 1 && Last_Inductive_State == 0) {
+   661  007D88  0427               	decf	_Inductive_State,w,c
+   662  007D8A  A4D8               	btfss	status,2,c
+   663  007D8C  D02B               	goto	l1036
+   664  007D8E  5022               	movf	_Last_Inductive_State,w,c
+   665  007D90  A4D8               	btfss	status,2,c
+   666  007D92  D028               	goto	l1036
+   667                           
+   668                           ;main.c: 97:         _delay((unsigned long)((50)*(20000000/4000.0)));
+   669  007D94  0E02               	movlw	2
+   670  007D96  6E26               	movwf	(??_Close_Lock+1)& (0+255),c
+   671  007D98  0E45               	movlw	69
+   672  007D9A  6E25               	movwf	??_Close_Lock& (0+255),c
+   673  007D9C  0EAA               	movlw	170
+   674  007D9E                     u687:
+   675  007D9E  2EE8               	decfsz	wreg,f,c
+   676  007DA0  D7FE               	bra	u687
+   677  007DA2  2E25               	decfsz	??_Close_Lock& (0+255),f,c
+   678  007DA4  D7FC               	bra	u687
+   679  007DA6  2E26               	decfsz	(??_Close_Lock+1)& (0+255),f,c
+   680  007DA8  D7FA               	bra	u687
+   681                           
+   682                           ;main.c: 98:         End_Stop_Open_State = PORTAbits.RA2;
+   683  007DAA  A480               	btfss	3968,2,c	;volatile
+   684  007DAC  D002               	goto	u430
+   685  007DAE  0E01               	movlw	1
+   686  007DB0  D001               	goto	u436
+   687  007DB2                     u430:
+   688  007DB2  0E00               	movlw	0
+   689  007DB4                     u436:
+   690  007DB4  6E1F               	movwf	_End_Stop_Open_State,c
+   691                           
+   692                           ;main.c: 99:         if(Inductive_State == 1 && Last_Inductive_State == 0 && End_Stop_Op
+      +                          en_State == 0) {
+   693  007DB6  0427               	decf	_Inductive_State,w,c
+   694  007DB8  A4D8               	btfss	status,2,c
+   695  007DBA  D014               	goto	l1036
+   696  007DBC  5022               	movf	_Last_Inductive_State,w,c
+   697  007DBE  A4D8               	btfss	status,2,c
+   698  007DC0  D011               	goto	l1036
+   699  007DC2  501F               	movf	_End_Stop_Open_State,w,c
+   700  007DC4  A4D8               	btfss	status,2,c
+   701  007DC6  D00E               	goto	l1036
+   702                           
+   703                           ;main.c: 100:             _delay((unsigned long)((1500)*(20000000/4000.0)));
+   704  007DC8  0E27               	movlw	39
+   705  007DCA  6E26               	movwf	(??_Close_Lock+1)& (0+255),c
+   706  007DCC  0E0D               	movlw	13
+   707  007DCE  6E25               	movwf	??_Close_Lock& (0+255),c
+   708  007DD0  0E26               	movlw	38
+   709  007DD2                     u697:
+   710  007DD2  2EE8               	decfsz	wreg,f,c
+   711  007DD4  D7FE               	bra	u697
+   712  007DD6  2E25               	decfsz	??_Close_Lock& (0+255),f,c
+   713  007DD8  D7FC               	bra	u697
+   714  007DDA  2E26               	decfsz	(??_Close_Lock+1)& (0+255),f,c
+   715  007DDC  D7FA               	bra	u697
+   716  007DDE  D000               	nop2	
+   717                           
+   718                           ;main.c: 101:             Closing();
+   719  007DE0  ECF5  F03E         	call	_Closing	;wreg free
+   720  007DE4                     l1036:
+   721                           
+   722                           ;main.c: 112:     Last_Inductive_State = Inductive_State;
+   723  007DE4  C027  F022         	movff	_Inductive_State,_Last_Inductive_State
+   724  007DE8  0012               	return		;funcret
+   725  007DEA                     __end_of_Close_Lock:
+   726                           	opt callstack 0
+   727                           
+   728 ;; *************** function _Closing *****************
+   729 ;; Defined at:
+   730 ;;		line 160 in file "main.c"
+   731 ;; Parameters:    Size  Location     Type
+   732 ;;		None
+   733 ;; Auto vars:     Size  Location     Type
+   734 ;;		None
+   735 ;; Return value:  Size  Location     Type
+   736 ;;                  1    wreg      void 
+   737 ;; Registers used:
+   738 ;;		wreg, status,2, status,0, cstack
+   739 ;; Tracked objects:
+   740 ;;		On entry : 0/0
+   741 ;;		On exit  : 0/0
+   742 ;;		Unchanged: 0/0
+   743 ;; Data sizes:     COMRAM   BANK0   BANK1   BANK2   BANK3   BANK4   BANK5   BANK6   BANK7
+   744 ;;      Params:         0       0       0       0       0       0       0       0       0
+   745 ;;      Locals:         0       0       0       0       0       0       0       0       0
+   746 ;;      Temps:          0       0       0       0       0       0       0       0       0
+   747 ;;      Totals:         0       0       0       0       0       0       0       0       0
+   748 ;;Total ram usage:        0 bytes
+   749 ;; Hardware stack levels used:    1
+   750 ;; Hardware stack levels required when called:    2
+   751 ;; This function calls:
+   752 ;;		_Analog_Read
+   753 ;;		_Sense_Current
+   754 ;; This function is called by:
+   755 ;;		_Close_Lock
+   756 ;;		_Open_Lock
+   757 ;; This function uses a non-reentrant model
+   758 ;;
+   759                           
+   760                           	psect	text3
+   761  007DEA                     __ptext3:
+   762                           	opt callstack 0
+   763  007DEA                     _Closing:
+   764                           	opt callstack 27
+   765                           
+   766                           ;main.c: 162:         PORTCbits.RC1 = 1;
+   767                           
+   768                           ;incstack = 0
+   769                           ;main.c: 161:     do {
+   770  007DEA  8282               	bsf	3970,1,c	;volatile
+   771                           
+   772                           ;main.c: 163:         End_Stop_Close_State = PORTAbits.RA3;
+   773  007DEC  A680               	btfss	3968,3,c	;volatile
+   774  007DEE  D002               	goto	u350
+   775  007DF0  0E01               	movlw	1
+   776  007DF2  D001               	goto	u356
+   777  007DF4                     u350:
+   778  007DF4  0E00               	movlw	0
+   779  007DF6                     u356:
+   780  007DF6  6E20               	movwf	_End_Stop_Close_State,c
+   781                           
+   782                           ;main.c: 164:         Count_Time_Close++;
+   783  007DF8  0E01               	movlw	1
+   784  007DFA  2615               	addwf	_Count_Time_Close,f,c
+   785  007DFC  0E00               	movlw	0
+   786  007DFE  2216               	addwfc	_Count_Time_Close+1,f,c
+   787  007E00  2217               	addwfc	_Count_Time_Close+2,f,c
+   788  007E02  2218               	addwfc	_Count_Time_Close+3,f,c
+   789                           
+   790                           ;main.c: 165:         Current = Analog_Read();
+   791  007E04  EC5E  F03E         	call	_Analog_Read	;wreg free
+   792  007E08  C023  F01B         	movff	?_Analog_Read,_Current
+   793  007E0C  C024  F01C         	movff	?_Analog_Read+1,_Current+1
+   794                           
+   795                           ;main.c: 166:         Sense_Current();
+   796  007E10  EC8F  F03E         	call	_Sense_Current	;wreg free
+   797                           
+   798                           ;main.c: 167:         if(Count_Time_Close == 250000) {
+   799  007E14  0E90               	movlw	144
+   800  007E16  1815               	xorwf	_Count_Time_Close,w,c
+   801  007E18  E111               	bnz	l1002
+   802  007E1A  0ED0               	movlw	208
+   803  007E1C  1816               	xorwf	_Count_Time_Close+1,w,c
+   804  007E1E  E10E               	bnz	l1002
+   805  007E20  0E03               	movlw	3
+   806  007E22  1817               	xorwf	_Count_Time_Close+2,w,c
+   807  007E24  1018               	iorwf	_Count_Time_Close+3,w,c
+   808  007E26  A4D8               	btfss	status,2,c
+   809  007E28  D009               	goto	l1002
+   810                           
+   811                           ;main.c: 168:             Count_Time_Close = 0;
+   812  007E2A  0E00               	movlw	0
+   813  007E2C  6E15               	movwf	_Count_Time_Close,c
+   814  007E2E  0E00               	movlw	0
+   815  007E30  6E16               	movwf	_Count_Time_Close+1,c
+   816  007E32  0E00               	movlw	0
+   817  007E34  6E17               	movwf	_Count_Time_Close+2,c
+   818  007E36  0E00               	movlw	0
+   819  007E38  6E18               	movwf	_Count_Time_Close+3,c
+   820                           
+   821                           ;main.c: 169:             break;
+   822  007E3A  D01A               	goto	u390
+   823  007E3C                     l1002:
+   824  007E3C  BE1C               	btfsc	_Current+1,7,c
+   825  007E3E  D015               	goto	l1010
+   826  007E40  0E21               	movlw	33
+   827  007E42  5C1B               	subwf	_Current,w,c
+   828  007E44  0E02               	movlw	2
+   829  007E46  581C               	subwfb	_Current+1,w,c
+   830  007E48  A0D8               	btfss	status,0,c
+   831  007E4A  D00F               	goto	l1010
+   832                           
+   833                           ;main.c: 171:             Count_Peake_Current++;
+   834  007E4C  4A1D               	infsnz	_Count_Peake_Current,f,c
+   835  007E4E  2A1E               	incf	_Count_Peake_Current+1,f,c
+   836                           
+   837                           ;main.c: 172:             if (Count_Peake_Current > 500) {
+   838  007E50  BE1E               	btfsc	_Count_Peake_Current+1,7,c
+   839  007E52  D00B               	goto	l1010
+   840  007E54  0EF5               	movlw	245
+   841  007E56  5C1D               	subwf	_Count_Peake_Current,w,c
+   842  007E58  0E01               	movlw	1
+   843  007E5A  581E               	subwfb	_Count_Peake_Current+1,w,c
+   844  007E5C  A0D8               	btfss	status,0,c
+   845  007E5E  D005               	goto	l1010
+   846                           
+   847                           ;main.c: 173:                 Count_Peake_Current = 0;
+   848  007E60  0E00               	movlw	0
+   849  007E62  6E1E               	movwf	_Count_Peake_Current+1,c
+   850  007E64  0E00               	movlw	0
+   851  007E66  6E1D               	movwf	_Count_Peake_Current,c
+   852                           
+   853                           ;main.c: 174:                 break;
+   854  007E68  D003               	goto	u390
+   855  007E6A                     l1010:
+   856                           
+   857                           ;main.c: 177:     } while(End_Stop_Close_State == 1);
+   858  007E6A  0420               	decf	_End_Stop_Close_State,w,c
+   859  007E6C  B4D8               	btfsc	status,2,c
+   860  007E6E  D7BD               	goto	_Closing
+   861  007E70                     u390:
+   862                           
+   863                           ;main.c: 178:     PORTCbits.RC1 = 0;
+   864  007E70  9282               	bcf	3970,1,c	;volatile
+   865                           
+   866                           ;main.c: 179:     Count_Time_Close = 0;
+   867  007E72  0E00               	movlw	0
+   868  007E74  6E15               	movwf	_Count_Time_Close,c
+   869  007E76  0E00               	movlw	0
+   870  007E78  6E16               	movwf	_Count_Time_Close+1,c
+   871  007E7A  0E00               	movlw	0
+   872  007E7C  6E17               	movwf	_Count_Time_Close+2,c
+   873  007E7E  0E00               	movlw	0
+   874  007E80  6E18               	movwf	_Count_Time_Close+3,c
+   875                           
+   876                           ;main.c: 180:     Count_Peake_Current = 0;
+   877  007E82  0E00               	movlw	0
+   878  007E84  6E1E               	movwf	_Count_Peake_Current+1,c
+   879  007E86  0E00               	movlw	0
+   880  007E88  6E1D               	movwf	_Count_Peake_Current,c
+   881  007E8A  0012               	return		;funcret
+   882  007E8C                     __end_of_Closing:
+   883                           	opt callstack 0
+   884                           
+   885 ;; *************** function _Sense_Current *****************
+   886 ;; Defined at:
+   887 ;;		line 199 in file "main.c"
+   888 ;; Parameters:    Size  Location     Type
+   889 ;;		None
+   890 ;; Auto vars:     Size  Location     Type
+   891 ;;		None
+   892 ;; Return value:  Size  Location     Type
+   893 ;;                  1    wreg      void 
+   894 ;; Registers used:
+   895 ;;		wreg, status,2, status,0, cstack
+   896 ;; Tracked objects:
+   897 ;;		On entry : 0/0
+   898 ;;		On exit  : 0/0
+   899 ;;		Unchanged: 0/0
+   900 ;; Data sizes:     COMRAM   BANK0   BANK1   BANK2   BANK3   BANK4   BANK5   BANK6   BANK7
+   901 ;;      Params:         0       0       0       0       0       0       0       0       0
+   902 ;;      Locals:         0       0       0       0       0       0       0       0       0
+   903 ;;      Temps:          0       0       0       0       0       0       0       0       0
+   904 ;;      Totals:         0       0       0       0       0       0       0       0       0
+   905 ;;Total ram usage:        0 bytes
+   906 ;; Hardware stack levels used:    1
+   907 ;; Hardware stack levels required when called:    1
+   908 ;; This function calls:
+   909 ;;		_Analog_Read
+   910 ;; This function is called by:
+   911 ;;		_Open_Lock
+   912 ;;		_Closing
+   913 ;; This function uses a non-reentrant model
+   914 ;;
+   915                           
+   916                           	psect	text4
+   917  007D1E                     __ptext4:
+   918                           	opt callstack 0
+   919  007D1E                     _Sense_Current:
+   920                           	opt callstack 28
+   921                           
+   922                           ;main.c: 200:     Current = Analog_Read();
+   923                           
+   924                           ;incstack = 0
+   925  007D1E  EC5E  F03E         	call	_Analog_Read	;wreg free
+   926  007D22  C023  F01B         	movff	?_Analog_Read,_Current
+   927  007D26  C024  F01C         	movff	?_Analog_Read+1,_Current+1
+   928                           
+   929                           ;main.c: 201:         if (Current > 544) {
+   930  007D2A  BE1C               	btfsc	_Current+1,7,c
+   931  007D2C  D017               	goto	l104
+   932  007D2E  0E21               	movlw	33
+   933  007D30  5C1B               	subwf	_Current,w,c
+   934  007D32  0E02               	movlw	2
+   935  007D34  581C               	subwfb	_Current+1,w,c
+   936  007D36  A0D8               	btfss	status,0,c
+   937  007D38  D011               	goto	l104
+   938                           
+   939                           ;main.c: 202:             PORTB = 0x8D;
+   940  007D3A  0E8D               	movlw	141
+   941  007D3C  6E81               	movwf	3969,c	;volatile
+   942                           
+   943                           ;main.c: 203:             PORTCbits.RC7 = 1;
+   944  007D3E  8E82               	bsf	3970,7,c	;volatile
+   945                           
+   946                           ;main.c: 204:             _delay((unsigned long)((5)*(20000000/4000000.0)));
+   947  007D40  0E08               	movlw	8
+   948  007D42                     u707:
+   949  007D42  2EE8               	decfsz	wreg,f,c
+   950  007D44  D7FE               	bra	u707
+   951  007D46  F000               	nop	
+   952                           
+   953                           ;main.c: 205:             PORTCbits.RC7 = 0;
+   954  007D48  9E82               	bcf	3970,7,c	;volatile
+   955                           
+   956                           ;main.c: 206:             PORTB = 0x8F;
+   957  007D4A  0E8F               	movlw	143
+   958  007D4C  6E81               	movwf	3969,c	;volatile
+   959                           
+   960                           ;main.c: 207:             PORTCbits.RC6 = 1;
+   961  007D4E  8C82               	bsf	3970,6,c	;volatile
+   962                           
+   963                           ;main.c: 208:             _delay((unsigned long)((5)*(20000000/4000000.0)));
+   964  007D50  0E08               	movlw	8
+   965  007D52                     u717:
+   966  007D52  2EE8               	decfsz	wreg,f,c
+   967  007D54  D7FE               	bra	u717
+   968  007D56  F000               	nop	
+   969                           
+   970                           ;main.c: 209:             PORTCbits.RC6 = 0;
+   971  007D58  9C82               	bcf	3970,6,c	;volatile
+   972                           
+   973                           ;main.c: 210:         } else {
+   974  007D5A  0012               	return	
+   975  007D5C                     l104:
+   976                           
+   977                           ;main.c: 211:             PORTCbits.RC7 = 0;
+   978  007D5C  9E82               	bcf	3970,7,c	;volatile
+   979                           
+   980                           ;main.c: 212:             PORTCbits.RC6 = 0;
+   981  007D5E  9C82               	bcf	3970,6,c	;volatile
+   982                           
+   983                           ;main.c: 213:             PORTB = 0x11;
+   984  007D60  0E11               	movlw	17
+   985  007D62  6E81               	movwf	3969,c	;volatile
+   986  007D64  0012               	return		;funcret
+   987  007D66                     __end_of_Sense_Current:
+   988                           	opt callstack 0
+   989                           
+   990 ;; *************** function _Analog_Read *****************
+   991 ;; Defined at:
+   992 ;;		line 183 in file "main.c"
+   993 ;; Parameters:    Size  Location     Type
+   994 ;;		None
+   995 ;; Auto vars:     Size  Location     Type
+   996 ;;		None
+   997 ;; Return value:  Size  Location     Type
+   998 ;;                  2    0[COMRAM] int 
+   999 ;; Registers used:
+  1000 ;;		wreg, status,2, status,0
+  1001 ;; Tracked objects:
+  1002 ;;		On entry : 0/0
+  1003 ;;		On exit  : 0/0
+  1004 ;;		Unchanged: 0/0
+  1005 ;; Data sizes:     COMRAM   BANK0   BANK1   BANK2   BANK3   BANK4   BANK5   BANK6   BANK7
+  1006 ;;      Params:         2       0       0       0       0       0       0       0       0
+  1007 ;;      Locals:         0       0       0       0       0       0       0       0       0
+  1008 ;;      Temps:          0       0       0       0       0       0       0       0       0
+  1009 ;;      Totals:         2       0       0       0       0       0       0       0       0
+  1010 ;;Total ram usage:        2 bytes
+  1011 ;; Hardware stack levels used:    1
+  1012 ;; This function calls:
+  1013 ;;		Nothing
+  1014 ;; This function is called by:
+  1015 ;;		_Closing
+  1016 ;;		_Sense_Current
+  1017 ;; This function uses a non-reentrant model
+  1018 ;;
+  1019                           
+  1020                           	psect	text5
+  1021  007CBC                     __ptext5:
+  1022                           	opt callstack 0
+  1023  007CBC                     _Analog_Read:
+  1024                           	opt callstack 28
+  1025                           
+  1026                           ;main.c: 184:     ADCON0bits.GO_nDONE = 1;
+  1027                           
+  1028                           ;incstack = 0
+  1029  007CBC  82C2               	bsf	4034,1,c	;volatile
+  1030  007CBE                     l98:
+  1031  007CBE  B2C2               	btfsc	4034,1,c	;volatile
+  1032  007CC0  D7FE               	goto	l98
+  1033                           
+  1034                           ;main.c: 186:             ADC = ADRESH;
+  1035  007CC2  CFC4 F019          	movff	4036,_ADC	;volatile
+  1036  007CC6  6A1A               	clrf	_ADC+1,c
+  1037                           
+  1038                           ;main.c: 187:             ADC = ADC << 8;
+  1039  007CC8  5019               	movf	_ADC,w,c
+  1040  007CCA  6E1A               	movwf	_ADC+1,c
+  1041  007CCC  6A19               	clrf	_ADC,c
+  1042                           
+  1043                           ;main.c: 188:             ADC = ADC + ADRESL;
+  1044  007CCE  50C3               	movf	4035,w,c	;volatile
+  1045  007CD0  2419               	addwf	_ADC,w,c
+  1046  007CD2  6E19               	movwf	_ADC,c
+  1047  007CD4  0E00               	movlw	0
+  1048  007CD6  201A               	addwfc	_ADC+1,w,c
+  1049  007CD8  6E1A               	movwf	_ADC+1,c
+  1050                           
+  1051                           ;main.c: 190:     return ADC;
+  1052  007CDA  C019  F023         	movff	_ADC,?_Analog_Read
+  1053  007CDE  C01A  F024         	movff	_ADC+1,?_Analog_Read+1
+  1054  007CE2  0012               	return		;funcret
+  1055  007CE4                     __end_of_Analog_Read:
+  1056                           	opt callstack 0
+  1057  0000                     
+  1058                           	psect	rparam
+  1059  0000                     tosu	equ	0xFFF
+  1060                           tosh	equ	0xFFE
+  1061                           tosl	equ	0xFFD
+  1062                           stkptr	equ	0xFFC
+  1063                           pclatu	equ	0xFFB
+  1064                           pclath	equ	0xFFA
+  1065                           pcl	equ	0xFF9
+  1066                           tblptru	equ	0xFF8
+  1067                           tblptrh	equ	0xFF7
+  1068                           tblptrl	equ	0xFF6
+  1069                           tablat	equ	0xFF5
+  1070                           prodh	equ	0xFF4
+  1071                           prodl	equ	0xFF3
+  1072                           indf0	equ	0xFEF
+  1073                           postinc0	equ	0xFEE
+  1074                           postdec0	equ	0xFED
+  1075                           preinc0	equ	0xFEC
+  1076                           plusw0	equ	0xFEB
+  1077                           fsr0h	equ	0xFEA
+  1078                           fsr0l	equ	0xFE9
+  1079                           wreg	equ	0xFE8
+  1080                           indf1	equ	0xFE7
+  1081                           postinc1	equ	0xFE6
+  1082                           postdec1	equ	0xFE5
+  1083                           preinc1	equ	0xFE4
+  1084                           plusw1	equ	0xFE3
+  1085                           fsr1h	equ	0xFE2
+  1086                           fsr1l	equ	0xFE1
+  1087                           bsr	equ	0xFE0
+  1088                           indf2	equ	0xFDF
+  1089                           postinc2	equ	0xFDE
+  1090                           postdec2	equ	0xFDD
+  1091                           preinc2	equ	0xFDC
+  1092                           plusw2	equ	0xFDB
+  1093                           fsr2h	equ	0xFDA
+  1094                           fsr2l	equ	0xFD9
+  1095                           status	equ	0xFD8
 
 
 Data Sizes:
     Strings     0
     Constant    0
     Data        1
-    BSS         14
+    BSS         34
     Persistent  1
     Stack       0
 
 Auto Spaces:
     Space          Size  Autos    Used
-    COMRAM           95      2      18
+    COMRAM           95      4      40
     BANK0           160      0       0
     BANK1           256      0       0
     BANK2           256      0       0
@@ -807,6 +1139,8 @@ Critical Paths under _main in COMRAM
 
     _main->_Close_Lock
     _main->_Open_Lock
+    _Closing->_Analog_Read
+    _Sense_Current->_Analog_Read
 
 Critical Paths under _main in BANK0
 
@@ -850,16 +1184,25 @@ Call Graph Tables:
                           _Open_Lock
  ---------------------------------------------------------------------------------
  (1) _Open_Lock                                            2     2      0       0
-                                              0 COMRAM     2     2      0
+                                              2 COMRAM     2     2      0
                             _Closing
+                      _Sense_Current
  ---------------------------------------------------------------------------------
  (1) _Close_Lock                                           2     2      0       0
-                                              0 COMRAM     2     2      0
+                                              2 COMRAM     2     2      0
                             _Closing
  ---------------------------------------------------------------------------------
  (2) _Closing                                              0     0      0       0
+                        _Analog_Read
+                      _Sense_Current
  ---------------------------------------------------------------------------------
- Estimated maximum stack depth 2
+ (2) _Sense_Current                                        0     0      0       0
+                        _Analog_Read
+ ---------------------------------------------------------------------------------
+ (3) _Analog_Read                                          2     0      2       0
+                                              0 COMRAM     2     0      2
+ ---------------------------------------------------------------------------------
+ Estimated maximum stack depth 3
  ---------------------------------------------------------------------------------
 
  Call Graph Graphs:
@@ -867,8 +1210,16 @@ Call Graph Tables:
  _main (ROOT)
    _Close_Lock
      _Closing
+       _Analog_Read
+       _Sense_Current
+         _Analog_Read
    _Open_Lock
      _Closing
+       _Analog_Read
+       _Sense_Current
+         _Analog_Read
+     _Sense_Current
+       _Analog_Read
 
  Address spaces:
 Name               Size   Autos  Total    Cost      Usage
@@ -891,62 +1242,71 @@ BANK1              100      0       0       7        0.0%
 BITBANK0            A0      0       0       4        0.0%
 BANK0               A0      0       0       5        0.0%
 BITCOMRAM           5F      0       0       0        0.0%
-COMRAM              5F      2      12       1       18.9%
+COMRAM              5F      4      28       1       42.1%
 BITSFR               0      0       0     200        0.0%
 SFR                  0      0       0     200        0.0%
 STACK                0      0       0       2        0.0%
 NULL                 0      0       0       0        0.0%
-ABS                  0      0      12      20        0.0%
-DATA                 0      0      12       3        0.0%
+ABS                  0      0      28      20        0.0%
+DATA                 0      0      28       3        0.0%
 CODE                 0      0       0       0        0.0%
 
 
 Microchip Technology PIC18 Macro Assembler V2.05 build -831301201 
-Symbol Table                                                                                   Tue Jul 09 16:42:49 2019
+Symbol Table                                                                                   Fri Jul 12 16:52:59 2019
 
-                     u10 7DF0                       u30 7E2E                       u16 7DF2  
-                     u40 7E4A                       u70 7E8E                       u46 7E4C  
-                     u76 7E90              __CFG_BORV$3 000000             __CFG_CP0$OFF 000000  
-           __CFG_CP1$OFF 000000             __CFG_CP2$OFF 000000             __CFG_CP3$OFF 000000  
-                    l805 7F6A                      l751 7E28                      l823 7FFA  
-                    l809 7F8E                      l833 7DB8                      l819 7FE4  
-                    l777 7EC0             __CFG_CPB$OFF 000000                      u110 7ECE  
-                    u200 7F70                      u210 7F8A                      u220 7FA2  
-                    u140 7F12                      u116 7ED0                      u240 7FC4  
-                    u216 7F8C                      u226 7FA4                      u170 7F28  
-                    u146 7F14                      u307 7E7A                      u260 7FEA  
-                    u180 7F32                      u317 7EAE                      u246 7FC6  
-                    u186 7F34             __CFG_CPD$OFF 000000                      u277 7EDC  
-                    u287 7EFE                      u297 7E58             __CFG_BOR$OFF 000000  
-      _Last_Magnet_State 000E                      wreg 000FE8             __CFG_FOSC$HS 000000  
-           __CFG_LVP$OFF 000000             __CFG_WDT$OFF 000000                     _main 7DAA  
-                   start 0000            __CFG_IESO$OFF 000000            __CFG_MCLRE$ON 000000  
-        __end_of_Closing 7E42             ___param_bank 000000            __CFG_PLLDIV$1 000000  
-         __CFG_CCP2MX$ON 000000                    ?_main 000F               _Close_Lock 7E42  
-          __CFG_USBDIV$1 000000                    _TRISB 000F93            __CFG_PWRT$OFF 000000  
-          __CFG_WRT0$OFF 000000            __CFG_WRT1$OFF 000000            __CFG_WRT2$OFF 000000  
-          __CFG_WRT3$OFF 000000           __CFG_EBTR0$OFF 000000           __CFG_FCMEN$OFF 000000  
-         __CFG_EBTR1$OFF 000000           __CFG_EBTR2$OFF 000000           __CFG_EBTR3$OFF 000000  
-          __CFG_WRTB$OFF 000000            __CFG_WRTC$OFF 000000            __CFG_WRTD$OFF 000000  
-         __CFG_EBTRB$OFF 000000                    tablat 000FF5                    status 000FD8  
-         __CFG_PBADEN$ON 000000          __initialization 7DC2             __end_of_main 7DC2  
-                 ??_main 0011            __activetblptr 000000                   _ADCON1 000FC1  
-    _End_Stop_Open_State 000B     _End_Stop_Close_State 000C                ??_Closing 000F  
-         __CFG_XINST$OFF 000000           __CFG_STVREN$ON 000000       __size_of_Open_Lock 013A  
-                 clear_0 7DDA              ?_Close_Lock 000F             __pdataCOMRAM 0012  
-                 tblptrh 000FF7                   tblptrl 000FF6                   tblptru 000FF8  
-             __accesstop 0060  __end_of__initialization 7DE0            ___rparam_used 000001  
-_Last_Open_Contact_State 0012           __pcstackCOMRAM 000F        __end_of_Open_Lock 8000  
-             __pnvCOMRAM 0011      __size_of_Close_Lock 0084          __CFG_VREGEN$OFF 000000  
-                _Closing 7DE6                  __Hparam 0000                  __Lparam 0000  
-                __pcinit 7DC2                  __ramtop 0800                  __ptext0 7DAA  
-                __ptext1 7EC6                  __ptext2 7E42                  __ptext3 7DE6  
-   end_of_initialization 7DE0             _Magnet_State 0011                  postinc0 000FEE  
-              _PORTAbits 000F80                _PORTBbits 000F81             ??_Close_Lock 000F  
-              _TRISAbits 000F92       __end_of_Close_Lock 7EC6       _Open_Contact_State 000D  
-          __pidataCOMRAM 7DA9      start_initialization 7DC2                _Open_Lock 7EC6  
-       _Count_Auto_Close 0001         __CFG_LPT1OSC$OFF 000000              __pbssCOMRAM 0001  
-               ?_Closing 000F               ?_Open_Lock 000F         _Count_Time_Close 0005  
-       __CFG_WDTPS$32768 000000              ??_Open_Lock 000F         __size_of_Closing 005C  
-               __Hrparam 0000                 __Lrparam 0000            __size_of_main 0018  
-    _Count_Magnet_Active 0009    __CFG_CPUDIV$OSC1_PLL2 000000  
+   _Last_Inductive_State 0022                       l98 7CBE              __CFG_BORV$3 000000  
+           __CFG_CP0$OFF 000000             __CFG_CP1$OFF 000000             __CFG_CP2$OFF 000000  
+           __CFG_CP3$OFF 000000                      l104 7D5C                      _ADC 0019  
+           __CFG_CPB$OFF 000000                      u400 7D6E                      u500 7ED8  
+                    u350 7DF4                      u430 7DB2                      u406 7D70  
+                    u600 7FA2                      u530 7EEE                      u506 7EDA  
+           __CFG_CPD$OFF 000000                      u356 7DF6                      u436 7DB4  
+                    u620 7FC4                      u540 7EF8                      u390 7E70  
+                    u606 7FA4                      u470 7E94                      u640 7FEA  
+                    u626 7FC6                      u546 7EFA                      u707 7D42  
+                    u580 7F68                      u476 7E96                      u717 7D52  
+                    u590 7F8A                      u657 7EA2                      u667 7EC4  
+                    u596 7F8C                      u677 7D7C                      u687 7D9E  
+                    u697 7DD2             __CFG_BOR$OFF 000000                      wreg 000FE8  
+           __CFG_FOSC$HS 000000      _Count_Peake_Current 001D             __CFG_LVP$OFF 000000  
+           __CFG_WDT$OFF 000000                     l1010 7E6A                     l1002 7E3C  
+                   l1130 7D14                     l1036 7DE4                     l1080 7F8E  
+                   l1090 7FE4                     l1076 7F62                     l1068 7F34  
+                   l1094 7FFA                     _main 7CE4                     start 0000  
+          __CFG_IESO$OFF 000000            __CFG_MCLRE$ON 000000          __end_of_Closing 7E8C  
+           ___param_bank 000000            __CFG_PLLDIV$1 000000           __CFG_CCP2MX$ON 000000  
+                  ?_main 0023    __end_of_Sense_Current 7D66               _Close_Lock 7D66  
+                  _PORTB 000F81            __CFG_USBDIV$1 000000                    _TRISB 000F93  
+          __CFG_PWRT$OFF 000000            __CFG_WRT0$OFF 000000            __CFG_WRT1$OFF 000000  
+          __CFG_WRT2$OFF 000000            __CFG_WRT3$OFF 000000           __CFG_EBTR0$OFF 000000  
+         __CFG_FCMEN$OFF 000000           __CFG_EBTR1$OFF 000000           __CFG_EBTR2$OFF 000000  
+         __CFG_EBTR3$OFF 000000            __CFG_WRTB$OFF 000000            __CFG_WRTC$OFF 000000  
+          __CFG_WRTD$OFF 000000           __CFG_EBTRB$OFF 000000              _Analog_Read 7CBC  
+                  tablat 000FF5                    status 000FD8           __CFG_PBADEN$ON 000000  
+        __initialization 7C98             __end_of_main 7D1E                   ??_main 0027  
+          __activetblptr 000000                   _ADCON1 000FC1                   _ADRESH 000FC4  
+                 _ADRESL 000FC3      _End_Stop_Open_State 001F     _End_Stop_Close_State 0020  
+              ??_Closing 0025           __CFG_XINST$OFF 000000           __CFG_STVREN$ON 000000  
+     __size_of_Open_Lock 0174                   clear_0 7CB0              ?_Close_Lock 0023  
+           __pdataCOMRAM 0028                   tblptrh 000FF7                   tblptrl 000FF6  
+                 tblptru 000FF8               __accesstop 0060  __end_of__initialization 7CB6  
+          ___rparam_used 000001  _Last_Open_Contact_State 0028           __pcstackCOMRAM 0023  
+      __end_of_Open_Lock 8000               __pnvCOMRAM 0027      __size_of_Close_Lock 0084  
+           ?_Analog_Read 0023          __CFG_VREGEN$OFF 000000                  _Buffer1 0001  
+                _Closing 7DEA                  _Current 001B                  __Hparam 0000  
+                __Lparam 0000                  __pcinit 7C98                  __ramtop 0800  
+                __ptext0 7CE4                  __ptext1 7E8C                  __ptext2 7D66  
+                __ptext3 7DEA                  __ptext4 7D1E                  __ptext5 7CBC  
+        _Inductive_State 0027     end_of_initialization 7CB6   __size_of_Sense_Current 0048  
+                postinc0 000FEE                _PORTAbits 000F80                _PORTCbits 000F82  
+           ??_Close_Lock 0025                _TRISAbits 000F92                _TRISCbits 000F94  
+     __end_of_Close_Lock 7DEA       _Open_Contact_State 0021            __pidataCOMRAM 7C97  
+          _Sense_Current 7D1E      start_initialization 7C98     __size_of_Analog_Read 0028  
+              _Open_Lock 7E8C         _Count_Auto_Close 0011         __CFG_LPT1OSC$OFF 000000  
+         ?_Sense_Current 0023              __pbssCOMRAM 0001                 ?_Closing 0023  
+             ?_Open_Lock 0023         _Count_Time_Close 0015         __CFG_WDTPS$32768 000000  
+        ??_Sense_Current 0025               _ADCON0bits 000FC2               _ADCON2bits 000FC0  
+            ??_Open_Lock 0025         __size_of_Closing 00A2                 __Hrparam 0000  
+               __Lrparam 0000            __size_of_main 003A    __CFG_CPUDIV$OSC1_PLL2 000000  
+          ??_Analog_Read 0025      __end_of_Analog_Read 7CE4  
