@@ -5071,18 +5071,27 @@ extern __attribute__((nonreentrant)) void _delay3(unsigned char);
 
 #pragma config EBTRB = OFF
 # 16 "main.c" 2
-# 34 "main.c"
+# 39 "main.c"
 int Count_Peake_Current = 0;
 int Current = 0;
 
 _Bool Last_Inductive_State = 0;
 _Bool Last_Open_Contact_State = 1;
+_Bool Last_Button_Menu_Up_State = 1;
+_Bool Last_Button_Menu_Down_State = 1;
 _Bool Inductive_State;
 _Bool Open_Contact_State;
 _Bool End_Stop_Close_State;
 _Bool End_Stop_Open_State;
 long Count_Time_Close = 0;
 long Count_Auto_Close = 0;
+_Bool Button_Menu_Up_State;
+_Bool Button_Menu_Down_State;
+int Count_Push_Button = 0;
+long Count_Exit_Menu = 0;
+_Bool Toggle_Up = 0;
+_Bool Toggle_Down = 0;
+_Bool Flag_Menu = 0;
 
 
 int ADC;
@@ -5093,6 +5102,12 @@ void Open_Lock(void);
 void Closing(void);
 int Analog_Read(void);
 void Sense_Current(void);
+
+void Menu_In(void);
+void Menu(void);
+
+void eeprom_writex(int address, char data);
+char eeprom_readx(int address);
 
 void main(void) {
     ADCON1 = 0X0E;
@@ -5107,6 +5122,8 @@ void main(void) {
     TRISCbits.RC7 = 0;
     TRISAbits.RA2 = 1;
     TRISAbits.RA3 = 1;
+    TRISAbits.RA5 = 1;
+    TRISCbits.RC0 = 1;
 
 
     ADCON0bits.CHS = 0;
@@ -5125,6 +5142,7 @@ void main(void) {
     PORTCbits.RC2 = 0;
 
     while(1) {
+        Menu_In();
         Close_Lock();
         Open_Lock();
     }
@@ -5138,9 +5156,9 @@ void Close_Lock(void) {
         _delay((unsigned long)((50)*(20000000/4000.0)));
         End_Stop_Open_State = PORTAbits.RA2;
         if(Inductive_State == 1 && Last_Inductive_State == 0 && End_Stop_Open_State == 0) {
-            _delay((unsigned long)((1500)*(20000000/4000.0)));
+            _delay((unsigned long)((100)*(20000000/4000.0)));
             Closing();
-# 110 "main.c"
+# 133 "main.c"
         }
     }
     Last_Inductive_State = Inductive_State;
@@ -5163,7 +5181,7 @@ void Open_Lock(void) {
                     break;
                 } else if (Current > 544) {
                     Count_Peake_Current++;
-                    if (Count_Peake_Current > 500) {
+                    if (Count_Peake_Current > 2000) {
                         Count_Peake_Current = 0;
                         break;
                     }
@@ -5203,7 +5221,7 @@ void Closing(void) {
             break;
         } else if (Current > 544) {
             Count_Peake_Current++;
-            if (Count_Peake_Current > 500) {
+            if (Count_Peake_Current > 2000) {
                 Count_Peake_Current = 0;
                 break;
             }
@@ -5212,6 +5230,8 @@ void Closing(void) {
     PORTCbits.RC1 = 0;
     Count_Time_Close = 0;
     Count_Peake_Current = 0;
+    Toggle_Up = 0;
+    Toggle_Down = 0;
 }
 
 int Analog_Read(void) {
@@ -5230,7 +5250,7 @@ int Analog_Read(void) {
 
 
 
-   void Sense_Current(void) {
+void Sense_Current(void) {
     Current = Analog_Read();
         if (Current > 544) {
             PORTB = 0x8D;
@@ -5246,4 +5266,124 @@ int Analog_Read(void) {
             PORTCbits.RC6 = 0;
             PORTB = 0x11;
         }
+}
+
+
+
+
+
+
+
+void eeprom_writex(int address, char data) {
+    EEADR = address;
+    EEDATA = data;
+    EECON1bits.EEPGD = 0;
+    EECON1bits.CFGS = 0;
+    EECON1bits.WREN = 1;
+    INTCONbits.GIE = 0;
+
+    EECON2 = 0x55;
+    EECON2 = 0xaa;
+    EECON1bits.WR = 1;
+
+    INTCONbits.GIE = 1;
+    while (EECON1bits.WR);
+}
+
+char eeprom_readx(int address) {
+    EEADR = address;
+    EECON1bits.EEPGD = 0;
+    EECON1bits.CFGS = 0;
+    EECON1bits.RD = 1;
+    return(EEDATA);
+}
+
+
+void Menu_In(void) {
+    Button_Menu_Up_State = PORTAbits.RA5;
+    _delay((unsigned long)((1)*(20000000/4000.0)));
+    if (Button_Menu_Up_State == 0 && Last_Button_Menu_Up_State == 1) {
+        Toggle_Up = 1;
+        if (Toggle_Up == 1 && Toggle_Down == 1) {
+            Flag_Menu = 1;
+            Toggle_Up = 0;
+            Toggle_Down = 0;
+            Count_Push_Button = 0;
+            _delay((unsigned long)((100)*(20000000/4000.0)));
+            Menu();
+        }
+    }
+    Last_Button_Menu_Up_State = Button_Menu_Up_State;
+
+    Button_Menu_Down_State = PORTCbits.RC0;
+    _delay((unsigned long)((1)*(20000000/4000.0)));
+    if (Button_Menu_Down_State == 0 && Last_Button_Menu_Down_State == 1) {
+        Toggle_Down = 1;
+        if (Toggle_Down == 1 && Toggle_Up == 1) {
+            Flag_Menu = 1;
+            Toggle_Down = 0;
+            Toggle_Up = 0;
+            Count_Push_Button = 0;
+            _delay((unsigned long)((100)*(20000000/4000.0)));
+            Menu();
+        }
+    }
+    Last_Button_Menu_Down_State = Button_Menu_Down_State;
+
+}
+
+void Menu(void) {
+    do {
+        switch (Count_Push_Button)
+        {
+        case 0:
+            PORTB = 0x19;
+            PORTCbits.RC7 = 1;
+            _delay((unsigned long)((1600)*(20000000/4000000.0)));
+            PORTCbits.RC7 = 0;
+            PORTB = 0xF3;
+            PORTCbits.RC6 = 1;
+            _delay((unsigned long)((1600)*(20000000/4000000.0)));
+            PORTCbits.RC6 = 0;
+            break;
+        case 1:
+            PORTB = 0x19;
+            PORTCbits.RC7 = 1;
+            _delay((unsigned long)((1600)*(20000000/4000000.0)));
+            PORTCbits.RC7 = 0;
+            PORTB = 0x49;
+            PORTCbits.RC6 = 1;
+            _delay((unsigned long)((1600)*(20000000/4000000.0)));
+            PORTCbits.RC6 = 0;
+            break;
+        case 2:
+            PORTB = 0x19;
+            PORTCbits.RC7 = 1;
+            _delay((unsigned long)((1600)*(20000000/4000000.0)));
+            PORTCbits.RC7 = 0;
+            PORTB = 0x61;
+            PORTCbits.RC6 = 1;
+            _delay((unsigned long)((1600)*(20000000/4000000.0)));
+            PORTCbits.RC6 = 0;
+            break;
+        case 3:
+            PORTB = 0x19;
+            PORTCbits.RC7 = 1;
+            _delay((unsigned long)((1600)*(20000000/4000000.0)));
+            PORTCbits.RC7 = 0;
+            PORTB = 0x33;
+            PORTCbits.RC6 = 1;
+            _delay((unsigned long)((1600)*(20000000/4000000.0)));
+            PORTCbits.RC6 = 0;
+            break;
+        default:
+            Count_Push_Button = 0;
+            break;
+        }
+        Button_Menu_Down_State = PORTCbits.RC0;
+        if (Button_Menu_Down_State == 0 && Last_Button_Menu_Down_State == 1) {
+            Count_Push_Button++;
+        }
+        Last_Button_Menu_Down_State = Button_Menu_Down_State;
+    } while(Flag_Menu == 1);
 }

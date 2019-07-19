@@ -27,21 +27,35 @@
 #define End_Stop_Close PORTAbits.RA3        // Entrada digital fin de carrera
 #define Time 250000                         // Constante de tiempo para detencion de emergencia
 #define Time_Auto_Close 1000000             // Constante de tiempo para cierre automatico
+#define Time_Exit_Menu 250000
 #define Set_Point_Current 544               // Set point para el ajuste de la corriente
+#define Timing_Display 1600
+
+#define Button_Menu_Up PORTAbits.RA5        // Boton para control del menu
+#define Button_Menu_Down PORTCbits.RC0      // Boton para control del menu
 
 // Constantes que definen el muestreo de la corriente 
-#define Samples 500            // Número de muestras para evitar el pico de corriente de arranque
+#define Samples 2000            // Número de muestras para evitar el pico de corriente de arranque
 int Count_Peake_Current = 0;  // Contador de picos de corriente
 int Current = 0;              // Variable para almacenar el valor de la corriente del sensor
 
 _Bool Last_Inductive_State = 0;
 _Bool Last_Open_Contact_State = 1;
+_Bool Last_Button_Menu_Up_State = 1;
+_Bool Last_Button_Menu_Down_State = 1;
 _Bool Inductive_State;
 _Bool Open_Contact_State;
 _Bool End_Stop_Close_State;
 _Bool End_Stop_Open_State;
 long Count_Time_Close = 0;
 long Count_Auto_Close = 0;
+_Bool Button_Menu_Up_State;
+_Bool Button_Menu_Down_State;
+int Count_Push_Button = 0;
+long Count_Exit_Menu = 0;
+_Bool Toggle_Up = 0;
+_Bool Toggle_Down = 0;
+_Bool Flag_Menu = 0;
 //int Count_Inductive_Active = 0; Descomente si quiere contar los eventos del sensor inductivo
 
 int ADC;
@@ -51,7 +65,13 @@ void Close_Lock(void);
 void Open_Lock(void);
 void Closing(void);
 int Analog_Read(void);
-void Sense_Current(void); // Descomente si quiere ajustar el Set Point de la corriente
+void Sense_Current(void);
+
+void Menu_In(void);
+void Menu(void);
+
+void eeprom_writex(int address, char data);
+char eeprom_readx(int address);
 
 void main(void) {   // Funcion principal
     ADCON1 = 0X0E;       // Todos los pines analogos como digitales excepto RA0
@@ -66,6 +86,8 @@ void main(void) {   // Funcion principal
     TRISCbits.RC7 = 0;   // Configuracion como salida digital "Display Two"
     TRISAbits.RA2 = 1;   // Configuracion como entrada digital "End Stop Open"
     TRISAbits.RA3 = 1;   // Configuracion como entrada digital "End Stop Close"
+    TRISAbits.RA5 = 1;   // Configuracion como entrada digital "Button Menu"
+    TRISCbits.RC0 = 1;   // Configuracion como entrada digital "Button Menu"
 
     // Configuracion del ADC
     ADCON0bits.CHS = 0;     // Seleccion del canal analogo 0
@@ -83,7 +105,8 @@ void main(void) {   // Funcion principal
     Engine_Direction_A = 0;
     Engine_Direction_B = 0;
     
-    while(1) {   
+    while(1) {
+        Menu_In();
         Close_Lock();
         Open_Lock();
     }
@@ -97,7 +120,7 @@ void Close_Lock(void) {
         __delay_ms(50);
         End_Stop_Open_State = End_Stop_Open;
         if(Inductive_State == 1 && Last_Inductive_State == 0 && End_Stop_Open_State == 0) {
-            __delay_ms(1500);
+            __delay_ms(100); // Retardo de arranque de cierre de los pasadores
             Closing();
             /* Descomente si quiere contar cada evento o deteccion del 
                sensor inductivo para el cierre de la puerta.
@@ -178,6 +201,8 @@ void Closing(void) {
     Engine_Direction_A = 0;
     Count_Time_Close = 0;
     Count_Peake_Current = 0;
+    Toggle_Up = 0;
+    Toggle_Down = 0;
 }
 
 int Analog_Read(void) {
@@ -190,20 +215,20 @@ int Analog_Read(void) {
     return ADC;
 }
 
-/* Funcion especifica para periodo de prueba.
-   Imprime por el display doble las letras CL, que corresponden a
-   Current Limited, sirve para ajustar el Set Point de la corriente
-   sensada. El indicador aparece mientras el Set Point es superado 
-   por la corriente sensada.
+/*  Funcion especifica para periodo de prueba.
+    Imprime por el display doble las letras CL, que corresponden a
+    Current Limited, sirve para ajustar el Set Point de la corriente
+    sensada. El indicador aparece mientras el Set Point es superado 
+    por la corriente sensada.
 */
-   void Sense_Current(void) {
+void Sense_Current(void) {
     Current = Analog_Read();        
         if (Current > Set_Point_Current) {
-            Display = 0x8D;
+            Display = 0x8D;        // "C" En el display de siete segmentos
             Display_One = 1;
             __delay_us(5);
             Display_One = 0;
-            Display = 0x8F;
+            Display = 0x8F;       // "L" En el display de siete segmentos
             Display_Two = 1;
             __delay_us(5);
             Display_Two = 0;
@@ -212,4 +237,124 @@ int Analog_Read(void) {
             Display_Two = 0;
             Display = 0x11;
         }
+}
+
+/*  Funciones de escritura y lectura de la memoria EEPROM del micro.
+    Estas librerias fueron escritas por:
+    Instagram  http://instagram.com/robertelectronica
+    Facebook   https://www.facebook.com/Robertelectronico/
+    Youtube    https://www.youtube.com/channel/UCYze8bs8C1qF6UbV2r4LrAA/videos?view_as=subscriber
+*/
+void eeprom_writex(int address, char data) {
+    EEADR = address;		//  1.  Escribir la dirección de la memoria en el registro EEADR
+    EEDATA = data;          //  2.	Escribir el dato a guardar en el registro EEDAT
+    EECON1bits.EEPGD = 0;	//  3.	Acceder a la memoria de datos de la EEPROM
+    EECON1bits.CFGS = 0;	//  4.	Acceder a la EEPROM
+    EECON1bits.WREN = 1;	//  5.	Habilitar escritura
+    INTCONbits.GIE = 0;     //  6.	Deshabilitar interrupciones
+
+    EECON2 = 0x55;          //  7.  Enviar secuencia EECON2 = 0x55 y EECON2 = 0xAA y 
+    EECON2 = 0xaa;          //      empezar la escritura en la memoria EEPROM
+    EECON1bits.WR = 1;      //      Bit que empieza la escritura en la memoria
+    
+    INTCONbits.GIE = 1;     //  8.	Habilitar interrupciones
+    while (EECON1bits.WR);  //  9.	Esperar hasta que la escritura se complete               
+}
+
+char eeprom_readx(int address) {
+    EEADR = address;        //  1.	Escribir la dirección de la memoria a leer en el registro EEADR  
+    EECON1bits.EEPGD = 0;	//  2.	Acceder a la memoria de datos de la EEPROM
+    EECON1bits.CFGS = 0;	//  3.	Acceder a la EEPROM
+    EECON1bits.RD = 1;      //  4.	Leer datos de la EEPROM
+    return(EEDATA);
+}
+
+
+void Menu_In(void) {
+    Button_Menu_Up_State = Button_Menu_Up;
+    __delay_ms(1);
+    if (Button_Menu_Up_State == 0 && Last_Button_Menu_Up_State == 1) {
+        Toggle_Up = 1;
+        if (Toggle_Up == 1 && Toggle_Down == 1) {
+            Flag_Menu = 1;
+            Toggle_Up = 0;
+            Toggle_Down = 0;
+            Count_Push_Button = 0;
+            __delay_ms(100);
+            Menu();
+        }   
+    }
+    Last_Button_Menu_Up_State = Button_Menu_Up_State;
+
+    Button_Menu_Down_State = Button_Menu_Down;
+    __delay_ms(1);
+    if (Button_Menu_Down_State == 0 && Last_Button_Menu_Down_State == 1) {
+        Toggle_Down = 1;
+        if (Toggle_Down == 1 && Toggle_Up == 1) {
+            Flag_Menu = 1;
+            Toggle_Down = 0;
+            Toggle_Up = 0;
+            Count_Push_Button = 0;
+            __delay_ms(100);
+            Menu();
+        }
+    }
+    Last_Button_Menu_Down_State = Button_Menu_Down_State;
+    
+}
+
+void Menu(void) {
+    do {
+        switch (Count_Push_Button)
+        {
+        case 0:
+            Display = 0x19;          // "P" En el display de siete segmentos
+            Display_One = 1;
+            __delay_us(Timing_Display);
+            Display_One = 0;
+            Display = 0xF3;         // "1" En el display de siete segmentos
+            Display_Two = 1;
+            __delay_us(Timing_Display);
+            Display_Two = 0;
+            break;
+        case 1:
+            Display = 0x19;        // "P" En el display de siete segmentos
+            Display_One = 1;
+            __delay_us(Timing_Display);
+            Display_One = 0;
+            Display = 0x49;       // "2" En el display de siete segmentos 
+            Display_Two = 1;
+            __delay_us(Timing_Display);
+            Display_Two = 0;
+            break;
+        case 2:
+            Display = 0x19;        // "P" En el display de siete segmentos
+            Display_One = 1;
+            __delay_us(Timing_Display);
+            Display_One = 0;
+            Display = 0x61;       // "3" En el display de siete segmentos 
+            Display_Two = 1;
+            __delay_us(Timing_Display);
+            Display_Two = 0;
+            break;
+        case 3:
+            Display = 0x19;        // "P" En el display de siete segmentos
+            Display_One = 1;
+            __delay_us(Timing_Display);
+            Display_One = 0;
+            Display = 0x33;       // "4" En el display de siete segmentos 
+            Display_Two = 1;
+            __delay_us(Timing_Display);
+            Display_Two = 0;
+            break;
+        default:
+            Count_Push_Button = 0;
+            break;
+        }
+        Button_Menu_Down_State = Button_Menu_Down;
+        if (Button_Menu_Down_State == 0 && Last_Button_Menu_Down_State == 1) {
+            Count_Push_Button++;
+        }
+        Last_Button_Menu_Down_State = Button_Menu_Down_State;
+    } while(Flag_Menu == 1);
 }
