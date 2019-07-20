@@ -5,7 +5,7 @@ Linker command line:
 -W-3 --edf=C:\Program Files (x86)\Microchip\xc8\v2.05\pic\dat\en_msgs.txt \
   -cs -h+dist/default/production\Electromecanica.X.production.sym \
   --cmf=dist/default/production\Electromecanica.X.production.cmf -z \
-  -Q18F2550 -oD:\Users\BotLAB\AppData\Local\Temp\s5ko.2 \
+  -Q18F2550 -oD:\Users\BotLAB\AppData\Local\Temp\s898.3 \
   --defsym=__MPLAB_BUILD=1 \
   -Mdist/default/production/Electromecanica.X.production.map -E1 -ver=XC8 \
   --acfsm=1493 -ASTACK=060h-07FFh -pstack=STACK -ACODE=00h-07FFFh \
@@ -24,7 +24,7 @@ Linker command line:
   -pfarbss=FARRAM,fardata=FARRAM,nvFARRAM=FARRAM \
   -pintsave_regs=BIGRAM,bigbss=BIGRAM,bigdata=BIGRAM -pbss=RAM \
   -pidata=CODE,irdata=CODE,ibigdata=CODE,ifardata=CODE -prparam=COMRAM \
-  D:\Users\BotLAB\AppData\Local\Temp\s5ko.o \
+  D:\Users\BotLAB\AppData\Local\Temp\s898.o \
   dist/default/production\Electromecanica.X.production.o 
 
 Object code version is 3.11
@@ -37,41 +37,105 @@ Call graph: (short form)
 
 
                 Name                               Link     Load   Length Selector   Space Scale
-D:\Users\BotLAB\AppData\Local\Temp\s5ko.o
+D:\Users\BotLAB\AppData\Local\Temp\s898.o
                 init                                  0        0        4        0       0
                 idloc                            200000   200000        8   200000       0
                 config                           300000   300000        E   300000       0
 dist/default/production\Electromecanica.X.production.o
-                text7                              7A86     7A86       28     3D43       0
-                text6                              7B24     7B24       48     3D92       0
-                text5                              7BEE     7BEE       AA     3DF7       0
-                text4                              7B6C     7B6C       82     3DB6       0
-                text3                              7D6E     7D6E      11E     3EB7       0
-                text2                              7C98     7C98       D6     3E4C       0
-                text1                              7E8C     7E8C      174     3F46       0
-                text0                              7AE2     7AE2       42     3D71       0
-                cstackCOMRAM                         2E       2E        4        1       1
-                dataCOMRAM                           32       32        3        1       1
-                bssCOMRAM                             1        1       2D        1       1
-                cinit                              7AAE     7AAE       34     3D57       0
-                nvCOMRAM                             35       35        1        1       1
-                idataCOMRAM                        7A83     7A83        3     7A83       0
+                text39                             6E00     6E00       28     3700       0
+                text38                             6DA4     6DA4        A     36D2       0
+                text37                             6DBC     6DBC       22     36DE       0
+                text36                             6E28     6E28       28     3714       0
+                text35                             7466     7466       AA     3A33       0
+                text34                             735A     735A       82     39AD       0
+                text33                             6E50     6E50       32     3728       0
+                text32                             6E82     6E82       32     3741       0
+                text31                             6EB4     6EB4       32     375A       0
+                text30                             6EE6     6EE6       32     3773       0
+                text29                             729C     729C       34     394E       0
+                text28                             6F18     6F18       32     378C       0
+                text27                             6F4A     6F4A       32     37A5       0
+                text26                             6F7C     6F7C       32     37BE       0
+                text25                             6FAE     6FAE       32     37D7       0
+                text24                             73DC     73DC       8A     39EE       0
+                text23                             6DDE     6DDE       22     36EF       0
+                text22                             7510     7510       D0     3A88       0
+                text21                             6FE0     6FE0       32     37F0       0
+                text20                             7012     7012       32     3809       0
+                text19                             7044     7044       32     3822       0
+                text18                             7076     7076       32     383B       0
+                text17                             70A8     70A8       32     3854       0
+                text16                             70DA     70DA       32     386D       0
+                text15                             710C     710C       32     3886       0
+                text14                             713E     713E       32     389F       0
+                text13                             7170     7170       32     38B8       0
+                text12                             71A2     71A2       32     38D1       0
+                text11                             71D4     71D4       32     38EA       0
+                text10                             7206     7206       32     3903       0
+                text9                              7238     7238       32     391C       0
+                text8                              726A     726A       32     3935       0
+                text7                              7A70     7A70      2C8     3D38       0
+                text6                              75E0     75E0       D0     3AF0       0
+                text5                              7D38     7D38      2C8     3E9C       0
+                text4                              78FA     78FA      176     3C7D       0
+                text3                              76B0     76B0       D6     3B58       0
+                text2                              7786     7786      174     3BC3       0
+                text1                              6DAE     6DAE        E     36D7       0
+                text0                              7304     7304       56     3982       0
+                cstackCOMRAM                         32       32        A        1       1
+                dataCOMRAM                           3F       3F        3        1       1
+                bssCOMRAM                             1        1       31        1       1
+                cinit                              72D0     72D0       34     3968       0
+                nvCOMRAM                             3C       3C        3        1       1
+                idataCOMRAM                        6DA1     6DA1        3     6DA1       0
 
 TOTAL           Name                               Link     Load   Length     Space
         CLASS   STACK          
 
         CLASS   CODE           
                 init                                  0        0        4         0
-                text7                              7A86     7A86       28         0
-                text6                              7B24     7B24       48         0
-                text5                              7BEE     7BEE       AA         0
-                text4                              7B6C     7B6C       82         0
-                text3                              7D6E     7D6E      11E         0
-                text2                              7C98     7C98       D6         0
-                text1                              7E8C     7E8C      174         0
-                text0                              7AE2     7AE2       42         0
-                cinit                              7AAE     7AAE       34         0
-                idataCOMRAM                        7A83     7A83        3         0
+                text39                             6E00     6E00       28         0
+                text38                             6DA4     6DA4        A         0
+                text37                             6DBC     6DBC       22         0
+                text36                             6E28     6E28       28         0
+                text35                             7466     7466       AA         0
+                text34                             735A     735A       82         0
+                text33                             6E50     6E50       32         0
+                text32                             6E82     6E82       32         0
+                text31                             6EB4     6EB4       32         0
+                text30                             6EE6     6EE6       32         0
+                text29                             729C     729C       34         0
+                text28                             6F18     6F18       32         0
+                text27                             6F4A     6F4A       32         0
+                text26                             6F7C     6F7C       32         0
+                text25                             6FAE     6FAE       32         0
+                text24                             73DC     73DC       8A         0
+                text23                             6DDE     6DDE       22         0
+                text22                             7510     7510       D0         0
+                text21                             6FE0     6FE0       32         0
+                text20                             7012     7012       32         0
+                text19                             7044     7044       32         0
+                text18                             7076     7076       32         0
+                text17                             70A8     70A8       32         0
+                text16                             70DA     70DA       32         0
+                text15                             710C     710C       32         0
+                text14                             713E     713E       32         0
+                text13                             7170     7170       32         0
+                text12                             71A2     71A2       32         0
+                text11                             71D4     71D4       32         0
+                text10                             7206     7206       32         0
+                text9                              7238     7238       32         0
+                text8                              726A     726A       32         0
+                text7                              7A70     7A70      2C8         0
+                text6                              75E0     75E0       D0         0
+                text5                              7D38     7D38      2C8         0
+                text4                              78FA     78FA      176         0
+                text3                              76B0     76B0       D6         0
+                text2                              7786     7786      174         0
+                text1                              6DAE     6DAE        E         0
+                text0                              7304     7304       56         0
+                cinit                              72D0     72D0       34         0
+                idataCOMRAM                        6DA1     6DA1        3         0
 
         CLASS   CONST          
 
@@ -80,10 +144,10 @@ TOTAL           Name                               Link     Load   Length     Sp
         CLASS   MEDIUMCONST    
 
         CLASS   COMRAM         
-                cstackCOMRAM                         2E       2E        4         1
-                dataCOMRAM                           32       32        3         1
-                bssCOMRAM                             1        1       2D         1
-                nvCOMRAM                             35       35        1         1
+                cstackCOMRAM                         32       32        A         1
+                dataCOMRAM                           3F       3F        3         1
+                bssCOMRAM                             1        1       31         1
+                nvCOMRAM                             3C       3C        3         1
 
         CLASS   ABS1           
 
@@ -124,17 +188,49 @@ TOTAL           Name                               Link     Load   Length     Sp
 SEGMENTS        Name                           Load    Length   Top    Selector   Space  Class
 
                 reset_vec                      000000  000004  000004         0       0  CODE    
-                bssCOMRAM                      000001  000035  000036         1       1  COMRAM  
-                idataCOMRAM                    007A83  000003  007A86      7A83       0  CODE    
-                text7                          007A86  000028  007AAE      3D43       0  CODE    
-                cinit                          007AAE  000034  007AE2      3D57       0  CODE    
-                text0                          007AE2  000042  007B24      3D71       0  CODE    
-                text6                          007B24  000048  007B6C      3D92       0  CODE    
-                text4                          007B6C  000082  007BEE      3DB6       0  CODE    
-                text5                          007BEE  0000AA  007C98      3DF7       0  CODE    
-                text2                          007C98  0000D6  007D6E      3E4C       0  CODE    
-                text3                          007D6E  00011E  007E8C      3EB7       0  CODE    
-                text1                          007E8C  000174  008000      3F46       0  CODE    
+                bssCOMRAM                      000001  000041  000042         1       1  COMRAM  
+                idataCOMRAM                    006DA1  000003  006DA4      6DA1       0  CODE    
+                text38                         006DA4  00000A  006DAE      36D2       0  CODE    
+                text1                          006DAE  00000E  006DBC      36D7       0  CODE    
+                text37                         006DBC  000022  006DDE      36DE       0  CODE    
+                text23                         006DDE  000022  006E00      36EF       0  CODE    
+                text39                         006E00  000028  006E28      3700       0  CODE    
+                text36                         006E28  000028  006E50      3714       0  CODE    
+                text33                         006E50  000032  006E82      3728       0  CODE    
+                text32                         006E82  000032  006EB4      3741       0  CODE    
+                text31                         006EB4  000032  006EE6      375A       0  CODE    
+                text30                         006EE6  000032  006F18      3773       0  CODE    
+                text28                         006F18  000032  006F4A      378C       0  CODE    
+                text27                         006F4A  000032  006F7C      37A5       0  CODE    
+                text26                         006F7C  000032  006FAE      37BE       0  CODE    
+                text25                         006FAE  000032  006FE0      37D7       0  CODE    
+                text21                         006FE0  000032  007012      37F0       0  CODE    
+                text20                         007012  000032  007044      3809       0  CODE    
+                text19                         007044  000032  007076      3822       0  CODE    
+                text18                         007076  000032  0070A8      383B       0  CODE    
+                text17                         0070A8  000032  0070DA      3854       0  CODE    
+                text16                         0070DA  000032  00710C      386D       0  CODE    
+                text15                         00710C  000032  00713E      3886       0  CODE    
+                text14                         00713E  000032  007170      389F       0  CODE    
+                text13                         007170  000032  0071A2      38B8       0  CODE    
+                text12                         0071A2  000032  0071D4      38D1       0  CODE    
+                text11                         0071D4  000032  007206      38EA       0  CODE    
+                text10                         007206  000032  007238      3903       0  CODE    
+                text9                          007238  000032  00726A      391C       0  CODE    
+                text8                          00726A  000032  00729C      3935       0  CODE    
+                text29                         00729C  000034  0072D0      394E       0  CODE    
+                cinit                          0072D0  000034  007304      3968       0  CODE    
+                text0                          007304  000056  00735A      3982       0  CODE    
+                text34                         00735A  000082  0073DC      39AD       0  CODE    
+                text24                         0073DC  00008A  007466      39EE       0  CODE    
+                text35                         007466  0000AA  007510      3A33       0  CODE    
+                text22                         007510  0000D0  0075E0      3A88       0  CODE    
+                text6                          0075E0  0000D0  0076B0      3AF0       0  CODE    
+                text3                          0076B0  0000D6  007786      3B58       0  CODE    
+                text2                          007786  000174  0078FA      3BC3       0  CODE    
+                text4                          0078FA  000176  007A70      3C7D       0  CODE    
+                text7                          007A70  0002C8  007D38      3D38       0  CODE    
+                text5                          007D38  0002C8  008000      3E9C       0  CODE    
                 idloc                          200000  000008  200008    200000       0  IDLOC   
                 config                         300000  00000E  30000E    300000       0  CONFIG  
 
@@ -150,64 +246,95 @@ UNUSED ADDRESS RANGES
         BANK5            000500-0005FF              100
         BANK6            000600-0006FF              100
         BANK7            000700-0007FF              100
-        BIGRAM           000036-0007FF              7CA
-        CODE             000004-007A82             7A7F
-        COMRAM           000036-00005F               2A
-        CONST            000004-007A82             7A7F
+        BIGRAM           000042-0007FF              7BE
+        CODE             000004-006DA0             6D9D
+        COMRAM           000042-00005F               1E
+        CONST            000004-006DA0             6D9D
         EEDATA           F00000-F000FF              100
-        MEDIUMCONST      000800-007A82             7283
+        MEDIUMCONST      000800-006DA0             65A1
         RAM              000060-0007FF              100
         SFR              000F60-000FFF               A0
-        SMALLCONST       000800-007A82              100
+        SMALLCONST       000800-006DA0              100
         STACK            000060-0007FF              7A0
 
                                   Symbol Table
 
-?_Analog_Read                cstackCOMRAM 00002E
-_ADC                         bssCOMRAM    00001D
+?_Analog_Read                cstackCOMRAM 000032
+_ADC                         bssCOMRAM    000021
 _ADCON0bits                  (abs)        000FC2
 _ADCON1                      (abs)        000FC1
 _ADCON2bits                  (abs)        000FC0
 _ADRESH                      (abs)        000FC4
 _ADRESL                      (abs)        000FC3
-_Analog_Read                 text7        007A86
+_Analog_Read                 text39       006E00
 _Buffer1                     bssCOMRAM    000001
-_Button_Menu_Down_State      bssCOMRAM    000028
-_Button_Menu_Up_State        nvCOMRAM     000035
-_Close_Lock                  text4        007B6C
-_Closing                     text5        007BEE
-_Count_Auto_Close            bssCOMRAM    000015
+_Button_Menu_Down_State      bssCOMRAM    00002C
+_Button_Menu_Up_State        nvCOMRAM     00003E
+_Clear                       text38       006DA4
+_Close_Lock                  text34       00735A
+_Closing                     text35       007466
+_Count_Auto_Close            bssCOMRAM    000019
 _Count_Exit_Menu             bssCOMRAM    000011
-_Count_Peake_Current         bssCOMRAM    000023
-_Count_Push_Button           bssCOMRAM    00001F
-_Count_Time_Close            bssCOMRAM    000019
-_Current                     bssCOMRAM    000021
+_Count_Peake_Current         bssCOMRAM    000027
+_Count_Push_Button           bssCOMRAM    000023
+_Count_Save                  bssCOMRAM    000015
+_Count_Time_Close            bssCOMRAM    00001D
+_Current                     bssCOMRAM    000025
+_Draw_0                      text28       006F18
+_Draw_1                      text27       006F4A
+_Draw_10                     text21       006FE0
+_Draw_11                     text20       007012
+_Draw_12                     text19       007044
+_Draw_13                     text18       007076
+_Draw_14                     text17       0070A8
+_Draw_15                     text16       0070DA
+_Draw_2                      text15       00710C
+_Draw_3                      text14       00713E
+_Draw_4                      text13       007170
+_Draw_5                      text12       0071A2
+_Draw_6                      text11       0071D4
+_Draw_7                      text10       007206
+_Draw_8                      text9        007238
+_Draw_9                      text8        00726A
+_Draw_CL                     text37       006DBC
+_Draw_P1                     text33       006E50
+_Draw_P2                     text32       006E82
+_Draw_P3                     text31       006EB4
+_Draw_P4                     text30       006EE6
+_Draw_Save_Dot_One           text26       006F7C
+_Draw_Save_Dot_Two           text25       006FAE
 _EEADR                       (abs)        000FA9
 _EECON1bits                  (abs)        000FA6
 _EECON2                      (abs)        000FA7
 _EEDATA                      (abs)        000FA8
-_End_Stop_Close_State        bssCOMRAM    00002A
-_End_Stop_Open_State         bssCOMRAM    000029
-_Flag_Menu                   bssCOMRAM    000025
+_End_Stop_Close_State        bssCOMRAM    00002E
+_End_Stop_Open_State         bssCOMRAM    00002D
+_Exit_Time_Menu              text29       00729C
+_Flag_Menu                   bssCOMRAM    000029
 _INTCONbits                  (abs)        000FF2
-_Inductive_State             bssCOMRAM    00002C
-_Last_Button_Menu_Down_State dataCOMRAM   000032
-_Last_Button_Menu_Up_State   dataCOMRAM   000033
-_Last_Inductive_State        bssCOMRAM    00002D
-_Last_Open_Contact_State     dataCOMRAM   000034
-_Menu                        text3        007D6E
-_Menu_In                     text2        007C98
-_Open_Contact_State          bssCOMRAM    00002B
-_Open_Lock                   text1        007E8C
+_Inductive_State             bssCOMRAM    000030
+_Last_Button_Menu_Down_State dataCOMRAM   00003F
+_Last_Button_Menu_Up_State   dataCOMRAM   000040
+_Last_Inductive_State        bssCOMRAM    000031
+_Last_Open_Contact_State     dataCOMRAM   000041
+_Menu                        text4        0078FA
+_Menu_In                     text3        0076B0
+_Menu_P1                     text22       007510
+_Menu_P2                     text7        007A70
+_Menu_P3                     text6        0075E0
+_Menu_P4                     text5        007D38
+_Open_Contact_State          bssCOMRAM    00002F
+_Open_Lock                   text2        007786
 _PORTAbits                   (abs)        000F80
 _PORTB                       (abs)        000F81
 _PORTCbits                   (abs)        000F82
-_Sense_Current               text6        007B24
+_Recording                   text24       0073DC
+_Sense_Current               text36       006E28
 _TRISAbits                   (abs)        000F92
 _TRISB                       (abs)        000F93
 _TRISCbits                   (abs)        000F94
-_Toggle_Down                 bssCOMRAM    000026
-_Toggle_Up                   bssCOMRAM    000027
+_Toggle_Down                 bssCOMRAM    00002A
+_Toggle_Up                   bssCOMRAM    00002B
 __CFG_BOR$OFF                (abs)        000000
 __CFG_BORV$3                 (abs)        000000
 __CFG_CCP2MX$ON              (abs)        000000
@@ -301,7 +428,7 @@ __Hrparam                    rparam       000000
 __Hsfr                       sfr          000000
 __Hsmallconst                smallconst   000000
 __Hspace_0                   (abs)        30000E
-__Hspace_1                   (abs)        000036
+__Hspace_1                   (abs)        000042
 __Hspace_2                   (abs)        000000
 __Hstack                     stack        000000
 __Hstruct                    struct       000000
@@ -309,12 +436,44 @@ __Htemp                      temp         000000
 __Htext                      text         000000
 __Htext0                     text0        000000
 __Htext1                     text1        000000
+__Htext10                    text10       000000
+__Htext11                    text11       000000
+__Htext12                    text12       000000
+__Htext13                    text13       000000
+__Htext14                    text14       000000
+__Htext15                    text15       000000
+__Htext16                    text16       000000
+__Htext17                    text17       000000
+__Htext18                    text18       000000
+__Htext19                    text19       000000
 __Htext2                     text2        000000
+__Htext20                    text20       000000
+__Htext21                    text21       000000
+__Htext22                    text22       000000
+__Htext23                    text23       000000
+__Htext24                    text24       000000
+__Htext25                    text25       000000
+__Htext26                    text26       000000
+__Htext27                    text27       000000
+__Htext28                    text28       000000
+__Htext29                    text29       000000
 __Htext3                     text3        000000
+__Htext30                    text30       000000
+__Htext31                    text31       000000
+__Htext32                    text32       000000
+__Htext33                    text33       000000
+__Htext34                    text34       000000
+__Htext35                    text35       000000
+__Htext36                    text36       000000
+__Htext37                    text37       000000
+__Htext38                    text38       000000
+__Htext39                    text39       000000
 __Htext4                     text4        000000
 __Htext5                     text5        000000
 __Htext6                     text6        000000
 __Htext7                     text7        000000
+__Htext8                     text8        000000
+__Htext9                     text9        000000
 __LRAM                       (abs)        000001
 __Labs1                      abs1         000000
 __Lbank0                     bank0        000000
@@ -379,14 +538,46 @@ __Ltemp                      temp         000000
 __Ltext                      text         000000
 __Ltext0                     text0        000000
 __Ltext1                     text1        000000
+__Ltext10                    text10       000000
+__Ltext11                    text11       000000
+__Ltext12                    text12       000000
+__Ltext13                    text13       000000
+__Ltext14                    text14       000000
+__Ltext15                    text15       000000
+__Ltext16                    text16       000000
+__Ltext17                    text17       000000
+__Ltext18                    text18       000000
+__Ltext19                    text19       000000
 __Ltext2                     text2        000000
+__Ltext20                    text20       000000
+__Ltext21                    text21       000000
+__Ltext22                    text22       000000
+__Ltext23                    text23       000000
+__Ltext24                    text24       000000
+__Ltext25                    text25       000000
+__Ltext26                    text26       000000
+__Ltext27                    text27       000000
+__Ltext28                    text28       000000
+__Ltext29                    text29       000000
 __Ltext3                     text3        000000
+__Ltext30                    text30       000000
+__Ltext31                    text31       000000
+__Ltext32                    text32       000000
+__Ltext33                    text33       000000
+__Ltext34                    text34       000000
+__Ltext35                    text35       000000
+__Ltext36                    text36       000000
+__Ltext37                    text37       000000
+__Ltext38                    text38       000000
+__Ltext39                    text39       000000
 __Ltext4                     text4        000000
 __Ltext5                     text5        000000
 __Ltext6                     text6        000000
 __Ltext7                     text7        000000
+__Ltext8                     text8        000000
+__Ltext9                     text9        000000
 __S0                         (abs)        30000E
-__S1                         (abs)        000036
+__S1                         (abs)        000042
 __S2                         (abs)        000000
 ___inthi_sp                  stack        000000
 ___intlo_sp                  stack        000000
@@ -395,43 +586,145 @@ ___rparam_used               (abs)        000001
 ___sp                        stack        000000
 __accesstop                  (abs)        000060
 __activetblptr               (abs)        000002
-__end_of_Analog_Read         text7        007AAE
-__end_of_Close_Lock          text4        007BEE
-__end_of_Closing             text5        007C98
-__end_of_Menu                text3        007E8C
-__end_of_Menu_In             text2        007D6E
-__end_of_Open_Lock           text1        008000
-__end_of_Sense_Current       text6        007B6C
-__end_of__initialization     cinit        007AD8
-__end_of_main                text0        007B24
-__initialization             cinit        007AAE
+__end_of_Analog_Read         text39       006E28
+__end_of_Clear               text38       006DAE
+__end_of_Close_Lock          text34       0073DC
+__end_of_Closing             text35       007510
+__end_of_Draw_0              text28       006F4A
+__end_of_Draw_1              text27       006F7C
+__end_of_Draw_10             text21       007012
+__end_of_Draw_11             text20       007044
+__end_of_Draw_12             text19       007076
+__end_of_Draw_13             text18       0070A8
+__end_of_Draw_14             text17       0070DA
+__end_of_Draw_15             text16       00710C
+__end_of_Draw_2              text15       00713E
+__end_of_Draw_3              text14       007170
+__end_of_Draw_4              text13       0071A2
+__end_of_Draw_5              text12       0071D4
+__end_of_Draw_6              text11       007206
+__end_of_Draw_7              text10       007238
+__end_of_Draw_8              text9        00726A
+__end_of_Draw_9              text8        00729C
+__end_of_Draw_CL             text37       006DDE
+__end_of_Draw_P1             text33       006E82
+__end_of_Draw_P2             text32       006EB4
+__end_of_Draw_P3             text31       006EE6
+__end_of_Draw_P4             text30       006F18
+__end_of_Draw_Save_Dot_One   text26       006FAE
+__end_of_Draw_Save_Dot_Two   text25       006FE0
+__end_of_Exit_Time_Menu      text29       0072D0
+__end_of_Menu                text4        007A70
+__end_of_Menu_In             text3        007786
+__end_of_Menu_P1             text22       0075E0
+__end_of_Menu_P2             text7        007D38
+__end_of_Menu_P3             text6        0076B0
+__end_of_Menu_P4             text5        008000
+__end_of_Open_Lock           text2        0078FA
+__end_of_Recording           text24       007466
+__end_of_Sense_Current       text36       006E50
+__end_of__initialization     cinit        0072FA
+__end_of_eeprom_readx        text1        006DBC
+__end_of_eeprom_writex       text23       006E00
+__end_of_main                text0        00735A
+__initialization             cinit        0072D0
 __mediumconst                mediumconst  000000
 __pbssCOMRAM                 bssCOMRAM    000001
-__pcinit                     cinit        007AAE
-__pcstackCOMRAM              cstackCOMRAM 00002E
-__pdataCOMRAM                dataCOMRAM   000032
-__pidataCOMRAM               idataCOMRAM  007A83
-__pnvCOMRAM                  nvCOMRAM     000035
-__ptext0                     text0        007AE2
-__ptext1                     text1        007E8C
-__ptext2                     text2        007C98
-__ptext3                     text3        007D6E
-__ptext4                     text4        007B6C
-__ptext5                     text5        007BEE
-__ptext6                     text6        007B24
-__ptext7                     text7        007A86
+__pcinit                     cinit        0072D0
+__pcstackCOMRAM              cstackCOMRAM 000032
+__pdataCOMRAM                dataCOMRAM   00003F
+__pidataCOMRAM               idataCOMRAM  006DA1
+__pnvCOMRAM                  nvCOMRAM     00003C
+__ptext0                     text0        007304
+__ptext1                     text1        006DAE
+__ptext10                    text10       007206
+__ptext11                    text11       0071D4
+__ptext12                    text12       0071A2
+__ptext13                    text13       007170
+__ptext14                    text14       00713E
+__ptext15                    text15       00710C
+__ptext16                    text16       0070DA
+__ptext17                    text17       0070A8
+__ptext18                    text18       007076
+__ptext19                    text19       007044
+__ptext2                     text2        007786
+__ptext20                    text20       007012
+__ptext21                    text21       006FE0
+__ptext22                    text22       007510
+__ptext23                    text23       006DDE
+__ptext24                    text24       0073DC
+__ptext25                    text25       006FAE
+__ptext26                    text26       006F7C
+__ptext27                    text27       006F4A
+__ptext28                    text28       006F18
+__ptext29                    text29       00729C
+__ptext3                     text3        0076B0
+__ptext30                    text30       006EE6
+__ptext31                    text31       006EB4
+__ptext32                    text32       006E82
+__ptext33                    text33       006E50
+__ptext34                    text34       00735A
+__ptext35                    text35       007466
+__ptext36                    text36       006E28
+__ptext37                    text37       006DBC
+__ptext38                    text38       006DA4
+__ptext39                    text39       006E00
+__ptext4                     text4        0078FA
+__ptext5                     text5        007D38
+__ptext6                     text6        0075E0
+__ptext7                     text7        007A70
+__ptext8                     text8        00726A
+__ptext9                     text9        007238
 __ramtop                     ramtop       000800
 __size_of_Analog_Read        (abs)        000000
+__size_of_Clear              (abs)        000000
 __size_of_Close_Lock         (abs)        000000
 __size_of_Closing            (abs)        000000
+__size_of_Draw_0             (abs)        000000
+__size_of_Draw_1             (abs)        000000
+__size_of_Draw_10            (abs)        000000
+__size_of_Draw_11            (abs)        000000
+__size_of_Draw_12            (abs)        000000
+__size_of_Draw_13            (abs)        000000
+__size_of_Draw_14            (abs)        000000
+__size_of_Draw_15            (abs)        000000
+__size_of_Draw_2             (abs)        000000
+__size_of_Draw_3             (abs)        000000
+__size_of_Draw_4             (abs)        000000
+__size_of_Draw_5             (abs)        000000
+__size_of_Draw_6             (abs)        000000
+__size_of_Draw_7             (abs)        000000
+__size_of_Draw_8             (abs)        000000
+__size_of_Draw_9             (abs)        000000
+__size_of_Draw_CL            (abs)        000000
+__size_of_Draw_P1            (abs)        000000
+__size_of_Draw_P2            (abs)        000000
+__size_of_Draw_P3            (abs)        000000
+__size_of_Draw_P4            (abs)        000000
+__size_of_Draw_Save_Dot_One  (abs)        000000
+__size_of_Draw_Save_Dot_Two  (abs)        000000
+__size_of_Exit_Time_Menu     (abs)        000000
 __size_of_Menu               (abs)        000000
 __size_of_Menu_In            (abs)        000000
+__size_of_Menu_P1            (abs)        000000
+__size_of_Menu_P2            (abs)        000000
+__size_of_Menu_P3            (abs)        000000
+__size_of_Menu_P4            (abs)        000000
 __size_of_Open_Lock          (abs)        000000
+__size_of_Recording          (abs)        000000
 __size_of_Sense_Current      (abs)        000000
+__size_of_eeprom_readx       (abs)        000000
+__size_of_eeprom_writex      (abs)        000000
 __size_of_main               (abs)        000000
 __smallconst                 smallconst   000000
-_main                        text0        007AE2
-end_of_initialization        cinit        007AD8
+_data_test                   nvCOMRAM     00003C
+_eeprom_readx                text1        006DAE
+_eeprom_writex               text23       006DDE
+_main                        text0        007304
+eeprom_readx@address         cstackCOMRAM 000032
+eeprom_writex@address        cstackCOMRAM 000032
+eeprom_writex@data           cstackCOMRAM 000034
+end_of_initialization        cinit        0072FA
 intlevel0                    text         000000
 intlevel1                    text         000000
 intlevel2                    text         000000
@@ -439,14 +732,14 @@ intlevel3                    text         000000
 stackhi                      (abs)        0007FF
 stacklo                      (abs)        000060
 start                        init         000000
-start_initialization         cinit        007AAE
+start_initialization         cinit        0072D0
 
 
 FUNCTION INFORMATION:
 
  *************** function _main *****************
  Defined at:
-		line 76 in file "main.c"
+		line 115 in file "main.c"
  Parameters:    Size  Location     Type
 		None
  Auto vars:     Size  Location     Type
@@ -462,22 +755,52 @@ FUNCTION INFORMATION:
  Data sizes:     COMRAM   BANK0   BANK1   BANK2   BANK3   BANK4   BANK5   BANK6   BANK7
       Params:         0       0       0       0       0       0       0       0       0
       Locals:         0       0       0       0       0       0       0       0       0
-      Temps:          0       0       0       0       0       0       0       0       0
-      Totals:         0       0       0       0       0       0       0       0       0
-Total ram usage:        0 bytes
- Hardware stack levels required when called:    4
+      Temps:          1       0       0       0       0       0       0       0       0
+      Totals:         1       0       0       0       0       0       0       0       0
+Total ram usage:        1 bytes
+ Hardware stack levels required when called:    5
  This function calls:
 		_Close_Lock
 		_Menu_In
 		_Open_Lock
+		_eeprom_readx
  This function is called by:
 		Startup code after reset
  This function uses a non-reentrant model
 
 
+ *************** function _eeprom_readx *****************
+ Defined at:
+		line 305 in file "main.c"
+ Parameters:    Size  Location     Type
+  address         2    0[COMRAM] int 
+ Auto vars:     Size  Location     Type
+		None
+ Return value:  Size  Location     Type
+                  1    wreg      unsigned char 
+ Registers used:
+		wreg, status,2
+ Tracked objects:
+		On entry : 
+		On exit  : 
+		Unchanged: 
+ Data sizes:     COMRAM   BANK0   BANK1   BANK2   BANK3   BANK4   BANK5   BANK6   BANK7
+      Params:         2       0       0       0       0       0       0       0       0
+      Locals:         0       0       0       0       0       0       0       0       0
+      Temps:          0       0       0       0       0       0       0       0       0
+      Totals:         2       0       0       0       0       0       0       0       0
+Total ram usage:        2 bytes
+ Hardware stack levels used:    1
+ This function calls:
+		Nothing
+ This function is called by:
+		_main
+ This function uses a non-reentrant model
+
+
  *************** function _Open_Lock *****************
  Defined at:
-		line 138 in file "main.c"
+		line 187 in file "main.c"
  Parameters:    Size  Location     Type
 		None
  Auto vars:     Size  Location     Type
@@ -508,7 +831,688 @@ Total ram usage:        2 bytes
 
  *************** function _Menu_In *****************
  Defined at:
-		line 273 in file "main.c"
+		line 313 in file "main.c"
+ Parameters:    Size  Location     Type
+		None
+ Auto vars:     Size  Location     Type
+		None
+ Return value:  Size  Location     Type
+                  1    wreg      void 
+ Registers used:
+		wreg, status,2, status,0, cstack
+ Tracked objects:
+		On entry : 
+		On exit  : 
+		Unchanged: 
+ Data sizes:     COMRAM   BANK0   BANK1   BANK2   BANK3   BANK4   BANK5   BANK6   BANK7
+      Params:         0       0       0       0       0       0       0       0       0
+      Locals:         0       0       0       0       0       0       0       0       0
+      Temps:          2       0       0       0       0       0       0       0       0
+      Totals:         2       0       0       0       0       0       0       0       0
+Total ram usage:        2 bytes
+ Hardware stack levels used:    1
+ Hardware stack levels required when called:    4
+ This function calls:
+		_Menu
+ This function is called by:
+		_main
+ This function uses a non-reentrant model
+
+
+ *************** function _Menu *****************
+ Defined at:
+		line 345 in file "main.c"
+ Parameters:    Size  Location     Type
+		None
+ Auto vars:     Size  Location     Type
+		None
+ Return value:  Size  Location     Type
+                  1    wreg      void 
+ Registers used:
+		wreg, status,2, status,0, cstack
+ Tracked objects:
+		On entry : 
+		On exit  : 
+		Unchanged: 
+ Data sizes:     COMRAM   BANK0   BANK1   BANK2   BANK3   BANK4   BANK5   BANK6   BANK7
+      Params:         0       0       0       0       0       0       0       0       0
+      Locals:         0       0       0       0       0       0       0       0       0
+      Temps:          2       0       0       0       0       0       0       0       0
+      Totals:         2       0       0       0       0       0       0       0       0
+Total ram usage:        2 bytes
+ Hardware stack levels used:    1
+ Hardware stack levels required when called:    3
+ This function calls:
+		_Draw_P1
+		_Draw_P2
+		_Draw_P3
+		_Draw_P4
+		_Exit_Time_Menu
+		_Menu_P1
+		_Menu_P2
+		_Menu_P3
+		_Menu_P4
+ This function is called by:
+		_Menu_In
+ This function uses a non-reentrant model
+
+
+ *************** function _Menu_P4 *****************
+ Defined at:
+		line 643 in file "main.c"
+ Parameters:    Size  Location     Type
+		None
+ Auto vars:     Size  Location     Type
+		None
+ Return value:  Size  Location     Type
+                  1    wreg      void 
+ Registers used:
+		wreg, status,2, status,0, cstack
+ Tracked objects:
+		On entry : 
+		On exit  : 
+		Unchanged: 
+ Data sizes:     COMRAM   BANK0   BANK1   BANK2   BANK3   BANK4   BANK5   BANK6   BANK7
+      Params:         0       0       0       0       0       0       0       0       0
+      Locals:         0       0       0       0       0       0       0       0       0
+      Temps:          2       0       0       0       0       0       0       0       0
+      Totals:         2       0       0       0       0       0       0       0       0
+Total ram usage:        2 bytes
+ Hardware stack levels used:    1
+ Hardware stack levels required when called:    2
+ This function calls:
+		_Draw_0
+		_Draw_1
+		_Draw_10
+		_Draw_11
+		_Draw_12
+		_Draw_13
+		_Draw_14
+		_Draw_15
+		_Draw_2
+		_Draw_3
+		_Draw_4
+		_Draw_5
+		_Draw_6
+		_Draw_7
+		_Draw_8
+		_Draw_9
+		_Recording
+		_eeprom_writex
+ This function is called by:
+		_Menu
+ This function uses a non-reentrant model
+
+
+ *************** function _Menu_P3 *****************
+ Defined at:
+		line 600 in file "main.c"
+ Parameters:    Size  Location     Type
+		None
+ Auto vars:     Size  Location     Type
+		None
+ Return value:  Size  Location     Type
+                  1    wreg      void 
+ Registers used:
+		wreg, status,2, status,0, cstack
+ Tracked objects:
+		On entry : 
+		On exit  : 
+		Unchanged: 
+ Data sizes:     COMRAM   BANK0   BANK1   BANK2   BANK3   BANK4   BANK5   BANK6   BANK7
+      Params:         0       0       0       0       0       0       0       0       0
+      Locals:         0       0       0       0       0       0       0       0       0
+      Temps:          2       0       0       0       0       0       0       0       0
+      Totals:         2       0       0       0       0       0       0       0       0
+Total ram usage:        2 bytes
+ Hardware stack levels used:    1
+ Hardware stack levels required when called:    2
+ This function calls:
+		_Draw_0
+		_Draw_1
+		_Recording
+		_eeprom_writex
+ This function is called by:
+		_Menu
+ This function uses a non-reentrant model
+
+
+ *************** function _Menu_P2 *****************
+ Defined at:
+		line 459 in file "main.c"
+ Parameters:    Size  Location     Type
+		None
+ Auto vars:     Size  Location     Type
+		None
+ Return value:  Size  Location     Type
+                  1    wreg      void 
+ Registers used:
+		wreg, status,2, status,0, cstack
+ Tracked objects:
+		On entry : 
+		On exit  : 
+		Unchanged: 
+ Data sizes:     COMRAM   BANK0   BANK1   BANK2   BANK3   BANK4   BANK5   BANK6   BANK7
+      Params:         0       0       0       0       0       0       0       0       0
+      Locals:         0       0       0       0       0       0       0       0       0
+      Temps:          2       0       0       0       0       0       0       0       0
+      Totals:         2       0       0       0       0       0       0       0       0
+Total ram usage:        2 bytes
+ Hardware stack levels used:    1
+ Hardware stack levels required when called:    2
+ This function calls:
+		_Draw_0
+		_Draw_1
+		_Draw_10
+		_Draw_11
+		_Draw_12
+		_Draw_13
+		_Draw_14
+		_Draw_15
+		_Draw_2
+		_Draw_3
+		_Draw_4
+		_Draw_5
+		_Draw_6
+		_Draw_7
+		_Draw_8
+		_Draw_9
+		_Recording
+		_eeprom_writex
+ This function is called by:
+		_Menu
+ This function uses a non-reentrant model
+
+
+ *************** function _Draw_9 *****************
+ Defined at:
+		line 944 in file "main.c"
+ Parameters:    Size  Location     Type
+		None
+ Auto vars:     Size  Location     Type
+		None
+ Return value:  Size  Location     Type
+                  1    wreg      void 
+ Registers used:
+		wreg, status,2
+ Tracked objects:
+		On entry : 
+		On exit  : 
+		Unchanged: 
+ Data sizes:     COMRAM   BANK0   BANK1   BANK2   BANK3   BANK4   BANK5   BANK6   BANK7
+      Params:         0       0       0       0       0       0       0       0       0
+      Locals:         0       0       0       0       0       0       0       0       0
+      Temps:          1       0       0       0       0       0       0       0       0
+      Totals:         1       0       0       0       0       0       0       0       0
+Total ram usage:        1 bytes
+ Hardware stack levels used:    1
+ This function calls:
+		Nothing
+ This function is called by:
+		_Menu_P2
+		_Menu_P4
+ This function uses a non-reentrant model
+
+
+ *************** function _Draw_8 *****************
+ Defined at:
+		line 933 in file "main.c"
+ Parameters:    Size  Location     Type
+		None
+ Auto vars:     Size  Location     Type
+		None
+ Return value:  Size  Location     Type
+                  1    wreg      void 
+ Registers used:
+		wreg, status,2
+ Tracked objects:
+		On entry : 
+		On exit  : 
+		Unchanged: 
+ Data sizes:     COMRAM   BANK0   BANK1   BANK2   BANK3   BANK4   BANK5   BANK6   BANK7
+      Params:         0       0       0       0       0       0       0       0       0
+      Locals:         0       0       0       0       0       0       0       0       0
+      Temps:          1       0       0       0       0       0       0       0       0
+      Totals:         1       0       0       0       0       0       0       0       0
+Total ram usage:        1 bytes
+ Hardware stack levels used:    1
+ This function calls:
+		Nothing
+ This function is called by:
+		_Menu_P2
+		_Menu_P4
+ This function uses a non-reentrant model
+
+
+ *************** function _Draw_7 *****************
+ Defined at:
+		line 922 in file "main.c"
+ Parameters:    Size  Location     Type
+		None
+ Auto vars:     Size  Location     Type
+		None
+ Return value:  Size  Location     Type
+                  1    wreg      void 
+ Registers used:
+		wreg, status,2
+ Tracked objects:
+		On entry : 
+		On exit  : 
+		Unchanged: 
+ Data sizes:     COMRAM   BANK0   BANK1   BANK2   BANK3   BANK4   BANK5   BANK6   BANK7
+      Params:         0       0       0       0       0       0       0       0       0
+      Locals:         0       0       0       0       0       0       0       0       0
+      Temps:          1       0       0       0       0       0       0       0       0
+      Totals:         1       0       0       0       0       0       0       0       0
+Total ram usage:        1 bytes
+ Hardware stack levels used:    1
+ This function calls:
+		Nothing
+ This function is called by:
+		_Menu_P2
+		_Menu_P4
+ This function uses a non-reentrant model
+
+
+ *************** function _Draw_6 *****************
+ Defined at:
+		line 911 in file "main.c"
+ Parameters:    Size  Location     Type
+		None
+ Auto vars:     Size  Location     Type
+		None
+ Return value:  Size  Location     Type
+                  1    wreg      void 
+ Registers used:
+		wreg, status,2
+ Tracked objects:
+		On entry : 
+		On exit  : 
+		Unchanged: 
+ Data sizes:     COMRAM   BANK0   BANK1   BANK2   BANK3   BANK4   BANK5   BANK6   BANK7
+      Params:         0       0       0       0       0       0       0       0       0
+      Locals:         0       0       0       0       0       0       0       0       0
+      Temps:          1       0       0       0       0       0       0       0       0
+      Totals:         1       0       0       0       0       0       0       0       0
+Total ram usage:        1 bytes
+ Hardware stack levels used:    1
+ This function calls:
+		Nothing
+ This function is called by:
+		_Menu_P2
+		_Menu_P4
+ This function uses a non-reentrant model
+
+
+ *************** function _Draw_5 *****************
+ Defined at:
+		line 900 in file "main.c"
+ Parameters:    Size  Location     Type
+		None
+ Auto vars:     Size  Location     Type
+		None
+ Return value:  Size  Location     Type
+                  1    wreg      void 
+ Registers used:
+		wreg, status,2
+ Tracked objects:
+		On entry : 
+		On exit  : 
+		Unchanged: 
+ Data sizes:     COMRAM   BANK0   BANK1   BANK2   BANK3   BANK4   BANK5   BANK6   BANK7
+      Params:         0       0       0       0       0       0       0       0       0
+      Locals:         0       0       0       0       0       0       0       0       0
+      Temps:          1       0       0       0       0       0       0       0       0
+      Totals:         1       0       0       0       0       0       0       0       0
+Total ram usage:        1 bytes
+ Hardware stack levels used:    1
+ This function calls:
+		Nothing
+ This function is called by:
+		_Menu_P2
+		_Menu_P4
+ This function uses a non-reentrant model
+
+
+ *************** function _Draw_4 *****************
+ Defined at:
+		line 889 in file "main.c"
+ Parameters:    Size  Location     Type
+		None
+ Auto vars:     Size  Location     Type
+		None
+ Return value:  Size  Location     Type
+                  1    wreg      void 
+ Registers used:
+		wreg, status,2
+ Tracked objects:
+		On entry : 
+		On exit  : 
+		Unchanged: 
+ Data sizes:     COMRAM   BANK0   BANK1   BANK2   BANK3   BANK4   BANK5   BANK6   BANK7
+      Params:         0       0       0       0       0       0       0       0       0
+      Locals:         0       0       0       0       0       0       0       0       0
+      Temps:          1       0       0       0       0       0       0       0       0
+      Totals:         1       0       0       0       0       0       0       0       0
+Total ram usage:        1 bytes
+ Hardware stack levels used:    1
+ This function calls:
+		Nothing
+ This function is called by:
+		_Menu_P2
+		_Menu_P4
+ This function uses a non-reentrant model
+
+
+ *************** function _Draw_3 *****************
+ Defined at:
+		line 878 in file "main.c"
+ Parameters:    Size  Location     Type
+		None
+ Auto vars:     Size  Location     Type
+		None
+ Return value:  Size  Location     Type
+                  1    wreg      void 
+ Registers used:
+		wreg, status,2
+ Tracked objects:
+		On entry : 
+		On exit  : 
+		Unchanged: 
+ Data sizes:     COMRAM   BANK0   BANK1   BANK2   BANK3   BANK4   BANK5   BANK6   BANK7
+      Params:         0       0       0       0       0       0       0       0       0
+      Locals:         0       0       0       0       0       0       0       0       0
+      Temps:          1       0       0       0       0       0       0       0       0
+      Totals:         1       0       0       0       0       0       0       0       0
+Total ram usage:        1 bytes
+ Hardware stack levels used:    1
+ This function calls:
+		Nothing
+ This function is called by:
+		_Menu_P2
+		_Menu_P4
+ This function uses a non-reentrant model
+
+
+ *************** function _Draw_2 *****************
+ Defined at:
+		line 867 in file "main.c"
+ Parameters:    Size  Location     Type
+		None
+ Auto vars:     Size  Location     Type
+		None
+ Return value:  Size  Location     Type
+                  1    wreg      void 
+ Registers used:
+		wreg, status,2
+ Tracked objects:
+		On entry : 
+		On exit  : 
+		Unchanged: 
+ Data sizes:     COMRAM   BANK0   BANK1   BANK2   BANK3   BANK4   BANK5   BANK6   BANK7
+      Params:         0       0       0       0       0       0       0       0       0
+      Locals:         0       0       0       0       0       0       0       0       0
+      Temps:          1       0       0       0       0       0       0       0       0
+      Totals:         1       0       0       0       0       0       0       0       0
+Total ram usage:        1 bytes
+ Hardware stack levels used:    1
+ This function calls:
+		Nothing
+ This function is called by:
+		_Menu_P2
+		_Menu_P4
+ This function uses a non-reentrant model
+
+
+ *************** function _Draw_15 *****************
+ Defined at:
+		line 1010 in file "main.c"
+ Parameters:    Size  Location     Type
+		None
+ Auto vars:     Size  Location     Type
+		None
+ Return value:  Size  Location     Type
+                  1    wreg      void 
+ Registers used:
+		wreg, status,2
+ Tracked objects:
+		On entry : 
+		On exit  : 
+		Unchanged: 
+ Data sizes:     COMRAM   BANK0   BANK1   BANK2   BANK3   BANK4   BANK5   BANK6   BANK7
+      Params:         0       0       0       0       0       0       0       0       0
+      Locals:         0       0       0       0       0       0       0       0       0
+      Temps:          1       0       0       0       0       0       0       0       0
+      Totals:         1       0       0       0       0       0       0       0       0
+Total ram usage:        1 bytes
+ Hardware stack levels used:    1
+ This function calls:
+		Nothing
+ This function is called by:
+		_Menu_P2
+		_Menu_P4
+ This function uses a non-reentrant model
+
+
+ *************** function _Draw_14 *****************
+ Defined at:
+		line 999 in file "main.c"
+ Parameters:    Size  Location     Type
+		None
+ Auto vars:     Size  Location     Type
+		None
+ Return value:  Size  Location     Type
+                  1    wreg      void 
+ Registers used:
+		wreg, status,2
+ Tracked objects:
+		On entry : 
+		On exit  : 
+		Unchanged: 
+ Data sizes:     COMRAM   BANK0   BANK1   BANK2   BANK3   BANK4   BANK5   BANK6   BANK7
+      Params:         0       0       0       0       0       0       0       0       0
+      Locals:         0       0       0       0       0       0       0       0       0
+      Temps:          1       0       0       0       0       0       0       0       0
+      Totals:         1       0       0       0       0       0       0       0       0
+Total ram usage:        1 bytes
+ Hardware stack levels used:    1
+ This function calls:
+		Nothing
+ This function is called by:
+		_Menu_P2
+		_Menu_P4
+ This function uses a non-reentrant model
+
+
+ *************** function _Draw_13 *****************
+ Defined at:
+		line 988 in file "main.c"
+ Parameters:    Size  Location     Type
+		None
+ Auto vars:     Size  Location     Type
+		None
+ Return value:  Size  Location     Type
+                  1    wreg      void 
+ Registers used:
+		wreg, status,2
+ Tracked objects:
+		On entry : 
+		On exit  : 
+		Unchanged: 
+ Data sizes:     COMRAM   BANK0   BANK1   BANK2   BANK3   BANK4   BANK5   BANK6   BANK7
+      Params:         0       0       0       0       0       0       0       0       0
+      Locals:         0       0       0       0       0       0       0       0       0
+      Temps:          1       0       0       0       0       0       0       0       0
+      Totals:         1       0       0       0       0       0       0       0       0
+Total ram usage:        1 bytes
+ Hardware stack levels used:    1
+ This function calls:
+		Nothing
+ This function is called by:
+		_Menu_P2
+		_Menu_P4
+ This function uses a non-reentrant model
+
+
+ *************** function _Draw_12 *****************
+ Defined at:
+		line 977 in file "main.c"
+ Parameters:    Size  Location     Type
+		None
+ Auto vars:     Size  Location     Type
+		None
+ Return value:  Size  Location     Type
+                  1    wreg      void 
+ Registers used:
+		wreg, status,2
+ Tracked objects:
+		On entry : 
+		On exit  : 
+		Unchanged: 
+ Data sizes:     COMRAM   BANK0   BANK1   BANK2   BANK3   BANK4   BANK5   BANK6   BANK7
+      Params:         0       0       0       0       0       0       0       0       0
+      Locals:         0       0       0       0       0       0       0       0       0
+      Temps:          1       0       0       0       0       0       0       0       0
+      Totals:         1       0       0       0       0       0       0       0       0
+Total ram usage:        1 bytes
+ Hardware stack levels used:    1
+ This function calls:
+		Nothing
+ This function is called by:
+		_Menu_P2
+		_Menu_P4
+ This function uses a non-reentrant model
+
+
+ *************** function _Draw_11 *****************
+ Defined at:
+		line 966 in file "main.c"
+ Parameters:    Size  Location     Type
+		None
+ Auto vars:     Size  Location     Type
+		None
+ Return value:  Size  Location     Type
+                  1    wreg      void 
+ Registers used:
+		wreg, status,2
+ Tracked objects:
+		On entry : 
+		On exit  : 
+		Unchanged: 
+ Data sizes:     COMRAM   BANK0   BANK1   BANK2   BANK3   BANK4   BANK5   BANK6   BANK7
+      Params:         0       0       0       0       0       0       0       0       0
+      Locals:         0       0       0       0       0       0       0       0       0
+      Temps:          1       0       0       0       0       0       0       0       0
+      Totals:         1       0       0       0       0       0       0       0       0
+Total ram usage:        1 bytes
+ Hardware stack levels used:    1
+ This function calls:
+		Nothing
+ This function is called by:
+		_Menu_P2
+		_Menu_P4
+ This function uses a non-reentrant model
+
+
+ *************** function _Draw_10 *****************
+ Defined at:
+		line 955 in file "main.c"
+ Parameters:    Size  Location     Type
+		None
+ Auto vars:     Size  Location     Type
+		None
+ Return value:  Size  Location     Type
+                  1    wreg      void 
+ Registers used:
+		wreg, status,2
+ Tracked objects:
+		On entry : 
+		On exit  : 
+		Unchanged: 
+ Data sizes:     COMRAM   BANK0   BANK1   BANK2   BANK3   BANK4   BANK5   BANK6   BANK7
+      Params:         0       0       0       0       0       0       0       0       0
+      Locals:         0       0       0       0       0       0       0       0       0
+      Temps:          1       0       0       0       0       0       0       0       0
+      Totals:         1       0       0       0       0       0       0       0       0
+Total ram usage:        1 bytes
+ Hardware stack levels used:    1
+ This function calls:
+		Nothing
+ This function is called by:
+		_Menu_P2
+		_Menu_P4
+ This function uses a non-reentrant model
+
+
+ *************** function _Menu_P1 *****************
+ Defined at:
+		line 416 in file "main.c"
+ Parameters:    Size  Location     Type
+		None
+ Auto vars:     Size  Location     Type
+		None
+ Return value:  Size  Location     Type
+                  1    wreg      void 
+ Registers used:
+		wreg, status,2, status,0, cstack
+ Tracked objects:
+		On entry : 
+		On exit  : 
+		Unchanged: 
+ Data sizes:     COMRAM   BANK0   BANK1   BANK2   BANK3   BANK4   BANK5   BANK6   BANK7
+      Params:         0       0       0       0       0       0       0       0       0
+      Locals:         0       0       0       0       0       0       0       0       0
+      Temps:          2       0       0       0       0       0       0       0       0
+      Totals:         2       0       0       0       0       0       0       0       0
+Total ram usage:        2 bytes
+ Hardware stack levels used:    1
+ Hardware stack levels required when called:    2
+ This function calls:
+		_Draw_0
+		_Draw_1
+		_Recording
+		_eeprom_writex
+ This function is called by:
+		_Menu
+ This function uses a non-reentrant model
+
+
+ *************** function _eeprom_writex *****************
+ Defined at:
+		line 289 in file "main.c"
+ Parameters:    Size  Location     Type
+  address         2    0[COMRAM] int 
+  data            1    2[COMRAM] unsigned char 
+ Auto vars:     Size  Location     Type
+		None
+ Return value:  Size  Location     Type
+                  1    wreg      void 
+ Registers used:
+		wreg, status,2
+ Tracked objects:
+		On entry : 
+		On exit  : 
+		Unchanged: 
+ Data sizes:     COMRAM   BANK0   BANK1   BANK2   BANK3   BANK4   BANK5   BANK6   BANK7
+      Params:         3       0       0       0       0       0       0       0       0
+      Locals:         0       0       0       0       0       0       0       0       0
+      Temps:          0       0       0       0       0       0       0       0       0
+      Totals:         3       0       0       0       0       0       0       0       0
+Total ram usage:        3 bytes
+ Hardware stack levels used:    1
+ This function calls:
+		Nothing
+ This function is called by:
+		_Menu_P1
+		_Menu_P2
+		_Menu_P3
+		_Menu_P4
+ This function uses a non-reentrant model
+
+
+ *************** function _Recording *****************
+ Defined at:
+		line 1043 in file "main.c"
  Parameters:    Size  Location     Type
 		None
  Auto vars:     Size  Location     Type
@@ -530,15 +1534,144 @@ Total ram usage:        2 bytes
  Hardware stack levels used:    1
  Hardware stack levels required when called:    1
  This function calls:
-		_Menu
+		_Clear
+		_Draw_Save_Dot_One
+		_Draw_Save_Dot_Two
  This function is called by:
-		_main
+		_Menu_P1
+		_Menu_P2
+		_Menu_P3
+		_Menu_P4
  This function uses a non-reentrant model
 
 
- *************** function _Menu *****************
+ *************** function _Draw_Save_Dot_Two *****************
  Defined at:
-		line 306 in file "main.c"
+		line 1032 in file "main.c"
+ Parameters:    Size  Location     Type
+		None
+ Auto vars:     Size  Location     Type
+		None
+ Return value:  Size  Location     Type
+                  1    wreg      void 
+ Registers used:
+		wreg, status,2
+ Tracked objects:
+		On entry : 
+		On exit  : 
+		Unchanged: 
+ Data sizes:     COMRAM   BANK0   BANK1   BANK2   BANK3   BANK4   BANK5   BANK6   BANK7
+      Params:         0       0       0       0       0       0       0       0       0
+      Locals:         0       0       0       0       0       0       0       0       0
+      Temps:          1       0       0       0       0       0       0       0       0
+      Totals:         1       0       0       0       0       0       0       0       0
+Total ram usage:        1 bytes
+ Hardware stack levels used:    1
+ This function calls:
+		Nothing
+ This function is called by:
+		_Recording
+ This function uses a non-reentrant model
+
+
+ *************** function _Draw_Save_Dot_One *****************
+ Defined at:
+		line 1021 in file "main.c"
+ Parameters:    Size  Location     Type
+		None
+ Auto vars:     Size  Location     Type
+		None
+ Return value:  Size  Location     Type
+                  1    wreg      void 
+ Registers used:
+		wreg, status,2
+ Tracked objects:
+		On entry : 
+		On exit  : 
+		Unchanged: 
+ Data sizes:     COMRAM   BANK0   BANK1   BANK2   BANK3   BANK4   BANK5   BANK6   BANK7
+      Params:         0       0       0       0       0       0       0       0       0
+      Locals:         0       0       0       0       0       0       0       0       0
+      Temps:          1       0       0       0       0       0       0       0       0
+      Totals:         1       0       0       0       0       0       0       0       0
+Total ram usage:        1 bytes
+ Hardware stack levels used:    1
+ This function calls:
+		Nothing
+ This function is called by:
+		_Recording
+ This function uses a non-reentrant model
+
+
+ *************** function _Draw_1 *****************
+ Defined at:
+		line 856 in file "main.c"
+ Parameters:    Size  Location     Type
+		None
+ Auto vars:     Size  Location     Type
+		None
+ Return value:  Size  Location     Type
+                  1    wreg      void 
+ Registers used:
+		wreg, status,2
+ Tracked objects:
+		On entry : 
+		On exit  : 
+		Unchanged: 
+ Data sizes:     COMRAM   BANK0   BANK1   BANK2   BANK3   BANK4   BANK5   BANK6   BANK7
+      Params:         0       0       0       0       0       0       0       0       0
+      Locals:         0       0       0       0       0       0       0       0       0
+      Temps:          1       0       0       0       0       0       0       0       0
+      Totals:         1       0       0       0       0       0       0       0       0
+Total ram usage:        1 bytes
+ Hardware stack levels used:    1
+ This function calls:
+		Nothing
+ This function is called by:
+		_Menu_P1
+		_Menu_P2
+		_Menu_P3
+		_Menu_P4
+		_Test
+ This function uses a non-reentrant model
+
+
+ *************** function _Draw_0 *****************
+ Defined at:
+		line 845 in file "main.c"
+ Parameters:    Size  Location     Type
+		None
+ Auto vars:     Size  Location     Type
+		None
+ Return value:  Size  Location     Type
+                  1    wreg      void 
+ Registers used:
+		wreg, status,2
+ Tracked objects:
+		On entry : 
+		On exit  : 
+		Unchanged: 
+ Data sizes:     COMRAM   BANK0   BANK1   BANK2   BANK3   BANK4   BANK5   BANK6   BANK7
+      Params:         0       0       0       0       0       0       0       0       0
+      Locals:         0       0       0       0       0       0       0       0       0
+      Temps:          1       0       0       0       0       0       0       0       0
+      Totals:         1       0       0       0       0       0       0       0       0
+Total ram usage:        1 bytes
+ Hardware stack levels used:    1
+ This function calls:
+		Nothing
+ This function is called by:
+		_Menu_P1
+		_Menu_P2
+		_Menu_P3
+		_Menu_P4
+		_Test
+ This function uses a non-reentrant model
+
+
+ *************** function _Exit_Time_Menu *****************
+ Defined at:
+		line 408 in file "main.c"
  Parameters:    Size  Location     Type
 		None
  Auto vars:     Size  Location     Type
@@ -554,20 +1687,136 @@ Total ram usage:        2 bytes
  Data sizes:     COMRAM   BANK0   BANK1   BANK2   BANK3   BANK4   BANK5   BANK6   BANK7
       Params:         0       0       0       0       0       0       0       0       0
       Locals:         0       0       0       0       0       0       0       0       0
-      Temps:          2       0       0       0       0       0       0       0       0
-      Totals:         2       0       0       0       0       0       0       0       0
-Total ram usage:        2 bytes
+      Temps:          0       0       0       0       0       0       0       0       0
+      Totals:         0       0       0       0       0       0       0       0       0
+Total ram usage:        0 bytes
  Hardware stack levels used:    1
  This function calls:
 		Nothing
  This function is called by:
-		_Menu_In
+		_Menu
+ This function uses a non-reentrant model
+
+
+ *************** function _Draw_P4 *****************
+ Defined at:
+		line 834 in file "main.c"
+ Parameters:    Size  Location     Type
+		None
+ Auto vars:     Size  Location     Type
+		None
+ Return value:  Size  Location     Type
+                  1    wreg      void 
+ Registers used:
+		wreg, status,2
+ Tracked objects:
+		On entry : 
+		On exit  : 
+		Unchanged: 
+ Data sizes:     COMRAM   BANK0   BANK1   BANK2   BANK3   BANK4   BANK5   BANK6   BANK7
+      Params:         0       0       0       0       0       0       0       0       0
+      Locals:         0       0       0       0       0       0       0       0       0
+      Temps:          1       0       0       0       0       0       0       0       0
+      Totals:         1       0       0       0       0       0       0       0       0
+Total ram usage:        1 bytes
+ Hardware stack levels used:    1
+ This function calls:
+		Nothing
+ This function is called by:
+		_Menu
+ This function uses a non-reentrant model
+
+
+ *************** function _Draw_P3 *****************
+ Defined at:
+		line 823 in file "main.c"
+ Parameters:    Size  Location     Type
+		None
+ Auto vars:     Size  Location     Type
+		None
+ Return value:  Size  Location     Type
+                  1    wreg      void 
+ Registers used:
+		wreg, status,2
+ Tracked objects:
+		On entry : 
+		On exit  : 
+		Unchanged: 
+ Data sizes:     COMRAM   BANK0   BANK1   BANK2   BANK3   BANK4   BANK5   BANK6   BANK7
+      Params:         0       0       0       0       0       0       0       0       0
+      Locals:         0       0       0       0       0       0       0       0       0
+      Temps:          1       0       0       0       0       0       0       0       0
+      Totals:         1       0       0       0       0       0       0       0       0
+Total ram usage:        1 bytes
+ Hardware stack levels used:    1
+ This function calls:
+		Nothing
+ This function is called by:
+		_Menu
+ This function uses a non-reentrant model
+
+
+ *************** function _Draw_P2 *****************
+ Defined at:
+		line 812 in file "main.c"
+ Parameters:    Size  Location     Type
+		None
+ Auto vars:     Size  Location     Type
+		None
+ Return value:  Size  Location     Type
+                  1    wreg      void 
+ Registers used:
+		wreg, status,2
+ Tracked objects:
+		On entry : 
+		On exit  : 
+		Unchanged: 
+ Data sizes:     COMRAM   BANK0   BANK1   BANK2   BANK3   BANK4   BANK5   BANK6   BANK7
+      Params:         0       0       0       0       0       0       0       0       0
+      Locals:         0       0       0       0       0       0       0       0       0
+      Temps:          1       0       0       0       0       0       0       0       0
+      Totals:         1       0       0       0       0       0       0       0       0
+Total ram usage:        1 bytes
+ Hardware stack levels used:    1
+ This function calls:
+		Nothing
+ This function is called by:
+		_Menu
+ This function uses a non-reentrant model
+
+
+ *************** function _Draw_P1 *****************
+ Defined at:
+		line 801 in file "main.c"
+ Parameters:    Size  Location     Type
+		None
+ Auto vars:     Size  Location     Type
+		None
+ Return value:  Size  Location     Type
+                  1    wreg      void 
+ Registers used:
+		wreg, status,2
+ Tracked objects:
+		On entry : 
+		On exit  : 
+		Unchanged: 
+ Data sizes:     COMRAM   BANK0   BANK1   BANK2   BANK3   BANK4   BANK5   BANK6   BANK7
+      Params:         0       0       0       0       0       0       0       0       0
+      Locals:         0       0       0       0       0       0       0       0       0
+      Temps:          1       0       0       0       0       0       0       0       0
+      Totals:         1       0       0       0       0       0       0       0       0
+Total ram usage:        1 bytes
+ Hardware stack levels used:    1
+ This function calls:
+		Nothing
+ This function is called by:
+		_Menu
  This function uses a non-reentrant model
 
 
  *************** function _Close_Lock *****************
  Defined at:
-		line 116 in file "main.c"
+		line 165 in file "main.c"
  Parameters:    Size  Location     Type
 		None
  Auto vars:     Size  Location     Type
@@ -597,7 +1846,7 @@ Total ram usage:        2 bytes
 
  *************** function _Closing *****************
  Defined at:
-		line 183 in file "main.c"
+		line 232 in file "main.c"
  Parameters:    Size  Location     Type
 		None
  Auto vars:     Size  Location     Type
@@ -629,7 +1878,7 @@ Total ram usage:        0 bytes
 
  *************** function _Sense_Current *****************
  Defined at:
-		line 224 in file "main.c"
+		line 274 in file "main.c"
  Parameters:    Size  Location     Type
 		None
  Auto vars:     Size  Location     Type
@@ -652,15 +1901,76 @@ Total ram usage:        0 bytes
  Hardware stack levels required when called:    1
  This function calls:
 		_Analog_Read
+		_Clear
+		_Draw_CL
  This function is called by:
 		_Open_Lock
 		_Closing
  This function uses a non-reentrant model
 
 
+ *************** function _Draw_CL *****************
+ Defined at:
+		line 790 in file "main.c"
+ Parameters:    Size  Location     Type
+		None
+ Auto vars:     Size  Location     Type
+		None
+ Return value:  Size  Location     Type
+                  1    wreg      void 
+ Registers used:
+		wreg, status,2
+ Tracked objects:
+		On entry : 
+		On exit  : 
+		Unchanged: 
+ Data sizes:     COMRAM   BANK0   BANK1   BANK2   BANK3   BANK4   BANK5   BANK6   BANK7
+      Params:         0       0       0       0       0       0       0       0       0
+      Locals:         0       0       0       0       0       0       0       0       0
+      Temps:          0       0       0       0       0       0       0       0       0
+      Totals:         0       0       0       0       0       0       0       0       0
+Total ram usage:        0 bytes
+ Hardware stack levels used:    1
+ This function calls:
+		Nothing
+ This function is called by:
+		_Sense_Current
+ This function uses a non-reentrant model
+
+
+ *************** function _Clear *****************
+ Defined at:
+		line 784 in file "main.c"
+ Parameters:    Size  Location     Type
+		None
+ Auto vars:     Size  Location     Type
+		None
+ Return value:  Size  Location     Type
+                  1    wreg      void 
+ Registers used:
+		wreg, status,2
+ Tracked objects:
+		On entry : 
+		On exit  : 
+		Unchanged: 
+ Data sizes:     COMRAM   BANK0   BANK1   BANK2   BANK3   BANK4   BANK5   BANK6   BANK7
+      Params:         0       0       0       0       0       0       0       0       0
+      Locals:         0       0       0       0       0       0       0       0       0
+      Temps:          0       0       0       0       0       0       0       0       0
+      Totals:         0       0       0       0       0       0       0       0       0
+Total ram usage:        0 bytes
+ Hardware stack levels used:    1
+ This function calls:
+		Nothing
+ This function is called by:
+		_Sense_Current
+		_Recording
+ This function uses a non-reentrant model
+
+
  *************** function _Analog_Read *****************
  Defined at:
-		line 208 in file "main.c"
+		line 257 in file "main.c"
  Parameters:    Size  Location     Type
 		None
  Auto vars:     Size  Location     Type
@@ -693,19 +2003,51 @@ MODULE INFORMATION
 
 Module		Function		Class		Link	Load	Size
 shared
-		__initialization		CODE           	7AAE	0000	43
+		__initialization		CODE           	72D0	0000	43
 
 shared estimated size: 43
 
 main.c
-		_Sense_Current 		CODE           	7B24	0000	73
-		_Close_Lock    		CODE           	7B6C	0000	131
-		_main          		CODE           	7AE2	0000	67
-		_Analog_Read   		CODE           	7A86	0000	41
-		_Closing       		CODE           	7BEE	0000	171
-		_Menu          		CODE           	7D6E	0000	287
-		_Open_Lock     		CODE           	7E8C	0000	373
-		_Menu_In       		CODE           	7C98	0000	215
+		_eeprom_writex 		CODE           	6DDE	0000	35
+		_Sense_Current 		CODE           	6E28	0000	41
+		_Menu_P2       		CODE           	7A70	0000	713
+		_Close_Lock    		CODE           	735A	0000	131
+		_Recording     		CODE           	73DC	0000	139
+		_Draw_2        		CODE           	710C	0000	51
+		_Draw_P1       		CODE           	6E50	0000	51
+		_Draw_5        		CODE           	71A2	0000	51
+		_Draw_12       		CODE           	7044	0000	51
+		_Draw_8        		CODE           	7238	0000	51
+		_Draw_P4       		CODE           	6EE6	0000	51
+		_main          		CODE           	7304	0000	87
+		_Draw_15       		CODE           	70DA	0000	51
+		_Draw_CL       		CODE           	6DBC	0000	35
+		_Clear         		CODE           	6DA4	0000	11
+		_Menu_P1       		CODE           	7510	0000	209
+		_Draw_Save_Dot_One		CODE           	6F7C	0000	51
+		_Menu_P4       		CODE           	7D38	0000	713
+		_Analog_Read   		CODE           	6E00	0000	41
+		_Draw_0        		CODE           	6F18	0000	51
+		_Closing       		CODE           	7466	0000	171
+		_Draw_3        		CODE           	713E	0000	51
+		_Draw_11       		CODE           	7012	0000	51
+		_Draw_6        		CODE           	71D4	0000	51
+		_Draw_P3       		CODE           	6EB4	0000	51
+		_Draw_9        		CODE           	726A	0000	51
+		_Draw_Save_Dot_Two		CODE           	6FAE	0000	51
+		_Draw_14       		CODE           	70A8	0000	51
+		_Exit_Time_Menu		CODE           	729C	0000	53
+		_Menu_P3       		CODE           	75E0	0000	209
+		_Draw_1        		CODE           	6F4A	0000	51
+		_Menu          		CODE           	78FA	0000	375
+		_Draw_10       		CODE           	6FE0	0000	51
+		_Draw_4        		CODE           	7170	0000	51
+		_Draw_P2       		CODE           	6E82	0000	51
+		_Draw_7        		CODE           	7206	0000	51
+		_Draw_13       		CODE           	7076	0000	51
+		_eeprom_readx  		CODE           	6DAE	0000	15
+		_Open_Lock     		CODE           	7786	0000	373
+		_Menu_In       		CODE           	76B0	0000	215
 
-main.c estimated size: 1358
+main.c estimated size: 4688
 

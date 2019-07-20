@@ -5088,6 +5088,7 @@ long Count_Auto_Close = 0;
 _Bool Button_Menu_Up_State;
 _Bool Button_Menu_Down_State;
 int Count_Push_Button = 0;
+long Count_Save = 0;
 long Count_Exit_Menu = 0;
 _Bool Toggle_Up = 0;
 _Bool Toggle_Down = 0;
@@ -5097,6 +5098,8 @@ _Bool Flag_Menu = 0;
 int ADC;
 unsigned char Buffer1[16];
 
+int data_test;
+
 void Close_Lock(void);
 void Open_Lock(void);
 void Closing(void);
@@ -5105,6 +5108,42 @@ void Sense_Current(void);
 
 void Menu_In(void);
 void Menu(void);
+void Exit_Time_Menu(void);
+
+void Draw_P1(void);
+void Draw_P2(void);
+void Draw_P3(void);
+void Draw_P4(void);
+void Draw_CL(void);
+
+void Draw_0(void);
+void Draw_1(void);
+void Draw_2(void);
+void Draw_3(void);
+void Draw_4(void);
+void Draw_5(void);
+void Draw_6(void);
+void Draw_7(void);
+void Draw_8(void);
+void Draw_9(void);
+void Draw_10(void);
+void Draw_11(void);
+void Draw_12(void);
+void Draw_13(void);
+void Draw_14(void);
+void Draw_15(void);
+
+void Menu_P1(void);
+void Menu_P2(void);
+void Menu_P3(void);
+void Menu_P4(void);
+
+void Clear(void);
+void Draw_Save_Dot_One(void);
+void Draw_Save_Dot_Two(void);
+void Recording(void);
+
+void Test(void);
 
 void eeprom_writex(int address, char data);
 char eeprom_readx(int address);
@@ -5141,12 +5180,22 @@ void main(void) {
     PORTCbits.RC1 = 0;
     PORTCbits.RC2 = 0;
 
+    data_test = eeprom_readx(0x00);
+
     while(1) {
         Menu_In();
         Close_Lock();
         Open_Lock();
     }
     return;
+}
+
+void Test(void) {
+    if (data_test == 0x00) {
+            Draw_0();
+        } else {
+            Draw_1();
+        }
 }
 
 void Close_Lock(void) {
@@ -5158,7 +5207,7 @@ void Close_Lock(void) {
         if(Inductive_State == 1 && Last_Inductive_State == 0 && End_Stop_Open_State == 0) {
             _delay((unsigned long)((100)*(20000000/4000.0)));
             Closing();
-# 133 "main.c"
+# 182 "main.c"
         }
     }
     Last_Inductive_State = Inductive_State;
@@ -5236,7 +5285,8 @@ void Closing(void) {
 
 int Analog_Read(void) {
     ADCON0bits.GO_nDONE = 1;
-        while(ADCON0bits.GO_nDONE);
+        while(ADCON0bits.GO_nDONE)
+        ;
             ADC = ADRESH;
             ADC = ADC << 8;
             ADC = ADC + ADRESL;
@@ -5253,18 +5303,9 @@ int Analog_Read(void) {
 void Sense_Current(void) {
     Current = Analog_Read();
         if (Current > 544) {
-            PORTB = 0x8D;
-            PORTCbits.RC7 = 1;
-            _delay((unsigned long)((5)*(20000000/4000000.0)));
-            PORTCbits.RC7 = 0;
-            PORTB = 0x8F;
-            PORTCbits.RC6 = 1;
-            _delay((unsigned long)((5)*(20000000/4000000.0)));
-            PORTCbits.RC6 = 0;
+            Draw_CL();
         } else {
-            PORTCbits.RC7 = 0;
-            PORTCbits.RC6 = 0;
-            PORTB = 0x11;
+            Clear();
         }
 }
 
@@ -5298,7 +5339,6 @@ char eeprom_readx(int address) {
     return(EEDATA);
 }
 
-
 void Menu_In(void) {
     Button_Menu_Up_State = PORTAbits.RA5;
     _delay((unsigned long)((1)*(20000000/4000.0)));
@@ -5309,7 +5349,7 @@ void Menu_In(void) {
             Toggle_Up = 0;
             Toggle_Down = 0;
             Count_Push_Button = 0;
-            _delay((unsigned long)((100)*(20000000/4000.0)));
+            _delay((unsigned long)((300)*(20000000/4000.0)));
             Menu();
         }
     }
@@ -5324,12 +5364,11 @@ void Menu_In(void) {
             Toggle_Down = 0;
             Toggle_Up = 0;
             Count_Push_Button = 0;
-            _delay((unsigned long)((100)*(20000000/4000.0)));
+            _delay((unsigned long)((300)*(20000000/4000.0)));
             Menu();
         }
     }
     Last_Button_Menu_Down_State = Button_Menu_Down_State;
-
 }
 
 void Menu(void) {
@@ -5337,53 +5376,713 @@ void Menu(void) {
         switch (Count_Push_Button)
         {
         case 0:
-            PORTB = 0x19;
-            PORTCbits.RC7 = 1;
-            _delay((unsigned long)((1600)*(20000000/4000000.0)));
-            PORTCbits.RC7 = 0;
-            PORTB = 0xF3;
-            PORTCbits.RC6 = 1;
-            _delay((unsigned long)((1600)*(20000000/4000000.0)));
-            PORTCbits.RC6 = 0;
+            Draw_P1();
             break;
         case 1:
-            PORTB = 0x19;
-            PORTCbits.RC7 = 1;
-            _delay((unsigned long)((1600)*(20000000/4000000.0)));
-            PORTCbits.RC7 = 0;
-            PORTB = 0x49;
-            PORTCbits.RC6 = 1;
-            _delay((unsigned long)((1600)*(20000000/4000000.0)));
-            PORTCbits.RC6 = 0;
+            Draw_P2();
             break;
         case 2:
-            PORTB = 0x19;
-            PORTCbits.RC7 = 1;
-            _delay((unsigned long)((1600)*(20000000/4000000.0)));
-            PORTCbits.RC7 = 0;
-            PORTB = 0x61;
-            PORTCbits.RC6 = 1;
-            _delay((unsigned long)((1600)*(20000000/4000000.0)));
-            PORTCbits.RC6 = 0;
+            Draw_P3();
             break;
         case 3:
-            PORTB = 0x19;
-            PORTCbits.RC7 = 1;
-            _delay((unsigned long)((1600)*(20000000/4000000.0)));
-            PORTCbits.RC7 = 0;
-            PORTB = 0x33;
-            PORTCbits.RC6 = 1;
-            _delay((unsigned long)((1600)*(20000000/4000000.0)));
-            PORTCbits.RC6 = 0;
+            Draw_P4();
             break;
         default:
             Count_Push_Button = 0;
             break;
         }
+
         Button_Menu_Down_State = PORTCbits.RC0;
         if (Button_Menu_Down_State == 0 && Last_Button_Menu_Down_State == 1) {
             Count_Push_Button++;
         }
         Last_Button_Menu_Down_State = Button_Menu_Down_State;
+
+
+        Button_Menu_Up_State = PORTAbits.RA5;
+        if (Button_Menu_Up_State == 0 && Last_Button_Menu_Up_State == 1) {
+            switch (Count_Push_Button)
+            {
+            case 0:
+                Count_Push_Button = 0;
+                _delay((unsigned long)((300)*(20000000/4000.0)));
+                Menu_P1();
+                break;
+            case 1:
+                Count_Push_Button = 0;
+                _delay((unsigned long)((300)*(20000000/4000.0)));
+                Menu_P2();
+                break;
+            case 2:
+                Count_Push_Button = 0;
+                _delay((unsigned long)((300)*(20000000/4000.0)));
+                Menu_P3();
+                break;
+            case 3:
+                Count_Push_Button = 0;
+                _delay((unsigned long)((300)*(20000000/4000.0)));
+                Menu_P4();
+                break;
+            default:
+                Count_Push_Button = 0;
+                _delay((unsigned long)((300)*(20000000/4000.0)));
+                break;
+            }
+        }
+        Last_Button_Menu_Up_State = Button_Menu_Up_State;
+        Exit_Time_Menu();
     } while(Flag_Menu == 1);
+}
+
+void Exit_Time_Menu(void) {
+    Count_Exit_Menu++;
+    if (Count_Exit_Menu == 1000) {
+        Flag_Menu = 0;
+        Count_Exit_Menu = 0;
+    }
+}
+
+void Menu_P1(void) {
+    do {
+        switch (Count_Push_Button)
+        {
+        case 0:
+            Draw_0();
+            break;
+        case 1:
+            Draw_1();
+            break;
+        default:
+            Count_Push_Button = 0;
+            break;
+        }
+
+        Button_Menu_Down_State = PORTCbits.RC0;
+        if (Button_Menu_Down_State == 0 && Last_Button_Menu_Down_State == 1) {
+            Count_Push_Button++;
+        }
+        Last_Button_Menu_Down_State = Button_Menu_Down_State;
+
+
+        Button_Menu_Up_State = PORTAbits.RA5;
+        if (Button_Menu_Up_State == 0 && Last_Button_Menu_Up_State == 1) {
+            switch (Count_Push_Button)
+            {
+            case 0:
+                eeprom_writex(0x01, 0x00);
+                Recording();
+                break;
+            case 1:
+                eeprom_writex(0x01, 0x01);
+                Recording();
+                break;
+            default:
+                Count_Push_Button = 0;
+                break;
+            }
+        }
+        Last_Button_Menu_Up_State = Button_Menu_Up_State;
+    } while (Flag_Menu == 1);
+}
+
+void Menu_P2(void) {
+    do {
+        switch (Count_Push_Button)
+        {
+        case 0:
+            Draw_0();
+            break;
+        case 1:
+            Draw_1();
+            break;
+        case 2:
+            Draw_2();
+            break;
+        case 3:
+            Draw_3();
+            break;
+        case 4:
+            Draw_4();
+            break;
+        case 5:
+            Draw_5();
+            break;
+        case 6:
+            Draw_6();
+            break;
+        case 7:
+            Draw_7();
+            break;
+        case 8:
+            Draw_8();
+            break;
+        case 9:
+            Draw_9();
+            break;
+        case 10:
+            Draw_10();
+            break;
+        case 11:
+            Draw_11();
+            break;
+        case 12:
+            Draw_12();
+            break;
+        case 13:
+            Draw_13();
+            break;
+        case 14:
+            Draw_14();
+            break;
+        case 15:
+            Draw_15();
+            break;
+        default:
+            Count_Push_Button = 0;
+            break;
+        }
+
+        Button_Menu_Down_State = PORTCbits.RC0;
+        if (Button_Menu_Down_State == 0 && Last_Button_Menu_Down_State == 1) {
+            Count_Push_Button++;
+        }
+        Last_Button_Menu_Down_State = Button_Menu_Down_State;
+
+
+        Button_Menu_Up_State = PORTAbits.RA5;
+        if (Button_Menu_Up_State == 0 && Last_Button_Menu_Up_State == 1) {
+            switch (Count_Push_Button)
+            {
+            case 0:
+                eeprom_writex(0x02, 0x00);
+                Recording();
+                break;
+            case 1:
+                eeprom_writex(0x02, 0x01);
+                Recording();
+                break;
+            case 2:
+                eeprom_writex(0x02, 0x02);
+                Recording();
+                break;
+            case 3:
+                eeprom_writex(0x02, 0x03);
+                Recording();
+                break;
+            case 4:
+                eeprom_writex(0x02, 0x04);
+                Recording();
+                break;
+            case 5:
+                eeprom_writex(0x02, 0x05);
+                Recording();
+                break;
+            case 6:
+                eeprom_writex(0x02, 0x06);
+                Recording();
+                break;
+            case 7:
+                eeprom_writex(0x02, 0x07);
+                Recording();
+                break;
+            case 8:
+                eeprom_writex(0x02, 0x08);
+                Recording();
+                break;
+            case 9:
+                eeprom_writex(0x02, 0x09);
+                Recording();
+                break;
+            case 10:
+                eeprom_writex(0x02, 0x0A);
+                Recording();
+                break;
+            case 11:
+                eeprom_writex(0x02, 0x0B);
+                Recording();
+                break;
+            case 12:
+                eeprom_writex(0x02, 0x0C);
+                Recording();
+                break;
+            case 13:
+                eeprom_writex(0x02, 0x0D);
+                Recording();
+                break;
+            case 14:
+                eeprom_writex(0x02, 0x0E);
+                Recording();
+                break;
+            case 15:
+                eeprom_writex(0x02, 0x0F);
+                Recording();
+                break;
+            default:
+                Count_Push_Button = 0;
+                break;
+            }
+        }
+        Last_Button_Menu_Up_State = Button_Menu_Up_State;
+    } while (Flag_Menu == 1);
+}
+
+void Menu_P3(void) {
+    do {
+        switch (Count_Push_Button)
+        {
+        case 0:
+            Draw_0();
+            break;
+        case 1:
+            Draw_1();
+            break;
+        default:
+            Count_Push_Button = 0;
+            break;
+        }
+
+        Button_Menu_Down_State = PORTCbits.RC0;
+        if (Button_Menu_Down_State == 0 && Last_Button_Menu_Down_State == 1) {
+            Count_Push_Button++;
+        }
+        Last_Button_Menu_Down_State = Button_Menu_Down_State;
+
+
+        Button_Menu_Up_State = PORTAbits.RA5;
+        if (Button_Menu_Up_State == 0 && Last_Button_Menu_Up_State == 1) {
+            switch (Count_Push_Button)
+            {
+            case 0:
+                eeprom_writex(0x03, 0x00);
+                Recording();
+                break;
+            case 1:
+                eeprom_writex(0x03, 0x01);
+                Recording();
+                break;
+            default:
+                Count_Push_Button = 0;
+                break;
+            }
+        }
+        Last_Button_Menu_Up_State = Button_Menu_Up_State;
+    } while (Flag_Menu == 1);
+}
+
+void Menu_P4(void) {
+    do {
+        switch (Count_Push_Button)
+        {
+        case 0:
+            Draw_0();
+            break;
+        case 1:
+            Draw_1();
+            break;
+        case 2:
+            Draw_2();
+            break;
+        case 3:
+            Draw_3();
+            break;
+        case 4:
+            Draw_4();
+            break;
+        case 5:
+            Draw_5();
+            break;
+        case 6:
+            Draw_6();
+            break;
+        case 7:
+            Draw_7();
+            break;
+        case 8:
+            Draw_8();
+            break;
+        case 9:
+            Draw_9();
+            break;
+        case 10:
+            Draw_10();
+            break;
+        case 11:
+            Draw_11();
+            break;
+        case 12:
+            Draw_12();
+            break;
+        case 13:
+            Draw_13();
+            break;
+        case 14:
+            Draw_14();
+            break;
+        case 15:
+            Draw_15();
+            break;
+        default:
+            Count_Push_Button = 0;
+            break;
+        }
+
+        Button_Menu_Down_State = PORTCbits.RC0;
+        if (Button_Menu_Down_State == 0 && Last_Button_Menu_Down_State == 1) {
+            Count_Push_Button++;
+        }
+        Last_Button_Menu_Down_State = Button_Menu_Down_State;
+
+
+        Button_Menu_Up_State = PORTAbits.RA5;
+        if (Button_Menu_Up_State == 0 && Last_Button_Menu_Up_State == 1) {
+            switch (Count_Push_Button)
+            {
+            case 0:
+                eeprom_writex(0x04, 0x00);
+                Recording();
+                break;
+            case 1:
+                eeprom_writex(0x04, 0x01);
+                Recording();
+                break;
+            case 2:
+                eeprom_writex(0x04, 0x02);
+                Recording();
+                break;
+            case 3:
+                eeprom_writex(0x04, 0x03);
+                Recording();
+                break;
+            case 4:
+                eeprom_writex(0x04, 0x04);
+                Recording();
+                break;
+            case 5:
+                eeprom_writex(0x04, 0x05);
+                Recording();
+                break;
+            case 6:
+                eeprom_writex(0x04, 0x06);
+                Recording();
+                break;
+            case 7:
+                eeprom_writex(0x04, 0x07);
+                Recording();
+                break;
+            case 8:
+                eeprom_writex(0x04, 0x08);
+                Recording();
+                break;
+            case 9:
+                eeprom_writex(0x04, 0x09);
+                Recording();
+                break;
+            case 10:
+                eeprom_writex(0x04, 0x0A);
+                Recording();
+                break;
+            case 11:
+                eeprom_writex(0x04, 0x0B);
+                Recording();
+                break;
+            case 12:
+                eeprom_writex(0x04, 0x0C);
+                Recording();
+                break;
+            case 13:
+                eeprom_writex(0x04, 0x0D);
+                Recording();
+                break;
+            case 14:
+                eeprom_writex(0x04, 0x0E);
+                Recording();
+                break;
+            case 15:
+                eeprom_writex(0x04, 0x0F);
+                Recording();
+                break;
+            default:
+                Count_Push_Button = 0;
+                break;
+            }
+        }
+        Last_Button_Menu_Up_State = Button_Menu_Up_State;
+    } while (Flag_Menu == 1);
+}
+
+void Clear(void) {
+    PORTCbits.RC7 = 0;
+    PORTCbits.RC6 = 0;
+    PORTB = 0x11;
+}
+
+void Draw_CL(void) {
+    PORTB = 0x8D;
+    PORTCbits.RC7 = 1;
+    _delay((unsigned long)((5)*(20000000/4000000.0)));
+    PORTCbits.RC7 = 0;
+    PORTB = 0x8F;
+    PORTCbits.RC6 = 1;
+    _delay((unsigned long)((5)*(20000000/4000000.0)));
+    PORTCbits.RC6 = 0;
+}
+
+void Draw_P1(void) {
+    PORTB = 0x19;
+    PORTCbits.RC7 = 1;
+    _delay((unsigned long)((1600)*(20000000/4000000.0)));
+    PORTCbits.RC7 = 0;
+    PORTB = 0xF3;
+    PORTCbits.RC6 = 1;
+    _delay((unsigned long)((1600)*(20000000/4000000.0)));
+    PORTCbits.RC6 = 0;
+}
+
+void Draw_P2(void) {
+    PORTB = 0x19;
+    PORTCbits.RC7 = 1;
+    _delay((unsigned long)((1600)*(20000000/4000000.0)));
+    PORTCbits.RC7 = 0;
+    PORTB = 0x49;
+    PORTCbits.RC6 = 1;
+    _delay((unsigned long)((1600)*(20000000/4000000.0)));
+    PORTCbits.RC6 = 0;
+}
+
+void Draw_P3(void) {
+    PORTB = 0x19;
+    PORTCbits.RC7 = 1;
+    _delay((unsigned long)((1600)*(20000000/4000000.0)));
+    PORTCbits.RC7 = 0;
+    PORTB = 0x61;
+    PORTCbits.RC6 = 1;
+    _delay((unsigned long)((1600)*(20000000/4000000.0)));
+    PORTCbits.RC6 = 0;
+}
+
+void Draw_P4(void) {
+    PORTB = 0x19;
+    PORTCbits.RC7 = 1;
+    _delay((unsigned long)((1600)*(20000000/4000000.0)));
+    PORTCbits.RC7 = 0;
+    PORTB = 0x33;
+    PORTCbits.RC6 = 1;
+    _delay((unsigned long)((1600)*(20000000/4000000.0)));
+    PORTCbits.RC6 = 0;
+}
+
+void Draw_0(void) {
+    PORTB = 0x11;
+    PORTCbits.RC7 = 0;
+    _delay((unsigned long)((1600)*(20000000/4000000.0)));
+    PORTCbits.RC7 = 0;
+    PORTB = 0x81;
+    PORTCbits.RC6 = 1;
+    _delay((unsigned long)((1600)*(20000000/4000000.0)));
+    PORTCbits.RC6 = 0;
+}
+
+void Draw_1(void) {
+    PORTB = 0x11;
+    PORTCbits.RC7 = 0;
+    _delay((unsigned long)((1600)*(20000000/4000000.0)));
+    PORTCbits.RC7 = 0;
+    PORTB = 0xF3;
+    PORTCbits.RC6 = 1;
+    _delay((unsigned long)((1600)*(20000000/4000000.0)));
+    PORTCbits.RC6 = 0;
+}
+
+void Draw_2(void) {
+    PORTB = 0x11;
+    PORTCbits.RC7 = 0;
+    _delay((unsigned long)((1600)*(20000000/4000000.0)));
+    PORTCbits.RC7 = 0;
+    PORTB = 0x49;
+    PORTCbits.RC6 = 1;
+    _delay((unsigned long)((1600)*(20000000/4000000.0)));
+    PORTCbits.RC6 = 0;
+}
+
+void Draw_3(void) {
+    PORTB = 0x11;
+    PORTCbits.RC7 = 0;
+    _delay((unsigned long)((1600)*(20000000/4000000.0)));
+    PORTCbits.RC7 = 0;
+    PORTB = 0x61;
+    PORTCbits.RC6 = 1;
+    _delay((unsigned long)((1600)*(20000000/4000000.0)));
+    PORTCbits.RC6 = 0;
+}
+
+void Draw_4(void) {
+    PORTB = 0x11;
+    PORTCbits.RC7 = 0;
+    _delay((unsigned long)((1600)*(20000000/4000000.0)));
+    PORTCbits.RC7 = 0;
+    PORTB = 0x33;
+    PORTCbits.RC6 = 1;
+    _delay((unsigned long)((1600)*(20000000/4000000.0)));
+    PORTCbits.RC6 = 0;
+}
+
+void Draw_5(void) {
+    PORTB = 0x11;
+    PORTCbits.RC7 = 0;
+    _delay((unsigned long)((1600)*(20000000/4000000.0)));
+    PORTCbits.RC7 = 0;
+    PORTB = 0x25;
+    PORTCbits.RC6 = 1;
+    _delay((unsigned long)((1600)*(20000000/4000000.0)));
+    PORTCbits.RC6 = 0;
+}
+
+void Draw_6(void) {
+    PORTB = 0x11;
+    PORTCbits.RC7 = 0;
+    _delay((unsigned long)((1600)*(20000000/4000000.0)));
+    PORTCbits.RC7 = 0;
+    PORTB = 0x05;
+    PORTCbits.RC6 = 1;
+    _delay((unsigned long)((1600)*(20000000/4000000.0)));
+    PORTCbits.RC6 = 0;
+}
+
+void Draw_7(void) {
+    PORTB = 0x11;
+    PORTCbits.RC7 = 0;
+    _delay((unsigned long)((1600)*(20000000/4000000.0)));
+    PORTCbits.RC7 = 0;
+    PORTB = 0xF1;
+    PORTCbits.RC6 = 1;
+    _delay((unsigned long)((1600)*(20000000/4000000.0)));
+    PORTCbits.RC6 = 0;
+}
+
+void Draw_8(void) {
+    PORTB = 0x11;
+    PORTCbits.RC7 = 0;
+    _delay((unsigned long)((1600)*(20000000/4000000.0)));
+    PORTCbits.RC7 = 0;
+    PORTB = 0x01;
+    PORTCbits.RC6 = 1;
+    _delay((unsigned long)((1600)*(20000000/4000000.0)));
+    PORTCbits.RC6 = 0;
+}
+
+void Draw_9(void) {
+    PORTB = 0x11;
+    PORTCbits.RC7 = 0;
+    _delay((unsigned long)((1600)*(20000000/4000000.0)));
+    PORTCbits.RC7 = 0;
+    PORTB = 0x21;
+    PORTCbits.RC6 = 1;
+    _delay((unsigned long)((1600)*(20000000/4000000.0)));
+    PORTCbits.RC6 = 0;
+}
+
+void Draw_10(void) {
+    PORTB = 0xF3;
+    PORTCbits.RC7 = 1;
+    _delay((unsigned long)((1600)*(20000000/4000000.0)));
+    PORTCbits.RC7 = 0;
+    PORTB = 0x81;
+    PORTCbits.RC6 = 1;
+    _delay((unsigned long)((1600)*(20000000/4000000.0)));
+    PORTCbits.RC6 = 0;
+}
+
+void Draw_11(void) {
+    PORTB = 0xF3;
+    PORTCbits.RC7 = 1;
+    _delay((unsigned long)((1600)*(20000000/4000000.0)));
+    PORTCbits.RC7 = 0;
+    PORTB = 0xF3;
+    PORTCbits.RC6 = 1;
+    _delay((unsigned long)((1600)*(20000000/4000000.0)));
+    PORTCbits.RC6 = 0;
+}
+
+void Draw_12(void) {
+    PORTB = 0xF3;
+    PORTCbits.RC7 = 1;
+    _delay((unsigned long)((1600)*(20000000/4000000.0)));
+    PORTCbits.RC7 = 0;
+    PORTB = 0x49;
+    PORTCbits.RC6 = 1;
+    _delay((unsigned long)((1600)*(20000000/4000000.0)));
+    PORTCbits.RC6 = 0;
+}
+
+void Draw_13(void) {
+    PORTB = 0xF3;
+    PORTCbits.RC7 = 1;
+    _delay((unsigned long)((1600)*(20000000/4000000.0)));
+    PORTCbits.RC7 = 0;
+    PORTB = 0x61;
+    PORTCbits.RC6 = 1;
+    _delay((unsigned long)((1600)*(20000000/4000000.0)));
+    PORTCbits.RC6 = 0;
+}
+
+void Draw_14(void) {
+    PORTB = 0xF3;
+    PORTCbits.RC7 = 1;
+    _delay((unsigned long)((1600)*(20000000/4000000.0)));
+    PORTCbits.RC7 = 0;
+    PORTB = 0x33;
+    PORTCbits.RC6 = 1;
+    _delay((unsigned long)((1600)*(20000000/4000000.0)));
+    PORTCbits.RC6 = 0;
+}
+
+void Draw_15(void) {
+    PORTB = 0xF3;
+    PORTCbits.RC7 = 1;
+    _delay((unsigned long)((1600)*(20000000/4000000.0)));
+    PORTCbits.RC7 = 0;
+    PORTB = 0x25;
+    PORTCbits.RC6 = 1;
+    _delay((unsigned long)((1600)*(20000000/4000000.0)));
+    PORTCbits.RC6 = 0;
+}
+
+void Draw_Save_Dot_One(void) {
+    PORTB = 0xFE;
+    PORTCbits.RC7 = 1;
+    _delay((unsigned long)((1600)*(20000000/4000000.0)));
+    PORTCbits.RC7 = 0;
+    PORTB = 0x11;
+    PORTCbits.RC6 = 0;
+    _delay((unsigned long)((1600)*(20000000/4000000.0)));
+    PORTCbits.RC6 = 0;
+}
+
+void Draw_Save_Dot_Two(void) {
+    PORTB = 0xFE;
+    PORTCbits.RC7 = 1;
+    _delay((unsigned long)((1600)*(20000000/4000000.0)));
+    PORTCbits.RC7 = 0;
+    PORTB = 0xFE;
+    PORTCbits.RC6 = 1;
+    _delay((unsigned long)((1600)*(20000000/4000000.0)));
+    PORTCbits.RC6 = 0;
+}
+
+void Recording(void) {
+    Clear();
+    _delay((unsigned long)((500)*(20000000/4000.0)));
+    do
+    {
+        Draw_Save_Dot_One();
+        Count_Save++;
+    } while (Count_Save < 250);
+    Count_Save = 0;
+    do
+    {
+        Draw_Save_Dot_Two();
+        Count_Save++;
+    } while (Count_Save < 250);
+    Count_Save = 0;
+    Flag_Menu = 0;
 }

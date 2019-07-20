@@ -27,22 +27,86 @@
 [v ___lmul __lmul `(ul  1 e 4 0 ]
 "91 C:\Program Files (x86)\Microchip\xc8\v2.05\pic\sources\c99\common\Umul64.c
 [v ___omul __omul `(uo  1 e 8 0 ]
-"76 D:\Users\BotLAB\Documents\GitHub\Access_Control\Electromecanica.X\main.c
+"115 D:\Users\BotLAB\Documents\GitHub\Access_Control\Electromecanica.X\main.c
 [v _main main `(v  1 e 1 0 ]
-"116
+"165
 [v _Close_Lock Close_Lock `(v  1 e 1 0 ]
-"138
+"187
 [v _Open_Lock Open_Lock `(v  1 e 1 0 ]
-"183
+"232
 [v _Closing Closing `(v  1 e 1 0 ]
-"208
+"257
 [v _Analog_Read Analog_Read `(i  1 e 2 0 ]
-"224
+"274
 [v _Sense_Current Sense_Current `(v  1 e 1 0 ]
-"273
+"289
+[v _eeprom_writex eeprom_writex `(v  1 e 1 0 ]
+"305
+[v _eeprom_readx eeprom_readx `(uc  1 e 1 0 ]
+"313
 [v _Menu_In Menu_In `(v  1 e 1 0 ]
-"306
+"345
 [v _Menu Menu `(v  1 e 1 0 ]
+"408
+[v _Exit_Time_Menu Exit_Time_Menu `(v  1 e 1 0 ]
+"416
+[v _Menu_P1 Menu_P1 `(v  1 e 1 0 ]
+"459
+[v _Menu_P2 Menu_P2 `(v  1 e 1 0 ]
+"600
+[v _Menu_P3 Menu_P3 `(v  1 e 1 0 ]
+"643
+[v _Menu_P4 Menu_P4 `(v  1 e 1 0 ]
+"784
+[v _Clear Clear `(v  1 e 1 0 ]
+"790
+[v _Draw_CL Draw_CL `(v  1 e 1 0 ]
+"801
+[v _Draw_P1 Draw_P1 `(v  1 e 1 0 ]
+"812
+[v _Draw_P2 Draw_P2 `(v  1 e 1 0 ]
+"823
+[v _Draw_P3 Draw_P3 `(v  1 e 1 0 ]
+"834
+[v _Draw_P4 Draw_P4 `(v  1 e 1 0 ]
+"845
+[v _Draw_0 Draw_0 `(v  1 e 1 0 ]
+"856
+[v _Draw_1 Draw_1 `(v  1 e 1 0 ]
+"867
+[v _Draw_2 Draw_2 `(v  1 e 1 0 ]
+"878
+[v _Draw_3 Draw_3 `(v  1 e 1 0 ]
+"889
+[v _Draw_4 Draw_4 `(v  1 e 1 0 ]
+"900
+[v _Draw_5 Draw_5 `(v  1 e 1 0 ]
+"911
+[v _Draw_6 Draw_6 `(v  1 e 1 0 ]
+"922
+[v _Draw_7 Draw_7 `(v  1 e 1 0 ]
+"933
+[v _Draw_8 Draw_8 `(v  1 e 1 0 ]
+"944
+[v _Draw_9 Draw_9 `(v  1 e 1 0 ]
+"955
+[v _Draw_10 Draw_10 `(v  1 e 1 0 ]
+"966
+[v _Draw_11 Draw_11 `(v  1 e 1 0 ]
+"977
+[v _Draw_12 Draw_12 `(v  1 e 1 0 ]
+"988
+[v _Draw_13 Draw_13 `(v  1 e 1 0 ]
+"999
+[v _Draw_14 Draw_14 `(v  1 e 1 0 ]
+"1010
+[v _Draw_15 Draw_15 `(v  1 e 1 0 ]
+"1021
+[v _Draw_Save_Dot_One Draw_Save_Dot_One `(v  1 e 1 0 ]
+"1032
+[v _Draw_Save_Dot_Two Draw_Save_Dot_Two `(v  1 e 1 0 ]
+"1043
+[v _Recording Recording `(v  1 e 1 0 ]
 [s S33 . 1 `uc 1 RA0 1 0 :1:0 
 `uc 1 RA1 1 0 :1:1 
 `uc 1 RA2 1 0 :1:2 
@@ -52,7 +116,7 @@
 `uc 1 RA6 1 0 :1:6 
 ]
 "2156 C:\Program Files (x86)\Microchip\xc8\v2.05\pic\include\pic18f2550.h
-[s S278 . 1 `uc 1 AN0 1 0 :1:0 
+[s S291 . 1 `uc 1 AN0 1 0 :1:0 
 `uc 1 AN1 1 0 :1:1 
 `uc 1 AN2 1 0 :1:2 
 `uc 1 AN3 1 0 :1:3 
@@ -60,19 +124,19 @@
 `uc 1 AN4 1 0 :1:5 
 `uc 1 OSC2 1 0 :1:6 
 ]
-[s S286 . 1 `uc 1 . 1 0 :2:0 
+[s S299 . 1 `uc 1 . 1 0 :2:0 
 `uc 1 VREFM 1 0 :1:2 
 `uc 1 VREFP 1 0 :1:3 
 `uc 1 . 1 0 :1:4 
 `uc 1 LVDIN 1 0 :1:5 
 ]
-[s S292 . 1 `uc 1 . 1 0 :5:0 
+[s S305 . 1 `uc 1 . 1 0 :5:0 
 `uc 1 HLVDIN 1 0 :1:5 
 ]
-[s S295 . 1 `uc 1 ULPWUIN 1 0 :1:0 
+[s S308 . 1 `uc 1 ULPWUIN 1 0 :1:0 
 ]
-[u S297 . 1 `S33 1 . 1 0 `S278 1 . 1 0 `S286 1 . 1 0 `S292 1 . 1 0 `S295 1 . 1 0 ]
-[v _PORTAbits PORTAbits `VES297  1 e 1 @3968 ]
+[u S310 . 1 `S33 1 . 1 0 `S291 1 . 1 0 `S299 1 . 1 0 `S305 1 . 1 0 `S308 1 . 1 0 ]
+[v _PORTAbits PORTAbits `VES310  1 e 1 @3968 ]
 "2256
 [v _PORTB PORTB `VEuc  1 e 1 @3969 ]
 [s S191 . 1 `uc 1 RC0 1 0 :1:0 
@@ -138,7 +202,7 @@
 ]
 [u S75 . 1 `S61 1 . 1 0 `S68 1 . 1 0 ]
 [v _TRISCbits TRISCbits `VES75  1 e 1 @3988 ]
-[s S353 . 1 `uc 1 RD 1 0 :1:0 
+[s S374 . 1 `uc 1 RD 1 0 :1:0 
 `uc 1 WR 1 0 :1:1 
 `uc 1 WREN 1 0 :1:2 
 `uc 1 WRERR 1 0 :1:3 
@@ -148,11 +212,11 @@
 `uc 1 EEPGD 1 0 :1:7 
 ]
 "3917
-[s S362 . 1 `uc 1 . 1 0 :6:0 
+[s S383 . 1 `uc 1 . 1 0 :6:0 
 `uc 1 EEFS 1 0 :1:6 
 ]
-[u S365 . 1 `S353 1 . 1 0 `S362 1 . 1 0 ]
-[v _EECON1bits EECON1bits `VES365  1 e 1 @4006 ]
+[u S386 . 1 `S374 1 . 1 0 `S383 1 . 1 0 ]
+[v _EECON1bits EECON1bits `VES386  1 e 1 @4006 ]
 "3962
 [v _EECON2 EECON2 `VEuc  1 e 1 @4007 ]
 "3969
@@ -212,7 +276,7 @@
 [v _ADRESL ADRESL `VEuc  1 e 1 @4035 ]
 "5618
 [v _ADRESH ADRESH `VEuc  1 e 1 @4036 ]
-[s S381 . 1 `uc 1 RBIF 1 0 :1:0 
+[s S402 . 1 `uc 1 RBIF 1 0 :1:0 
 `uc 1 INT0IF 1 0 :1:1 
 `uc 1 TMR0IF 1 0 :1:2 
 `uc 1 RBIE 1 0 :1:3 
@@ -222,7 +286,7 @@
 `uc 1 GIE_GIEH 1 0 :1:7 
 ]
 "7433
-[s S390 . 1 `uc 1 . 1 0 :1:0 
+[s S411 . 1 `uc 1 . 1 0 :1:0 
 `uc 1 INT0F 1 0 :1:1 
 `uc 1 T0IF 1 0 :1:2 
 `uc 1 . 1 0 :1:3 
@@ -231,12 +295,12 @@
 `uc 1 PEIE 1 0 :1:6 
 `uc 1 GIE 1 0 :1:7 
 ]
-[s S399 . 1 `uc 1 . 1 0 :6:0 
+[s S420 . 1 `uc 1 . 1 0 :6:0 
 `uc 1 GIEL 1 0 :1:6 
 `uc 1 GIEH 1 0 :1:7 
 ]
-[u S403 . 1 `S381 1 . 1 0 `S390 1 . 1 0 `S399 1 . 1 0 ]
-[v _INTCONbits INTCONbits `VES403  1 e 1 @4082 ]
+[u S424 . 1 `S402 1 . 1 0 `S411 1 . 1 0 `S420 1 . 1 0 ]
+[v _INTCONbits INTCONbits `VES424  1 e 1 @4082 ]
 "39 D:\Users\BotLAB\Documents\GitHub\Access_Control\Electromecanica.X\main.c
 [v _Count_Peake_Current Count_Peake_Current `i  1 e 2 0 ]
 "40
@@ -267,51 +331,220 @@
 [v _Button_Menu_Down_State Button_Menu_Down_State `a  1 e 1 0 ]
 "54
 [v _Count_Push_Button Count_Push_Button `i  1 e 2 0 ]
+"55
+[v _Count_Save Count_Save `l  1 e 4 0 ]
 "56
-[v _Toggle_Up Toggle_Up `a  1 e 1 0 ]
+[v _Count_Exit_Menu Count_Exit_Menu `l  1 e 4 0 ]
 "57
-[v _Toggle_Down Toggle_Down `a  1 e 1 0 ]
+[v _Toggle_Up Toggle_Up `a  1 e 1 0 ]
 "58
+[v _Toggle_Down Toggle_Down `a  1 e 1 0 ]
+"59
 [v _Flag_Menu Flag_Menu `a  1 e 1 0 ]
-"61
+"62
 [v _ADC ADC `i  1 e 2 0 ]
-"76
+"65
+[v _data_test data_test `i  1 e 2 0 ]
+"115
 [v _main main `(v  1 e 1 0 ]
 {
-"114
+"155
 } 0
-"138
+"305
+[v _eeprom_readx eeprom_readx `(uc  1 e 1 0 ]
+{
+[v eeprom_readx@address address `i  1 p 2 0 ]
+"311
+} 0
+"187
 [v _Open_Lock Open_Lock `(v  1 e 1 0 ]
 {
-"181
+"230
 } 0
-"273
+"313
 [v _Menu_In Menu_In `(v  1 e 1 0 ]
 {
-"304
+"343
 } 0
-"306
+"345
 [v _Menu Menu `(v  1 e 1 0 ]
 {
-"360
+"406
 } 0
-"116
+"643
+[v _Menu_P4 Menu_P4 `(v  1 e 1 0 ]
+{
+"782
+} 0
+"600
+[v _Menu_P3 Menu_P3 `(v  1 e 1 0 ]
+{
+"641
+} 0
+"459
+[v _Menu_P2 Menu_P2 `(v  1 e 1 0 ]
+{
+"598
+} 0
+"944
+[v _Draw_9 Draw_9 `(v  1 e 1 0 ]
+{
+"953
+} 0
+"933
+[v _Draw_8 Draw_8 `(v  1 e 1 0 ]
+{
+"942
+} 0
+"922
+[v _Draw_7 Draw_7 `(v  1 e 1 0 ]
+{
+"931
+} 0
+"911
+[v _Draw_6 Draw_6 `(v  1 e 1 0 ]
+{
+"920
+} 0
+"900
+[v _Draw_5 Draw_5 `(v  1 e 1 0 ]
+{
+"909
+} 0
+"889
+[v _Draw_4 Draw_4 `(v  1 e 1 0 ]
+{
+"898
+} 0
+"878
+[v _Draw_3 Draw_3 `(v  1 e 1 0 ]
+{
+"887
+} 0
+"867
+[v _Draw_2 Draw_2 `(v  1 e 1 0 ]
+{
+"876
+} 0
+"1010
+[v _Draw_15 Draw_15 `(v  1 e 1 0 ]
+{
+"1019
+} 0
+"999
+[v _Draw_14 Draw_14 `(v  1 e 1 0 ]
+{
+"1008
+} 0
+"988
+[v _Draw_13 Draw_13 `(v  1 e 1 0 ]
+{
+"997
+} 0
+"977
+[v _Draw_12 Draw_12 `(v  1 e 1 0 ]
+{
+"986
+} 0
+"966
+[v _Draw_11 Draw_11 `(v  1 e 1 0 ]
+{
+"975
+} 0
+"955
+[v _Draw_10 Draw_10 `(v  1 e 1 0 ]
+{
+"964
+} 0
+"416
+[v _Menu_P1 Menu_P1 `(v  1 e 1 0 ]
+{
+"457
+} 0
+"289
+[v _eeprom_writex eeprom_writex `(v  1 e 1 0 ]
+{
+[v eeprom_writex@address address `i  1 p 2 0 ]
+[v eeprom_writex@data data `uc  1 p 1 2 ]
+"303
+} 0
+"1043
+[v _Recording Recording `(v  1 e 1 0 ]
+{
+"1059
+} 0
+"1032
+[v _Draw_Save_Dot_Two Draw_Save_Dot_Two `(v  1 e 1 0 ]
+{
+"1041
+} 0
+"1021
+[v _Draw_Save_Dot_One Draw_Save_Dot_One `(v  1 e 1 0 ]
+{
+"1030
+} 0
+"856
+[v _Draw_1 Draw_1 `(v  1 e 1 0 ]
+{
+"865
+} 0
+"845
+[v _Draw_0 Draw_0 `(v  1 e 1 0 ]
+{
+"854
+} 0
+"408
+[v _Exit_Time_Menu Exit_Time_Menu `(v  1 e 1 0 ]
+{
+"414
+} 0
+"834
+[v _Draw_P4 Draw_P4 `(v  1 e 1 0 ]
+{
+"843
+} 0
+"823
+[v _Draw_P3 Draw_P3 `(v  1 e 1 0 ]
+{
+"832
+} 0
+"812
+[v _Draw_P2 Draw_P2 `(v  1 e 1 0 ]
+{
+"821
+} 0
+"801
+[v _Draw_P1 Draw_P1 `(v  1 e 1 0 ]
+{
+"810
+} 0
+"165
 [v _Close_Lock Close_Lock `(v  1 e 1 0 ]
 {
-"136
+"185
 } 0
-"183
+"232
 [v _Closing Closing `(v  1 e 1 0 ]
 {
-"206
+"255
 } 0
-"224
+"274
 [v _Sense_Current Sense_Current `(v  1 e 1 0 ]
 {
-"240
+"281
 } 0
-"208
+"790
+[v _Draw_CL Draw_CL `(v  1 e 1 0 ]
+{
+"799
+} 0
+"784
+[v _Clear Clear `(v  1 e 1 0 ]
+{
+"788
+} 0
+"257
 [v _Analog_Read Analog_Read `(i  1 e 2 0 ]
 {
-"216
+"266
 } 0
