@@ -29,85 +29,85 @@
 [v ___lmul __lmul `(ul  1 e 4 0 ]
 "91 C:\Program Files (x86)\Microchip\xc8\v2.05\pic\sources\c99\common\Umul64.c
 [v ___omul __omul `(uo  1 e 8 0 ]
-"117 D:\Users\BotLAB\Documents\GitHub\Access_Control\Electromecanica.X\main.c
+"118 D:\Users\BotLAB\Documents\GitHub\Access_Control\Electromecanica.X\main.c
 [v _main main `(v  1 e 1 0 ]
-"160
+"162
 [v _Close_Lock Close_Lock `(v  1 e 1 0 ]
-"242
+"244
 [v _Open_Lock Open_Lock `(v  1 e 1 0 ]
-"302
+"365
 [v _Closing Closing `(v  1 e 1 0 ]
-"327
+"390
 [v _Analog_Read Analog_Read `(i  1 e 2 0 ]
-"344
+"407
 [v _Sense_Current Sense_Current `(v  1 e 1 0 ]
-"359
+"422
 [v _eeprom_writex eeprom_writex `(v  1 e 1 0 ]
-"375
+"438
 [v _eeprom_readx eeprom_readx `(uc  1 e 1 0 ]
-"383
+"446
 [v _Menu_In Menu_In `(v  1 e 1 0 ]
-"415
+"478
 [v _Menu Menu `(v  1 e 1 0 ]
-"480
+"543
 [v _Exit_Time_Menu Exit_Time_Menu `(v  1 e 1 0 ]
-"488
+"551
 [v _Menu_P1 Menu_P1 `(v  1 e 1 0 ]
-"533
+"596
 [v _Menu_P2 Menu_P2 `(v  1 e 1 0 ]
-"676
+"739
 [v _Menu_P3 Menu_P3 `(v  1 e 1 0 ]
-"721
+"784
 [v _Menu_P4 Menu_P4 `(v  1 e 1 0 ]
-"864
+"927
 [v _Clear Clear `(v  1 e 1 0 ]
-"870
+"933
 [v _Draw_CL Draw_CL `(v  1 e 1 0 ]
-"881
+"944
 [v _Draw_P1 Draw_P1 `(v  1 e 1 0 ]
-"892
+"955
 [v _Draw_P2 Draw_P2 `(v  1 e 1 0 ]
-"903
+"966
 [v _Draw_P3 Draw_P3 `(v  1 e 1 0 ]
-"914
+"977
 [v _Draw_P4 Draw_P4 `(v  1 e 1 0 ]
-"925
+"988
 [v _Draw_0 Draw_0 `(v  1 e 1 0 ]
-"936
+"999
 [v _Draw_1 Draw_1 `(v  1 e 1 0 ]
-"947
+"1010
 [v _Draw_2 Draw_2 `(v  1 e 1 0 ]
-"958
+"1021
 [v _Draw_3 Draw_3 `(v  1 e 1 0 ]
-"969
+"1032
 [v _Draw_4 Draw_4 `(v  1 e 1 0 ]
-"980
+"1043
 [v _Draw_5 Draw_5 `(v  1 e 1 0 ]
-"991
+"1054
 [v _Draw_6 Draw_6 `(v  1 e 1 0 ]
-"1002
+"1065
 [v _Draw_7 Draw_7 `(v  1 e 1 0 ]
-"1013
+"1076
 [v _Draw_8 Draw_8 `(v  1 e 1 0 ]
-"1024
+"1087
 [v _Draw_9 Draw_9 `(v  1 e 1 0 ]
-"1035
+"1098
 [v _Draw_10 Draw_10 `(v  1 e 1 0 ]
-"1046
+"1109
 [v _Draw_11 Draw_11 `(v  1 e 1 0 ]
-"1057
+"1120
 [v _Draw_12 Draw_12 `(v  1 e 1 0 ]
-"1068
+"1131
 [v _Draw_13 Draw_13 `(v  1 e 1 0 ]
-"1079
+"1142
 [v _Draw_14 Draw_14 `(v  1 e 1 0 ]
-"1090
+"1153
 [v _Draw_15 Draw_15 `(v  1 e 1 0 ]
-"1101
+"1164
 [v _Draw_Save_Dot_One Draw_Save_Dot_One `(v  1 e 1 0 ]
-"1112
+"1175
 [v _Draw_Save_Dot_Two Draw_Save_Dot_Two `(v  1 e 1 0 ]
-"1123
+"1186
 [v _Recording Recording `(v  1 e 1 0 ]
 [s S33 . 1 `uc 1 RA0 1 0 :1:0 
 `uc 1 RA1 1 0 :1:1 
@@ -349,187 +349,189 @@
 [v _Flag_End_Stop_Open Flag_End_Stop_Open `a  1 e 1 0 ]
 "63
 [v _Time_Inductive_State Time_Inductive_State `i  1 e 2 0 ]
-"66
+"64
+[v _Time_Open_State Time_Open_State `i  1 e 2 0 ]
+"67
 [v _ADC ADC `i  1 e 2 0 ]
-"117
+"118
 [v _main main `(v  1 e 1 0 ]
 {
-"158
+"160
 } 0
-"242
+"244
 [v _Open_Lock Open_Lock `(v  1 e 1 0 ]
 {
-"258
-[v Open_Lock@Value_Latch Value_Latch `i  1 a 2 4 ]
-"300
+"321
+[v Open_Lock@Value_Latch Value_Latch `i  1 a 2 8 ]
+"363
 } 0
-"383
+"446
 [v _Menu_In Menu_In `(v  1 e 1 0 ]
 {
-"413
+"476
 } 0
-"415
+"478
 [v _Menu Menu `(v  1 e 1 0 ]
 {
-"478
+"541
 } 0
-"721
+"784
 [v _Menu_P4 Menu_P4 `(v  1 e 1 0 ]
 {
-"862
+"925
 } 0
-"676
+"739
 [v _Menu_P3 Menu_P3 `(v  1 e 1 0 ]
 {
-"719
+"782
 } 0
-"533
+"596
 [v _Menu_P2 Menu_P2 `(v  1 e 1 0 ]
 {
-"674
+"737
 } 0
-"1024
+"1087
 [v _Draw_9 Draw_9 `(v  1 e 1 0 ]
 {
-"1033
+"1096
 } 0
-"1013
+"1076
 [v _Draw_8 Draw_8 `(v  1 e 1 0 ]
 {
-"1022
+"1085
 } 0
-"1002
+"1065
 [v _Draw_7 Draw_7 `(v  1 e 1 0 ]
 {
-"1011
+"1074
 } 0
-"991
+"1054
 [v _Draw_6 Draw_6 `(v  1 e 1 0 ]
 {
-"1000
+"1063
 } 0
-"980
+"1043
 [v _Draw_5 Draw_5 `(v  1 e 1 0 ]
 {
-"989
+"1052
 } 0
-"969
+"1032
 [v _Draw_4 Draw_4 `(v  1 e 1 0 ]
 {
-"978
+"1041
 } 0
-"958
+"1021
 [v _Draw_3 Draw_3 `(v  1 e 1 0 ]
 {
-"967
+"1030
 } 0
-"947
+"1010
 [v _Draw_2 Draw_2 `(v  1 e 1 0 ]
 {
-"956
+"1019
 } 0
-"1090
+"1153
 [v _Draw_15 Draw_15 `(v  1 e 1 0 ]
 {
-"1099
+"1162
 } 0
-"1079
+"1142
 [v _Draw_14 Draw_14 `(v  1 e 1 0 ]
 {
-"1088
+"1151
 } 0
-"1068
+"1131
 [v _Draw_13 Draw_13 `(v  1 e 1 0 ]
 {
-"1077
+"1140
 } 0
-"1057
+"1120
 [v _Draw_12 Draw_12 `(v  1 e 1 0 ]
 {
-"1066
+"1129
 } 0
-"1046
+"1109
 [v _Draw_11 Draw_11 `(v  1 e 1 0 ]
 {
-"1055
+"1118
 } 0
-"1035
+"1098
 [v _Draw_10 Draw_10 `(v  1 e 1 0 ]
 {
-"1044
+"1107
 } 0
-"488
+"551
 [v _Menu_P1 Menu_P1 `(v  1 e 1 0 ]
 {
-"531
+"594
 } 0
-"359
+"422
 [v _eeprom_writex eeprom_writex `(v  1 e 1 0 ]
 {
 [v eeprom_writex@address address `i  1 p 2 0 ]
 [v eeprom_writex@data data `uc  1 p 1 2 ]
-"373
+"436
 } 0
-"1123
+"1186
 [v _Recording Recording `(v  1 e 1 0 ]
 {
-"1139
+"1202
 } 0
-"1112
+"1175
 [v _Draw_Save_Dot_Two Draw_Save_Dot_Two `(v  1 e 1 0 ]
 {
-"1121
+"1184
 } 0
-"1101
+"1164
 [v _Draw_Save_Dot_One Draw_Save_Dot_One `(v  1 e 1 0 ]
 {
-"1110
+"1173
 } 0
-"480
+"543
 [v _Exit_Time_Menu Exit_Time_Menu `(v  1 e 1 0 ]
 {
-"486
+"549
 } 0
-"936
+"999
 [v _Draw_1 Draw_1 `(v  1 e 1 0 ]
 {
-"945
+"1008
 } 0
-"925
+"988
 [v _Draw_0 Draw_0 `(v  1 e 1 0 ]
 {
-"934
+"997
 } 0
-"914
+"977
 [v _Draw_P4 Draw_P4 `(v  1 e 1 0 ]
 {
-"923
+"986
 } 0
-"903
+"966
 [v _Draw_P3 Draw_P3 `(v  1 e 1 0 ]
 {
-"912
+"975
 } 0
-"892
+"955
 [v _Draw_P2 Draw_P2 `(v  1 e 1 0 ]
 {
-"901
+"964
 } 0
-"881
+"944
 [v _Draw_P1 Draw_P1 `(v  1 e 1 0 ]
 {
-"890
+"953
 } 0
-"160
+"162
 [v _Close_Lock Close_Lock `(v  1 e 1 0 ]
 {
-"240
+"242
 } 0
-"375
+"438
 [v _eeprom_readx eeprom_readx `(uc  1 e 1 0 ]
 {
 [v eeprom_readx@address address `i  1 p 2 0 ]
-"381
+"444
 } 0
 "15 C:\Program Files (x86)\Microchip\xc8\v2.05\pic\sources\c99\common\Umul16.c
 [v ___wmul __wmul `(ui  1 e 2 0 ]
@@ -541,28 +543,28 @@
 [v ___wmul@multiplicand multiplicand `ui  1 p 2 2 ]
 "53
 } 0
-"302 D:\Users\BotLAB\Documents\GitHub\Access_Control\Electromecanica.X\main.c
+"365 D:\Users\BotLAB\Documents\GitHub\Access_Control\Electromecanica.X\main.c
 [v _Closing Closing `(v  1 e 1 0 ]
 {
-"325
+"388
 } 0
-"344
+"407
 [v _Sense_Current Sense_Current `(v  1 e 1 0 ]
 {
-"351
+"414
 } 0
-"870
+"933
 [v _Draw_CL Draw_CL `(v  1 e 1 0 ]
 {
-"879
+"942
 } 0
-"864
+"927
 [v _Clear Clear `(v  1 e 1 0 ]
 {
-"868
+"931
 } 0
-"327
+"390
 [v _Analog_Read Analog_Read `(i  1 e 2 0 ]
 {
-"336
+"399
 } 0

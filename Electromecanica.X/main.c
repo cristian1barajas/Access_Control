@@ -60,7 +60,8 @@ _Bool Flag_Menu = 0;
 _Bool Latch;                // Variable para guardar y evaluar el valor de la memoria eeprom
 _Bool Flag_Latch;
 _Bool Flag_End_Stop_Open;
-int Time_Inductive_State; // Variable para guardar y evaluar el valor de la memoria eeprom
+int Time_Inductive_State;  // Variable para guardar y evaluar el valor de la memoria eeprom
+int Time_Open_State;       // Variable para guardar y evaluar el valor de la memoria eeprom
 //int Count_Inductive_Active = 0; Descomente si quiere contar los eventos del sensor inductivo
 
 int ADC;
@@ -148,6 +149,7 @@ void main(void) {   // Funcion principal
 
     Latch = eeprom_readx(0x01);
     Time_Inductive_State = eeprom_readx(0x02);
+    Time_Open_State = eeprom_readx(0x04);
     
     while(1) {
         Menu_In();
@@ -246,6 +248,67 @@ void Open_Lock(void) {
         __delay_ms(50);                                // Antirebote
         End_Stop_Open_State = End_Stop_Open;
         if(Open_Contact_State == 0 && Last_Open_Contact_State == 1 && End_Stop_Open_State == 1) {
+            Time_Open_State = eeprom_readx(0x04);
+            Time_Open_State = Time_Open_State * 1000;
+            switch (Time_Open_State)  // Retardo de arranque despues de presionar el boton
+            {
+            case 0:
+                __delay_ms(0);
+                break;
+            case 1000:
+                __delay_ms(1000);
+                break;
+            case 2000:
+                __delay_ms(2000);
+                break;
+            case 3000:
+                __delay_ms(3000);
+                break;
+            case 4000:
+                __delay_ms(4000);
+                break;
+            case 5000:
+                __delay_ms(5000);
+                break;
+            case 6000:
+                __delay_ms(6000);
+                break;
+            case 7000:
+                __delay_ms(7000);
+                break;
+            case 8000:
+                __delay_ms(8000);
+                break;
+            case 9000:
+                __delay_ms(9000);
+                break;
+            case 10000:
+                __delay_ms(10000);
+                break;
+            case 11000:
+                __delay_ms(10000);
+                __delay_ms(1000);
+                break;
+            case 12000:
+                __delay_ms(10000);
+                __delay_ms(2000);
+                break;
+            case 13000:
+                __delay_ms(10000);
+                __delay_ms(3000);
+                break;
+            case 14000:
+                __delay_ms(10000);
+                __delay_ms(4000);
+                break;
+            case 15000:
+                __delay_ms(10000);
+                __delay_ms(5000);
+                break;
+            default:
+                __delay_ms(0);
+                break;
+            }
             Flag_End_Stop_Open = 1; // Bandera de control para el do-while
             do {
                 Engine_Direction_B = 1;
