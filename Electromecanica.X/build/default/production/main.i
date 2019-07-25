@@ -5096,6 +5096,7 @@ _Bool Flag_Menu = 0;
 _Bool Latch;
 _Bool Flag_Latch;
 _Bool Flag_End_Stop_Open;
+int Time_Inductive_State;
 
 
 int ADC;
@@ -5182,6 +5183,7 @@ void main(void) {
     PORTCbits.RC2 = 0;
 
     Latch = eeprom_readx(0x01);
+    Time_Inductive_State = eeprom_readx(0x02);
 
     while(1) {
         Menu_In();
@@ -5198,9 +5200,69 @@ void Close_Lock(void) {
         _delay((unsigned long)((50)*(20000000/4000.0)));
         End_Stop_Open_State = PORTAbits.RA2;
         if(Inductive_State == 1 && Last_Inductive_State == 0 && End_Stop_Open_State == 0) {
-            _delay((unsigned long)((100)*(20000000/4000.0)));
+            Time_Inductive_State = eeprom_readx(0x02);
+            Time_Inductive_State = Time_Inductive_State * 1000;
+            switch (Time_Inductive_State)
+            {
+            case 0:
+                _delay((unsigned long)((0)*(20000000/4000.0)));
+                break;
+            case 1000:
+                _delay((unsigned long)((1000)*(20000000/4000.0)));
+                break;
+            case 2000:
+                _delay((unsigned long)((2000)*(20000000/4000.0)));
+                break;
+            case 3000:
+                _delay((unsigned long)((3000)*(20000000/4000.0)));
+                break;
+            case 4000:
+                _delay((unsigned long)((4000)*(20000000/4000.0)));
+                break;
+            case 5000:
+                _delay((unsigned long)((5000)*(20000000/4000.0)));
+                break;
+            case 6000:
+                _delay((unsigned long)((6000)*(20000000/4000.0)));
+                break;
+            case 7000:
+                _delay((unsigned long)((7000)*(20000000/4000.0)));
+                break;
+            case 8000:
+                _delay((unsigned long)((8000)*(20000000/4000.0)));
+                break;
+            case 9000:
+                _delay((unsigned long)((9000)*(20000000/4000.0)));
+                break;
+            case 10000:
+                _delay((unsigned long)((10000)*(20000000/4000.0)));
+                break;
+            case 11000:
+                _delay((unsigned long)((10000)*(20000000/4000.0)));
+                _delay((unsigned long)((1000)*(20000000/4000.0)));
+                break;
+            case 12000:
+                _delay((unsigned long)((10000)*(20000000/4000.0)));
+                _delay((unsigned long)((2000)*(20000000/4000.0)));
+                break;
+            case 13000:
+                _delay((unsigned long)((10000)*(20000000/4000.0)));
+                _delay((unsigned long)((3000)*(20000000/4000.0)));
+                break;
+            case 14000:
+                _delay((unsigned long)((10000)*(20000000/4000.0)));
+                _delay((unsigned long)((4000)*(20000000/4000.0)));
+                break;
+            case 15000:
+                _delay((unsigned long)((10000)*(20000000/4000.0)));
+                _delay((unsigned long)((5000)*(20000000/4000.0)));
+                break;
+            default:
+                _delay((unsigned long)((0)*(20000000/4000.0)));
+                break;
+            }
             Closing();
-# 175 "main.c"
+# 237 "main.c"
         }
     }
     Last_Inductive_State = Inductive_State;
