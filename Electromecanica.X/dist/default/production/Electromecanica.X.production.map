@@ -5,7 +5,7 @@ Linker command line:
 -W-3 --edf=C:\Program Files (x86)\Microchip\xc8\v2.05\pic\dat\en_msgs.txt \
   -cs -h+dist/default/production\Electromecanica.X.production.sym \
   --cmf=dist/default/production\Electromecanica.X.production.cmf -z \
-  -Q18F2550 -oD:\Users\BotLAB\AppData\Local\Temp\s898.3 \
+  -Q18F2550 -oD:\Users\BotLAB\AppData\Local\Temp\s89s.2 \
   --defsym=__MPLAB_BUILD=1 \
   -Mdist/default/production/Electromecanica.X.production.map -E1 -ver=XC8 \
   --acfsm=1493 -ASTACK=060h-07FFh -pstack=STACK -ACODE=00h-07FFFh \
@@ -24,7 +24,7 @@ Linker command line:
   -pfarbss=FARRAM,fardata=FARRAM,nvFARRAM=FARRAM \
   -pintsave_regs=BIGRAM,bigbss=BIGRAM,bigdata=BIGRAM -pbss=RAM \
   -pidata=CODE,irdata=CODE,ibigdata=CODE,ifardata=CODE -prparam=COMRAM \
-  D:\Users\BotLAB\AppData\Local\Temp\s898.o \
+  D:\Users\BotLAB\AppData\Local\Temp\s89s.o \
   dist/default/production\Electromecanica.X.production.o 
 
 Object code version is 3.11
@@ -37,105 +37,105 @@ Call graph: (short form)
 
 
                 Name                               Link     Load   Length Selector   Space Scale
-D:\Users\BotLAB\AppData\Local\Temp\s898.o
+D:\Users\BotLAB\AppData\Local\Temp\s89s.o
                 init                                  0        0        4        0       0
                 idloc                            200000   200000        8   200000       0
                 config                           300000   300000        E   300000       0
 dist/default/production\Electromecanica.X.production.o
-                text39                             6E00     6E00       28     3700       0
-                text38                             6DA4     6DA4        A     36D2       0
-                text37                             6DBC     6DBC       22     36DE       0
-                text36                             6E28     6E28       28     3714       0
-                text35                             7466     7466       AA     3A33       0
-                text34                             735A     735A       82     39AD       0
-                text33                             6E50     6E50       32     3728       0
-                text32                             6E82     6E82       32     3741       0
-                text31                             6EB4     6EB4       32     375A       0
-                text30                             6EE6     6EE6       32     3773       0
-                text29                             729C     729C       34     394E       0
-                text28                             6F18     6F18       32     378C       0
-                text27                             6F4A     6F4A       32     37A5       0
-                text26                             6F7C     6F7C       32     37BE       0
-                text25                             6FAE     6FAE       32     37D7       0
-                text24                             73DC     73DC       8A     39EE       0
-                text23                             6DDE     6DDE       22     36EF       0
-                text22                             7510     7510       D0     3A88       0
-                text21                             6FE0     6FE0       32     37F0       0
-                text20                             7012     7012       32     3809       0
-                text19                             7044     7044       32     3822       0
-                text18                             7076     7076       32     383B       0
-                text17                             70A8     70A8       32     3854       0
-                text16                             70DA     70DA       32     386D       0
-                text15                             710C     710C       32     3886       0
-                text14                             713E     713E       32     389F       0
-                text13                             7170     7170       32     38B8       0
-                text12                             71A2     71A2       32     38D1       0
-                text11                             71D4     71D4       32     38EA       0
-                text10                             7206     7206       32     3903       0
-                text9                              7238     7238       32     391C       0
-                text8                              726A     726A       32     3935       0
-                text7                              7A70     7A70      2C8     3D38       0
-                text6                              75E0     75E0       D0     3AF0       0
-                text5                              7D38     7D38      2C8     3E9C       0
-                text4                              78FA     78FA      176     3C7D       0
-                text3                              76B0     76B0       D6     3B58       0
-                text2                              7786     7786      174     3BC3       0
-                text1                              6DAE     6DAE        E     36D7       0
-                text0                              7304     7304       56     3982       0
-                cstackCOMRAM                         32       32        A        1       1
+                text39                             6D2E     6D2E       28     3697       0
+                text38                             6CD2     6CD2        A     3669       0
+                text37                             6CEA     6CEA       22     3675       0
+                text36                             6D56     6D56       28     36AB       0
+                text35                             739A     739A       AA     39CD       0
+                text34                             728E     728E       82     3947       0
+                text33                             6D7E     6D7E       32     36BF       0
+                text32                             6DB0     6DB0       32     36D8       0
+                text31                             6DE2     6DE2       32     36F1       0
+                text30                             6E14     6E14       32     370A       0
+                text29                             6E46     6E46       32     3723       0
+                text28                             6E78     6E78       32     373C       0
+                text27                             71CA     71CA       34     38E5       0
+                text26                             6EAA     6EAA       32     3755       0
+                text25                             6EDC     6EDC       32     376E       0
+                text24                             7310     7310       8A     3988       0
+                text23                             6D0C     6D0C       22     3686       0
+                text22                             751A     751A       E4     3A8D       0
+                text21                             6F0E     6F0E       32     3787       0
+                text20                             6F40     6F40       32     37A0       0
+                text19                             6F72     6F72       32     37B9       0
+                text18                             6FA4     6FA4       32     37D2       0
+                text17                             6FD6     6FD6       32     37EB       0
+                text16                             7008     7008       32     3804       0
+                text15                             703A     703A       32     381D       0
+                text14                             706C     706C       32     3836       0
+                text13                             709E     709E       32     384F       0
+                text12                             70D0     70D0       32     3868       0
+                text11                             7102     7102       32     3881       0
+                text10                             7134     7134       32     389A       0
+                text9                              7166     7166       32     38B3       0
+                text8                              7198     7198       32     38CC       0
+                text7                              7A48     7A48      2DC     3D24       0
+                text6                              75FE     75FE       E4     3AFF       0
+                text5                              7D24     7D24      2DC     3E92       0
+                text4                              76E2     76E2      196     3B71       0
+                text3                              7444     7444       D6     3A22       0
+                text2                              6CDC     6CDC        E     366E       0
+                text1                              7878     7878      1D0     3C3C       0
+                text0                              7232     7232       5C     3919       0
+                cstackCOMRAM                         36       36        9        1       1
                 dataCOMRAM                           3F       3F        3        1       1
-                bssCOMRAM                             1        1       31        1       1
-                cinit                              72D0     72D0       34     3968       0
-                nvCOMRAM                             3C       3C        3        1       1
-                idataCOMRAM                        6DA1     6DA1        3     6DA1       0
+                bssCOMRAM                             1        1       35        1       1
+                cinit                              71FE     71FE       34     38FF       0
+                nvCOMRAM                             42       42        2        1       1
+                idataCOMRAM                        6CCF     6CCF        3     6CCF       0
 
 TOTAL           Name                               Link     Load   Length     Space
         CLASS   STACK          
 
         CLASS   CODE           
                 init                                  0        0        4         0
-                text39                             6E00     6E00       28         0
-                text38                             6DA4     6DA4        A         0
-                text37                             6DBC     6DBC       22         0
-                text36                             6E28     6E28       28         0
-                text35                             7466     7466       AA         0
-                text34                             735A     735A       82         0
-                text33                             6E50     6E50       32         0
-                text32                             6E82     6E82       32         0
-                text31                             6EB4     6EB4       32         0
-                text30                             6EE6     6EE6       32         0
-                text29                             729C     729C       34         0
-                text28                             6F18     6F18       32         0
-                text27                             6F4A     6F4A       32         0
-                text26                             6F7C     6F7C       32         0
-                text25                             6FAE     6FAE       32         0
-                text24                             73DC     73DC       8A         0
-                text23                             6DDE     6DDE       22         0
-                text22                             7510     7510       D0         0
-                text21                             6FE0     6FE0       32         0
-                text20                             7012     7012       32         0
-                text19                             7044     7044       32         0
-                text18                             7076     7076       32         0
-                text17                             70A8     70A8       32         0
-                text16                             70DA     70DA       32         0
-                text15                             710C     710C       32         0
-                text14                             713E     713E       32         0
-                text13                             7170     7170       32         0
-                text12                             71A2     71A2       32         0
-                text11                             71D4     71D4       32         0
-                text10                             7206     7206       32         0
-                text9                              7238     7238       32         0
-                text8                              726A     726A       32         0
-                text7                              7A70     7A70      2C8         0
-                text6                              75E0     75E0       D0         0
-                text5                              7D38     7D38      2C8         0
-                text4                              78FA     78FA      176         0
-                text3                              76B0     76B0       D6         0
-                text2                              7786     7786      174         0
-                text1                              6DAE     6DAE        E         0
-                text0                              7304     7304       56         0
-                cinit                              72D0     72D0       34         0
-                idataCOMRAM                        6DA1     6DA1        3         0
+                text39                             6D2E     6D2E       28         0
+                text38                             6CD2     6CD2        A         0
+                text37                             6CEA     6CEA       22         0
+                text36                             6D56     6D56       28         0
+                text35                             739A     739A       AA         0
+                text34                             728E     728E       82         0
+                text33                             6D7E     6D7E       32         0
+                text32                             6DB0     6DB0       32         0
+                text31                             6DE2     6DE2       32         0
+                text30                             6E14     6E14       32         0
+                text29                             6E46     6E46       32         0
+                text28                             6E78     6E78       32         0
+                text27                             71CA     71CA       34         0
+                text26                             6EAA     6EAA       32         0
+                text25                             6EDC     6EDC       32         0
+                text24                             7310     7310       8A         0
+                text23                             6D0C     6D0C       22         0
+                text22                             751A     751A       E4         0
+                text21                             6F0E     6F0E       32         0
+                text20                             6F40     6F40       32         0
+                text19                             6F72     6F72       32         0
+                text18                             6FA4     6FA4       32         0
+                text17                             6FD6     6FD6       32         0
+                text16                             7008     7008       32         0
+                text15                             703A     703A       32         0
+                text14                             706C     706C       32         0
+                text13                             709E     709E       32         0
+                text12                             70D0     70D0       32         0
+                text11                             7102     7102       32         0
+                text10                             7134     7134       32         0
+                text9                              7166     7166       32         0
+                text8                              7198     7198       32         0
+                text7                              7A48     7A48      2DC         0
+                text6                              75FE     75FE       E4         0
+                text5                              7D24     7D24      2DC         0
+                text4                              76E2     76E2      196         0
+                text3                              7444     7444       D6         0
+                text2                              6CDC     6CDC        E         0
+                text1                              7878     7878      1D0         0
+                text0                              7232     7232       5C         0
+                cinit                              71FE     71FE       34         0
+                idataCOMRAM                        6CCF     6CCF        3         0
 
         CLASS   CONST          
 
@@ -144,10 +144,10 @@ TOTAL           Name                               Link     Load   Length     Sp
         CLASS   MEDIUMCONST    
 
         CLASS   COMRAM         
-                cstackCOMRAM                         32       32        A         1
+                cstackCOMRAM                         36       36        9         1
                 dataCOMRAM                           3F       3F        3         1
-                bssCOMRAM                             1        1       31         1
-                nvCOMRAM                             3C       3C        3         1
+                bssCOMRAM                             1        1       35         1
+                nvCOMRAM                             42       42        2         1
 
         CLASS   ABS1           
 
@@ -188,49 +188,49 @@ TOTAL           Name                               Link     Load   Length     Sp
 SEGMENTS        Name                           Load    Length   Top    Selector   Space  Class
 
                 reset_vec                      000000  000004  000004         0       0  CODE    
-                bssCOMRAM                      000001  000041  000042         1       1  COMRAM  
-                idataCOMRAM                    006DA1  000003  006DA4      6DA1       0  CODE    
-                text38                         006DA4  00000A  006DAE      36D2       0  CODE    
-                text1                          006DAE  00000E  006DBC      36D7       0  CODE    
-                text37                         006DBC  000022  006DDE      36DE       0  CODE    
-                text23                         006DDE  000022  006E00      36EF       0  CODE    
-                text39                         006E00  000028  006E28      3700       0  CODE    
-                text36                         006E28  000028  006E50      3714       0  CODE    
-                text33                         006E50  000032  006E82      3728       0  CODE    
-                text32                         006E82  000032  006EB4      3741       0  CODE    
-                text31                         006EB4  000032  006EE6      375A       0  CODE    
-                text30                         006EE6  000032  006F18      3773       0  CODE    
-                text28                         006F18  000032  006F4A      378C       0  CODE    
-                text27                         006F4A  000032  006F7C      37A5       0  CODE    
-                text26                         006F7C  000032  006FAE      37BE       0  CODE    
-                text25                         006FAE  000032  006FE0      37D7       0  CODE    
-                text21                         006FE0  000032  007012      37F0       0  CODE    
-                text20                         007012  000032  007044      3809       0  CODE    
-                text19                         007044  000032  007076      3822       0  CODE    
-                text18                         007076  000032  0070A8      383B       0  CODE    
-                text17                         0070A8  000032  0070DA      3854       0  CODE    
-                text16                         0070DA  000032  00710C      386D       0  CODE    
-                text15                         00710C  000032  00713E      3886       0  CODE    
-                text14                         00713E  000032  007170      389F       0  CODE    
-                text13                         007170  000032  0071A2      38B8       0  CODE    
-                text12                         0071A2  000032  0071D4      38D1       0  CODE    
-                text11                         0071D4  000032  007206      38EA       0  CODE    
-                text10                         007206  000032  007238      3903       0  CODE    
-                text9                          007238  000032  00726A      391C       0  CODE    
-                text8                          00726A  000032  00729C      3935       0  CODE    
-                text29                         00729C  000034  0072D0      394E       0  CODE    
-                cinit                          0072D0  000034  007304      3968       0  CODE    
-                text0                          007304  000056  00735A      3982       0  CODE    
-                text34                         00735A  000082  0073DC      39AD       0  CODE    
-                text24                         0073DC  00008A  007466      39EE       0  CODE    
-                text35                         007466  0000AA  007510      3A33       0  CODE    
-                text22                         007510  0000D0  0075E0      3A88       0  CODE    
-                text6                          0075E0  0000D0  0076B0      3AF0       0  CODE    
-                text3                          0076B0  0000D6  007786      3B58       0  CODE    
-                text2                          007786  000174  0078FA      3BC3       0  CODE    
-                text4                          0078FA  000176  007A70      3C7D       0  CODE    
-                text7                          007A70  0002C8  007D38      3D38       0  CODE    
-                text5                          007D38  0002C8  008000      3E9C       0  CODE    
+                bssCOMRAM                      000001  000043  000044         1       1  COMRAM  
+                idataCOMRAM                    006CCF  000003  006CD2      6CCF       0  CODE    
+                text38                         006CD2  00000A  006CDC      3669       0  CODE    
+                text2                          006CDC  00000E  006CEA      366E       0  CODE    
+                text37                         006CEA  000022  006D0C      3675       0  CODE    
+                text23                         006D0C  000022  006D2E      3686       0  CODE    
+                text39                         006D2E  000028  006D56      3697       0  CODE    
+                text36                         006D56  000028  006D7E      36AB       0  CODE    
+                text33                         006D7E  000032  006DB0      36BF       0  CODE    
+                text32                         006DB0  000032  006DE2      36D8       0  CODE    
+                text31                         006DE2  000032  006E14      36F1       0  CODE    
+                text30                         006E14  000032  006E46      370A       0  CODE    
+                text29                         006E46  000032  006E78      3723       0  CODE    
+                text28                         006E78  000032  006EAA      373C       0  CODE    
+                text26                         006EAA  000032  006EDC      3755       0  CODE    
+                text25                         006EDC  000032  006F0E      376E       0  CODE    
+                text21                         006F0E  000032  006F40      3787       0  CODE    
+                text20                         006F40  000032  006F72      37A0       0  CODE    
+                text19                         006F72  000032  006FA4      37B9       0  CODE    
+                text18                         006FA4  000032  006FD6      37D2       0  CODE    
+                text17                         006FD6  000032  007008      37EB       0  CODE    
+                text16                         007008  000032  00703A      3804       0  CODE    
+                text15                         00703A  000032  00706C      381D       0  CODE    
+                text14                         00706C  000032  00709E      3836       0  CODE    
+                text13                         00709E  000032  0070D0      384F       0  CODE    
+                text12                         0070D0  000032  007102      3868       0  CODE    
+                text11                         007102  000032  007134      3881       0  CODE    
+                text10                         007134  000032  007166      389A       0  CODE    
+                text9                          007166  000032  007198      38B3       0  CODE    
+                text8                          007198  000032  0071CA      38CC       0  CODE    
+                text27                         0071CA  000034  0071FE      38E5       0  CODE    
+                cinit                          0071FE  000034  007232      38FF       0  CODE    
+                text0                          007232  00005C  00728E      3919       0  CODE    
+                text34                         00728E  000082  007310      3947       0  CODE    
+                text24                         007310  00008A  00739A      3988       0  CODE    
+                text35                         00739A  0000AA  007444      39CD       0  CODE    
+                text3                          007444  0000D6  00751A      3A22       0  CODE    
+                text22                         00751A  0000E4  0075FE      3A8D       0  CODE    
+                text6                          0075FE  0000E4  0076E2      3AFF       0  CODE    
+                text4                          0076E2  000196  007878      3B71       0  CODE    
+                text1                          007878  0001D0  007A48      3C3C       0  CODE    
+                text7                          007A48  0002DC  007D24      3D24       0  CODE    
+                text5                          007D24  0002DC  008000      3E92       0  CODE    
                 idloc                          200000  000008  200008    200000       0  IDLOC   
                 config                         300000  00000E  30000E    300000       0  CONFIG  
 
@@ -246,95 +246,99 @@ UNUSED ADDRESS RANGES
         BANK5            000500-0005FF              100
         BANK6            000600-0006FF              100
         BANK7            000700-0007FF              100
-        BIGRAM           000042-0007FF              7BE
-        CODE             000004-006DA0             6D9D
-        COMRAM           000042-00005F               1E
-        CONST            000004-006DA0             6D9D
+        BIGRAM           000044-0007FF              7BC
+        CODE             000004-006CCE             6CCB
+        COMRAM           000044-00005F               1C
+        CONST            000004-006CCE             6CCB
         EEDATA           F00000-F000FF              100
-        MEDIUMCONST      000800-006DA0             65A1
+        MEDIUMCONST      000800-006CCE             64CF
         RAM              000060-0007FF              100
         SFR              000F60-000FFF               A0
-        SMALLCONST       000800-006DA0              100
+        SMALLCONST       000800-006CCE              100
         STACK            000060-0007FF              7A0
 
                                   Symbol Table
 
-?_Analog_Read                cstackCOMRAM 000032
-_ADC                         bssCOMRAM    000021
+?_Analog_Read                cstackCOMRAM 000036
+Open_Lock@Value_Latch        cstackCOMRAM 00003A
+_ADC                         bssCOMRAM    000023
 _ADCON0bits                  (abs)        000FC2
 _ADCON1                      (abs)        000FC1
 _ADCON2bits                  (abs)        000FC0
 _ADRESH                      (abs)        000FC4
 _ADRESL                      (abs)        000FC3
-_Analog_Read                 text39       006E00
+_Analog_Read                 text39       006D2E
 _Buffer1                     bssCOMRAM    000001
-_Button_Menu_Down_State      bssCOMRAM    00002C
-_Button_Menu_Up_State        nvCOMRAM     00003E
-_Clear                       text38       006DA4
-_Close_Lock                  text34       00735A
-_Closing                     text35       007466
+_Button_Menu_Down_State      bssCOMRAM    000030
+_Button_Menu_Up_State        nvCOMRAM     000043
+_Clear                       text38       006CD2
+_Close_Lock                  text34       00728E
+_Closing                     text35       00739A
 _Count_Auto_Close            bssCOMRAM    000019
 _Count_Exit_Menu             bssCOMRAM    000011
-_Count_Peake_Current         bssCOMRAM    000027
-_Count_Push_Button           bssCOMRAM    000023
+_Count_Peake_Current         bssCOMRAM    000029
+_Count_Push_Button           bssCOMRAM    000025
 _Count_Save                  bssCOMRAM    000015
 _Count_Time_Close            bssCOMRAM    00001D
-_Current                     bssCOMRAM    000025
-_Draw_0                      text28       006F18
-_Draw_1                      text27       006F4A
-_Draw_10                     text21       006FE0
-_Draw_11                     text20       007012
-_Draw_12                     text19       007044
-_Draw_13                     text18       007076
-_Draw_14                     text17       0070A8
-_Draw_15                     text16       0070DA
-_Draw_2                      text15       00710C
-_Draw_3                      text14       00713E
-_Draw_4                      text13       007170
-_Draw_5                      text12       0071A2
-_Draw_6                      text11       0071D4
-_Draw_7                      text10       007206
-_Draw_8                      text9        007238
-_Draw_9                      text8        00726A
-_Draw_CL                     text37       006DBC
-_Draw_P1                     text33       006E50
-_Draw_P2                     text32       006E82
-_Draw_P3                     text31       006EB4
-_Draw_P4                     text30       006EE6
-_Draw_Save_Dot_One           text26       006F7C
-_Draw_Save_Dot_Two           text25       006FAE
+_Current                     bssCOMRAM    000027
+_Draw_0                      text29       006E46
+_Draw_1                      text28       006E78
+_Draw_10                     text21       006F0E
+_Draw_11                     text20       006F40
+_Draw_12                     text19       006F72
+_Draw_13                     text18       006FA4
+_Draw_14                     text17       006FD6
+_Draw_15                     text16       007008
+_Draw_2                      text15       00703A
+_Draw_3                      text14       00706C
+_Draw_4                      text13       00709E
+_Draw_5                      text12       0070D0
+_Draw_6                      text11       007102
+_Draw_7                      text10       007134
+_Draw_8                      text9        007166
+_Draw_9                      text8        007198
+_Draw_CL                     text37       006CEA
+_Draw_P1                     text33       006D7E
+_Draw_P2                     text32       006DB0
+_Draw_P3                     text31       006DE2
+_Draw_P4                     text30       006E14
+_Draw_Save_Dot_One           text26       006EAA
+_Draw_Save_Dot_Two           text25       006EDC
 _EEADR                       (abs)        000FA9
 _EECON1bits                  (abs)        000FA6
 _EECON2                      (abs)        000FA7
 _EEDATA                      (abs)        000FA8
-_End_Stop_Close_State        bssCOMRAM    00002E
-_End_Stop_Open_State         bssCOMRAM    00002D
-_Exit_Time_Menu              text29       00729C
-_Flag_Menu                   bssCOMRAM    000029
+_End_Stop_Close_State        bssCOMRAM    000032
+_End_Stop_Open_State         bssCOMRAM    000031
+_Exit_Time_Menu              text27       0071CA
+_Flag_End_Stop_Open          bssCOMRAM    00002B
+_Flag_Latch                  bssCOMRAM    00002C
+_Flag_Menu                   bssCOMRAM    00002D
 _INTCONbits                  (abs)        000FF2
-_Inductive_State             bssCOMRAM    000030
+_Inductive_State             bssCOMRAM    000034
 _Last_Button_Menu_Down_State dataCOMRAM   00003F
 _Last_Button_Menu_Up_State   dataCOMRAM   000040
-_Last_Inductive_State        bssCOMRAM    000031
+_Last_Inductive_State        bssCOMRAM    000035
 _Last_Open_Contact_State     dataCOMRAM   000041
-_Menu                        text4        0078FA
-_Menu_In                     text3        0076B0
-_Menu_P1                     text22       007510
-_Menu_P2                     text7        007A70
-_Menu_P3                     text6        0075E0
-_Menu_P4                     text5        007D38
-_Open_Contact_State          bssCOMRAM    00002F
-_Open_Lock                   text2        007786
+_Latch                       nvCOMRAM     000042
+_Menu                        text4        0076E2
+_Menu_In                     text3        007444
+_Menu_P1                     text22       00751A
+_Menu_P2                     text7        007A48
+_Menu_P3                     text6        0075FE
+_Menu_P4                     text5        007D24
+_Open_Contact_State          bssCOMRAM    000033
+_Open_Lock                   text1        007878
 _PORTAbits                   (abs)        000F80
 _PORTB                       (abs)        000F81
 _PORTCbits                   (abs)        000F82
-_Recording                   text24       0073DC
-_Sense_Current               text36       006E28
+_Recording                   text24       007310
+_Sense_Current               text36       006D56
 _TRISAbits                   (abs)        000F92
 _TRISB                       (abs)        000F93
 _TRISCbits                   (abs)        000F94
-_Toggle_Down                 bssCOMRAM    00002A
-_Toggle_Up                   bssCOMRAM    00002B
+_Toggle_Down                 bssCOMRAM    00002E
+_Toggle_Up                   bssCOMRAM    00002F
 __CFG_BOR$OFF                (abs)        000000
 __CFG_BORV$3                 (abs)        000000
 __CFG_CCP2MX$ON              (abs)        000000
@@ -428,7 +432,7 @@ __Hrparam                    rparam       000000
 __Hsfr                       sfr          000000
 __Hsmallconst                smallconst   000000
 __Hspace_0                   (abs)        30000E
-__Hspace_1                   (abs)        000042
+__Hspace_1                   (abs)        000044
 __Hspace_2                   (abs)        000000
 __Hstack                     stack        000000
 __Hstruct                    struct       000000
@@ -577,7 +581,7 @@ __Ltext7                     text7        000000
 __Ltext8                     text8        000000
 __Ltext9                     text9        000000
 __S0                         (abs)        30000E
-__S1                         (abs)        000042
+__S1                         (abs)        000044
 __S2                         (abs)        000000
 ___inthi_sp                  stack        000000
 ___intlo_sp                  stack        000000
@@ -586,95 +590,95 @@ ___rparam_used               (abs)        000001
 ___sp                        stack        000000
 __accesstop                  (abs)        000060
 __activetblptr               (abs)        000002
-__end_of_Analog_Read         text39       006E28
-__end_of_Clear               text38       006DAE
-__end_of_Close_Lock          text34       0073DC
-__end_of_Closing             text35       007510
-__end_of_Draw_0              text28       006F4A
-__end_of_Draw_1              text27       006F7C
-__end_of_Draw_10             text21       007012
-__end_of_Draw_11             text20       007044
-__end_of_Draw_12             text19       007076
-__end_of_Draw_13             text18       0070A8
-__end_of_Draw_14             text17       0070DA
-__end_of_Draw_15             text16       00710C
-__end_of_Draw_2              text15       00713E
-__end_of_Draw_3              text14       007170
-__end_of_Draw_4              text13       0071A2
-__end_of_Draw_5              text12       0071D4
-__end_of_Draw_6              text11       007206
-__end_of_Draw_7              text10       007238
-__end_of_Draw_8              text9        00726A
-__end_of_Draw_9              text8        00729C
-__end_of_Draw_CL             text37       006DDE
-__end_of_Draw_P1             text33       006E82
-__end_of_Draw_P2             text32       006EB4
-__end_of_Draw_P3             text31       006EE6
-__end_of_Draw_P4             text30       006F18
-__end_of_Draw_Save_Dot_One   text26       006FAE
-__end_of_Draw_Save_Dot_Two   text25       006FE0
-__end_of_Exit_Time_Menu      text29       0072D0
-__end_of_Menu                text4        007A70
-__end_of_Menu_In             text3        007786
-__end_of_Menu_P1             text22       0075E0
-__end_of_Menu_P2             text7        007D38
-__end_of_Menu_P3             text6        0076B0
+__end_of_Analog_Read         text39       006D56
+__end_of_Clear               text38       006CDC
+__end_of_Close_Lock          text34       007310
+__end_of_Closing             text35       007444
+__end_of_Draw_0              text29       006E78
+__end_of_Draw_1              text28       006EAA
+__end_of_Draw_10             text21       006F40
+__end_of_Draw_11             text20       006F72
+__end_of_Draw_12             text19       006FA4
+__end_of_Draw_13             text18       006FD6
+__end_of_Draw_14             text17       007008
+__end_of_Draw_15             text16       00703A
+__end_of_Draw_2              text15       00706C
+__end_of_Draw_3              text14       00709E
+__end_of_Draw_4              text13       0070D0
+__end_of_Draw_5              text12       007102
+__end_of_Draw_6              text11       007134
+__end_of_Draw_7              text10       007166
+__end_of_Draw_8              text9        007198
+__end_of_Draw_9              text8        0071CA
+__end_of_Draw_CL             text37       006D0C
+__end_of_Draw_P1             text33       006DB0
+__end_of_Draw_P2             text32       006DE2
+__end_of_Draw_P3             text31       006E14
+__end_of_Draw_P4             text30       006E46
+__end_of_Draw_Save_Dot_One   text26       006EDC
+__end_of_Draw_Save_Dot_Two   text25       006F0E
+__end_of_Exit_Time_Menu      text27       0071FE
+__end_of_Menu                text4        007878
+__end_of_Menu_In             text3        00751A
+__end_of_Menu_P1             text22       0075FE
+__end_of_Menu_P2             text7        007D24
+__end_of_Menu_P3             text6        0076E2
 __end_of_Menu_P4             text5        008000
-__end_of_Open_Lock           text2        0078FA
-__end_of_Recording           text24       007466
-__end_of_Sense_Current       text36       006E50
-__end_of__initialization     cinit        0072FA
-__end_of_eeprom_readx        text1        006DBC
-__end_of_eeprom_writex       text23       006E00
-__end_of_main                text0        00735A
-__initialization             cinit        0072D0
+__end_of_Open_Lock           text1        007A48
+__end_of_Recording           text24       00739A
+__end_of_Sense_Current       text36       006D7E
+__end_of__initialization     cinit        007228
+__end_of_eeprom_readx        text2        006CEA
+__end_of_eeprom_writex       text23       006D2E
+__end_of_main                text0        00728E
+__initialization             cinit        0071FE
 __mediumconst                mediumconst  000000
 __pbssCOMRAM                 bssCOMRAM    000001
-__pcinit                     cinit        0072D0
-__pcstackCOMRAM              cstackCOMRAM 000032
+__pcinit                     cinit        0071FE
+__pcstackCOMRAM              cstackCOMRAM 000036
 __pdataCOMRAM                dataCOMRAM   00003F
-__pidataCOMRAM               idataCOMRAM  006DA1
-__pnvCOMRAM                  nvCOMRAM     00003C
-__ptext0                     text0        007304
-__ptext1                     text1        006DAE
-__ptext10                    text10       007206
-__ptext11                    text11       0071D4
-__ptext12                    text12       0071A2
-__ptext13                    text13       007170
-__ptext14                    text14       00713E
-__ptext15                    text15       00710C
-__ptext16                    text16       0070DA
-__ptext17                    text17       0070A8
-__ptext18                    text18       007076
-__ptext19                    text19       007044
-__ptext2                     text2        007786
-__ptext20                    text20       007012
-__ptext21                    text21       006FE0
-__ptext22                    text22       007510
-__ptext23                    text23       006DDE
-__ptext24                    text24       0073DC
-__ptext25                    text25       006FAE
-__ptext26                    text26       006F7C
-__ptext27                    text27       006F4A
-__ptext28                    text28       006F18
-__ptext29                    text29       00729C
-__ptext3                     text3        0076B0
-__ptext30                    text30       006EE6
-__ptext31                    text31       006EB4
-__ptext32                    text32       006E82
-__ptext33                    text33       006E50
-__ptext34                    text34       00735A
-__ptext35                    text35       007466
-__ptext36                    text36       006E28
-__ptext37                    text37       006DBC
-__ptext38                    text38       006DA4
-__ptext39                    text39       006E00
-__ptext4                     text4        0078FA
-__ptext5                     text5        007D38
-__ptext6                     text6        0075E0
-__ptext7                     text7        007A70
-__ptext8                     text8        00726A
-__ptext9                     text9        007238
+__pidataCOMRAM               idataCOMRAM  006CCF
+__pnvCOMRAM                  nvCOMRAM     000042
+__ptext0                     text0        007232
+__ptext1                     text1        007878
+__ptext10                    text10       007134
+__ptext11                    text11       007102
+__ptext12                    text12       0070D0
+__ptext13                    text13       00709E
+__ptext14                    text14       00706C
+__ptext15                    text15       00703A
+__ptext16                    text16       007008
+__ptext17                    text17       006FD6
+__ptext18                    text18       006FA4
+__ptext19                    text19       006F72
+__ptext2                     text2        006CDC
+__ptext20                    text20       006F40
+__ptext21                    text21       006F0E
+__ptext22                    text22       00751A
+__ptext23                    text23       006D0C
+__ptext24                    text24       007310
+__ptext25                    text25       006EDC
+__ptext26                    text26       006EAA
+__ptext27                    text27       0071CA
+__ptext28                    text28       006E78
+__ptext29                    text29       006E46
+__ptext3                     text3        007444
+__ptext30                    text30       006E14
+__ptext31                    text31       006DE2
+__ptext32                    text32       006DB0
+__ptext33                    text33       006D7E
+__ptext34                    text34       00728E
+__ptext35                    text35       00739A
+__ptext36                    text36       006D56
+__ptext37                    text37       006CEA
+__ptext38                    text38       006CD2
+__ptext39                    text39       006D2E
+__ptext4                     text4        0076E2
+__ptext5                     text5        007D24
+__ptext6                     text6        0075FE
+__ptext7                     text7        007A48
+__ptext8                     text8        007198
+__ptext9                     text9        007166
 __ramtop                     ramtop       000800
 __size_of_Analog_Read        (abs)        000000
 __size_of_Clear              (abs)        000000
@@ -717,14 +721,14 @@ __size_of_eeprom_readx       (abs)        000000
 __size_of_eeprom_writex      (abs)        000000
 __size_of_main               (abs)        000000
 __smallconst                 smallconst   000000
-_data_test                   nvCOMRAM     00003C
-_eeprom_readx                text1        006DAE
-_eeprom_writex               text23       006DDE
-_main                        text0        007304
-eeprom_readx@address         cstackCOMRAM 000032
-eeprom_writex@address        cstackCOMRAM 000032
-eeprom_writex@data           cstackCOMRAM 000034
-end_of_initialization        cinit        0072FA
+_data_test                   bssCOMRAM    000021
+_eeprom_readx                text2        006CDC
+_eeprom_writex               text23       006D0C
+_main                        text0        007232
+eeprom_readx@address         cstackCOMRAM 000036
+eeprom_writex@address        cstackCOMRAM 000036
+eeprom_writex@data           cstackCOMRAM 000038
+end_of_initialization        cinit        007228
 intlevel0                    text         000000
 intlevel1                    text         000000
 intlevel2                    text         000000
@@ -732,14 +736,14 @@ intlevel3                    text         000000
 stackhi                      (abs)        0007FF
 stacklo                      (abs)        000060
 start                        init         000000
-start_initialization         cinit        0072D0
+start_initialization         cinit        0071FE
 
 
 FUNCTION INFORMATION:
 
  *************** function _main *****************
  Defined at:
-		line 115 in file "main.c"
+		line 116 in file "main.c"
  Parameters:    Size  Location     Type
 		None
  Auto vars:     Size  Location     Type
@@ -755,9 +759,9 @@ FUNCTION INFORMATION:
  Data sizes:     COMRAM   BANK0   BANK1   BANK2   BANK3   BANK4   BANK5   BANK6   BANK7
       Params:         0       0       0       0       0       0       0       0       0
       Locals:         0       0       0       0       0       0       0       0       0
-      Temps:          1       0       0       0       0       0       0       0       0
-      Totals:         1       0       0       0       0       0       0       0       0
-Total ram usage:        1 bytes
+      Temps:          0       0       0       0       0       0       0       0       0
+      Totals:         0       0       0       0       0       0       0       0       0
+Total ram usage:        0 bytes
  Hardware stack levels required when called:    5
  This function calls:
 		_Close_Lock
@@ -769,9 +773,41 @@ Total ram usage:        1 bytes
  This function uses a non-reentrant model
 
 
+ *************** function _Open_Lock *****************
+ Defined at:
+		line 180 in file "main.c"
+ Parameters:    Size  Location     Type
+		None
+ Auto vars:     Size  Location     Type
+  Value_Latch     2    4[COMRAM] int 
+ Return value:  Size  Location     Type
+                  1    wreg      void 
+ Registers used:
+		wreg, status,2, status,0, cstack
+ Tracked objects:
+		On entry : 
+		On exit  : 
+		Unchanged: 
+ Data sizes:     COMRAM   BANK0   BANK1   BANK2   BANK3   BANK4   BANK5   BANK6   BANK7
+      Params:         0       0       0       0       0       0       0       0       0
+      Locals:         2       0       0       0       0       0       0       0       0
+      Temps:          2       0       0       0       0       0       0       0       0
+      Totals:         4       0       0       0       0       0       0       0       0
+Total ram usage:        4 bytes
+ Hardware stack levels used:    1
+ Hardware stack levels required when called:    3
+ This function calls:
+		_Closing
+		_Sense_Current
+		_eeprom_readx
+ This function is called by:
+		_main
+ This function uses a non-reentrant model
+
+
  *************** function _eeprom_readx *****************
  Defined at:
-		line 305 in file "main.c"
+		line 313 in file "main.c"
  Parameters:    Size  Location     Type
   address         2    0[COMRAM] int 
  Auto vars:     Size  Location     Type
@@ -795,43 +831,13 @@ Total ram usage:        2 bytes
 		Nothing
  This function is called by:
 		_main
- This function uses a non-reentrant model
-
-
- *************** function _Open_Lock *****************
- Defined at:
-		line 187 in file "main.c"
- Parameters:    Size  Location     Type
-		None
- Auto vars:     Size  Location     Type
-		None
- Return value:  Size  Location     Type
-                  1    wreg      void 
- Registers used:
-		wreg, status,2, status,0, cstack
- Tracked objects:
-		On entry : 
-		On exit  : 
-		Unchanged: 
- Data sizes:     COMRAM   BANK0   BANK1   BANK2   BANK3   BANK4   BANK5   BANK6   BANK7
-      Params:         0       0       0       0       0       0       0       0       0
-      Locals:         0       0       0       0       0       0       0       0       0
-      Temps:          2       0       0       0       0       0       0       0       0
-      Totals:         2       0       0       0       0       0       0       0       0
-Total ram usage:        2 bytes
- Hardware stack levels used:    1
- Hardware stack levels required when called:    3
- This function calls:
-		_Closing
-		_Sense_Current
- This function is called by:
-		_main
+		_Open_Lock
  This function uses a non-reentrant model
 
 
  *************** function _Menu_In *****************
  Defined at:
-		line 313 in file "main.c"
+		line 321 in file "main.c"
  Parameters:    Size  Location     Type
 		None
  Auto vars:     Size  Location     Type
@@ -861,7 +867,7 @@ Total ram usage:        2 bytes
 
  *************** function _Menu *****************
  Defined at:
-		line 345 in file "main.c"
+		line 353 in file "main.c"
  Parameters:    Size  Location     Type
 		None
  Auto vars:     Size  Location     Type
@@ -899,7 +905,7 @@ Total ram usage:        2 bytes
 
  *************** function _Menu_P4 *****************
  Defined at:
-		line 643 in file "main.c"
+		line 659 in file "main.c"
  Parameters:    Size  Location     Type
 		None
  Auto vars:     Size  Location     Type
@@ -937,6 +943,7 @@ Total ram usage:        2 bytes
 		_Draw_7
 		_Draw_8
 		_Draw_9
+		_Exit_Time_Menu
 		_Recording
 		_eeprom_writex
  This function is called by:
@@ -946,7 +953,7 @@ Total ram usage:        2 bytes
 
  *************** function _Menu_P3 *****************
  Defined at:
-		line 600 in file "main.c"
+		line 614 in file "main.c"
  Parameters:    Size  Location     Type
 		None
  Auto vars:     Size  Location     Type
@@ -970,6 +977,7 @@ Total ram usage:        2 bytes
  This function calls:
 		_Draw_0
 		_Draw_1
+		_Exit_Time_Menu
 		_Recording
 		_eeprom_writex
  This function is called by:
@@ -979,7 +987,7 @@ Total ram usage:        2 bytes
 
  *************** function _Menu_P2 *****************
  Defined at:
-		line 459 in file "main.c"
+		line 471 in file "main.c"
  Parameters:    Size  Location     Type
 		None
  Auto vars:     Size  Location     Type
@@ -1017,6 +1025,7 @@ Total ram usage:        2 bytes
 		_Draw_7
 		_Draw_8
 		_Draw_9
+		_Exit_Time_Menu
 		_Recording
 		_eeprom_writex
  This function is called by:
@@ -1026,7 +1035,7 @@ Total ram usage:        2 bytes
 
  *************** function _Draw_9 *****************
  Defined at:
-		line 944 in file "main.c"
+		line 962 in file "main.c"
  Parameters:    Size  Location     Type
 		None
  Auto vars:     Size  Location     Type
@@ -1056,7 +1065,7 @@ Total ram usage:        1 bytes
 
  *************** function _Draw_8 *****************
  Defined at:
-		line 933 in file "main.c"
+		line 951 in file "main.c"
  Parameters:    Size  Location     Type
 		None
  Auto vars:     Size  Location     Type
@@ -1086,7 +1095,7 @@ Total ram usage:        1 bytes
 
  *************** function _Draw_7 *****************
  Defined at:
-		line 922 in file "main.c"
+		line 940 in file "main.c"
  Parameters:    Size  Location     Type
 		None
  Auto vars:     Size  Location     Type
@@ -1116,7 +1125,7 @@ Total ram usage:        1 bytes
 
  *************** function _Draw_6 *****************
  Defined at:
-		line 911 in file "main.c"
+		line 929 in file "main.c"
  Parameters:    Size  Location     Type
 		None
  Auto vars:     Size  Location     Type
@@ -1146,7 +1155,7 @@ Total ram usage:        1 bytes
 
  *************** function _Draw_5 *****************
  Defined at:
-		line 900 in file "main.c"
+		line 918 in file "main.c"
  Parameters:    Size  Location     Type
 		None
  Auto vars:     Size  Location     Type
@@ -1176,7 +1185,7 @@ Total ram usage:        1 bytes
 
  *************** function _Draw_4 *****************
  Defined at:
-		line 889 in file "main.c"
+		line 907 in file "main.c"
  Parameters:    Size  Location     Type
 		None
  Auto vars:     Size  Location     Type
@@ -1206,7 +1215,7 @@ Total ram usage:        1 bytes
 
  *************** function _Draw_3 *****************
  Defined at:
-		line 878 in file "main.c"
+		line 896 in file "main.c"
  Parameters:    Size  Location     Type
 		None
  Auto vars:     Size  Location     Type
@@ -1236,7 +1245,7 @@ Total ram usage:        1 bytes
 
  *************** function _Draw_2 *****************
  Defined at:
-		line 867 in file "main.c"
+		line 885 in file "main.c"
  Parameters:    Size  Location     Type
 		None
  Auto vars:     Size  Location     Type
@@ -1266,7 +1275,7 @@ Total ram usage:        1 bytes
 
  *************** function _Draw_15 *****************
  Defined at:
-		line 1010 in file "main.c"
+		line 1028 in file "main.c"
  Parameters:    Size  Location     Type
 		None
  Auto vars:     Size  Location     Type
@@ -1296,7 +1305,7 @@ Total ram usage:        1 bytes
 
  *************** function _Draw_14 *****************
  Defined at:
-		line 999 in file "main.c"
+		line 1017 in file "main.c"
  Parameters:    Size  Location     Type
 		None
  Auto vars:     Size  Location     Type
@@ -1326,7 +1335,7 @@ Total ram usage:        1 bytes
 
  *************** function _Draw_13 *****************
  Defined at:
-		line 988 in file "main.c"
+		line 1006 in file "main.c"
  Parameters:    Size  Location     Type
 		None
  Auto vars:     Size  Location     Type
@@ -1356,7 +1365,7 @@ Total ram usage:        1 bytes
 
  *************** function _Draw_12 *****************
  Defined at:
-		line 977 in file "main.c"
+		line 995 in file "main.c"
  Parameters:    Size  Location     Type
 		None
  Auto vars:     Size  Location     Type
@@ -1386,7 +1395,7 @@ Total ram usage:        1 bytes
 
  *************** function _Draw_11 *****************
  Defined at:
-		line 966 in file "main.c"
+		line 984 in file "main.c"
  Parameters:    Size  Location     Type
 		None
  Auto vars:     Size  Location     Type
@@ -1416,7 +1425,7 @@ Total ram usage:        1 bytes
 
  *************** function _Draw_10 *****************
  Defined at:
-		line 955 in file "main.c"
+		line 973 in file "main.c"
  Parameters:    Size  Location     Type
 		None
  Auto vars:     Size  Location     Type
@@ -1446,7 +1455,7 @@ Total ram usage:        1 bytes
 
  *************** function _Menu_P1 *****************
  Defined at:
-		line 416 in file "main.c"
+		line 426 in file "main.c"
  Parameters:    Size  Location     Type
 		None
  Auto vars:     Size  Location     Type
@@ -1470,6 +1479,7 @@ Total ram usage:        2 bytes
  This function calls:
 		_Draw_0
 		_Draw_1
+		_Exit_Time_Menu
 		_Recording
 		_eeprom_writex
  This function is called by:
@@ -1479,7 +1489,7 @@ Total ram usage:        2 bytes
 
  *************** function _eeprom_writex *****************
  Defined at:
-		line 289 in file "main.c"
+		line 297 in file "main.c"
  Parameters:    Size  Location     Type
   address         2    0[COMRAM] int 
   data            1    2[COMRAM] unsigned char 
@@ -1512,7 +1522,7 @@ Total ram usage:        3 bytes
 
  *************** function _Recording *****************
  Defined at:
-		line 1043 in file "main.c"
+		line 1061 in file "main.c"
  Parameters:    Size  Location     Type
 		None
  Auto vars:     Size  Location     Type
@@ -1547,7 +1557,7 @@ Total ram usage:        2 bytes
 
  *************** function _Draw_Save_Dot_Two *****************
  Defined at:
-		line 1032 in file "main.c"
+		line 1050 in file "main.c"
  Parameters:    Size  Location     Type
 		None
  Auto vars:     Size  Location     Type
@@ -1576,7 +1586,7 @@ Total ram usage:        1 bytes
 
  *************** function _Draw_Save_Dot_One *****************
  Defined at:
-		line 1021 in file "main.c"
+		line 1039 in file "main.c"
  Parameters:    Size  Location     Type
 		None
  Auto vars:     Size  Location     Type
@@ -1603,75 +1613,9 @@ Total ram usage:        1 bytes
  This function uses a non-reentrant model
 
 
- *************** function _Draw_1 *****************
- Defined at:
-		line 856 in file "main.c"
- Parameters:    Size  Location     Type
-		None
- Auto vars:     Size  Location     Type
-		None
- Return value:  Size  Location     Type
-                  1    wreg      void 
- Registers used:
-		wreg, status,2
- Tracked objects:
-		On entry : 
-		On exit  : 
-		Unchanged: 
- Data sizes:     COMRAM   BANK0   BANK1   BANK2   BANK3   BANK4   BANK5   BANK6   BANK7
-      Params:         0       0       0       0       0       0       0       0       0
-      Locals:         0       0       0       0       0       0       0       0       0
-      Temps:          1       0       0       0       0       0       0       0       0
-      Totals:         1       0       0       0       0       0       0       0       0
-Total ram usage:        1 bytes
- Hardware stack levels used:    1
- This function calls:
-		Nothing
- This function is called by:
-		_Menu_P1
-		_Menu_P2
-		_Menu_P3
-		_Menu_P4
-		_Test
- This function uses a non-reentrant model
-
-
- *************** function _Draw_0 *****************
- Defined at:
-		line 845 in file "main.c"
- Parameters:    Size  Location     Type
-		None
- Auto vars:     Size  Location     Type
-		None
- Return value:  Size  Location     Type
-                  1    wreg      void 
- Registers used:
-		wreg, status,2
- Tracked objects:
-		On entry : 
-		On exit  : 
-		Unchanged: 
- Data sizes:     COMRAM   BANK0   BANK1   BANK2   BANK3   BANK4   BANK5   BANK6   BANK7
-      Params:         0       0       0       0       0       0       0       0       0
-      Locals:         0       0       0       0       0       0       0       0       0
-      Temps:          1       0       0       0       0       0       0       0       0
-      Totals:         1       0       0       0       0       0       0       0       0
-Total ram usage:        1 bytes
- Hardware stack levels used:    1
- This function calls:
-		Nothing
- This function is called by:
-		_Menu_P1
-		_Menu_P2
-		_Menu_P3
-		_Menu_P4
-		_Test
- This function uses a non-reentrant model
-
-
  *************** function _Exit_Time_Menu *****************
  Defined at:
-		line 408 in file "main.c"
+		line 418 in file "main.c"
  Parameters:    Size  Location     Type
 		None
  Auto vars:     Size  Location     Type
@@ -1695,12 +1639,80 @@ Total ram usage:        0 bytes
 		Nothing
  This function is called by:
 		_Menu
+		_Menu_P1
+		_Menu_P2
+		_Menu_P3
+		_Menu_P4
+ This function uses a non-reentrant model
+
+
+ *************** function _Draw_1 *****************
+ Defined at:
+		line 874 in file "main.c"
+ Parameters:    Size  Location     Type
+		None
+ Auto vars:     Size  Location     Type
+		None
+ Return value:  Size  Location     Type
+                  1    wreg      void 
+ Registers used:
+		wreg, status,2
+ Tracked objects:
+		On entry : 
+		On exit  : 
+		Unchanged: 
+ Data sizes:     COMRAM   BANK0   BANK1   BANK2   BANK3   BANK4   BANK5   BANK6   BANK7
+      Params:         0       0       0       0       0       0       0       0       0
+      Locals:         0       0       0       0       0       0       0       0       0
+      Temps:          1       0       0       0       0       0       0       0       0
+      Totals:         1       0       0       0       0       0       0       0       0
+Total ram usage:        1 bytes
+ Hardware stack levels used:    1
+ This function calls:
+		Nothing
+ This function is called by:
+		_Menu_P1
+		_Menu_P2
+		_Menu_P3
+		_Menu_P4
+ This function uses a non-reentrant model
+
+
+ *************** function _Draw_0 *****************
+ Defined at:
+		line 863 in file "main.c"
+ Parameters:    Size  Location     Type
+		None
+ Auto vars:     Size  Location     Type
+		None
+ Return value:  Size  Location     Type
+                  1    wreg      void 
+ Registers used:
+		wreg, status,2
+ Tracked objects:
+		On entry : 
+		On exit  : 
+		Unchanged: 
+ Data sizes:     COMRAM   BANK0   BANK1   BANK2   BANK3   BANK4   BANK5   BANK6   BANK7
+      Params:         0       0       0       0       0       0       0       0       0
+      Locals:         0       0       0       0       0       0       0       0       0
+      Temps:          1       0       0       0       0       0       0       0       0
+      Totals:         1       0       0       0       0       0       0       0       0
+Total ram usage:        1 bytes
+ Hardware stack levels used:    1
+ This function calls:
+		Nothing
+ This function is called by:
+		_Menu_P1
+		_Menu_P2
+		_Menu_P3
+		_Menu_P4
  This function uses a non-reentrant model
 
 
  *************** function _Draw_P4 *****************
  Defined at:
-		line 834 in file "main.c"
+		line 852 in file "main.c"
  Parameters:    Size  Location     Type
 		None
  Auto vars:     Size  Location     Type
@@ -1729,7 +1741,7 @@ Total ram usage:        1 bytes
 
  *************** function _Draw_P3 *****************
  Defined at:
-		line 823 in file "main.c"
+		line 841 in file "main.c"
  Parameters:    Size  Location     Type
 		None
  Auto vars:     Size  Location     Type
@@ -1758,7 +1770,7 @@ Total ram usage:        1 bytes
 
  *************** function _Draw_P2 *****************
  Defined at:
-		line 812 in file "main.c"
+		line 830 in file "main.c"
  Parameters:    Size  Location     Type
 		None
  Auto vars:     Size  Location     Type
@@ -1787,7 +1799,7 @@ Total ram usage:        1 bytes
 
  *************** function _Draw_P1 *****************
  Defined at:
-		line 801 in file "main.c"
+		line 819 in file "main.c"
  Parameters:    Size  Location     Type
 		None
  Auto vars:     Size  Location     Type
@@ -1816,7 +1828,7 @@ Total ram usage:        1 bytes
 
  *************** function _Close_Lock *****************
  Defined at:
-		line 165 in file "main.c"
+		line 158 in file "main.c"
  Parameters:    Size  Location     Type
 		None
  Auto vars:     Size  Location     Type
@@ -1846,7 +1858,7 @@ Total ram usage:        2 bytes
 
  *************** function _Closing *****************
  Defined at:
-		line 232 in file "main.c"
+		line 240 in file "main.c"
  Parameters:    Size  Location     Type
 		None
  Auto vars:     Size  Location     Type
@@ -1878,7 +1890,7 @@ Total ram usage:        0 bytes
 
  *************** function _Sense_Current *****************
  Defined at:
-		line 274 in file "main.c"
+		line 282 in file "main.c"
  Parameters:    Size  Location     Type
 		None
  Auto vars:     Size  Location     Type
@@ -1911,7 +1923,7 @@ Total ram usage:        0 bytes
 
  *************** function _Draw_CL *****************
  Defined at:
-		line 790 in file "main.c"
+		line 808 in file "main.c"
  Parameters:    Size  Location     Type
 		None
  Auto vars:     Size  Location     Type
@@ -1940,7 +1952,7 @@ Total ram usage:        0 bytes
 
  *************** function _Clear *****************
  Defined at:
-		line 784 in file "main.c"
+		line 802 in file "main.c"
  Parameters:    Size  Location     Type
 		None
  Auto vars:     Size  Location     Type
@@ -1970,7 +1982,7 @@ Total ram usage:        0 bytes
 
  *************** function _Analog_Read *****************
  Defined at:
-		line 257 in file "main.c"
+		line 265 in file "main.c"
  Parameters:    Size  Location     Type
 		None
  Auto vars:     Size  Location     Type
@@ -2003,51 +2015,51 @@ MODULE INFORMATION
 
 Module		Function		Class		Link	Load	Size
 shared
-		__initialization		CODE           	72D0	0000	43
+		__initialization		CODE           	71FE	0000	43
 
 shared estimated size: 43
 
 main.c
-		_eeprom_writex 		CODE           	6DDE	0000	35
-		_Sense_Current 		CODE           	6E28	0000	41
-		_Menu_P2       		CODE           	7A70	0000	713
-		_Close_Lock    		CODE           	735A	0000	131
-		_Recording     		CODE           	73DC	0000	139
-		_Draw_2        		CODE           	710C	0000	51
-		_Draw_P1       		CODE           	6E50	0000	51
-		_Draw_5        		CODE           	71A2	0000	51
-		_Draw_12       		CODE           	7044	0000	51
-		_Draw_8        		CODE           	7238	0000	51
-		_Draw_P4       		CODE           	6EE6	0000	51
-		_main          		CODE           	7304	0000	87
-		_Draw_15       		CODE           	70DA	0000	51
-		_Draw_CL       		CODE           	6DBC	0000	35
-		_Clear         		CODE           	6DA4	0000	11
-		_Menu_P1       		CODE           	7510	0000	209
-		_Draw_Save_Dot_One		CODE           	6F7C	0000	51
-		_Menu_P4       		CODE           	7D38	0000	713
-		_Analog_Read   		CODE           	6E00	0000	41
-		_Draw_0        		CODE           	6F18	0000	51
-		_Closing       		CODE           	7466	0000	171
-		_Draw_3        		CODE           	713E	0000	51
-		_Draw_11       		CODE           	7012	0000	51
-		_Draw_6        		CODE           	71D4	0000	51
-		_Draw_P3       		CODE           	6EB4	0000	51
-		_Draw_9        		CODE           	726A	0000	51
-		_Draw_Save_Dot_Two		CODE           	6FAE	0000	51
-		_Draw_14       		CODE           	70A8	0000	51
-		_Exit_Time_Menu		CODE           	729C	0000	53
-		_Menu_P3       		CODE           	75E0	0000	209
-		_Draw_1        		CODE           	6F4A	0000	51
-		_Menu          		CODE           	78FA	0000	375
-		_Draw_10       		CODE           	6FE0	0000	51
-		_Draw_4        		CODE           	7170	0000	51
-		_Draw_P2       		CODE           	6E82	0000	51
-		_Draw_7        		CODE           	7206	0000	51
-		_Draw_13       		CODE           	7076	0000	51
-		_eeprom_readx  		CODE           	6DAE	0000	15
-		_Open_Lock     		CODE           	7786	0000	373
-		_Menu_In       		CODE           	76B0	0000	215
+		_eeprom_writex 		CODE           	6D0C	0000	35
+		_Sense_Current 		CODE           	6D56	0000	41
+		_Menu_P2       		CODE           	7A48	0000	733
+		_Close_Lock    		CODE           	728E	0000	131
+		_Recording     		CODE           	7310	0000	139
+		_Draw_2        		CODE           	703A	0000	51
+		_Draw_P1       		CODE           	6D7E	0000	51
+		_Draw_5        		CODE           	70D0	0000	51
+		_Draw_12       		CODE           	6F72	0000	51
+		_Draw_8        		CODE           	7166	0000	51
+		_Draw_P4       		CODE           	6E14	0000	51
+		_main          		CODE           	7232	0000	93
+		_Draw_15       		CODE           	7008	0000	51
+		_Draw_CL       		CODE           	6CEA	0000	35
+		_Clear         		CODE           	6CD2	0000	11
+		_Menu_P1       		CODE           	751A	0000	229
+		_Draw_Save_Dot_One		CODE           	6EAA	0000	51
+		_Menu_P4       		CODE           	7D24	0000	733
+		_Analog_Read   		CODE           	6D2E	0000	41
+		_Draw_0        		CODE           	6E46	0000	51
+		_Closing       		CODE           	739A	0000	171
+		_Draw_3        		CODE           	706C	0000	51
+		_Draw_11       		CODE           	6F40	0000	51
+		_Draw_6        		CODE           	7102	0000	51
+		_Draw_P3       		CODE           	6DE2	0000	51
+		_Draw_9        		CODE           	7198	0000	51
+		_Draw_Save_Dot_Two		CODE           	6EDC	0000	51
+		_Draw_14       		CODE           	6FD6	0000	51
+		_Exit_Time_Menu		CODE           	71CA	0000	53
+		_Menu_P3       		CODE           	75FE	0000	229
+		_Draw_1        		CODE           	6E78	0000	51
+		_Menu          		CODE           	76E2	0000	407
+		_Draw_10       		CODE           	6F0E	0000	51
+		_Draw_4        		CODE           	709E	0000	51
+		_Draw_P2       		CODE           	6DB0	0000	51
+		_Draw_7        		CODE           	7134	0000	51
+		_Draw_13       		CODE           	6FA4	0000	51
+		_eeprom_readx  		CODE           	6CDC	0000	15
+		_Open_Lock     		CODE           	7878	0000	465
+		_Menu_In       		CODE           	7444	0000	215
 
-main.c estimated size: 4688
+main.c estimated size: 4898
 

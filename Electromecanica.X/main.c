@@ -57,6 +57,9 @@ long Count_Exit_Menu = 0;
 _Bool Toggle_Up = 0;
 _Bool Toggle_Down = 0;
 _Bool Flag_Menu = 0;
+_Bool Latch;
+_Bool Flag_Latch;
+_Bool Flag_End_Stop_Open;
 //int Count_Inductive_Active = 0; Descomente si quiere contar los eventos del sensor inductivo
 
 int ADC;
@@ -107,8 +110,6 @@ void Draw_Save_Dot_One(void);
 void Draw_Save_Dot_Two(void);
 void Recording(void);
 
-void Test(void);
-
 void eeprom_writex(int address, char data);
 char eeprom_readx(int address);
 
@@ -144,7 +145,7 @@ void main(void) {   // Funcion principal
     Engine_Direction_A = 0;
     Engine_Direction_B = 0;
 
-    data_test = eeprom_readx(0x00);
+    Latch = eeprom_readx(0x01);
     
     while(1) {
         Menu_In();
@@ -152,14 +153,6 @@ void main(void) {   // Funcion principal
         Open_Lock();
     }
     return;
-}
-
-void Test(void) {
-    if (data_test == 0x00) {
-            Draw_0();
-        } else {
-            Draw_1();
-        }
 }
 
 void Close_Lock(void) {
@@ -191,11 +184,25 @@ void Open_Lock(void) {
         __delay_ms(50);                                // Antirebote
         End_Stop_Open_State = End_Stop_Open;
         if(Open_Contact_State == 0 && Last_Open_Contact_State == 1 && End_Stop_Open_State == 1) {
+            Flag_End_Stop_Open = 1; // Bandera de control para el do-while
             do {
                 Engine_Direction_B = 1;
                 End_Stop_Open_State = End_Stop_Open;
                 Count_Time_Close++;
                 Sense_Current();
+
+                if (End_Stop_Open_State == 0) {
+                    Flag_End_Stop_Open = 0;
+                    int Value_Latch = eeprom_readx(0x01);
+                    if (Value_Latch == 1) {
+                        __delay_ms(2000);   // Retardo de sostenido del picaporte
+                        Engine_Direction_B = 0;
+                        Engine_Direction_A = 1;
+                        __delay_ms(100);
+                        Engine_Direction_A = 0;
+                        }
+                    }
+
                 if(Count_Time_Close == Time) {
                     Count_Time_Close = 0;
                     break;
@@ -206,7 +213,8 @@ void Open_Lock(void) {
                         break;
                     }
                 }
-            } while(End_Stop_Open_State == 1);
+            //} while(End_Stop_Open_State == 1);
+            } while(Flag_End_Stop_Open == 1);
             Engine_Direction_B = 0;
             Count_Time_Close = 0;
             Count_Peake_Current = 0;
@@ -366,12 +374,14 @@ void Menu(void) {
         Button_Menu_Down_State = Button_Menu_Down;
         if (Button_Menu_Down_State == 0 && Last_Button_Menu_Down_State == 1) {
             Count_Push_Button++;
+            Count_Exit_Menu = 0;
         }
         Last_Button_Menu_Down_State = Button_Menu_Down_State;
 
         // Detección del pulso del botón Enter...!
         Button_Menu_Up_State = Button_Menu_Up;
         if (Button_Menu_Up_State == 0 && Last_Button_Menu_Up_State == 1) {
+            Count_Exit_Menu = 0;
             switch (Count_Push_Button)
             {
             case 0:
@@ -413,7 +423,7 @@ void Exit_Time_Menu(void) {
     }
 }
 
-void Menu_P1(void) {
+void Menu_P1(void) {    // Parametro 1. Accionamiento del picaporte
     do {
         switch (Count_Push_Button)
         {
@@ -431,6 +441,7 @@ void Menu_P1(void) {
         Button_Menu_Down_State = Button_Menu_Down;
         if (Button_Menu_Down_State == 0 && Last_Button_Menu_Down_State == 1) {
             Count_Push_Button++;
+            Count_Exit_Menu = 0;
         }
         Last_Button_Menu_Down_State = Button_Menu_Down_State;
          
@@ -453,10 +464,11 @@ void Menu_P1(void) {
             }
         }
         Last_Button_Menu_Up_State = Button_Menu_Up_State;
+        Exit_Time_Menu();
     } while (Flag_Menu == 1);
 }
 
-void Menu_P2(void) {
+void Menu_P2(void) {    // Parametro 2. Tiempo de retardo despues de la señal del sensor inductivo
     do {
         switch (Count_Push_Button)
         {
@@ -516,6 +528,7 @@ void Menu_P2(void) {
         Button_Menu_Down_State = Button_Menu_Down;
         if (Button_Menu_Down_State == 0 && Last_Button_Menu_Down_State == 1) {
             Count_Push_Button++;
+            Count_Exit_Menu = 0;
         }
         Last_Button_Menu_Down_State = Button_Menu_Down_State;
 
@@ -594,10 +607,11 @@ void Menu_P2(void) {
             }
         }
         Last_Button_Menu_Up_State = Button_Menu_Up_State;
+        Exit_Time_Menu();
     } while (Flag_Menu == 1);
 }
 
-void Menu_P3(void) {
+void Menu_P3(void) {    // Parametro 3. Sentido de giro del motor DC
     do {
         switch (Count_Push_Button)
         {
@@ -615,6 +629,7 @@ void Menu_P3(void) {
         Button_Menu_Down_State = Button_Menu_Down;
         if (Button_Menu_Down_State == 0 && Last_Button_Menu_Down_State == 1) {
             Count_Push_Button++;
+            Count_Exit_Menu = 0;
         }
         Last_Button_Menu_Down_State = Button_Menu_Down_State;
 
@@ -637,10 +652,11 @@ void Menu_P3(void) {
             }
         }
         Last_Button_Menu_Up_State = Button_Menu_Up_State;
+        Exit_Time_Menu();
     } while (Flag_Menu == 1);
 }
 
-void Menu_P4(void) {
+void Menu_P4(void) {    // Parametro 4. Retardo despues de la señal del boton de apertura
     do {
         switch (Count_Push_Button)
         {
@@ -700,6 +716,7 @@ void Menu_P4(void) {
         Button_Menu_Down_State = Button_Menu_Down;
         if (Button_Menu_Down_State == 0 && Last_Button_Menu_Down_State == 1) {
             Count_Push_Button++;
+            Count_Exit_Menu = 0;
         }
         Last_Button_Menu_Down_State = Button_Menu_Down_State;
 
@@ -778,6 +795,7 @@ void Menu_P4(void) {
             }
         }
         Last_Button_Menu_Up_State = Button_Menu_Up_State;
+        Exit_Time_Menu();
     } while (Flag_Menu == 1);
 }
 
@@ -1040,7 +1058,7 @@ void Draw_Save_Dot_Two(void) {
     Display_Two = 0;
 }
 
-void Recording(void) {
+void Recording(void) {      
     Clear();
     __delay_ms(500);
     do

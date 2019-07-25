@@ -5093,6 +5093,9 @@ long Count_Exit_Menu = 0;
 _Bool Toggle_Up = 0;
 _Bool Toggle_Down = 0;
 _Bool Flag_Menu = 0;
+_Bool Latch;
+_Bool Flag_Latch;
+_Bool Flag_End_Stop_Open;
 
 
 int ADC;
@@ -5143,8 +5146,6 @@ void Draw_Save_Dot_One(void);
 void Draw_Save_Dot_Two(void);
 void Recording(void);
 
-void Test(void);
-
 void eeprom_writex(int address, char data);
 char eeprom_readx(int address);
 
@@ -5180,7 +5181,7 @@ void main(void) {
     PORTCbits.RC1 = 0;
     PORTCbits.RC2 = 0;
 
-    data_test = eeprom_readx(0x00);
+    Latch = eeprom_readx(0x01);
 
     while(1) {
         Menu_In();
@@ -5188,14 +5189,6 @@ void main(void) {
         Open_Lock();
     }
     return;
-}
-
-void Test(void) {
-    if (data_test == 0x00) {
-            Draw_0();
-        } else {
-            Draw_1();
-        }
 }
 
 void Close_Lock(void) {
@@ -5207,7 +5200,7 @@ void Close_Lock(void) {
         if(Inductive_State == 1 && Last_Inductive_State == 0 && End_Stop_Open_State == 0) {
             _delay((unsigned long)((100)*(20000000/4000.0)));
             Closing();
-# 182 "main.c"
+# 175 "main.c"
         }
     }
     Last_Inductive_State = Inductive_State;
@@ -5220,11 +5213,25 @@ void Open_Lock(void) {
         _delay((unsigned long)((50)*(20000000/4000.0)));
         End_Stop_Open_State = PORTAbits.RA2;
         if(Open_Contact_State == 0 && Last_Open_Contact_State == 1 && End_Stop_Open_State == 1) {
+            Flag_End_Stop_Open = 1;
             do {
                 PORTCbits.RC2 = 1;
                 End_Stop_Open_State = PORTAbits.RA2;
                 Count_Time_Close++;
                 Sense_Current();
+
+                if (End_Stop_Open_State == 0) {
+                    Flag_End_Stop_Open = 0;
+                    int Value_Latch = eeprom_readx(0x01);
+                    if (Value_Latch == 1) {
+                        _delay((unsigned long)((2000)*(20000000/4000.0)));
+                        PORTCbits.RC2 = 0;
+                        PORTCbits.RC1 = 1;
+                        _delay((unsigned long)((100)*(20000000/4000.0)));
+                        PORTCbits.RC1 = 0;
+                        }
+                    }
+
                 if(Count_Time_Close == 250000) {
                     Count_Time_Close = 0;
                     break;
@@ -5235,7 +5242,8 @@ void Open_Lock(void) {
                         break;
                     }
                 }
-            } while(End_Stop_Open_State == 1);
+
+            } while(Flag_End_Stop_Open == 1);
             PORTCbits.RC2 = 0;
             Count_Time_Close = 0;
             Count_Peake_Current = 0;
@@ -5395,12 +5403,14 @@ void Menu(void) {
         Button_Menu_Down_State = PORTCbits.RC0;
         if (Button_Menu_Down_State == 0 && Last_Button_Menu_Down_State == 1) {
             Count_Push_Button++;
+            Count_Exit_Menu = 0;
         }
         Last_Button_Menu_Down_State = Button_Menu_Down_State;
 
 
         Button_Menu_Up_State = PORTAbits.RA5;
         if (Button_Menu_Up_State == 0 && Last_Button_Menu_Up_State == 1) {
+            Count_Exit_Menu = 0;
             switch (Count_Push_Button)
             {
             case 0:
@@ -5460,6 +5470,7 @@ void Menu_P1(void) {
         Button_Menu_Down_State = PORTCbits.RC0;
         if (Button_Menu_Down_State == 0 && Last_Button_Menu_Down_State == 1) {
             Count_Push_Button++;
+            Count_Exit_Menu = 0;
         }
         Last_Button_Menu_Down_State = Button_Menu_Down_State;
 
@@ -5482,6 +5493,7 @@ void Menu_P1(void) {
             }
         }
         Last_Button_Menu_Up_State = Button_Menu_Up_State;
+        Exit_Time_Menu();
     } while (Flag_Menu == 1);
 }
 
@@ -5545,6 +5557,7 @@ void Menu_P2(void) {
         Button_Menu_Down_State = PORTCbits.RC0;
         if (Button_Menu_Down_State == 0 && Last_Button_Menu_Down_State == 1) {
             Count_Push_Button++;
+            Count_Exit_Menu = 0;
         }
         Last_Button_Menu_Down_State = Button_Menu_Down_State;
 
@@ -5623,6 +5636,7 @@ void Menu_P2(void) {
             }
         }
         Last_Button_Menu_Up_State = Button_Menu_Up_State;
+        Exit_Time_Menu();
     } while (Flag_Menu == 1);
 }
 
@@ -5644,6 +5658,7 @@ void Menu_P3(void) {
         Button_Menu_Down_State = PORTCbits.RC0;
         if (Button_Menu_Down_State == 0 && Last_Button_Menu_Down_State == 1) {
             Count_Push_Button++;
+            Count_Exit_Menu = 0;
         }
         Last_Button_Menu_Down_State = Button_Menu_Down_State;
 
@@ -5666,6 +5681,7 @@ void Menu_P3(void) {
             }
         }
         Last_Button_Menu_Up_State = Button_Menu_Up_State;
+        Exit_Time_Menu();
     } while (Flag_Menu == 1);
 }
 
@@ -5729,6 +5745,7 @@ void Menu_P4(void) {
         Button_Menu_Down_State = PORTCbits.RC0;
         if (Button_Menu_Down_State == 0 && Last_Button_Menu_Down_State == 1) {
             Count_Push_Button++;
+            Count_Exit_Menu = 0;
         }
         Last_Button_Menu_Down_State = Button_Menu_Down_State;
 
@@ -5807,6 +5824,7 @@ void Menu_P4(void) {
             }
         }
         Last_Button_Menu_Up_State = Button_Menu_Up_State;
+        Exit_Time_Menu();
     } while (Flag_Menu == 1);
 }
 
