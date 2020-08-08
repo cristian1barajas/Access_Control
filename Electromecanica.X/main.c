@@ -19,20 +19,19 @@
 #define Display PORTB                       // Display de siete segmentos
 #define Display_One PORTCbits.RC7           // Transistor del primer display
 #define Display_Two PORTCbits.RC6           // Transistor del segundo display
-#define Inductive_Sensor PORTAbits.RA1      // Entrada digital para sensor inductivo
-#define Open_Contact PORTAbits.RA4          // Entrada digital para Boton de apertura
+#define Inductive_Sensor PORTAbits.RA3      // Entrada digital para sensor inductivo
+#define Open_Contact PORTCbits.RC0          // Entrada digital para Boton de apertura
 #define Engine_Direction_A PORTCbits.RC1    // Salida digital que define la direccion del motor
 #define Engine_Direction_B PORTCbits.RC2    // Salida digital que define la direccion del motor
-#define End_Stop_Open PORTAbits.RA2         // Entrada digital fin de carrera
-#define End_Stop_Close PORTAbits.RA3        // Entrada digital fin de carrera
+#define End_Stop_Open PORTAbits.RA4         // Entrada digital fin de carrera
+#define End_Stop_Close PORTAbits.RA5        // Entrada digital fin de carrera
 #define Time 250000                         // Constante de tiempo para detencion de emergencia
-#define Time_Auto_Close 1000000             // Constante de tiempo para cierre automatico
-#define Time_Exit_Menu 1000
+#define Time_Exit_Menu 7000
 #define Set_Point_Current 544               // Set point para el ajuste de la corriente
 #define Timing_Display 1600
 
-#define Button_Menu_Up PORTAbits.RA5        // Boton para control del menu
-#define Button_Menu_Down PORTCbits.RC0      // Boton para control del menu
+#define Button_Menu_Up PORTAbits.RA1        // Boton para control del menu
+#define Button_Menu_Down PORTAbits.RA2      // Boton para control del menu
 
 // Constantes que definen el muestreo de la corriente 
 #define Samples 2000            // Número de muestras para evitar el pico de corriente de arranque
@@ -62,7 +61,10 @@ _Bool Flag_Latch;
 _Bool Flag_End_Stop_Open;
 int Time_Inductive_State;  // Variable para guardar y evaluar el valor de la memoria eeprom
 int Time_Open_State;       // Variable para guardar y evaluar el valor de la memoria eeprom
+int Count_Led = 0;
 //int Count_Inductive_Active = 0; Descomente si quiere contar los eventos del sensor inductivo
+
+long Time_Auto_Close = 1;      // Constante de tiempo para cierre automatico
 
 int ADC;
 unsigned char Buffer1[16];
@@ -101,6 +103,14 @@ void Draw_12(void);
 void Draw_13(void);
 void Draw_14(void);
 void Draw_15(void);
+void Draw_16(void);
+void Draw_18(void);
+void Draw_20(void);
+void Draw_22(void);
+void Draw_24(void);
+void Draw_26(void);
+void Draw_28(void);
+void Draw_30(void);
 
 void Menu_P1(void);
 void Menu_P2(void);
@@ -115,21 +125,22 @@ void Recording(void);
 void eeprom_writex(int address, char data);
 char eeprom_readx(int address);
 
+void Indicator(void);
+
 void main(void) {   // Funcion principal
     ADCON1 = 0X0E;       // Todos los pines analogos como digitales excepto RA0
 
-    TRISAbits.RA0 = 1;   // Configuracion como entrada analoga
-
-    TRISAbits.RA1 = 1;   // Configuracion como entrada digital "Inductive Sensor"
-    TRISAbits.RA4 = 1;   // Configuracion como entrada digital "Open Contact"
+    TRISAbits.RA0 = 1;   // Configuracion como entrada analoga "Sensor de corriente"
+    TRISAbits.RA3 = 1;   // Configuracion como entrada digital "Inductive Sensor"
+    TRISCbits.RC0 = 1;   // Configuracion como entrada digital "Open Contact"
     TRISCbits.RC1 = 0;   // Configuracion como salida digital "Engine Direction"
     TRISCbits.RC2 = 0;   // Configuracion como salida digital "Engine Direction"
     TRISCbits.RC6 = 0;   // Configuracion como salida digital "Display One"
     TRISCbits.RC7 = 0;   // Configuracion como salida digital "Display Two"
-    TRISAbits.RA2 = 1;   // Configuracion como entrada digital "End Stop Open"
-    TRISAbits.RA3 = 1;   // Configuracion como entrada digital "End Stop Close"
-    TRISAbits.RA5 = 1;   // Configuracion como entrada digital "Button Menu"
-    TRISCbits.RC0 = 1;   // Configuracion como entrada digital "Button Menu"
+    TRISAbits.RA4 = 1;   // Configuracion como entrada digital "End Stop Open"
+    TRISAbits.RA5 = 1;   // Configuracion como entrada digital "End Stop Close"
+    TRISAbits.RA1 = 1;   // Configuracion como entrada digital "Button Menu"
+    TRISAbits.RA2 = 1;   // Configuracion como entrada digital "Button Menu"
 
     // Configuracion del ADC
     ADCON0bits.CHS = 0;     // Seleccion del canal analogo 0
@@ -152,6 +163,7 @@ void main(void) {   // Funcion principal
     Time_Open_State = eeprom_readx(0x04);
     
     while(1) {
+        Indicator();
         Menu_In();
         Close_Lock();
         Open_Lock();
@@ -166,67 +178,32 @@ void Close_Lock(void) {
         __delay_ms(50);
         End_Stop_Open_State = End_Stop_Open;
         if(Inductive_State == 1 && Last_Inductive_State == 0 && End_Stop_Open_State == 0) {
+            __delay_ms(50);
+            Count_Time_Close = 0;
             Time_Inductive_State = eeprom_readx(0x02);
             Time_Inductive_State =  Time_Inductive_State * 1000;
             switch (Time_Inductive_State)  // Retardo de arranque de cierre de los pasadores
             {
-            case 0:
-                __delay_ms(0);
-                break;
-            case 1000:
-                __delay_ms(1000);
-                break;
-            case 2000:
-                __delay_ms(2000);
-                break;
-            case 3000:
-                __delay_ms(3000);
-                break;
-            case 4000:
-                __delay_ms(4000);
-                break;
-            case 5000:
-                __delay_ms(5000);
-                break;
-            case 6000:
-                __delay_ms(6000);
-                break;
-            case 7000:
-                __delay_ms(7000);
-                break;
-            case 8000:
-                __delay_ms(8000);
-                break;
-            case 9000:
-                __delay_ms(9000);
-                break;
-            case 10000:
-                __delay_ms(10000);
-                break;
-            case 11000:
-                __delay_ms(10000);
-                __delay_ms(1000);
-                break;
-            case 12000:
-                __delay_ms(10000);
-                __delay_ms(2000);
-                break;
-            case 13000:
-                __delay_ms(10000);
-                __delay_ms(3000);
-                break;
-            case 14000:
-                __delay_ms(10000);
-                __delay_ms(4000);
-                break;
-            case 15000:
-                __delay_ms(10000);
-                __delay_ms(5000);
-                break;
-            default:
-                __delay_ms(0);
-                break;
+            case 0: __delay_ms(500); break;
+            case 1000: __delay_ms(1000); break;
+            case 2000: __delay_ms(2000); break;
+            case 3000: __delay_ms(3000); break;
+            case 4000: __delay_ms(4000); break;
+            case 5000: __delay_ms(5000); break;
+            case 6000: __delay_ms(6000); break;
+            case 7000: __delay_ms(7000); break;
+            case 8000: __delay_ms(8000); break;
+            case 9000: __delay_ms(9000); break;
+            case 10000: __delay_ms(10000); break;
+            case 11000: __delay_ms(10000); __delay_ms(1000); break;
+            case 12000: __delay_ms(10000); __delay_ms(2000); break;
+            case 13000: __delay_ms(10000); __delay_ms(3000); break;
+            case 14000: __delay_ms(10000); __delay_ms(4000); break;
+            case 15000: __delay_ms(10000); __delay_ms(5000); break;
+            default: __delay_ms(500); break;
             }
+            Engine_Direction_A = 1;
+            __delay_ms(1000);
             Closing();
             /* Descomente si quiere contar cada evento o deteccion del 
                sensor inductivo para el cierre de la puerta.
@@ -252,62 +229,23 @@ void Open_Lock(void) {
             Time_Open_State = Time_Open_State * 1000;
             switch (Time_Open_State)  // Retardo de arranque despues de presionar el boton
             {
-            case 0:
-                __delay_ms(0);
-                break;
-            case 1000:
-                __delay_ms(1000);
-                break;
-            case 2000:
-                __delay_ms(2000);
-                break;
-            case 3000:
-                __delay_ms(3000);
-                break;
-            case 4000:
-                __delay_ms(4000);
-                break;
-            case 5000:
-                __delay_ms(5000);
-                break;
-            case 6000:
-                __delay_ms(6000);
-                break;
-            case 7000:
-                __delay_ms(7000);
-                break;
-            case 8000:
-                __delay_ms(8000);
-                break;
-            case 9000:
-                __delay_ms(9000);
-                break;
-            case 10000:
-                __delay_ms(10000);
-                break;
-            case 11000:
-                __delay_ms(10000);
-                __delay_ms(1000);
-                break;
-            case 12000:
-                __delay_ms(10000);
-                __delay_ms(2000);
-                break;
-            case 13000:
-                __delay_ms(10000);
-                __delay_ms(3000);
-                break;
-            case 14000:
-                __delay_ms(10000);
-                __delay_ms(4000);
-                break;
-            case 15000:
-                __delay_ms(10000);
-                __delay_ms(5000);
-                break;
-            default:
-                __delay_ms(0);
-                break;
+            case 0: __delay_ms(0); break;
+            case 1000: __delay_ms(1000); break;
+            case 2000: __delay_ms(2000); break;
+            case 3000: __delay_ms(3000); break;
+            case 4000: __delay_ms(4000); break;
+            case 5000: __delay_ms(5000); break;
+            case 6000: __delay_ms(6000); break;
+            case 7000: __delay_ms(7000); break;
+            case 8000: __delay_ms(8000); break;
+            case 9000: __delay_ms(9000); break;
+            case 10000: __delay_ms(10000); break;
+            case 11000: __delay_ms(10000); __delay_ms(1000); break;
+            case 12000: __delay_ms(10000); __delay_ms(2000); break;
+            case 13000: __delay_ms(10000); __delay_ms(3000); break;
+            case 14000: __delay_ms(10000); __delay_ms(4000); break;
+            case 15000: __delay_ms(10000); __delay_ms(5000); break;
+            default: __delay_ms(0); break;
             }
             Flag_End_Stop_Open = 1; // Bandera de control para el do-while
             do {
@@ -315,19 +253,17 @@ void Open_Lock(void) {
                 End_Stop_Open_State = End_Stop_Open;
                 Count_Time_Close++;
                 Sense_Current();
-
                 if (End_Stop_Open_State == 0) {
                     Flag_End_Stop_Open = 0;
                     int Value_Latch = eeprom_readx(0x01);
                     if (Value_Latch == 1) {
-                        __delay_ms(2000);   // Retardo de sostenido del picaporte
+                        __delay_ms(3000);   // Retardo de sostenido del picaporte
                         Engine_Direction_B = 0;
                         Engine_Direction_A = 1;
-                        __delay_ms(100);
+                        __delay_ms(500);
                         Engine_Direction_A = 0;
                         }
                     }
-
                 if(Count_Time_Close == Time) {
                     Count_Time_Close = 0;
                     break;
@@ -344,12 +280,16 @@ void Open_Lock(void) {
             Count_Time_Close = 0;
             Count_Peake_Current = 0;
             Inductive_State = Inductive_Sensor;
+            Time_Auto_Close = eeprom_readx(0x03);
+            Time_Auto_Close = Time_Auto_Close * 500000;
             do {
                 Count_Auto_Close++;
                 Inductive_State = Inductive_Sensor;
                 if(Count_Auto_Close == Time_Auto_Close) {
                     End_Stop_Open_State = End_Stop_Open;
                     if(End_Stop_Open_State == 0) {
+                        Engine_Direction_A = 1;
+                        __delay_ms(500);
                         Closing();
                         Count_Auto_Close = 0;
                     }
@@ -363,6 +303,8 @@ void Open_Lock(void) {
 }
 
 void Closing(void) {
+    Count_Time_Close = 0;
+    __delay_ms(1000);
     do {
         Engine_Direction_A = 1;
         End_Stop_Close_State = End_Stop_Close;
@@ -479,21 +421,11 @@ void Menu(void) {
     do {
         switch (Count_Push_Button)
         {
-        case 0:
-            Draw_P1();
-            break;
-        case 1:
-            Draw_P2();
-            break;
-        case 2:
-            Draw_P3();
-            break;
-        case 3:
-            Draw_P4();
-            break;
-        default:
-            Count_Push_Button = 0;
-            break;
+        case 0: Draw_P1(); break;
+        case 1: Draw_P2(); break;
+        case 2: Draw_P3(); break;
+        case 3: Draw_P4(); break;
+        default: Count_Push_Button = 0; break;
         }
         // Detección del pulso del botón Down...!
         Button_Menu_Down_State = Button_Menu_Down;
@@ -520,7 +452,7 @@ void Menu(void) {
                 Menu_P2();
                 break;
             case 2:
-                Count_Push_Button = 0;
+                Count_Push_Button = 1;
                 __delay_ms(300);
                 Menu_P3();
                 break;
@@ -552,15 +484,9 @@ void Menu_P1(void) {    // Parametro 1. Accionamiento del picaporte
     do {
         switch (Count_Push_Button)
         {
-        case 0:
-            Draw_0();
-            break;
-        case 1:
-            Draw_1();
-            break;
-        default:
-            Count_Push_Button = 0;
-            break;
+        case 0: Draw_0(); break;
+        case 1: Draw_1(); break;
+        default: Count_Push_Button = 0; break;
         }
         // Detección del pulso del botón Down...!
         Button_Menu_Down_State = Button_Menu_Down;
@@ -572,20 +498,13 @@ void Menu_P1(void) {    // Parametro 1. Accionamiento del picaporte
          
         // Detección del pulso del botón Enter...!
         Button_Menu_Up_State = Button_Menu_Up;
+        Count_Exit_Menu = 0;
         if (Button_Menu_Up_State == 0 && Last_Button_Menu_Up_State == 1) {
             switch (Count_Push_Button)
             {
-            case 0:
-                eeprom_writex(0x01, 0x00);
-                Recording();
-                break;
-            case 1:
-                eeprom_writex(0x01, 0x01);
-                Recording();
-                break;
-            default:
-                Count_Push_Button = 0;
-                break;
+            case 0: eeprom_writex(0x01, 0x00); Recording(); break;
+            case 1: eeprom_writex(0x01, 0x01); Recording(); break;
+            default: Count_Push_Button = 0; break;
             }
         }
         Last_Button_Menu_Up_State = Button_Menu_Up_State;
@@ -597,57 +516,23 @@ void Menu_P2(void) {    // Parametro 2. Tiempo de retardo despues de la señal d
     do {
         switch (Count_Push_Button)
         {
-        case 0:
-            Draw_0();
-            break;
-        case 1:
-            Draw_1();
-            break;
-        case 2:
-            Draw_2();
-            break;
-        case 3:
-            Draw_3();
-            break;
-        case 4:
-            Draw_4();
-            break;
-        case 5:
-            Draw_5();
-            break;
-        case 6:
-            Draw_6();
-            break;
-        case 7:
-            Draw_7();
-            break;
-        case 8:
-            Draw_8();
-            break;
-        case 9:
-            Draw_9();
-            break;
-        case 10:
-            Draw_10();
-            break;
-        case 11:
-            Draw_11();
-            break;
-        case 12:
-            Draw_12();
-            break;
-        case 13:
-            Draw_13();
-            break;
-        case 14:
-            Draw_14();
-            break;
-        case 15:
-            Draw_15();
-            break;
-        default:
-            Count_Push_Button = 0;
-            break;
+            case 0: Draw_0(); break;
+            case 1: Draw_1(); break;
+            case 2: Draw_2(); break;
+            case 3: Draw_3(); break;
+            case 4: Draw_4(); break;
+            case 5: Draw_5(); break;
+            case 6: Draw_6(); break;
+            case 7: Draw_7(); break;
+            case 8: Draw_8(); break;
+            case 9: Draw_9(); break;
+            case 10: Draw_10(); break;
+            case 11: Draw_11(); break;
+            case 12: Draw_12(); break;
+            case 13: Draw_13(); break;
+            case 14: Draw_14(); break;
+            case 15: Draw_15(); break;
+            default: Count_Push_Button = 0; break;
         }
         // Detección del pulso del botón Down...!
         Button_Menu_Down_State = Button_Menu_Down;
@@ -659,76 +544,27 @@ void Menu_P2(void) {    // Parametro 2. Tiempo de retardo despues de la señal d
 
         // Detección del pulso del botón Enter...!
         Button_Menu_Up_State = Button_Menu_Up;
+        Count_Exit_Menu = 0;
         if (Button_Menu_Up_State == 0 && Last_Button_Menu_Up_State == 1) {
             switch (Count_Push_Button)
             {
-            case 0:
-                eeprom_writex(0x02, 0x00);
-                Recording();
-                break;
-            case 1:
-                eeprom_writex(0x02, 0x01);
-                Recording();
-                break;
-            case 2:
-                eeprom_writex(0x02, 0x02);
-                Recording();
-                break;
-            case 3:
-                eeprom_writex(0x02, 0x03);
-                Recording();
-                break;
-            case 4:
-                eeprom_writex(0x02, 0x04);
-                Recording();
-                break;
-            case 5:
-                eeprom_writex(0x02, 0x05);
-                Recording();
-                break;
-            case 6:
-                eeprom_writex(0x02, 0x06);
-                Recording();
-                break;
-            case 7:
-                eeprom_writex(0x02, 0x07);
-                Recording();
-                break;
-            case 8:
-                eeprom_writex(0x02, 0x08);
-                Recording();
-                break;
-            case 9:
-                eeprom_writex(0x02, 0x09);
-                Recording();
-                break;
-            case 10:
-                eeprom_writex(0x02, 0x0A);
-                Recording();
-                break;
-            case 11:
-                eeprom_writex(0x02, 0x0B);
-                Recording();
-                break;
-            case 12:
-                eeprom_writex(0x02, 0x0C);
-                Recording();
-                break;
-            case 13:
-                eeprom_writex(0x02, 0x0D);
-                Recording();
-                break;
-            case 14:
-                eeprom_writex(0x02, 0x0E);
-                Recording();
-                break;
-            case 15:
-                eeprom_writex(0x02, 0x0F);
-                Recording();
-                break;
-            default:
-                Count_Push_Button = 0;
-                break;
+                case 0: eeprom_writex(0x02, 0x00); Recording(); break;
+                case 1: eeprom_writex(0x02, 0x01); Recording(); break;
+                case 2: eeprom_writex(0x02, 0x02); Recording(); break;
+                case 3: eeprom_writex(0x02, 0x03); Recording(); break;
+                case 4: eeprom_writex(0x02, 0x04); Recording(); break;
+                case 5: eeprom_writex(0x02, 0x05); Recording(); break;
+                case 6: eeprom_writex(0x02, 0x06); Recording(); break;
+                case 7: eeprom_writex(0x02, 0x07); Recording(); break;
+                case 8: eeprom_writex(0x02, 0x08); Recording(); break;
+                case 9: eeprom_writex(0x02, 0x09); Recording(); break;
+                case 10: eeprom_writex(0x02, 0x0A); Recording(); break;
+                case 11: eeprom_writex(0x02, 0x0B); Recording(); break;
+                case 12: eeprom_writex(0x02, 0x0C); Recording(); break;
+                case 13: eeprom_writex(0x02, 0x0D); Recording(); break;
+                case 14: eeprom_writex(0x02, 0x0E); Recording(); break;
+                case 15: eeprom_writex(0x02, 0x0F); Recording(); break;
+                default: Count_Push_Button = 0; break;
             }
         }
         Last_Button_Menu_Up_State = Button_Menu_Up_State;
@@ -736,19 +572,27 @@ void Menu_P2(void) {    // Parametro 2. Tiempo de retardo despues de la señal d
     } while (Flag_Menu == 1);
 }
 
-void Menu_P3(void) {    // Parametro 3. Sentido de giro del motor DC
+void Menu_P3(void) {    // Parametro 3. Tiempo de espera del cierre automatico
     do {
         switch (Count_Push_Button)
         {
-        case 0:
-            Draw_0();
-            break;
-        case 1:
-            Draw_1();
-            break;
-        default:
-            Count_Push_Button = 0;
-            break;
+            //case 0: Draw_0(); break;
+            case 1: Draw_2(); break;
+            case 2: Draw_4(); break;
+            case 3: Draw_6(); break;
+            case 4: Draw_8(); break;
+            case 5: Draw_10(); break;
+            case 6: Draw_12(); break;
+            case 7: Draw_14(); break;
+            case 8: Draw_16(); break;
+            case 9: Draw_18(); break;
+            case 10: Draw_20(); break;
+            case 11: Draw_22(); break;
+            case 12: Draw_24(); break;
+            case 13: Draw_26(); break;
+            case 14: Draw_28(); break;
+            case 15: Draw_30(); break;
+            default: Count_Push_Button = 1; break;
         }
         // Detección del pulso del botón Down...!
         Button_Menu_Down_State = Button_Menu_Down;
@@ -760,20 +604,27 @@ void Menu_P3(void) {    // Parametro 3. Sentido de giro del motor DC
 
         // Detección del pulso del botón Enter...!
         Button_Menu_Up_State = Button_Menu_Up;
+        Count_Exit_Menu = 0;
         if (Button_Menu_Up_State == 0 && Last_Button_Menu_Up_State == 1) {
             switch (Count_Push_Button)
             {
-            case 0:
-                eeprom_writex(0x03, 0x00);
-                Recording();
-                break;
-            case 1:
-                eeprom_writex(0x03, 0x01);
-                Recording();
-                break;
-            default:
-                Count_Push_Button = 0;
-                break;
+                //case 0: eeprom_writex(0x03, 0x00); Recording(); break;
+                case 1: eeprom_writex(0x03, 0x01); Recording(); break;
+                case 2: eeprom_writex(0x03, 0x02); Recording(); break;
+                case 3: eeprom_writex(0x03, 0x03); Recording(); break;
+                case 4: eeprom_writex(0x03, 0x04); Recording(); break;
+                case 5: eeprom_writex(0x03, 0x05); Recording(); break;
+                case 6: eeprom_writex(0x03, 0x06); Recording(); break;
+                case 7: eeprom_writex(0x03, 0x07); Recording(); break;
+                case 8: eeprom_writex(0x03, 0x08); Recording(); break;
+                case 9: eeprom_writex(0x03, 0x09); Recording(); break;
+                case 10: eeprom_writex(0x03, 0x0A); Recording(); break;
+                case 11: eeprom_writex(0x03, 0x0B); Recording(); break;
+                case 12: eeprom_writex(0x03, 0x0C); Recording(); break;
+                case 13: eeprom_writex(0x03, 0x0D); Recording(); break;
+                case 14: eeprom_writex(0x03, 0x0E); Recording(); break;
+                case 15: eeprom_writex(0x03, 0x0F); Recording(); break;
+                default: Count_Push_Button = 1; break;
             }
         }
         Last_Button_Menu_Up_State = Button_Menu_Up_State;
@@ -785,57 +636,23 @@ void Menu_P4(void) {    // Parametro 4. Retardo despues de la señal del boton d
     do {
         switch (Count_Push_Button)
         {
-        case 0:
-            Draw_0();
-            break;
-        case 1:
-            Draw_1();
-            break;
-        case 2:
-            Draw_2();
-            break;
-        case 3:
-            Draw_3();
-            break;
-        case 4:
-            Draw_4();
-            break;
-        case 5:
-            Draw_5();
-            break;
-        case 6:
-            Draw_6();
-            break;
-        case 7:
-            Draw_7();
-            break;
-        case 8:
-            Draw_8();
-            break;
-        case 9:
-            Draw_9();
-            break;
-        case 10:
-            Draw_10();
-            break;
-        case 11:
-            Draw_11();
-            break;
-        case 12:
-            Draw_12();
-            break;
-        case 13:
-            Draw_13();
-            break;
-        case 14:
-            Draw_14();
-            break;
-        case 15:
-            Draw_15();
-            break;
-        default:
-            Count_Push_Button = 0;
-            break;
+        case 0: Draw_0(); break;
+        case 1: Draw_1(); break;
+        case 2: Draw_2(); break;
+        case 3: Draw_3(); break;
+        case 4: Draw_4(); break;
+        case 5: Draw_5(); break;
+        case 6: Draw_6(); break;
+        case 7: Draw_7(); break;
+        case 8: Draw_8(); break;
+        case 9: Draw_9(); break;
+        case 10: Draw_10(); break;
+        case 11: Draw_11(); break;
+        case 12: Draw_12(); break;
+        case 13: Draw_13(); break;
+        case 14: Draw_14(); break;
+        case 15: Draw_15(); break;
+        default: Count_Push_Button = 0; break;
         }
         // Detección del pulso del botón Down...!
         Button_Menu_Down_State = Button_Menu_Down;
@@ -847,82 +664,33 @@ void Menu_P4(void) {    // Parametro 4. Retardo despues de la señal del boton d
 
         // Detección del pulso del botón Enter...!
         Button_Menu_Up_State = Button_Menu_Up;
+        Count_Exit_Menu = 0;
         if (Button_Menu_Up_State == 0 && Last_Button_Menu_Up_State == 1) {
             switch (Count_Push_Button)
             {
-            case 0:
-                eeprom_writex(0x04, 0x00);
-                Recording();
-                break;
-            case 1:
-                eeprom_writex(0x04, 0x01);
-                Recording();
-                break;
-            case 2:
-                eeprom_writex(0x04, 0x02);
-                Recording();
-                break;
-            case 3:
-                eeprom_writex(0x04, 0x03);
-                Recording();
-                break;
-            case 4:
-                eeprom_writex(0x04, 0x04);
-                Recording();
-                break;
-            case 5:
-                eeprom_writex(0x04, 0x05);
-                Recording();
-                break;
-            case 6:
-                eeprom_writex(0x04, 0x06);
-                Recording();
-                break;
-            case 7:
-                eeprom_writex(0x04, 0x07);
-                Recording();
-                break;
-            case 8:
-                eeprom_writex(0x04, 0x08);
-                Recording();
-                break;
-            case 9:
-                eeprom_writex(0x04, 0x09);
-                Recording();
-                break;
-            case 10:
-                eeprom_writex(0x04, 0x0A);
-                Recording();
-                break;
-            case 11:
-                eeprom_writex(0x04, 0x0B);
-                Recording();
-                break;
-            case 12:
-                eeprom_writex(0x04, 0x0C);
-                Recording();
-                break;
-            case 13:
-                eeprom_writex(0x04, 0x0D);
-                Recording();
-                break;
-            case 14:
-                eeprom_writex(0x04, 0x0E);
-                Recording();
-                break;
-            case 15:
-                eeprom_writex(0x04, 0x0F);
-                Recording();
-                break;
-            default:
-                Count_Push_Button = 0;
-                break;
+            case 0: eeprom_writex(0x04, 0x00); Recording(); break;
+            case 1: eeprom_writex(0x04, 0x01); Recording(); break;
+            case 2: eeprom_writex(0x04, 0x02); Recording(); break;
+            case 3: eeprom_writex(0x04, 0x03); Recording(); break;
+            case 4: eeprom_writex(0x04, 0x04); Recording(); break;
+            case 5: eeprom_writex(0x04, 0x05); Recording(); break;
+            case 6: eeprom_writex(0x04, 0x06); Recording(); break;
+            case 7: eeprom_writex(0x04, 0x07); Recording(); break;
+            case 8: eeprom_writex(0x04, 0x08); Recording(); break;
+            case 9: eeprom_writex(0x04, 0x09); Recording(); break;
+            case 10: eeprom_writex(0x04, 0x0A); Recording(); break;
+            case 11: eeprom_writex(0x04, 0x0B); Recording(); break;
+            case 12: eeprom_writex(0x04, 0x0C); Recording(); break;
+            case 13: eeprom_writex(0x04, 0x0D); Recording(); break;
+            case 14: eeprom_writex(0x04, 0x0E); Recording(); break;
+            case 15: eeprom_writex(0x04, 0x0F); Recording(); break;
+            default: Count_Push_Button = 0; break;
             }
         }
         Last_Button_Menu_Up_State = Button_Menu_Up_State;
         Exit_Time_Menu();
     } while (Flag_Menu == 1);
-}
+} 
 
 void Clear(void) {
     Display_One = 0;
@@ -931,253 +699,341 @@ void Clear(void) {
 }
 
 void Draw_CL(void) {
-    Display = 0x8D;        // "C" En el display de siete segmentos
+    Display = 0xAA;        // "C" En el display de siete segmentos
     Display_One = 1;
     __delay_us(5);
     Display_One = 0;
-    Display = 0x8F;       // "L" En el display de siete segmentos
+    Display = 0xAB;       // "L" En el display de siete segmentos
     Display_Two = 1;
     __delay_us(5);
     Display_Two = 0;
 }
 
 void Draw_P1(void) {
-    Display = 0x19;          // "P" En el display de siete segmentos
+    Display = 0xB0;          // "P" En el display de siete segmentos
     Display_One = 1;
     __delay_us(Timing_Display);
     Display_One = 0;
-    Display = 0xF3;         // "1" En el display de siete segmentos
+    Display = 0x7D;         // "1" En el display de siete segmentos
     Display_Two = 1;
     __delay_us(Timing_Display);
     Display_Two = 0;
 }
 
 void Draw_P2(void) {
-    Display = 0x19;        // "P" En el display de siete segmentos
+    Display = 0xB0;        // "P" En el display de siete segmentos
     Display_One = 1;
     __delay_us(Timing_Display);
     Display_One = 0;
-    Display = 0x49;       // "2" En el display de siete segmentos 
+    Display = 0xA4;       // "2" En el display de siete segmentos 
     Display_Two = 1;
     __delay_us(Timing_Display);
     Display_Two = 0;
 }
 
 void Draw_P3(void) {
-    Display = 0x19;        // "P" En el display de siete segmentos
+    Display = 0xB0;        // "P" En el display de siete segmentos
     Display_One = 1;
     __delay_us(Timing_Display);
     Display_One = 0;
-    Display = 0x61;       // "3" En el display de siete segmentos 
+    Display = 0x64;       // "3" En el display de siete segmentos 
     Display_Two = 1;
     __delay_us(Timing_Display);
     Display_Two = 0;
 }
 
 void Draw_P4(void) {
-    Display = 0x19;        // "P" En el display de siete segmentos
+    Display = 0xB0;        // "P" En el display de siete segmentos
     Display_One = 1;
     __delay_us(Timing_Display);
     Display_One = 0;
-    Display = 0x33;       // "4" En el display de siete segmentos 
+    Display = 0x71;       // "4" En el display de siete segmentos 
     Display_Two = 1;
     __delay_us(Timing_Display);
     Display_Two = 0;
 }
 
 void Draw_0(void) {
-    Display = 0x11;        // " " En el display de siete segmentos
+    Display = 0xFF;        // " " En el display de siete segmentos
     Display_One = 0;
     __delay_us(Timing_Display);
     Display_One = 0;
-    Display = 0x81;       // "0" En el display de siete segmentos 
+    Display = 0x28;       // "0" En el display de siete segmentos 
     Display_Two = 1;
     __delay_us(Timing_Display);
     Display_Two = 0;
 }
 
 void Draw_1(void) {
-    Display = 0x11;        // " " En el display de siete segmentos
+    Display = 0xFF;        // " " En el display de siete segmentos
     Display_One = 0;
     __delay_us(Timing_Display);
     Display_One = 0;
-    Display = 0xF3;       // "1" En el display de siete segmentos 
+    Display = 0x7D;       // "1" En el display de siete segmentos 
     Display_Two = 1;
     __delay_us(Timing_Display);
     Display_Two = 0;
 }
 
 void Draw_2(void) {
-    Display = 0x11;        // " " En el display de siete segmentos
+    Display = 0xFF;        // " " En el display de siete segmentos
     Display_One = 0;
     __delay_us(Timing_Display);
     Display_One = 0;
-    Display = 0x49;       // "2" En el display de siete segmentos 
+    Display = 0xA4;       // "2" En el display de siete segmentos 
     Display_Two = 1;
     __delay_us(Timing_Display);
     Display_Two = 0;
 }
 
 void Draw_3(void) {
-    Display = 0x11;        // " " En el display de siete segmentos
+    Display = 0xFF;        // " " En el display de siete segmentos
     Display_One = 0;
     __delay_us(Timing_Display);
     Display_One = 0;
-    Display = 0x61;       // "3" En el display de siete segmentos  
+    Display = 0x64;       // "3" En el display de siete segmentos  
     Display_Two = 1;
     __delay_us(Timing_Display);
     Display_Two = 0;
 }
 
 void Draw_4(void) {
-    Display = 0x11;        // " " En el display de siete segmentos
+    Display = 0xFF;        // " " En el display de siete segmentos
     Display_One = 0;
     __delay_us(Timing_Display);
     Display_One = 0;
-    Display = 0x33;       // "4" En el display de siete segmentos  
+    Display = 0x71;       // "4" En el display de siete segmentos  
     Display_Two = 1;
     __delay_us(Timing_Display);
     Display_Two = 0;
 }
 
 void Draw_5(void) {
-    Display = 0x11;        // " " En el display de siete segmentos
+    Display = 0xFF;        // " " En el display de siete segmentos
     Display_One = 0;
     __delay_us(Timing_Display);
     Display_One = 0;
-    Display = 0x25;       // "5" En el display de siete segmentos  
+    Display = 0x62;       // "5" En el display de siete segmentos  
     Display_Two = 1;
     __delay_us(Timing_Display);
     Display_Two = 0;
 }
 
 void Draw_6(void) {
-    Display = 0x11;        // " " En el display de siete segmentos
+    Display = 0xFF;        // " " En el display de siete segmentos
     Display_One = 0;
     __delay_us(Timing_Display);
     Display_One = 0;
-    Display = 0x05;       // "6" En el display de siete segmentos  
+    Display = 0x22;       // "6" En el display de siete segmentos  
     Display_Two = 1;
     __delay_us(Timing_Display);
     Display_Two = 0;
 }
 
 void Draw_7(void) {
-    Display = 0x11;        // " " En el display de siete segmentos
+    Display = 0xFF;        // " " En el display de siete segmentos
     Display_One = 0;
     __delay_us(Timing_Display);
     Display_One = 0;
-    Display = 0xF1;       // "7" En el display de siete segmentos  
+    Display = 0x7C;       // "7" En el display de siete segmentos  
     Display_Two = 1;
     __delay_us(Timing_Display);
     Display_Two = 0;
 }
 
 void Draw_8(void) {
-    Display = 0x11;        // " " En el display de siete segmentos
+    Display = 0xFF;        // " " En el display de siete segmentos
     Display_One = 0;
     __delay_us(Timing_Display);
     Display_One = 0;
-    Display = 0x01;       // "8" En el display de siete segmentos  
+    Display = 0x20;       // "8" En el display de siete segmentos  
     Display_Two = 1;
     __delay_us(Timing_Display);
     Display_Two = 0;
 }
 
 void Draw_9(void) {
-    Display = 0x11;        // " " En el display de siete segmentos
+    Display = 0xFF;        // " " En el display de siete segmentos
     Display_One = 0;
     __delay_us(Timing_Display);
     Display_One = 0;
-    Display = 0x21;       // "9" En el display de siete segmentos  
+    Display = 0x60;       // "9" En el display de siete segmentos  
     Display_Two = 1;
     __delay_us(Timing_Display);
     Display_Two = 0;
 }
 
 void Draw_10(void) {
-    Display = 0xF3;        // "1" En el display de siete segmentos
+    Display = 0x7D;        // "1" En el display de siete segmentos
     Display_One = 1;
     __delay_us(Timing_Display);
     Display_One = 0;
-    Display = 0x81;       // "0" En el display de siete segmentos  
+    Display = 0x28;       // "0" En el display de siete segmentos  
     Display_Two = 1;
     __delay_us(Timing_Display);
     Display_Two = 0;
 }
 
 void Draw_11(void) {
-    Display = 0xF3;        // "1" En el display de siete segmentos
+    Display = 0x7D;        // "1" En el display de siete segmentos
     Display_One = 1;
     __delay_us(Timing_Display);
     Display_One = 0;
-    Display = 0xF3;       // "1" En el display de siete segmentos  
+    Display = 0x7D;       // "1" En el display de siete segmentos  
     Display_Two = 1;
     __delay_us(Timing_Display);
     Display_Two = 0;
 }
 
 void Draw_12(void) {
-    Display = 0xF3;        // "1" En el display de siete segmentos
+    Display = 0x7D;        // "1" En el display de siete segmentos
     Display_One = 1;
     __delay_us(Timing_Display);
     Display_One = 0;
-    Display = 0x49;       // "2" En el display de siete segmentos 
+    Display = 0xA4;       // "2" En el display de siete segmentos 
     Display_Two = 1;
     __delay_us(Timing_Display);
     Display_Two = 0;
 }
 
 void Draw_13(void) {
-    Display = 0xF3;        // "1" En el display de siete segmentos
+    Display = 0x7D;        // "1" En el display de siete segmentos
     Display_One = 1;
     __delay_us(Timing_Display);
     Display_One = 0;
-    Display = 0x61;       // "3" En el display de siete segmentos  
+    Display = 0x64;       // "3" En el display de siete segmentos  
     Display_Two = 1;
     __delay_us(Timing_Display);
     Display_Two = 0;
 }
 
 void Draw_14(void) {
-    Display = 0xF3;        // "1" En el display de siete segmentos
+    Display = 0x7D;        // "1" En el display de siete segmentos
     Display_One = 1;
     __delay_us(Timing_Display);
     Display_One = 0;
-    Display = 0x33;       // "4" En el display de siete segmentos  
+    Display = 0x71;       // "4" En el display de siete segmentos  
     Display_Two = 1;
     __delay_us(Timing_Display);
     Display_Two = 0;
 }
 
 void Draw_15(void) {
-    Display = 0xF3;        // "1" En el display de siete segmentos
+    Display = 0x7D;        // "1" En el display de siete segmentos
     Display_One = 1;
     __delay_us(Timing_Display);
     Display_One = 0;
-    Display = 0x25;       // "5" En el display de siete segmentos  
+    Display = 0x62;       // "5" En el display de siete segmentos  
     Display_Two = 1;
     __delay_us(Timing_Display);
     Display_Two = 0;
-}
+} 
 
-void Draw_Save_Dot_One(void) {
-    Display = 0xFE;        // "." En el display de siete segmentos
+void Draw_16(void) {
+    Display = 0x7D;        // "1" En el display de siete segmentos
     Display_One = 1;
     __delay_us(Timing_Display);
     Display_One = 0;
-    Display = 0x11;       // " " En el display de siete segmentos 
+    Display = 0x22;       // "6" En el display de siete segmentos  
+    Display_Two = 1;
+    __delay_us(Timing_Display);
+    Display_Two = 0;
+} 
+
+void Draw_18(void) {
+    Display = 0x7D;        // "1" En el display de siete segmentos
+    Display_One = 1;
+    __delay_us(Timing_Display);
+    Display_One = 0;
+    Display = 0x20;       // "8" En el display de siete segmentos  
+    Display_Two = 1;
+    __delay_us(Timing_Display);
+    Display_Two = 0;
+} 
+
+void Draw_20(void) {
+    Display = 0xA4;        // "2" En el display de siete segmentos
+    Display_One = 1;
+    __delay_us(Timing_Display);
+    Display_One = 0;
+    Display = 0x28;       // "0" En el display de siete segmentos  
+    Display_Two = 1;
+    __delay_us(Timing_Display);
+    Display_Two = 0;
+} 
+
+void Draw_22(void) {
+    Display = 0xA4;        // "2" En el display de siete segmentos
+    Display_One = 1;
+    __delay_us(Timing_Display);
+    Display_One = 0;
+    Display = 0xA4;       // "2" En el display de siete segmentos  
+    Display_Two = 1;
+    __delay_us(Timing_Display);
+    Display_Two = 0;
+} 
+
+void Draw_24(void) {
+    Display = 0xA4;        // "2" En el display de siete segmentos
+    Display_One = 1;
+    __delay_us(Timing_Display);
+    Display_One = 0;
+    Display = 0x71;       // "4" En el display de siete segmentos  
+    Display_Two = 1;
+    __delay_us(Timing_Display);
+    Display_Two = 0;
+} 
+
+void Draw_26(void) {
+    Display = 0xA4;        // "2" En el display de siete segmentos
+    Display_One = 1;
+    __delay_us(Timing_Display);
+    Display_One = 0;
+    Display = 0x22;       // "6" En el display de siete segmentos  
+    Display_Two = 1;
+    __delay_us(Timing_Display);
+    Display_Two = 0;
+} 
+
+void Draw_28(void) {
+    Display = 0xA4;        // "2" En el display de siete segmentos
+    Display_One = 1;
+    __delay_us(Timing_Display);
+    Display_One = 0;
+    Display = 0x20;       // "8" En el display de siete segmentos  
+    Display_Two = 1;
+    __delay_us(Timing_Display);
+    Display_Two = 0;
+} 
+
+void Draw_30(void) {
+    Display = 0x64;        // "3" En el display de siete segmentos
+    Display_One = 1;
+    __delay_us(Timing_Display);
+    Display_One = 0;
+    Display = 0x28;       // "0" En el display de siete segmentos  
+    Display_Two = 1;
+    __delay_us(Timing_Display);
+    Display_Two = 0;
+} 
+
+void Draw_Save_Dot_One(void) {
+    Display = 0xDF;        // "." En el display de siete segmentos
+    Display_One = 1;
+    __delay_us(Timing_Display);
+    Display_One = 0;
+    Display = 0xFF;       // " " En el display de siete segmentos 
     Display_Two = 0;
     __delay_us(Timing_Display);
     Display_Two = 0;
 }
 
 void Draw_Save_Dot_Two(void) {
-    Display = 0xFE;        // "." En el display de siete segmentos
+    Display = 0xDF;        // "." En el display de siete segmentos
     Display_One = 1;
     __delay_us(Timing_Display);
     Display_One = 0;
-    Display = 0xFE;       // "." En el display de siete segmentos 
+    Display = 0xDF;       // "." En el display de siete segmentos 
     Display_Two = 1;
     __delay_us(Timing_Display);
     Display_Two = 0;
@@ -1199,4 +1055,26 @@ void Recording(void) {
     } while (Count_Save < 250);
     Count_Save = 0;
     Flag_Menu = 0;
+}
+
+void Indicator(void) {
+    Inductive_State = Inductive_Sensor;
+    End_Stop_Close_State = End_Stop_Close;
+    if (Inductive_State == 1 && End_Stop_Close_State == 0) {
+        Display = 0xFF;
+        Display_One = 1;
+    } else {
+        Count_Led++;
+        if (Count_Led < 2) {
+            Display = 0xFF;
+            Display_One = 1;
+        } else if (Count_Led >= 2 && Count_Led < 4) {
+            Display = 0xFF;
+            Display_One = 0;
+        } else {
+            Display = 0xFF;
+            Display_One = 0;
+            Count_Led = 0;
+        }
+    }
 }

@@ -5071,7 +5071,7 @@ extern __attribute__((nonreentrant)) void _delay3(unsigned char);
 
 #pragma config EBTRB = OFF
 # 16 "main.c" 2
-# 39 "main.c"
+# 38 "main.c"
 int Count_Peake_Current = 0;
 int Current = 0;
 
@@ -5098,7 +5098,10 @@ _Bool Flag_Latch;
 _Bool Flag_End_Stop_Open;
 int Time_Inductive_State;
 int Time_Open_State;
+int Count_Led = 0;
 
+
+long Time_Auto_Close = 1;
 
 int ADC;
 unsigned char Buffer1[16];
@@ -5137,6 +5140,14 @@ void Draw_12(void);
 void Draw_13(void);
 void Draw_14(void);
 void Draw_15(void);
+void Draw_16(void);
+void Draw_18(void);
+void Draw_20(void);
+void Draw_22(void);
+void Draw_24(void);
+void Draw_26(void);
+void Draw_28(void);
+void Draw_30(void);
 
 void Menu_P1(void);
 void Menu_P2(void);
@@ -5151,21 +5162,22 @@ void Recording(void);
 void eeprom_writex(int address, char data);
 char eeprom_readx(int address);
 
+void Indicator(void);
+
 void main(void) {
     ADCON1 = 0X0E;
 
     TRISAbits.RA0 = 1;
-
-    TRISAbits.RA1 = 1;
-    TRISAbits.RA4 = 1;
+    TRISAbits.RA3 = 1;
+    TRISCbits.RC0 = 1;
     TRISCbits.RC1 = 0;
     TRISCbits.RC2 = 0;
     TRISCbits.RC6 = 0;
     TRISCbits.RC7 = 0;
-    TRISAbits.RA2 = 1;
-    TRISAbits.RA3 = 1;
+    TRISAbits.RA4 = 1;
     TRISAbits.RA5 = 1;
-    TRISCbits.RC0 = 1;
+    TRISAbits.RA1 = 1;
+    TRISAbits.RA2 = 1;
 
 
     ADCON0bits.CHS = 0;
@@ -5188,6 +5200,7 @@ void main(void) {
     Time_Open_State = eeprom_readx(0x04);
 
     while(1) {
+        Indicator();
         Menu_In();
         Close_Lock();
         Open_Lock();
@@ -5196,167 +5209,91 @@ void main(void) {
 }
 
 void Close_Lock(void) {
-    Inductive_State = PORTAbits.RA1;
+    Inductive_State = PORTAbits.RA3;
     _delay((unsigned long)((50)*(20000000/4000.0)));
     if(Inductive_State == 1 && Last_Inductive_State == 0) {
         _delay((unsigned long)((50)*(20000000/4000.0)));
-        End_Stop_Open_State = PORTAbits.RA2;
+        End_Stop_Open_State = PORTAbits.RA4;
         if(Inductive_State == 1 && Last_Inductive_State == 0 && End_Stop_Open_State == 0) {
+            _delay((unsigned long)((50)*(20000000/4000.0)));
+            Count_Time_Close = 0;
             Time_Inductive_State = eeprom_readx(0x02);
             Time_Inductive_State = Time_Inductive_State * 1000;
             switch (Time_Inductive_State)
             {
-            case 0:
-                _delay((unsigned long)((0)*(20000000/4000.0)));
-                break;
-            case 1000:
-                _delay((unsigned long)((1000)*(20000000/4000.0)));
-                break;
-            case 2000:
-                _delay((unsigned long)((2000)*(20000000/4000.0)));
-                break;
-            case 3000:
-                _delay((unsigned long)((3000)*(20000000/4000.0)));
-                break;
-            case 4000:
-                _delay((unsigned long)((4000)*(20000000/4000.0)));
-                break;
-            case 5000:
-                _delay((unsigned long)((5000)*(20000000/4000.0)));
-                break;
-            case 6000:
-                _delay((unsigned long)((6000)*(20000000/4000.0)));
-                break;
-            case 7000:
-                _delay((unsigned long)((7000)*(20000000/4000.0)));
-                break;
-            case 8000:
-                _delay((unsigned long)((8000)*(20000000/4000.0)));
-                break;
-            case 9000:
-                _delay((unsigned long)((9000)*(20000000/4000.0)));
-                break;
-            case 10000:
-                _delay((unsigned long)((10000)*(20000000/4000.0)));
-                break;
-            case 11000:
-                _delay((unsigned long)((10000)*(20000000/4000.0)));
-                _delay((unsigned long)((1000)*(20000000/4000.0)));
-                break;
-            case 12000:
-                _delay((unsigned long)((10000)*(20000000/4000.0)));
-                _delay((unsigned long)((2000)*(20000000/4000.0)));
-                break;
-            case 13000:
-                _delay((unsigned long)((10000)*(20000000/4000.0)));
-                _delay((unsigned long)((3000)*(20000000/4000.0)));
-                break;
-            case 14000:
-                _delay((unsigned long)((10000)*(20000000/4000.0)));
-                _delay((unsigned long)((4000)*(20000000/4000.0)));
-                break;
-            case 15000:
-                _delay((unsigned long)((10000)*(20000000/4000.0)));
-                _delay((unsigned long)((5000)*(20000000/4000.0)));
-                break;
-            default:
-                _delay((unsigned long)((0)*(20000000/4000.0)));
-                break;
+            case 0: _delay((unsigned long)((500)*(20000000/4000.0))); break;
+            case 1000: _delay((unsigned long)((1000)*(20000000/4000.0))); break;
+            case 2000: _delay((unsigned long)((2000)*(20000000/4000.0))); break;
+            case 3000: _delay((unsigned long)((3000)*(20000000/4000.0))); break;
+            case 4000: _delay((unsigned long)((4000)*(20000000/4000.0))); break;
+            case 5000: _delay((unsigned long)((5000)*(20000000/4000.0))); break;
+            case 6000: _delay((unsigned long)((6000)*(20000000/4000.0))); break;
+            case 7000: _delay((unsigned long)((7000)*(20000000/4000.0))); break;
+            case 8000: _delay((unsigned long)((8000)*(20000000/4000.0))); break;
+            case 9000: _delay((unsigned long)((9000)*(20000000/4000.0))); break;
+            case 10000: _delay((unsigned long)((10000)*(20000000/4000.0))); break;
+            case 11000: _delay((unsigned long)((10000)*(20000000/4000.0))); _delay((unsigned long)((1000)*(20000000/4000.0))); break;
+            case 12000: _delay((unsigned long)((10000)*(20000000/4000.0))); _delay((unsigned long)((2000)*(20000000/4000.0))); break;
+            case 13000: _delay((unsigned long)((10000)*(20000000/4000.0))); _delay((unsigned long)((3000)*(20000000/4000.0))); break;
+            case 14000: _delay((unsigned long)((10000)*(20000000/4000.0))); _delay((unsigned long)((4000)*(20000000/4000.0))); break;
+            case 15000: _delay((unsigned long)((10000)*(20000000/4000.0))); _delay((unsigned long)((5000)*(20000000/4000.0))); break;
+            default: _delay((unsigned long)((500)*(20000000/4000.0))); break;
             }
+            PORTCbits.RC1 = 1;
+            _delay((unsigned long)((1000)*(20000000/4000.0)));
             Closing();
-# 239 "main.c"
+# 216 "main.c"
         }
     }
     Last_Inductive_State = Inductive_State;
 }
 
 void Open_Lock(void) {
-    Open_Contact_State = PORTAbits.RA4;
+    Open_Contact_State = PORTCbits.RC0;
     _delay((unsigned long)((50)*(20000000/4000.0)));
     if(Open_Contact_State == 0 && Last_Open_Contact_State == 1) {
         _delay((unsigned long)((50)*(20000000/4000.0)));
-        End_Stop_Open_State = PORTAbits.RA2;
+        End_Stop_Open_State = PORTAbits.RA4;
         if(Open_Contact_State == 0 && Last_Open_Contact_State == 1 && End_Stop_Open_State == 1) {
             Time_Open_State = eeprom_readx(0x04);
             Time_Open_State = Time_Open_State * 1000;
             switch (Time_Open_State)
             {
-            case 0:
-                _delay((unsigned long)((0)*(20000000/4000.0)));
-                break;
-            case 1000:
-                _delay((unsigned long)((1000)*(20000000/4000.0)));
-                break;
-            case 2000:
-                _delay((unsigned long)((2000)*(20000000/4000.0)));
-                break;
-            case 3000:
-                _delay((unsigned long)((3000)*(20000000/4000.0)));
-                break;
-            case 4000:
-                _delay((unsigned long)((4000)*(20000000/4000.0)));
-                break;
-            case 5000:
-                _delay((unsigned long)((5000)*(20000000/4000.0)));
-                break;
-            case 6000:
-                _delay((unsigned long)((6000)*(20000000/4000.0)));
-                break;
-            case 7000:
-                _delay((unsigned long)((7000)*(20000000/4000.0)));
-                break;
-            case 8000:
-                _delay((unsigned long)((8000)*(20000000/4000.0)));
-                break;
-            case 9000:
-                _delay((unsigned long)((9000)*(20000000/4000.0)));
-                break;
-            case 10000:
-                _delay((unsigned long)((10000)*(20000000/4000.0)));
-                break;
-            case 11000:
-                _delay((unsigned long)((10000)*(20000000/4000.0)));
-                _delay((unsigned long)((1000)*(20000000/4000.0)));
-                break;
-            case 12000:
-                _delay((unsigned long)((10000)*(20000000/4000.0)));
-                _delay((unsigned long)((2000)*(20000000/4000.0)));
-                break;
-            case 13000:
-                _delay((unsigned long)((10000)*(20000000/4000.0)));
-                _delay((unsigned long)((3000)*(20000000/4000.0)));
-                break;
-            case 14000:
-                _delay((unsigned long)((10000)*(20000000/4000.0)));
-                _delay((unsigned long)((4000)*(20000000/4000.0)));
-                break;
-            case 15000:
-                _delay((unsigned long)((10000)*(20000000/4000.0)));
-                _delay((unsigned long)((5000)*(20000000/4000.0)));
-                break;
-            default:
-                _delay((unsigned long)((0)*(20000000/4000.0)));
-                break;
+            case 0: _delay((unsigned long)((0)*(20000000/4000.0))); break;
+            case 1000: _delay((unsigned long)((1000)*(20000000/4000.0))); break;
+            case 2000: _delay((unsigned long)((2000)*(20000000/4000.0))); break;
+            case 3000: _delay((unsigned long)((3000)*(20000000/4000.0))); break;
+            case 4000: _delay((unsigned long)((4000)*(20000000/4000.0))); break;
+            case 5000: _delay((unsigned long)((5000)*(20000000/4000.0))); break;
+            case 6000: _delay((unsigned long)((6000)*(20000000/4000.0))); break;
+            case 7000: _delay((unsigned long)((7000)*(20000000/4000.0))); break;
+            case 8000: _delay((unsigned long)((8000)*(20000000/4000.0))); break;
+            case 9000: _delay((unsigned long)((9000)*(20000000/4000.0))); break;
+            case 10000: _delay((unsigned long)((10000)*(20000000/4000.0))); break;
+            case 11000: _delay((unsigned long)((10000)*(20000000/4000.0))); _delay((unsigned long)((1000)*(20000000/4000.0))); break;
+            case 12000: _delay((unsigned long)((10000)*(20000000/4000.0))); _delay((unsigned long)((2000)*(20000000/4000.0))); break;
+            case 13000: _delay((unsigned long)((10000)*(20000000/4000.0))); _delay((unsigned long)((3000)*(20000000/4000.0))); break;
+            case 14000: _delay((unsigned long)((10000)*(20000000/4000.0))); _delay((unsigned long)((4000)*(20000000/4000.0))); break;
+            case 15000: _delay((unsigned long)((10000)*(20000000/4000.0))); _delay((unsigned long)((5000)*(20000000/4000.0))); break;
+            default: _delay((unsigned long)((0)*(20000000/4000.0))); break;
             }
             Flag_End_Stop_Open = 1;
             do {
                 PORTCbits.RC2 = 1;
-                End_Stop_Open_State = PORTAbits.RA2;
+                End_Stop_Open_State = PORTAbits.RA4;
                 Count_Time_Close++;
                 Sense_Current();
-
                 if (End_Stop_Open_State == 0) {
                     Flag_End_Stop_Open = 0;
                     int Value_Latch = eeprom_readx(0x01);
                     if (Value_Latch == 1) {
-                        _delay((unsigned long)((2000)*(20000000/4000.0)));
+                        _delay((unsigned long)((3000)*(20000000/4000.0)));
                         PORTCbits.RC2 = 0;
                         PORTCbits.RC1 = 1;
-                        _delay((unsigned long)((100)*(20000000/4000.0)));
+                        _delay((unsigned long)((500)*(20000000/4000.0)));
                         PORTCbits.RC1 = 0;
                         }
                     }
-
                 if(Count_Time_Close == 250000) {
                     Count_Time_Close = 0;
                     break;
@@ -5372,13 +5309,17 @@ void Open_Lock(void) {
             PORTCbits.RC2 = 0;
             Count_Time_Close = 0;
             Count_Peake_Current = 0;
-            Inductive_State = PORTAbits.RA1;
+            Inductive_State = PORTAbits.RA3;
+            Time_Auto_Close = eeprom_readx(0x03);
+            Time_Auto_Close = Time_Auto_Close * 500000;
             do {
                 Count_Auto_Close++;
-                Inductive_State = PORTAbits.RA1;
-                if(Count_Auto_Close == 1000000) {
-                    End_Stop_Open_State = PORTAbits.RA2;
+                Inductive_State = PORTAbits.RA3;
+                if(Count_Auto_Close == Time_Auto_Close) {
+                    End_Stop_Open_State = PORTAbits.RA4;
                     if(End_Stop_Open_State == 0) {
+                        PORTCbits.RC1 = 1;
+                        _delay((unsigned long)((500)*(20000000/4000.0)));
                         Closing();
                         Count_Auto_Close = 0;
                     }
@@ -5392,9 +5333,11 @@ void Open_Lock(void) {
 }
 
 void Closing(void) {
+    Count_Time_Close = 0;
+    _delay((unsigned long)((1000)*(20000000/4000.0)));
     do {
         PORTCbits.RC1 = 1;
-        End_Stop_Close_State = PORTAbits.RA3;
+        End_Stop_Close_State = PORTAbits.RA5;
         Count_Time_Close++;
         Current = Analog_Read();
         Sense_Current();
@@ -5473,7 +5416,7 @@ char eeprom_readx(int address) {
 }
 
 void Menu_In(void) {
-    Button_Menu_Up_State = PORTAbits.RA5;
+    Button_Menu_Up_State = PORTAbits.RA1;
     _delay((unsigned long)((1)*(20000000/4000.0)));
     if (Button_Menu_Up_State == 0 && Last_Button_Menu_Up_State == 1) {
         Toggle_Up = 1;
@@ -5488,7 +5431,7 @@ void Menu_In(void) {
     }
     Last_Button_Menu_Up_State = Button_Menu_Up_State;
 
-    Button_Menu_Down_State = PORTCbits.RC0;
+    Button_Menu_Down_State = PORTAbits.RA2;
     _delay((unsigned long)((1)*(20000000/4000.0)));
     if (Button_Menu_Down_State == 0 && Last_Button_Menu_Down_State == 1) {
         Toggle_Down = 1;
@@ -5508,24 +5451,14 @@ void Menu(void) {
     do {
         switch (Count_Push_Button)
         {
-        case 0:
-            Draw_P1();
-            break;
-        case 1:
-            Draw_P2();
-            break;
-        case 2:
-            Draw_P3();
-            break;
-        case 3:
-            Draw_P4();
-            break;
-        default:
-            Count_Push_Button = 0;
-            break;
+        case 0: Draw_P1(); break;
+        case 1: Draw_P2(); break;
+        case 2: Draw_P3(); break;
+        case 3: Draw_P4(); break;
+        default: Count_Push_Button = 0; break;
         }
 
-        Button_Menu_Down_State = PORTCbits.RC0;
+        Button_Menu_Down_State = PORTAbits.RA2;
         if (Button_Menu_Down_State == 0 && Last_Button_Menu_Down_State == 1) {
             Count_Push_Button++;
             Count_Exit_Menu = 0;
@@ -5533,7 +5466,7 @@ void Menu(void) {
         Last_Button_Menu_Down_State = Button_Menu_Down_State;
 
 
-        Button_Menu_Up_State = PORTAbits.RA5;
+        Button_Menu_Up_State = PORTAbits.RA1;
         if (Button_Menu_Up_State == 0 && Last_Button_Menu_Up_State == 1) {
             Count_Exit_Menu = 0;
             switch (Count_Push_Button)
@@ -5549,7 +5482,7 @@ void Menu(void) {
                 Menu_P2();
                 break;
             case 2:
-                Count_Push_Button = 0;
+                Count_Push_Button = 1;
                 _delay((unsigned long)((300)*(20000000/4000.0)));
                 Menu_P3();
                 break;
@@ -5571,7 +5504,7 @@ void Menu(void) {
 
 void Exit_Time_Menu(void) {
     Count_Exit_Menu++;
-    if (Count_Exit_Menu == 1000) {
+    if (Count_Exit_Menu == 7000) {
         Flag_Menu = 0;
         Count_Exit_Menu = 0;
     }
@@ -5581,18 +5514,12 @@ void Menu_P1(void) {
     do {
         switch (Count_Push_Button)
         {
-        case 0:
-            Draw_0();
-            break;
-        case 1:
-            Draw_1();
-            break;
-        default:
-            Count_Push_Button = 0;
-            break;
+        case 0: Draw_0(); break;
+        case 1: Draw_1(); break;
+        default: Count_Push_Button = 0; break;
         }
 
-        Button_Menu_Down_State = PORTCbits.RC0;
+        Button_Menu_Down_State = PORTAbits.RA2;
         if (Button_Menu_Down_State == 0 && Last_Button_Menu_Down_State == 1) {
             Count_Push_Button++;
             Count_Exit_Menu = 0;
@@ -5600,21 +5527,14 @@ void Menu_P1(void) {
         Last_Button_Menu_Down_State = Button_Menu_Down_State;
 
 
-        Button_Menu_Up_State = PORTAbits.RA5;
+        Button_Menu_Up_State = PORTAbits.RA1;
+        Count_Exit_Menu = 0;
         if (Button_Menu_Up_State == 0 && Last_Button_Menu_Up_State == 1) {
             switch (Count_Push_Button)
             {
-            case 0:
-                eeprom_writex(0x01, 0x00);
-                Recording();
-                break;
-            case 1:
-                eeprom_writex(0x01, 0x01);
-                Recording();
-                break;
-            default:
-                Count_Push_Button = 0;
-                break;
+            case 0: eeprom_writex(0x01, 0x00); Recording(); break;
+            case 1: eeprom_writex(0x01, 0x01); Recording(); break;
+            default: Count_Push_Button = 0; break;
             }
         }
         Last_Button_Menu_Up_State = Button_Menu_Up_State;
@@ -5626,60 +5546,26 @@ void Menu_P2(void) {
     do {
         switch (Count_Push_Button)
         {
-        case 0:
-            Draw_0();
-            break;
-        case 1:
-            Draw_1();
-            break;
-        case 2:
-            Draw_2();
-            break;
-        case 3:
-            Draw_3();
-            break;
-        case 4:
-            Draw_4();
-            break;
-        case 5:
-            Draw_5();
-            break;
-        case 6:
-            Draw_6();
-            break;
-        case 7:
-            Draw_7();
-            break;
-        case 8:
-            Draw_8();
-            break;
-        case 9:
-            Draw_9();
-            break;
-        case 10:
-            Draw_10();
-            break;
-        case 11:
-            Draw_11();
-            break;
-        case 12:
-            Draw_12();
-            break;
-        case 13:
-            Draw_13();
-            break;
-        case 14:
-            Draw_14();
-            break;
-        case 15:
-            Draw_15();
-            break;
-        default:
-            Count_Push_Button = 0;
-            break;
+            case 0: Draw_0(); break;
+            case 1: Draw_1(); break;
+            case 2: Draw_2(); break;
+            case 3: Draw_3(); break;
+            case 4: Draw_4(); break;
+            case 5: Draw_5(); break;
+            case 6: Draw_6(); break;
+            case 7: Draw_7(); break;
+            case 8: Draw_8(); break;
+            case 9: Draw_9(); break;
+            case 10: Draw_10(); break;
+            case 11: Draw_11(); break;
+            case 12: Draw_12(); break;
+            case 13: Draw_13(); break;
+            case 14: Draw_14(); break;
+            case 15: Draw_15(); break;
+            default: Count_Push_Button = 0; break;
         }
 
-        Button_Menu_Down_State = PORTCbits.RC0;
+        Button_Menu_Down_State = PORTAbits.RA2;
         if (Button_Menu_Down_State == 0 && Last_Button_Menu_Down_State == 1) {
             Count_Push_Button++;
             Count_Exit_Menu = 0;
@@ -5687,77 +5573,28 @@ void Menu_P2(void) {
         Last_Button_Menu_Down_State = Button_Menu_Down_State;
 
 
-        Button_Menu_Up_State = PORTAbits.RA5;
+        Button_Menu_Up_State = PORTAbits.RA1;
+        Count_Exit_Menu = 0;
         if (Button_Menu_Up_State == 0 && Last_Button_Menu_Up_State == 1) {
             switch (Count_Push_Button)
             {
-            case 0:
-                eeprom_writex(0x02, 0x00);
-                Recording();
-                break;
-            case 1:
-                eeprom_writex(0x02, 0x01);
-                Recording();
-                break;
-            case 2:
-                eeprom_writex(0x02, 0x02);
-                Recording();
-                break;
-            case 3:
-                eeprom_writex(0x02, 0x03);
-                Recording();
-                break;
-            case 4:
-                eeprom_writex(0x02, 0x04);
-                Recording();
-                break;
-            case 5:
-                eeprom_writex(0x02, 0x05);
-                Recording();
-                break;
-            case 6:
-                eeprom_writex(0x02, 0x06);
-                Recording();
-                break;
-            case 7:
-                eeprom_writex(0x02, 0x07);
-                Recording();
-                break;
-            case 8:
-                eeprom_writex(0x02, 0x08);
-                Recording();
-                break;
-            case 9:
-                eeprom_writex(0x02, 0x09);
-                Recording();
-                break;
-            case 10:
-                eeprom_writex(0x02, 0x0A);
-                Recording();
-                break;
-            case 11:
-                eeprom_writex(0x02, 0x0B);
-                Recording();
-                break;
-            case 12:
-                eeprom_writex(0x02, 0x0C);
-                Recording();
-                break;
-            case 13:
-                eeprom_writex(0x02, 0x0D);
-                Recording();
-                break;
-            case 14:
-                eeprom_writex(0x02, 0x0E);
-                Recording();
-                break;
-            case 15:
-                eeprom_writex(0x02, 0x0F);
-                Recording();
-                break;
-            default:
-                Count_Push_Button = 0;
-                break;
+                case 0: eeprom_writex(0x02, 0x00); Recording(); break;
+                case 1: eeprom_writex(0x02, 0x01); Recording(); break;
+                case 2: eeprom_writex(0x02, 0x02); Recording(); break;
+                case 3: eeprom_writex(0x02, 0x03); Recording(); break;
+                case 4: eeprom_writex(0x02, 0x04); Recording(); break;
+                case 5: eeprom_writex(0x02, 0x05); Recording(); break;
+                case 6: eeprom_writex(0x02, 0x06); Recording(); break;
+                case 7: eeprom_writex(0x02, 0x07); Recording(); break;
+                case 8: eeprom_writex(0x02, 0x08); Recording(); break;
+                case 9: eeprom_writex(0x02, 0x09); Recording(); break;
+                case 10: eeprom_writex(0x02, 0x0A); Recording(); break;
+                case 11: eeprom_writex(0x02, 0x0B); Recording(); break;
+                case 12: eeprom_writex(0x02, 0x0C); Recording(); break;
+                case 13: eeprom_writex(0x02, 0x0D); Recording(); break;
+                case 14: eeprom_writex(0x02, 0x0E); Recording(); break;
+                case 15: eeprom_writex(0x02, 0x0F); Recording(); break;
+                default: Count_Push_Button = 0; break;
             }
         }
         Last_Button_Menu_Up_State = Button_Menu_Up_State;
@@ -5769,18 +5606,26 @@ void Menu_P3(void) {
     do {
         switch (Count_Push_Button)
         {
-        case 0:
-            Draw_0();
-            break;
-        case 1:
-            Draw_1();
-            break;
-        default:
-            Count_Push_Button = 0;
-            break;
+
+            case 1: Draw_2(); break;
+            case 2: Draw_4(); break;
+            case 3: Draw_6(); break;
+            case 4: Draw_8(); break;
+            case 5: Draw_10(); break;
+            case 6: Draw_12(); break;
+            case 7: Draw_14(); break;
+            case 8: Draw_16(); break;
+            case 9: Draw_18(); break;
+            case 10: Draw_20(); break;
+            case 11: Draw_22(); break;
+            case 12: Draw_24(); break;
+            case 13: Draw_26(); break;
+            case 14: Draw_28(); break;
+            case 15: Draw_30(); break;
+            default: Count_Push_Button = 1; break;
         }
 
-        Button_Menu_Down_State = PORTCbits.RC0;
+        Button_Menu_Down_State = PORTAbits.RA2;
         if (Button_Menu_Down_State == 0 && Last_Button_Menu_Down_State == 1) {
             Count_Push_Button++;
             Count_Exit_Menu = 0;
@@ -5788,21 +5633,28 @@ void Menu_P3(void) {
         Last_Button_Menu_Down_State = Button_Menu_Down_State;
 
 
-        Button_Menu_Up_State = PORTAbits.RA5;
+        Button_Menu_Up_State = PORTAbits.RA1;
+        Count_Exit_Menu = 0;
         if (Button_Menu_Up_State == 0 && Last_Button_Menu_Up_State == 1) {
             switch (Count_Push_Button)
             {
-            case 0:
-                eeprom_writex(0x03, 0x00);
-                Recording();
-                break;
-            case 1:
-                eeprom_writex(0x03, 0x01);
-                Recording();
-                break;
-            default:
-                Count_Push_Button = 0;
-                break;
+
+                case 1: eeprom_writex(0x03, 0x01); Recording(); break;
+                case 2: eeprom_writex(0x03, 0x02); Recording(); break;
+                case 3: eeprom_writex(0x03, 0x03); Recording(); break;
+                case 4: eeprom_writex(0x03, 0x04); Recording(); break;
+                case 5: eeprom_writex(0x03, 0x05); Recording(); break;
+                case 6: eeprom_writex(0x03, 0x06); Recording(); break;
+                case 7: eeprom_writex(0x03, 0x07); Recording(); break;
+                case 8: eeprom_writex(0x03, 0x08); Recording(); break;
+                case 9: eeprom_writex(0x03, 0x09); Recording(); break;
+                case 10: eeprom_writex(0x03, 0x0A); Recording(); break;
+                case 11: eeprom_writex(0x03, 0x0B); Recording(); break;
+                case 12: eeprom_writex(0x03, 0x0C); Recording(); break;
+                case 13: eeprom_writex(0x03, 0x0D); Recording(); break;
+                case 14: eeprom_writex(0x03, 0x0E); Recording(); break;
+                case 15: eeprom_writex(0x03, 0x0F); Recording(); break;
+                default: Count_Push_Button = 1; break;
             }
         }
         Last_Button_Menu_Up_State = Button_Menu_Up_State;
@@ -5814,60 +5666,26 @@ void Menu_P4(void) {
     do {
         switch (Count_Push_Button)
         {
-        case 0:
-            Draw_0();
-            break;
-        case 1:
-            Draw_1();
-            break;
-        case 2:
-            Draw_2();
-            break;
-        case 3:
-            Draw_3();
-            break;
-        case 4:
-            Draw_4();
-            break;
-        case 5:
-            Draw_5();
-            break;
-        case 6:
-            Draw_6();
-            break;
-        case 7:
-            Draw_7();
-            break;
-        case 8:
-            Draw_8();
-            break;
-        case 9:
-            Draw_9();
-            break;
-        case 10:
-            Draw_10();
-            break;
-        case 11:
-            Draw_11();
-            break;
-        case 12:
-            Draw_12();
-            break;
-        case 13:
-            Draw_13();
-            break;
-        case 14:
-            Draw_14();
-            break;
-        case 15:
-            Draw_15();
-            break;
-        default:
-            Count_Push_Button = 0;
-            break;
+        case 0: Draw_0(); break;
+        case 1: Draw_1(); break;
+        case 2: Draw_2(); break;
+        case 3: Draw_3(); break;
+        case 4: Draw_4(); break;
+        case 5: Draw_5(); break;
+        case 6: Draw_6(); break;
+        case 7: Draw_7(); break;
+        case 8: Draw_8(); break;
+        case 9: Draw_9(); break;
+        case 10: Draw_10(); break;
+        case 11: Draw_11(); break;
+        case 12: Draw_12(); break;
+        case 13: Draw_13(); break;
+        case 14: Draw_14(); break;
+        case 15: Draw_15(); break;
+        default: Count_Push_Button = 0; break;
         }
 
-        Button_Menu_Down_State = PORTCbits.RC0;
+        Button_Menu_Down_State = PORTAbits.RA2;
         if (Button_Menu_Down_State == 0 && Last_Button_Menu_Down_State == 1) {
             Count_Push_Button++;
             Count_Exit_Menu = 0;
@@ -5875,77 +5693,28 @@ void Menu_P4(void) {
         Last_Button_Menu_Down_State = Button_Menu_Down_State;
 
 
-        Button_Menu_Up_State = PORTAbits.RA5;
+        Button_Menu_Up_State = PORTAbits.RA1;
+        Count_Exit_Menu = 0;
         if (Button_Menu_Up_State == 0 && Last_Button_Menu_Up_State == 1) {
             switch (Count_Push_Button)
             {
-            case 0:
-                eeprom_writex(0x04, 0x00);
-                Recording();
-                break;
-            case 1:
-                eeprom_writex(0x04, 0x01);
-                Recording();
-                break;
-            case 2:
-                eeprom_writex(0x04, 0x02);
-                Recording();
-                break;
-            case 3:
-                eeprom_writex(0x04, 0x03);
-                Recording();
-                break;
-            case 4:
-                eeprom_writex(0x04, 0x04);
-                Recording();
-                break;
-            case 5:
-                eeprom_writex(0x04, 0x05);
-                Recording();
-                break;
-            case 6:
-                eeprom_writex(0x04, 0x06);
-                Recording();
-                break;
-            case 7:
-                eeprom_writex(0x04, 0x07);
-                Recording();
-                break;
-            case 8:
-                eeprom_writex(0x04, 0x08);
-                Recording();
-                break;
-            case 9:
-                eeprom_writex(0x04, 0x09);
-                Recording();
-                break;
-            case 10:
-                eeprom_writex(0x04, 0x0A);
-                Recording();
-                break;
-            case 11:
-                eeprom_writex(0x04, 0x0B);
-                Recording();
-                break;
-            case 12:
-                eeprom_writex(0x04, 0x0C);
-                Recording();
-                break;
-            case 13:
-                eeprom_writex(0x04, 0x0D);
-                Recording();
-                break;
-            case 14:
-                eeprom_writex(0x04, 0x0E);
-                Recording();
-                break;
-            case 15:
-                eeprom_writex(0x04, 0x0F);
-                Recording();
-                break;
-            default:
-                Count_Push_Button = 0;
-                break;
+            case 0: eeprom_writex(0x04, 0x00); Recording(); break;
+            case 1: eeprom_writex(0x04, 0x01); Recording(); break;
+            case 2: eeprom_writex(0x04, 0x02); Recording(); break;
+            case 3: eeprom_writex(0x04, 0x03); Recording(); break;
+            case 4: eeprom_writex(0x04, 0x04); Recording(); break;
+            case 5: eeprom_writex(0x04, 0x05); Recording(); break;
+            case 6: eeprom_writex(0x04, 0x06); Recording(); break;
+            case 7: eeprom_writex(0x04, 0x07); Recording(); break;
+            case 8: eeprom_writex(0x04, 0x08); Recording(); break;
+            case 9: eeprom_writex(0x04, 0x09); Recording(); break;
+            case 10: eeprom_writex(0x04, 0x0A); Recording(); break;
+            case 11: eeprom_writex(0x04, 0x0B); Recording(); break;
+            case 12: eeprom_writex(0x04, 0x0C); Recording(); break;
+            case 13: eeprom_writex(0x04, 0x0D); Recording(); break;
+            case 14: eeprom_writex(0x04, 0x0E); Recording(); break;
+            case 15: eeprom_writex(0x04, 0x0F); Recording(); break;
+            default: Count_Push_Button = 0; break;
             }
         }
         Last_Button_Menu_Up_State = Button_Menu_Up_State;
@@ -5960,253 +5729,341 @@ void Clear(void) {
 }
 
 void Draw_CL(void) {
-    PORTB = 0x8D;
+    PORTB = 0xAA;
     PORTCbits.RC7 = 1;
     _delay((unsigned long)((5)*(20000000/4000000.0)));
     PORTCbits.RC7 = 0;
-    PORTB = 0x8F;
+    PORTB = 0xAB;
     PORTCbits.RC6 = 1;
     _delay((unsigned long)((5)*(20000000/4000000.0)));
     PORTCbits.RC6 = 0;
 }
 
 void Draw_P1(void) {
-    PORTB = 0x19;
+    PORTB = 0xB0;
     PORTCbits.RC7 = 1;
     _delay((unsigned long)((1600)*(20000000/4000000.0)));
     PORTCbits.RC7 = 0;
-    PORTB = 0xF3;
+    PORTB = 0x7D;
     PORTCbits.RC6 = 1;
     _delay((unsigned long)((1600)*(20000000/4000000.0)));
     PORTCbits.RC6 = 0;
 }
 
 void Draw_P2(void) {
-    PORTB = 0x19;
+    PORTB = 0xB0;
     PORTCbits.RC7 = 1;
     _delay((unsigned long)((1600)*(20000000/4000000.0)));
     PORTCbits.RC7 = 0;
-    PORTB = 0x49;
+    PORTB = 0xA4;
     PORTCbits.RC6 = 1;
     _delay((unsigned long)((1600)*(20000000/4000000.0)));
     PORTCbits.RC6 = 0;
 }
 
 void Draw_P3(void) {
-    PORTB = 0x19;
+    PORTB = 0xB0;
     PORTCbits.RC7 = 1;
     _delay((unsigned long)((1600)*(20000000/4000000.0)));
     PORTCbits.RC7 = 0;
-    PORTB = 0x61;
+    PORTB = 0x64;
     PORTCbits.RC6 = 1;
     _delay((unsigned long)((1600)*(20000000/4000000.0)));
     PORTCbits.RC6 = 0;
 }
 
 void Draw_P4(void) {
-    PORTB = 0x19;
+    PORTB = 0xB0;
     PORTCbits.RC7 = 1;
     _delay((unsigned long)((1600)*(20000000/4000000.0)));
     PORTCbits.RC7 = 0;
-    PORTB = 0x33;
+    PORTB = 0x71;
     PORTCbits.RC6 = 1;
     _delay((unsigned long)((1600)*(20000000/4000000.0)));
     PORTCbits.RC6 = 0;
 }
 
 void Draw_0(void) {
-    PORTB = 0x11;
+    PORTB = 0xFF;
     PORTCbits.RC7 = 0;
     _delay((unsigned long)((1600)*(20000000/4000000.0)));
     PORTCbits.RC7 = 0;
-    PORTB = 0x81;
+    PORTB = 0x28;
     PORTCbits.RC6 = 1;
     _delay((unsigned long)((1600)*(20000000/4000000.0)));
     PORTCbits.RC6 = 0;
 }
 
 void Draw_1(void) {
-    PORTB = 0x11;
+    PORTB = 0xFF;
     PORTCbits.RC7 = 0;
     _delay((unsigned long)((1600)*(20000000/4000000.0)));
     PORTCbits.RC7 = 0;
-    PORTB = 0xF3;
+    PORTB = 0x7D;
     PORTCbits.RC6 = 1;
     _delay((unsigned long)((1600)*(20000000/4000000.0)));
     PORTCbits.RC6 = 0;
 }
 
 void Draw_2(void) {
-    PORTB = 0x11;
+    PORTB = 0xFF;
     PORTCbits.RC7 = 0;
     _delay((unsigned long)((1600)*(20000000/4000000.0)));
     PORTCbits.RC7 = 0;
-    PORTB = 0x49;
+    PORTB = 0xA4;
     PORTCbits.RC6 = 1;
     _delay((unsigned long)((1600)*(20000000/4000000.0)));
     PORTCbits.RC6 = 0;
 }
 
 void Draw_3(void) {
-    PORTB = 0x11;
+    PORTB = 0xFF;
     PORTCbits.RC7 = 0;
     _delay((unsigned long)((1600)*(20000000/4000000.0)));
     PORTCbits.RC7 = 0;
-    PORTB = 0x61;
+    PORTB = 0x64;
     PORTCbits.RC6 = 1;
     _delay((unsigned long)((1600)*(20000000/4000000.0)));
     PORTCbits.RC6 = 0;
 }
 
 void Draw_4(void) {
-    PORTB = 0x11;
+    PORTB = 0xFF;
     PORTCbits.RC7 = 0;
     _delay((unsigned long)((1600)*(20000000/4000000.0)));
     PORTCbits.RC7 = 0;
-    PORTB = 0x33;
+    PORTB = 0x71;
     PORTCbits.RC6 = 1;
     _delay((unsigned long)((1600)*(20000000/4000000.0)));
     PORTCbits.RC6 = 0;
 }
 
 void Draw_5(void) {
-    PORTB = 0x11;
+    PORTB = 0xFF;
     PORTCbits.RC7 = 0;
     _delay((unsigned long)((1600)*(20000000/4000000.0)));
     PORTCbits.RC7 = 0;
-    PORTB = 0x25;
+    PORTB = 0x62;
     PORTCbits.RC6 = 1;
     _delay((unsigned long)((1600)*(20000000/4000000.0)));
     PORTCbits.RC6 = 0;
 }
 
 void Draw_6(void) {
-    PORTB = 0x11;
+    PORTB = 0xFF;
     PORTCbits.RC7 = 0;
     _delay((unsigned long)((1600)*(20000000/4000000.0)));
     PORTCbits.RC7 = 0;
-    PORTB = 0x05;
+    PORTB = 0x22;
     PORTCbits.RC6 = 1;
     _delay((unsigned long)((1600)*(20000000/4000000.0)));
     PORTCbits.RC6 = 0;
 }
 
 void Draw_7(void) {
-    PORTB = 0x11;
+    PORTB = 0xFF;
     PORTCbits.RC7 = 0;
     _delay((unsigned long)((1600)*(20000000/4000000.0)));
     PORTCbits.RC7 = 0;
-    PORTB = 0xF1;
+    PORTB = 0x7C;
     PORTCbits.RC6 = 1;
     _delay((unsigned long)((1600)*(20000000/4000000.0)));
     PORTCbits.RC6 = 0;
 }
 
 void Draw_8(void) {
-    PORTB = 0x11;
+    PORTB = 0xFF;
     PORTCbits.RC7 = 0;
     _delay((unsigned long)((1600)*(20000000/4000000.0)));
     PORTCbits.RC7 = 0;
-    PORTB = 0x01;
+    PORTB = 0x20;
     PORTCbits.RC6 = 1;
     _delay((unsigned long)((1600)*(20000000/4000000.0)));
     PORTCbits.RC6 = 0;
 }
 
 void Draw_9(void) {
-    PORTB = 0x11;
+    PORTB = 0xFF;
     PORTCbits.RC7 = 0;
     _delay((unsigned long)((1600)*(20000000/4000000.0)));
     PORTCbits.RC7 = 0;
-    PORTB = 0x21;
+    PORTB = 0x60;
     PORTCbits.RC6 = 1;
     _delay((unsigned long)((1600)*(20000000/4000000.0)));
     PORTCbits.RC6 = 0;
 }
 
 void Draw_10(void) {
-    PORTB = 0xF3;
+    PORTB = 0x7D;
     PORTCbits.RC7 = 1;
     _delay((unsigned long)((1600)*(20000000/4000000.0)));
     PORTCbits.RC7 = 0;
-    PORTB = 0x81;
+    PORTB = 0x28;
     PORTCbits.RC6 = 1;
     _delay((unsigned long)((1600)*(20000000/4000000.0)));
     PORTCbits.RC6 = 0;
 }
 
 void Draw_11(void) {
-    PORTB = 0xF3;
+    PORTB = 0x7D;
     PORTCbits.RC7 = 1;
     _delay((unsigned long)((1600)*(20000000/4000000.0)));
     PORTCbits.RC7 = 0;
-    PORTB = 0xF3;
+    PORTB = 0x7D;
     PORTCbits.RC6 = 1;
     _delay((unsigned long)((1600)*(20000000/4000000.0)));
     PORTCbits.RC6 = 0;
 }
 
 void Draw_12(void) {
-    PORTB = 0xF3;
+    PORTB = 0x7D;
     PORTCbits.RC7 = 1;
     _delay((unsigned long)((1600)*(20000000/4000000.0)));
     PORTCbits.RC7 = 0;
-    PORTB = 0x49;
+    PORTB = 0xA4;
     PORTCbits.RC6 = 1;
     _delay((unsigned long)((1600)*(20000000/4000000.0)));
     PORTCbits.RC6 = 0;
 }
 
 void Draw_13(void) {
-    PORTB = 0xF3;
+    PORTB = 0x7D;
     PORTCbits.RC7 = 1;
     _delay((unsigned long)((1600)*(20000000/4000000.0)));
     PORTCbits.RC7 = 0;
-    PORTB = 0x61;
+    PORTB = 0x64;
     PORTCbits.RC6 = 1;
     _delay((unsigned long)((1600)*(20000000/4000000.0)));
     PORTCbits.RC6 = 0;
 }
 
 void Draw_14(void) {
-    PORTB = 0xF3;
+    PORTB = 0x7D;
     PORTCbits.RC7 = 1;
     _delay((unsigned long)((1600)*(20000000/4000000.0)));
     PORTCbits.RC7 = 0;
-    PORTB = 0x33;
+    PORTB = 0x71;
     PORTCbits.RC6 = 1;
     _delay((unsigned long)((1600)*(20000000/4000000.0)));
     PORTCbits.RC6 = 0;
 }
 
 void Draw_15(void) {
-    PORTB = 0xF3;
+    PORTB = 0x7D;
     PORTCbits.RC7 = 1;
     _delay((unsigned long)((1600)*(20000000/4000000.0)));
     PORTCbits.RC7 = 0;
-    PORTB = 0x25;
+    PORTB = 0x62;
+    PORTCbits.RC6 = 1;
+    _delay((unsigned long)((1600)*(20000000/4000000.0)));
+    PORTCbits.RC6 = 0;
+}
+
+void Draw_16(void) {
+    PORTB = 0x7D;
+    PORTCbits.RC7 = 1;
+    _delay((unsigned long)((1600)*(20000000/4000000.0)));
+    PORTCbits.RC7 = 0;
+    PORTB = 0x22;
+    PORTCbits.RC6 = 1;
+    _delay((unsigned long)((1600)*(20000000/4000000.0)));
+    PORTCbits.RC6 = 0;
+}
+
+void Draw_18(void) {
+    PORTB = 0x7D;
+    PORTCbits.RC7 = 1;
+    _delay((unsigned long)((1600)*(20000000/4000000.0)));
+    PORTCbits.RC7 = 0;
+    PORTB = 0x20;
+    PORTCbits.RC6 = 1;
+    _delay((unsigned long)((1600)*(20000000/4000000.0)));
+    PORTCbits.RC6 = 0;
+}
+
+void Draw_20(void) {
+    PORTB = 0xA4;
+    PORTCbits.RC7 = 1;
+    _delay((unsigned long)((1600)*(20000000/4000000.0)));
+    PORTCbits.RC7 = 0;
+    PORTB = 0x28;
+    PORTCbits.RC6 = 1;
+    _delay((unsigned long)((1600)*(20000000/4000000.0)));
+    PORTCbits.RC6 = 0;
+}
+
+void Draw_22(void) {
+    PORTB = 0xA4;
+    PORTCbits.RC7 = 1;
+    _delay((unsigned long)((1600)*(20000000/4000000.0)));
+    PORTCbits.RC7 = 0;
+    PORTB = 0xA4;
+    PORTCbits.RC6 = 1;
+    _delay((unsigned long)((1600)*(20000000/4000000.0)));
+    PORTCbits.RC6 = 0;
+}
+
+void Draw_24(void) {
+    PORTB = 0xA4;
+    PORTCbits.RC7 = 1;
+    _delay((unsigned long)((1600)*(20000000/4000000.0)));
+    PORTCbits.RC7 = 0;
+    PORTB = 0x71;
+    PORTCbits.RC6 = 1;
+    _delay((unsigned long)((1600)*(20000000/4000000.0)));
+    PORTCbits.RC6 = 0;
+}
+
+void Draw_26(void) {
+    PORTB = 0xA4;
+    PORTCbits.RC7 = 1;
+    _delay((unsigned long)((1600)*(20000000/4000000.0)));
+    PORTCbits.RC7 = 0;
+    PORTB = 0x22;
+    PORTCbits.RC6 = 1;
+    _delay((unsigned long)((1600)*(20000000/4000000.0)));
+    PORTCbits.RC6 = 0;
+}
+
+void Draw_28(void) {
+    PORTB = 0xA4;
+    PORTCbits.RC7 = 1;
+    _delay((unsigned long)((1600)*(20000000/4000000.0)));
+    PORTCbits.RC7 = 0;
+    PORTB = 0x20;
+    PORTCbits.RC6 = 1;
+    _delay((unsigned long)((1600)*(20000000/4000000.0)));
+    PORTCbits.RC6 = 0;
+}
+
+void Draw_30(void) {
+    PORTB = 0x64;
+    PORTCbits.RC7 = 1;
+    _delay((unsigned long)((1600)*(20000000/4000000.0)));
+    PORTCbits.RC7 = 0;
+    PORTB = 0x28;
     PORTCbits.RC6 = 1;
     _delay((unsigned long)((1600)*(20000000/4000000.0)));
     PORTCbits.RC6 = 0;
 }
 
 void Draw_Save_Dot_One(void) {
-    PORTB = 0xFE;
+    PORTB = 0xDF;
     PORTCbits.RC7 = 1;
     _delay((unsigned long)((1600)*(20000000/4000000.0)));
     PORTCbits.RC7 = 0;
-    PORTB = 0x11;
+    PORTB = 0xFF;
     PORTCbits.RC6 = 0;
     _delay((unsigned long)((1600)*(20000000/4000000.0)));
     PORTCbits.RC6 = 0;
 }
 
 void Draw_Save_Dot_Two(void) {
-    PORTB = 0xFE;
+    PORTB = 0xDF;
     PORTCbits.RC7 = 1;
     _delay((unsigned long)((1600)*(20000000/4000000.0)));
     PORTCbits.RC7 = 0;
-    PORTB = 0xFE;
+    PORTB = 0xDF;
     PORTCbits.RC6 = 1;
     _delay((unsigned long)((1600)*(20000000/4000000.0)));
     PORTCbits.RC6 = 0;
@@ -6228,4 +6085,26 @@ void Recording(void) {
     } while (Count_Save < 250);
     Count_Save = 0;
     Flag_Menu = 0;
+}
+
+void Indicator(void) {
+    Inductive_State = PORTAbits.RA3;
+    End_Stop_Close_State = PORTAbits.RA5;
+    if (Inductive_State == 1 && End_Stop_Close_State == 0) {
+        PORTB = 0xFF;
+        PORTCbits.RC7 = 1;
+    } else {
+        Count_Led++;
+        if (Count_Led < 2) {
+            PORTB = 0xFF;
+            PORTCbits.RC7 = 1;
+        } else if (Count_Led >= 2 && Count_Led < 4) {
+            PORTB = 0xFF;
+            PORTCbits.RC7 = 0;
+        } else {
+            PORTB = 0xFF;
+            PORTCbits.RC7 = 0;
+            Count_Led = 0;
+        }
+    }
 }
