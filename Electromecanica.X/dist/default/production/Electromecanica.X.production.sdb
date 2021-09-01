@@ -29,103 +29,103 @@
 [v ___lmul __lmul `(ul  1 e 4 0 ]
 "91 C:\Program Files (x86)\Microchip\xc8\v2.05\pic\sources\c99\common\Umul64.c
 [v ___omul __omul `(uo  1 e 8 0 ]
-"130 D:\Users\BotLAB\Documents\GitHub\Access_Control\Electromecanica.X\main.c
+"133 D:\Users\BotLAB\Documents\GitHub\Access_Control\Electromecanica.X\main.c
 [v _main main `(v  1 e 1 0 ]
-"174
+"177
 [v _Close_Lock Close_Lock `(v  1 e 1 0 ]
-"221
+"224
 [v _Open_Lock Open_Lock `(v  1 e 1 0 ]
-"305
+"308
 [v _Closing Closing `(v  1 e 1 0 ]
-"332
+"335
 [v _Analog_Read Analog_Read `(i  1 e 2 0 ]
-"349
+"352
 [v _Sense_Current Sense_Current `(v  1 e 1 0 ]
-"364
+"367
 [v _eeprom_writex eeprom_writex `(v  1 e 1 0 ]
-"380
+"383
 [v _eeprom_readx eeprom_readx `(uc  1 e 1 0 ]
-"388
+"391
 [v _Menu_In Menu_In `(v  1 e 1 0 ]
-"420
+"423
 [v _Menu Menu `(v  1 e 1 0 ]
-"475
+"478
 [v _Exit_Time_Menu Exit_Time_Menu `(v  1 e 1 0 ]
-"483
+"486
 [v _Menu_P1 Menu_P1 `(v  1 e 1 0 ]
-"515
+"518
 [v _Menu_P2 Menu_P2 `(v  1 e 1 0 ]
-"575
+"578
 [v _Menu_P3 Menu_P3 `(v  1 e 1 0 ]
-"635
+"638
 [v _Menu_P4 Menu_P4 `(v  1 e 1 0 ]
-"695
+"698
 [v _Clear Clear `(v  1 e 1 0 ]
-"701
+"704
 [v _Draw_CL Draw_CL `(v  1 e 1 0 ]
-"712
+"715
 [v _Draw_P1 Draw_P1 `(v  1 e 1 0 ]
-"723
+"726
 [v _Draw_P2 Draw_P2 `(v  1 e 1 0 ]
-"734
+"737
 [v _Draw_P3 Draw_P3 `(v  1 e 1 0 ]
-"745
+"748
 [v _Draw_P4 Draw_P4 `(v  1 e 1 0 ]
-"756
+"759
 [v _Draw_0 Draw_0 `(v  1 e 1 0 ]
-"767
+"770
 [v _Draw_1 Draw_1 `(v  1 e 1 0 ]
-"778
+"781
 [v _Draw_2 Draw_2 `(v  1 e 1 0 ]
-"789
+"792
 [v _Draw_3 Draw_3 `(v  1 e 1 0 ]
-"800
+"803
 [v _Draw_4 Draw_4 `(v  1 e 1 0 ]
-"811
+"814
 [v _Draw_5 Draw_5 `(v  1 e 1 0 ]
-"822
+"825
 [v _Draw_6 Draw_6 `(v  1 e 1 0 ]
-"833
+"836
 [v _Draw_7 Draw_7 `(v  1 e 1 0 ]
-"844
+"847
 [v _Draw_8 Draw_8 `(v  1 e 1 0 ]
-"855
+"858
 [v _Draw_9 Draw_9 `(v  1 e 1 0 ]
-"866
+"869
 [v _Draw_10 Draw_10 `(v  1 e 1 0 ]
-"877
+"880
 [v _Draw_11 Draw_11 `(v  1 e 1 0 ]
-"888
+"891
 [v _Draw_12 Draw_12 `(v  1 e 1 0 ]
-"899
+"902
 [v _Draw_13 Draw_13 `(v  1 e 1 0 ]
-"910
+"913
 [v _Draw_14 Draw_14 `(v  1 e 1 0 ]
-"921
+"924
 [v _Draw_15 Draw_15 `(v  1 e 1 0 ]
-"932
+"935
 [v _Draw_16 Draw_16 `(v  1 e 1 0 ]
-"943
+"946
 [v _Draw_18 Draw_18 `(v  1 e 1 0 ]
-"954
+"957
 [v _Draw_20 Draw_20 `(v  1 e 1 0 ]
-"965
+"968
 [v _Draw_22 Draw_22 `(v  1 e 1 0 ]
-"976
+"979
 [v _Draw_24 Draw_24 `(v  1 e 1 0 ]
-"987
+"990
 [v _Draw_26 Draw_26 `(v  1 e 1 0 ]
-"998
+"1001
 [v _Draw_28 Draw_28 `(v  1 e 1 0 ]
-"1009
+"1012
 [v _Draw_30 Draw_30 `(v  1 e 1 0 ]
-"1020
+"1023
 [v _Draw_Save_Dot_One Draw_Save_Dot_One `(v  1 e 1 0 ]
-"1031
+"1034
 [v _Draw_Save_Dot_Two Draw_Save_Dot_Two `(v  1 e 1 0 ]
-"1042
+"1045
 [v _Recording Recording `(v  1 e 1 0 ]
-"1060
+"1063
 [v _Indicator Indicator `(v  1 e 1 0 ]
 [s S33 . 1 `uc 1 RA0 1 0 :1:0 
 `uc 1 RA1 1 0 :1:1 
@@ -321,71 +321,71 @@
 ]
 [u S420 . 1 `S398 1 . 1 0 `S407 1 . 1 0 `S416 1 . 1 0 ]
 [v _INTCONbits INTCONbits `VES420  1 e 1 @4082 ]
-"38 D:\Users\BotLAB\Documents\GitHub\Access_Control\Electromecanica.X\main.c
+"41 D:\Users\BotLAB\Documents\GitHub\Access_Control\Electromecanica.X\main.c
 [v _Count_Peake_Current Count_Peake_Current `i  1 e 2 0 ]
-"39
-[v _Current Current `i  1 e 2 0 ]
-"41
-[v _Last_Inductive_State Last_Inductive_State `a  1 e 1 0 ]
 "42
-[v _Last_Open_Contact_State Last_Open_Contact_State `a  1 e 1 0 ]
-"43
-[v _Last_Button_Menu_Up_State Last_Button_Menu_Up_State `a  1 e 1 0 ]
+[v _Current Current `i  1 e 2 0 ]
 "44
-[v _Last_Button_Menu_Down_State Last_Button_Menu_Down_State `a  1 e 1 0 ]
+[v _Last_Inductive_State Last_Inductive_State `a  1 e 1 0 ]
 "45
-[v _Inductive_State Inductive_State `a  1 e 1 0 ]
+[v _Last_Open_Contact_State Last_Open_Contact_State `a  1 e 1 0 ]
 "46
-[v _Open_Contact_State Open_Contact_State `a  1 e 1 0 ]
+[v _Last_Button_Menu_Up_State Last_Button_Menu_Up_State `a  1 e 1 0 ]
 "47
-[v _End_Stop_Close_State End_Stop_Close_State `a  1 e 1 0 ]
+[v _Last_Button_Menu_Down_State Last_Button_Menu_Down_State `a  1 e 1 0 ]
 "48
-[v _End_Stop_Open_State End_Stop_Open_State `a  1 e 1 0 ]
+[v _Inductive_State Inductive_State `a  1 e 1 0 ]
 "49
-[v _Count_Time_Close Count_Time_Close `l  1 e 4 0 ]
+[v _Open_Contact_State Open_Contact_State `a  1 e 1 0 ]
 "50
-[v _Count_Auto_Close Count_Auto_Close `l  1 e 4 0 ]
+[v _End_Stop_Close_State End_Stop_Close_State `a  1 e 1 0 ]
 "51
-[v _Button_Menu_Up_State Button_Menu_Up_State `a  1 e 1 0 ]
+[v _End_Stop_Open_State End_Stop_Open_State `a  1 e 1 0 ]
 "52
-[v _Button_Menu_Down_State Button_Menu_Down_State `a  1 e 1 0 ]
+[v _Count_Time_Close Count_Time_Close `l  1 e 4 0 ]
 "53
-[v _Count_Push_Button Count_Push_Button `i  1 e 2 0 ]
+[v _Count_Auto_Close Count_Auto_Close `l  1 e 4 0 ]
 "54
-[v _Count_Save Count_Save `l  1 e 4 0 ]
+[v _Button_Menu_Up_State Button_Menu_Up_State `a  1 e 1 0 ]
 "55
-[v _Count_Exit_Menu Count_Exit_Menu `l  1 e 4 0 ]
+[v _Button_Menu_Down_State Button_Menu_Down_State `a  1 e 1 0 ]
 "56
-[v _Toggle_Up Toggle_Up `a  1 e 1 0 ]
+[v _Count_Push_Button Count_Push_Button `i  1 e 2 0 ]
 "57
-[v _Toggle_Down Toggle_Down `a  1 e 1 0 ]
+[v _Count_Save Count_Save `l  1 e 4 0 ]
 "58
-[v _Flag_Menu Flag_Menu `a  1 e 1 0 ]
+[v _Count_Exit_Menu Count_Exit_Menu `l  1 e 4 0 ]
 "59
-[v _Latch Latch `a  1 e 1 0 ]
+[v _Toggle_Up Toggle_Up `a  1 e 1 0 ]
+"60
+[v _Toggle_Down Toggle_Down `a  1 e 1 0 ]
 "61
-[v _Flag_End_Stop_Open Flag_End_Stop_Open `a  1 e 1 0 ]
+[v _Flag_Menu Flag_Menu `a  1 e 1 0 ]
 "62
-[v _Time_Inductive_State Time_Inductive_State `i  1 e 2 0 ]
-"63
-[v _Time_Open_State Time_Open_State `i  1 e 2 0 ]
+[v _Latch Latch `a  1 e 1 0 ]
 "64
-[v _Count_Led Count_Led `i  1 e 2 0 ]
+[v _Flag_End_Stop_Open Flag_End_Stop_Open `a  1 e 1 0 ]
+"65
+[v _Time_Inductive_State Time_Inductive_State `i  1 e 2 0 ]
+"66
+[v _Time_Open_State Time_Open_State `i  1 e 2 0 ]
 "67
+[v _Count_Led Count_Led `i  1 e 2 0 ]
+"70
 [v _Time_Auto_Close Time_Auto_Close `l  1 e 4 0 ]
-"69
+"72
 [v _ADC ADC `i  1 e 2 0 ]
-"130
+"133
 [v _main main `(v  1 e 1 0 ]
 {
-"172
+"175
 } 0
-"221
+"224
 [v _Open_Lock Open_Lock `(v  1 e 1 0 ]
 {
-"258
+"261
 [v Open_Lock@Value_Latch Value_Latch `i  1 a 2 14 ]
-"303
+"306
 } 0
 "15 C:\Program Files (x86)\Microchip\xc8\v2.05\pic\sources\c99\common\Umul32.c
 [v ___lmul __lmul `(ul  1 e 4 0 ]
@@ -397,218 +397,218 @@
 [v ___lmul@multiplicand multiplicand `ul  1 p 4 4 ]
 "129
 } 0
-"388 D:\Users\BotLAB\Documents\GitHub\Access_Control\Electromecanica.X\main.c
+"391 D:\Users\BotLAB\Documents\GitHub\Access_Control\Electromecanica.X\main.c
 [v _Menu_In Menu_In `(v  1 e 1 0 ]
 {
-"418
+"421
 } 0
-"420
+"423
 [v _Menu Menu `(v  1 e 1 0 ]
 {
-"473
+"476
 } 0
-"635
+"638
 [v _Menu_P4 Menu_P4 `(v  1 e 1 0 ]
 {
-"693
+"696
 } 0
-"575
+"578
 [v _Menu_P3 Menu_P3 `(v  1 e 1 0 ]
 {
-"633
+"636
 } 0
-"1009
+"1012
 [v _Draw_30 Draw_30 `(v  1 e 1 0 ]
 {
-"1018
+"1021
 } 0
-"998
+"1001
 [v _Draw_28 Draw_28 `(v  1 e 1 0 ]
 {
-"1007
+"1010
 } 0
-"987
+"990
 [v _Draw_26 Draw_26 `(v  1 e 1 0 ]
 {
-"996
+"999
 } 0
-"976
+"979
 [v _Draw_24 Draw_24 `(v  1 e 1 0 ]
 {
-"985
+"988
 } 0
-"965
+"968
 [v _Draw_22 Draw_22 `(v  1 e 1 0 ]
 {
-"974
+"977
 } 0
-"954
+"957
 [v _Draw_20 Draw_20 `(v  1 e 1 0 ]
 {
-"963
+"966
 } 0
-"943
+"946
 [v _Draw_18 Draw_18 `(v  1 e 1 0 ]
 {
-"952
+"955
 } 0
-"932
+"935
 [v _Draw_16 Draw_16 `(v  1 e 1 0 ]
 {
-"941
+"944
 } 0
-"515
+"518
 [v _Menu_P2 Menu_P2 `(v  1 e 1 0 ]
 {
-"573
+"576
 } 0
-"855
+"858
 [v _Draw_9 Draw_9 `(v  1 e 1 0 ]
 {
-"864
+"867
 } 0
-"844
+"847
 [v _Draw_8 Draw_8 `(v  1 e 1 0 ]
 {
-"853
+"856
 } 0
-"833
+"836
 [v _Draw_7 Draw_7 `(v  1 e 1 0 ]
 {
-"842
+"845
 } 0
-"822
+"825
 [v _Draw_6 Draw_6 `(v  1 e 1 0 ]
 {
-"831
+"834
 } 0
-"811
+"814
 [v _Draw_5 Draw_5 `(v  1 e 1 0 ]
 {
-"820
+"823
 } 0
-"800
+"803
 [v _Draw_4 Draw_4 `(v  1 e 1 0 ]
 {
-"809
+"812
 } 0
-"789
+"792
 [v _Draw_3 Draw_3 `(v  1 e 1 0 ]
 {
-"798
+"801
 } 0
-"778
+"781
 [v _Draw_2 Draw_2 `(v  1 e 1 0 ]
 {
-"787
+"790
 } 0
-"921
+"924
 [v _Draw_15 Draw_15 `(v  1 e 1 0 ]
 {
-"930
+"933
 } 0
-"910
+"913
 [v _Draw_14 Draw_14 `(v  1 e 1 0 ]
 {
-"919
+"922
 } 0
-"899
+"902
 [v _Draw_13 Draw_13 `(v  1 e 1 0 ]
 {
-"908
+"911
 } 0
-"888
+"891
 [v _Draw_12 Draw_12 `(v  1 e 1 0 ]
 {
-"897
+"900
 } 0
-"877
+"880
 [v _Draw_11 Draw_11 `(v  1 e 1 0 ]
 {
-"886
+"889
 } 0
-"866
+"869
 [v _Draw_10 Draw_10 `(v  1 e 1 0 ]
 {
-"875
+"878
 } 0
-"483
+"486
 [v _Menu_P1 Menu_P1 `(v  1 e 1 0 ]
 {
-"513
+"516
 } 0
-"364
+"367
 [v _eeprom_writex eeprom_writex `(v  1 e 1 0 ]
 {
 [v eeprom_writex@address address `i  1 p 2 0 ]
 [v eeprom_writex@data data `uc  1 p 1 2 ]
-"378
+"381
 } 0
-"1042
+"1045
 [v _Recording Recording `(v  1 e 1 0 ]
 {
-"1058
+"1061
 } 0
-"1031
+"1034
 [v _Draw_Save_Dot_Two Draw_Save_Dot_Two `(v  1 e 1 0 ]
 {
-"1040
+"1043
 } 0
-"1020
+"1023
 [v _Draw_Save_Dot_One Draw_Save_Dot_One `(v  1 e 1 0 ]
 {
-"1029
+"1032
 } 0
-"475
+"478
 [v _Exit_Time_Menu Exit_Time_Menu `(v  1 e 1 0 ]
 {
-"481
+"484
 } 0
-"767
+"770
 [v _Draw_1 Draw_1 `(v  1 e 1 0 ]
 {
-"776
+"779
 } 0
-"756
+"759
 [v _Draw_0 Draw_0 `(v  1 e 1 0 ]
 {
-"765
+"768
 } 0
-"745
+"748
 [v _Draw_P4 Draw_P4 `(v  1 e 1 0 ]
 {
-"754
+"757
 } 0
-"734
+"737
 [v _Draw_P3 Draw_P3 `(v  1 e 1 0 ]
 {
-"743
+"746
 } 0
-"723
+"726
 [v _Draw_P2 Draw_P2 `(v  1 e 1 0 ]
 {
-"732
+"735
 } 0
-"712
+"715
 [v _Draw_P1 Draw_P1 `(v  1 e 1 0 ]
 {
-"721
+"724
 } 0
-"1060
+"1063
 [v _Indicator Indicator `(v  1 e 1 0 ]
 {
-"1080
+"1083
 } 0
-"174
+"177
 [v _Close_Lock Close_Lock `(v  1 e 1 0 ]
 {
-"219
+"222
 } 0
-"380
+"383
 [v _eeprom_readx eeprom_readx `(uc  1 e 1 0 ]
 {
 [v eeprom_readx@address address `i  1 p 2 0 ]
-"386
+"389
 } 0
 "15 C:\Program Files (x86)\Microchip\xc8\v2.05\pic\sources\c99\common\Umul16.c
 [v ___wmul __wmul `(ui  1 e 2 0 ]
@@ -620,28 +620,28 @@
 [v ___wmul@multiplicand multiplicand `ui  1 p 2 2 ]
 "53
 } 0
-"305 D:\Users\BotLAB\Documents\GitHub\Access_Control\Electromecanica.X\main.c
+"308 D:\Users\BotLAB\Documents\GitHub\Access_Control\Electromecanica.X\main.c
 [v _Closing Closing `(v  1 e 1 0 ]
 {
-"330
+"333
 } 0
-"349
+"352
 [v _Sense_Current Sense_Current `(v  1 e 1 0 ]
 {
-"356
+"359
 } 0
-"701
+"704
 [v _Draw_CL Draw_CL `(v  1 e 1 0 ]
 {
-"710
+"713
 } 0
-"695
+"698
 [v _Clear Clear `(v  1 e 1 0 ]
 {
-"699
+"702
 } 0
-"332
+"335
 [v _Analog_Read Analog_Read `(i  1 e 2 0 ]
 {
-"341
+"344
 } 0

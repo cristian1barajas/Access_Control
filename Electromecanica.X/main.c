@@ -27,14 +27,17 @@
 #define End_Stop_Close PORTAbits.RA5        // Entrada digital fin de carrera
 #define Time 250000                         // Constante de tiempo para detencion de emergencia
 #define Time_Exit_Menu 7000
-#define Set_Point_Current 544               // Set point para el ajuste de la corriente
+//#define Set_Point_Current 524               // Set point tarjeta JLCPCB
+//#define Set_Point_Current 544               // Set point original primera version
+//#define Set_Point_Current 644               // Set point caso excepcional
+#define Set_Point_Current 744               // Set point caso extremo
 #define Timing_Display 1600
 
 #define Button_Menu_Up PORTAbits.RA1        // Boton para control del menu
 #define Button_Menu_Down PORTAbits.RA2      // Boton para control del menu
 
 // Constantes que definen el muestreo de la corriente 
-#define Samples 2000            // Número de muestras para evitar el pico de corriente de arranque
+#define Samples 4000            // Número de muestras para evitar el pico de corriente de arranque
 int Count_Peake_Current = 0;  // Contador de picos de corriente
 int Current = 0;              // Variable para almacenar el valor de la corriente del sensor
 

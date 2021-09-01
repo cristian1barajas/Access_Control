@@ -5071,7 +5071,7 @@ extern __attribute__((nonreentrant)) void _delay3(unsigned char);
 
 #pragma config EBTRB = OFF
 # 16 "main.c" 2
-# 38 "main.c"
+# 41 "main.c"
 int Count_Peake_Current = 0;
 int Current = 0;
 
@@ -5242,7 +5242,7 @@ void Close_Lock(void) {
             PORTCbits.RC1 = 1;
             _delay((unsigned long)((1000)*(20000000/4000.0)));
             Closing();
-# 216 "main.c"
+# 219 "main.c"
         }
     }
     Last_Inductive_State = Inductive_State;
@@ -5297,9 +5297,9 @@ void Open_Lock(void) {
                 if(Count_Time_Close == 250000) {
                     Count_Time_Close = 0;
                     break;
-                } else if (Current > 544) {
+                } else if (Current > 744) {
                     Count_Peake_Current++;
-                    if (Count_Peake_Current > 2000) {
+                    if (Count_Peake_Current > 4000) {
                         Count_Peake_Current = 0;
                         break;
                     }
@@ -5344,9 +5344,9 @@ void Closing(void) {
         if(Count_Time_Close == 250000) {
             Count_Time_Close = 0;
             break;
-        } else if (Current > 544) {
+        } else if (Current > 744) {
             Count_Peake_Current++;
-            if (Count_Peake_Current > 2000) {
+            if (Count_Peake_Current > 4000) {
                 Count_Peake_Current = 0;
                 break;
             }
@@ -5378,7 +5378,7 @@ int Analog_Read(void) {
 
 void Sense_Current(void) {
     Current = Analog_Read();
-        if (Current > 544) {
+        if (Current > 744) {
             Draw_CL();
         } else {
             Clear();

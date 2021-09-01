@@ -5,7 +5,7 @@ Linker command line:
 -W-3 --edf=C:\Program Files (x86)\Microchip\xc8\v2.05\pic\dat\en_msgs.txt \
   -cs -h+dist/default/production\Electromecanica.X.production.sym \
   --cmf=dist/default/production\Electromecanica.X.production.cmf -z \
-  -Q18F2550 -oD:\Users\BotLAB\AppData\Local\Temp\s2j6g.2 \
+  -Q18F2550 -oD:\Users\BotLAB\AppData\Local\Temp\sis0.2 \
   --defsym=__MPLAB_BUILD=1 \
   -Mdist/default/production/Electromecanica.X.production.map -E1 -ver=XC8 \
   --acfsm=1493 -ASTACK=060h-07FFh -pstack=STACK -ACODE=00h-07FFFh \
@@ -24,7 +24,7 @@ Linker command line:
   -pfarbss=FARRAM,fardata=FARRAM,nvFARRAM=FARRAM \
   -pintsave_regs=BIGRAM,bigbss=BIGRAM,bigdata=BIGRAM -pbss=RAM \
   -pidata=CODE,irdata=CODE,ibigdata=CODE,ifardata=CODE -prparam=COMRAM \
-  D:\Users\BotLAB\AppData\Local\Temp\s2j6g.o \
+  D:\Users\BotLAB\AppData\Local\Temp\sis0.o \
   dist/default/production\Electromecanica.X.production.o 
 
 Object code version is 3.11
@@ -37,7 +37,7 @@ Call graph: (short form)
 
 
                 Name                               Link     Load   Length Selector   Space Scale
-D:\Users\BotLAB\AppData\Local\Temp\s2j6g.o
+D:\Users\BotLAB\AppData\Local\Temp\sis0.o
                 init                                  0        0        4        0       0
                 idloc                            200000   200000        8   200000       0
                 config                           300000   300000        E   300000       0
@@ -854,7 +854,7 @@ FUNCTION INFORMATION:
 
  *************** function _main *****************
  Defined at:
-		line 130 in file "main.c"
+		line 133 in file "main.c"
  Parameters:    Size  Location     Type
 		None
  Auto vars:     Size  Location     Type
@@ -887,7 +887,7 @@ Total ram usage:        1 bytes
 
  *************** function _Open_Lock *****************
  Defined at:
-		line 221 in file "main.c"
+		line 224 in file "main.c"
  Parameters:    Size  Location     Type
 		None
  Auto vars:     Size  Location     Type
@@ -951,7 +951,7 @@ Total ram usage:       12 bytes
 
  *************** function _Menu_In *****************
  Defined at:
-		line 388 in file "main.c"
+		line 391 in file "main.c"
  Parameters:    Size  Location     Type
 		None
  Auto vars:     Size  Location     Type
@@ -981,7 +981,7 @@ Total ram usage:        2 bytes
 
  *************** function _Menu *****************
  Defined at:
-		line 420 in file "main.c"
+		line 423 in file "main.c"
  Parameters:    Size  Location     Type
 		None
  Auto vars:     Size  Location     Type
@@ -1019,7 +1019,7 @@ Total ram usage:        2 bytes
 
  *************** function _Menu_P4 *****************
  Defined at:
-		line 635 in file "main.c"
+		line 638 in file "main.c"
  Parameters:    Size  Location     Type
 		None
  Auto vars:     Size  Location     Type
@@ -1067,7 +1067,7 @@ Total ram usage:        2 bytes
 
  *************** function _Menu_P3 *****************
  Defined at:
-		line 575 in file "main.c"
+		line 578 in file "main.c"
  Parameters:    Size  Location     Type
 		None
  Auto vars:     Size  Location     Type
@@ -1114,7 +1114,7 @@ Total ram usage:        2 bytes
 
  *************** function _Draw_30 *****************
  Defined at:
-		line 1009 in file "main.c"
+		line 1012 in file "main.c"
  Parameters:    Size  Location     Type
 		None
  Auto vars:     Size  Location     Type
@@ -1143,7 +1143,7 @@ Total ram usage:        1 bytes
 
  *************** function _Draw_28 *****************
  Defined at:
-		line 998 in file "main.c"
+		line 1001 in file "main.c"
  Parameters:    Size  Location     Type
 		None
  Auto vars:     Size  Location     Type
@@ -1172,7 +1172,7 @@ Total ram usage:        1 bytes
 
  *************** function _Draw_26 *****************
  Defined at:
-		line 987 in file "main.c"
+		line 990 in file "main.c"
  Parameters:    Size  Location     Type
 		None
  Auto vars:     Size  Location     Type
@@ -1201,7 +1201,7 @@ Total ram usage:        1 bytes
 
  *************** function _Draw_24 *****************
  Defined at:
-		line 976 in file "main.c"
+		line 979 in file "main.c"
  Parameters:    Size  Location     Type
 		None
  Auto vars:     Size  Location     Type
@@ -1230,7 +1230,7 @@ Total ram usage:        1 bytes
 
  *************** function _Draw_22 *****************
  Defined at:
-		line 965 in file "main.c"
+		line 968 in file "main.c"
  Parameters:    Size  Location     Type
 		None
  Auto vars:     Size  Location     Type
@@ -1259,7 +1259,7 @@ Total ram usage:        1 bytes
 
  *************** function _Draw_20 *****************
  Defined at:
-		line 954 in file "main.c"
+		line 957 in file "main.c"
  Parameters:    Size  Location     Type
 		None
  Auto vars:     Size  Location     Type
@@ -1288,7 +1288,7 @@ Total ram usage:        1 bytes
 
  *************** function _Draw_18 *****************
  Defined at:
-		line 943 in file "main.c"
+		line 946 in file "main.c"
  Parameters:    Size  Location     Type
 		None
  Auto vars:     Size  Location     Type
@@ -1317,7 +1317,7 @@ Total ram usage:        1 bytes
 
  *************** function _Draw_16 *****************
  Defined at:
-		line 932 in file "main.c"
+		line 935 in file "main.c"
  Parameters:    Size  Location     Type
 		None
  Auto vars:     Size  Location     Type
@@ -1346,7 +1346,7 @@ Total ram usage:        1 bytes
 
  *************** function _Menu_P2 *****************
  Defined at:
-		line 515 in file "main.c"
+		line 518 in file "main.c"
  Parameters:    Size  Location     Type
 		None
  Auto vars:     Size  Location     Type
@@ -1394,7 +1394,7 @@ Total ram usage:        2 bytes
 
  *************** function _Draw_9 *****************
  Defined at:
-		line 855 in file "main.c"
+		line 858 in file "main.c"
  Parameters:    Size  Location     Type
 		None
  Auto vars:     Size  Location     Type
@@ -1424,7 +1424,7 @@ Total ram usage:        1 bytes
 
  *************** function _Draw_8 *****************
  Defined at:
-		line 844 in file "main.c"
+		line 847 in file "main.c"
  Parameters:    Size  Location     Type
 		None
  Auto vars:     Size  Location     Type
@@ -1455,7 +1455,7 @@ Total ram usage:        1 bytes
 
  *************** function _Draw_7 *****************
  Defined at:
-		line 833 in file "main.c"
+		line 836 in file "main.c"
  Parameters:    Size  Location     Type
 		None
  Auto vars:     Size  Location     Type
@@ -1485,7 +1485,7 @@ Total ram usage:        1 bytes
 
  *************** function _Draw_6 *****************
  Defined at:
-		line 822 in file "main.c"
+		line 825 in file "main.c"
  Parameters:    Size  Location     Type
 		None
  Auto vars:     Size  Location     Type
@@ -1516,7 +1516,7 @@ Total ram usage:        1 bytes
 
  *************** function _Draw_5 *****************
  Defined at:
-		line 811 in file "main.c"
+		line 814 in file "main.c"
  Parameters:    Size  Location     Type
 		None
  Auto vars:     Size  Location     Type
@@ -1546,7 +1546,7 @@ Total ram usage:        1 bytes
 
  *************** function _Draw_4 *****************
  Defined at:
-		line 800 in file "main.c"
+		line 803 in file "main.c"
  Parameters:    Size  Location     Type
 		None
  Auto vars:     Size  Location     Type
@@ -1577,7 +1577,7 @@ Total ram usage:        1 bytes
 
  *************** function _Draw_3 *****************
  Defined at:
-		line 789 in file "main.c"
+		line 792 in file "main.c"
  Parameters:    Size  Location     Type
 		None
  Auto vars:     Size  Location     Type
@@ -1607,7 +1607,7 @@ Total ram usage:        1 bytes
 
  *************** function _Draw_2 *****************
  Defined at:
-		line 778 in file "main.c"
+		line 781 in file "main.c"
  Parameters:    Size  Location     Type
 		None
  Auto vars:     Size  Location     Type
@@ -1638,7 +1638,7 @@ Total ram usage:        1 bytes
 
  *************** function _Draw_15 *****************
  Defined at:
-		line 921 in file "main.c"
+		line 924 in file "main.c"
  Parameters:    Size  Location     Type
 		None
  Auto vars:     Size  Location     Type
@@ -1668,7 +1668,7 @@ Total ram usage:        1 bytes
 
  *************** function _Draw_14 *****************
  Defined at:
-		line 910 in file "main.c"
+		line 913 in file "main.c"
  Parameters:    Size  Location     Type
 		None
  Auto vars:     Size  Location     Type
@@ -1699,7 +1699,7 @@ Total ram usage:        1 bytes
 
  *************** function _Draw_13 *****************
  Defined at:
-		line 899 in file "main.c"
+		line 902 in file "main.c"
  Parameters:    Size  Location     Type
 		None
  Auto vars:     Size  Location     Type
@@ -1729,7 +1729,7 @@ Total ram usage:        1 bytes
 
  *************** function _Draw_12 *****************
  Defined at:
-		line 888 in file "main.c"
+		line 891 in file "main.c"
  Parameters:    Size  Location     Type
 		None
  Auto vars:     Size  Location     Type
@@ -1760,7 +1760,7 @@ Total ram usage:        1 bytes
 
  *************** function _Draw_11 *****************
  Defined at:
-		line 877 in file "main.c"
+		line 880 in file "main.c"
  Parameters:    Size  Location     Type
 		None
  Auto vars:     Size  Location     Type
@@ -1790,7 +1790,7 @@ Total ram usage:        1 bytes
 
  *************** function _Draw_10 *****************
  Defined at:
-		line 866 in file "main.c"
+		line 869 in file "main.c"
  Parameters:    Size  Location     Type
 		None
  Auto vars:     Size  Location     Type
@@ -1821,7 +1821,7 @@ Total ram usage:        1 bytes
 
  *************** function _Menu_P1 *****************
  Defined at:
-		line 483 in file "main.c"
+		line 486 in file "main.c"
  Parameters:    Size  Location     Type
 		None
  Auto vars:     Size  Location     Type
@@ -1855,7 +1855,7 @@ Total ram usage:        2 bytes
 
  *************** function _eeprom_writex *****************
  Defined at:
-		line 364 in file "main.c"
+		line 367 in file "main.c"
  Parameters:    Size  Location     Type
   address         2    0[COMRAM] int 
   data            1    2[COMRAM] unsigned char 
@@ -1888,7 +1888,7 @@ Total ram usage:        3 bytes
 
  *************** function _Recording *****************
  Defined at:
-		line 1042 in file "main.c"
+		line 1045 in file "main.c"
  Parameters:    Size  Location     Type
 		None
  Auto vars:     Size  Location     Type
@@ -1923,7 +1923,7 @@ Total ram usage:        2 bytes
 
  *************** function _Draw_Save_Dot_Two *****************
  Defined at:
-		line 1031 in file "main.c"
+		line 1034 in file "main.c"
  Parameters:    Size  Location     Type
 		None
  Auto vars:     Size  Location     Type
@@ -1952,7 +1952,7 @@ Total ram usage:        1 bytes
 
  *************** function _Draw_Save_Dot_One *****************
  Defined at:
-		line 1020 in file "main.c"
+		line 1023 in file "main.c"
  Parameters:    Size  Location     Type
 		None
  Auto vars:     Size  Location     Type
@@ -1981,7 +1981,7 @@ Total ram usage:        1 bytes
 
  *************** function _Exit_Time_Menu *****************
  Defined at:
-		line 475 in file "main.c"
+		line 478 in file "main.c"
  Parameters:    Size  Location     Type
 		None
  Auto vars:     Size  Location     Type
@@ -2014,7 +2014,7 @@ Total ram usage:        0 bytes
 
  *************** function _Draw_1 *****************
  Defined at:
-		line 767 in file "main.c"
+		line 770 in file "main.c"
  Parameters:    Size  Location     Type
 		None
  Auto vars:     Size  Location     Type
@@ -2045,7 +2045,7 @@ Total ram usage:        1 bytes
 
  *************** function _Draw_0 *****************
  Defined at:
-		line 756 in file "main.c"
+		line 759 in file "main.c"
  Parameters:    Size  Location     Type
 		None
  Auto vars:     Size  Location     Type
@@ -2076,7 +2076,7 @@ Total ram usage:        1 bytes
 
  *************** function _Draw_P4 *****************
  Defined at:
-		line 745 in file "main.c"
+		line 748 in file "main.c"
  Parameters:    Size  Location     Type
 		None
  Auto vars:     Size  Location     Type
@@ -2105,7 +2105,7 @@ Total ram usage:        1 bytes
 
  *************** function _Draw_P3 *****************
  Defined at:
-		line 734 in file "main.c"
+		line 737 in file "main.c"
  Parameters:    Size  Location     Type
 		None
  Auto vars:     Size  Location     Type
@@ -2134,7 +2134,7 @@ Total ram usage:        1 bytes
 
  *************** function _Draw_P2 *****************
  Defined at:
-		line 723 in file "main.c"
+		line 726 in file "main.c"
  Parameters:    Size  Location     Type
 		None
  Auto vars:     Size  Location     Type
@@ -2163,7 +2163,7 @@ Total ram usage:        1 bytes
 
  *************** function _Draw_P1 *****************
  Defined at:
-		line 712 in file "main.c"
+		line 715 in file "main.c"
  Parameters:    Size  Location     Type
 		None
  Auto vars:     Size  Location     Type
@@ -2192,7 +2192,7 @@ Total ram usage:        1 bytes
 
  *************** function _Indicator *****************
  Defined at:
-		line 1060 in file "main.c"
+		line 1063 in file "main.c"
  Parameters:    Size  Location     Type
 		None
  Auto vars:     Size  Location     Type
@@ -2221,7 +2221,7 @@ Total ram usage:        0 bytes
 
  *************** function _Close_Lock *****************
  Defined at:
-		line 174 in file "main.c"
+		line 177 in file "main.c"
  Parameters:    Size  Location     Type
 		None
  Auto vars:     Size  Location     Type
@@ -2253,7 +2253,7 @@ Total ram usage:        2 bytes
 
  *************** function _eeprom_readx *****************
  Defined at:
-		line 380 in file "main.c"
+		line 383 in file "main.c"
  Parameters:    Size  Location     Type
   address         2    0[COMRAM] int 
  Auto vars:     Size  Location     Type
@@ -2315,7 +2315,7 @@ Total ram usage:        6 bytes
 
  *************** function _Closing *****************
  Defined at:
-		line 305 in file "main.c"
+		line 308 in file "main.c"
  Parameters:    Size  Location     Type
 		None
  Auto vars:     Size  Location     Type
@@ -2347,7 +2347,7 @@ Total ram usage:        2 bytes
 
  *************** function _Sense_Current *****************
  Defined at:
-		line 349 in file "main.c"
+		line 352 in file "main.c"
  Parameters:    Size  Location     Type
 		None
  Auto vars:     Size  Location     Type
@@ -2380,7 +2380,7 @@ Total ram usage:        0 bytes
 
  *************** function _Draw_CL *****************
  Defined at:
-		line 701 in file "main.c"
+		line 704 in file "main.c"
  Parameters:    Size  Location     Type
 		None
  Auto vars:     Size  Location     Type
@@ -2409,7 +2409,7 @@ Total ram usage:        0 bytes
 
  *************** function _Clear *****************
  Defined at:
-		line 695 in file "main.c"
+		line 698 in file "main.c"
  Parameters:    Size  Location     Type
 		None
  Auto vars:     Size  Location     Type
@@ -2439,7 +2439,7 @@ Total ram usage:        0 bytes
 
  *************** function _Analog_Read *****************
  Defined at:
-		line 332 in file "main.c"
+		line 335 in file "main.c"
  Parameters:    Size  Location     Type
 		None
  Auto vars:     Size  Location     Type
