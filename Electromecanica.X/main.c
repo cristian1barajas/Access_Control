@@ -27,10 +27,10 @@
 #define End_Stop_Close PORTAbits.RA5        // Entrada digital fin de carrera
 #define Time 250000                         // Constante de tiempo para detencion de emergencia
 #define Time_Exit_Menu 7000
-//#define Set_Point_Current 524               // Set point tarjeta JLCPCB
+#define Set_Point_Current 524               // Set point tarjeta JLCPCB
 //#define Set_Point_Current 544               // Set point original primera version
 //#define Set_Point_Current 644               // Set point caso excepcional
-#define Set_Point_Current 744               // Set point caso extremo
+//#define Set_Point_Current 744               // Set point caso extremo
 #define Timing_Display 1600
 
 #define Button_Menu_Up PORTAbits.RA1        // Boton para control del menu
@@ -253,20 +253,24 @@ void Open_Lock(void) {
             Flag_End_Stop_Open = 1; // Bandera de control para el do-while
             do {
                 Engine_Direction_B = 1;
-                End_Stop_Open_State = End_Stop_Open;
-                Count_Time_Close++;
-                Sense_Current();
+                End_Stop_Open_State = End_Stop_Open; // Primer motivo para detención de la cerradura
+                Count_Time_Close++;                  // Segundo motivo para detención de la cerradura
+                Sense_Current();                     // Tercer motivo para detención de la cerradura
                 if (End_Stop_Open_State == 0) {
-                    Flag_End_Stop_Open = 0;
-                    int Value_Latch = eeprom_readx(0x01);
-                    if (Value_Latch == 1) {
-                        __delay_ms(3000);   // Retardo de sostenido del picaporte
-                        Engine_Direction_B = 0;
-                        Engine_Direction_A = 1;
-                        __delay_ms(500);
-                        Engine_Direction_A = 0;
+                    __delay_ms(250);
+                    End_Stop_Open_State = End_Stop_Open; // Antirrebote se vuelve a validar el valor del fin de carrera
+                    if (End_Stop_Open_State == 0) {
+                        Flag_End_Stop_Open = 0;
+                        int Value_Latch = eeprom_readx(0x01);
+                        if (Value_Latch == 1) {
+                            __delay_ms(3000);   // Retardo de sostenido del picaporte
+                            Engine_Direction_B = 0;
+                            Engine_Direction_A = 1;
+                            __delay_ms(500);
+                            Engine_Direction_A = 0;
                         }
                     }
+                }
                 if(Count_Time_Close == Time) {
                     Count_Time_Close = 0;
                     break;
@@ -311,6 +315,13 @@ void Closing(void) {
     do {
         Engine_Direction_A = 1;
         End_Stop_Close_State = End_Stop_Close;
+        if(End_Stop_Close_State == 0) {
+            __delay_ms(250);
+            End_Stop_Close_State = End_Stop_Close;
+            if(End_Stop_Close_State == 0) {
+                break;
+            }
+        }
         Count_Time_Close++;
         Current = Analog_Read();
         Sense_Current();
@@ -325,6 +336,7 @@ void Closing(void) {
             }
         }
     } while(End_Stop_Close_State == 1);
+    __delay_ms(20);
     Engine_Direction_A = 0;
     Count_Time_Close = 0;
     Count_Peake_Current = 0;

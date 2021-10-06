@@ -5284,20 +5284,24 @@ void Open_Lock(void) {
                 Count_Time_Close++;
                 Sense_Current();
                 if (End_Stop_Open_State == 0) {
-                    Flag_End_Stop_Open = 0;
-                    int Value_Latch = eeprom_readx(0x01);
-                    if (Value_Latch == 1) {
-                        _delay((unsigned long)((3000)*(20000000/4000.0)));
-                        PORTCbits.RC2 = 0;
-                        PORTCbits.RC1 = 1;
-                        _delay((unsigned long)((500)*(20000000/4000.0)));
-                        PORTCbits.RC1 = 0;
+                    _delay((unsigned long)((250)*(20000000/4000.0)));
+                    End_Stop_Open_State = PORTAbits.RA4;
+                    if (End_Stop_Open_State == 0) {
+                        Flag_End_Stop_Open = 0;
+                        int Value_Latch = eeprom_readx(0x01);
+                        if (Value_Latch == 1) {
+                            _delay((unsigned long)((3000)*(20000000/4000.0)));
+                            PORTCbits.RC2 = 0;
+                            PORTCbits.RC1 = 1;
+                            _delay((unsigned long)((500)*(20000000/4000.0)));
+                            PORTCbits.RC1 = 0;
                         }
                     }
+                }
                 if(Count_Time_Close == 250000) {
                     Count_Time_Close = 0;
                     break;
-                } else if (Current > 744) {
+                } else if (Current > 524) {
                     Count_Peake_Current++;
                     if (Count_Peake_Current > 4000) {
                         Count_Peake_Current = 0;
@@ -5338,13 +5342,20 @@ void Closing(void) {
     do {
         PORTCbits.RC1 = 1;
         End_Stop_Close_State = PORTAbits.RA5;
+        if(End_Stop_Close_State == 0) {
+            _delay((unsigned long)((250)*(20000000/4000.0)));
+            End_Stop_Close_State = PORTAbits.RA5;
+            if(End_Stop_Close_State == 0) {
+                break;
+            }
+        }
         Count_Time_Close++;
         Current = Analog_Read();
         Sense_Current();
         if(Count_Time_Close == 250000) {
             Count_Time_Close = 0;
             break;
-        } else if (Current > 744) {
+        } else if (Current > 524) {
             Count_Peake_Current++;
             if (Count_Peake_Current > 4000) {
                 Count_Peake_Current = 0;
@@ -5352,6 +5363,7 @@ void Closing(void) {
             }
         }
     } while(End_Stop_Close_State == 1);
+    _delay((unsigned long)((20)*(20000000/4000.0)));
     PORTCbits.RC1 = 0;
     Count_Time_Close = 0;
     Count_Peake_Current = 0;
@@ -5378,7 +5390,7 @@ int Analog_Read(void) {
 
 void Sense_Current(void) {
     Current = Analog_Read();
-        if (Current > 744) {
+        if (Current > 524) {
             Draw_CL();
         } else {
             Clear();
