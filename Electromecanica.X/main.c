@@ -29,6 +29,7 @@
 #define Time_Exit_Menu 7000
 #define Set_Point_Current 524               // Set point tarjeta JLCPCB
 //#define Set_Point_Current 544               // Set point original primera version
+//#define Set_Point_Current 634               // Set point original primera version Opción 2
 //#define Set_Point_Current 644               // Set point caso excepcional
 //#define Set_Point_Current 744               // Set point caso extremo
 #define Timing_Display 1600

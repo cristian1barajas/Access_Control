@@ -5071,7 +5071,7 @@ extern __attribute__((nonreentrant)) void _delay3(unsigned char);
 
 #pragma config EBTRB = OFF
 # 16 "main.c" 2
-# 41 "main.c"
+# 42 "main.c"
 int Count_Peake_Current = 0;
 int Current = 0;
 
@@ -5242,7 +5242,7 @@ void Close_Lock(void) {
             PORTCbits.RC1 = 1;
             _delay((unsigned long)((1000)*(20000000/4000.0)));
             Closing();
-# 219 "main.c"
+# 220 "main.c"
         }
     }
     Last_Inductive_State = Inductive_State;
